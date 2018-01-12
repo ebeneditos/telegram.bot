@@ -2,16 +2,6 @@
 
 > Building a Telegram Bot with R
 
-## Table of contents
-
-- [Introduction](README.md#introduction)
-- [Installing](README.md#installing)
-- [Getting started](README.md#getting-started)
-- [Contributing](README.md#contributing)
-- [License](README.md#license)
-
-## Introduction
-
 This package features a number of tools to make the development of Telegram bots with R easy and straightforward.
 It is an extension of the 
 [`telegram` package](https://github.com/lbraglia/telegram), an R wrapper around the
