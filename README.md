@@ -4,9 +4,9 @@
 
 This package features a number of tools to make the development of Telegram bots with R easy and straightforward.
 It is an extension of the 
-[`telegram` package](https://github.com/lbraglia/telegram), an R wrapper around the
+[`telegram`](https://github.com/lbraglia/telegram) package, an R wrapper around the
 [Telegram Bot API](http://core.telegram.org/bots/api); and it is inspired by Python's submodule `telegram.ext` from the
-[`python-telegram-bot` library](https://github.com/python-telegram-bot/python-telegram-bot).
+[`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot) library.
 
 ## Installing
 
