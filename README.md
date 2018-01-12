@@ -17,13 +17,13 @@ This version is being revised in order to update the stable version, so for the 
 devtools::install_github('ebeneditos/telegram')
 ```
 
-Then you can download the `telegram.ext` developer version:
+Then you can download the `telegram.ext` developers version:
 
 ```r
 devtools::install_github('ebeneditos/telegram.ext')
 ```
 
-Make sure you have the last version of `devtools` package.
+Make sure you have the `devtools` package updated.
 
 ## Getting started
 
