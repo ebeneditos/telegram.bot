@@ -10,7 +10,7 @@ It is an extension of the
 
 ## Installing
 
-It is compatible with `telegram` package's [version `0.6.2-dev`](https://github.com/ebeneditos/telegram), which allows the use of Long Polling.
+It is compatible with `telegram` package's version [`0.6.2-dev`](https://github.com/ebeneditos/telegram), which allows the use of Long Polling.
 This version is being revised in order to update the stable version, so for the moment you can download its developers version with:
 
 ```r
