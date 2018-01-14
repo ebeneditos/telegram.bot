@@ -2,9 +2,9 @@
 
 > Develop a Telegram Bot with R
 
-[![Version](https://img.shields.io/badge/version-0.7.0--dev-green.svg)]()
+[![Version](https://img.shields.io/badge/version-0.7.0--dev-orange.svg)]()
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.ext.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.ext)
-[![License](https://img.shields.io/cran/l/telegram.svg)](https://www.gnu.org/licenses/licenses.html)
+[![License](https://img.shields.io/badge/license-LGLP--3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
 
 This package features a number of tools to make the development of Telegram bots with R easy and straightforward.
 It is an extension of the 

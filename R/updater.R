@@ -12,13 +12,11 @@ start_polling <- function(timeout = 10, clean = FALSE, verbose = FALSE){
 
   if (!private$running) private$running <- TRUE
 
-  if (verbose) cat("Starting Updater\n")
+  if (verbose) cat("Start polling\n")
 
   if (clean) private$clean_updates(verbose)
 
   while (private$running){
-    
-    if (verbose) cat("Getting updates...\n")
 
     updates <- try(
       self$bot$get_updates(
@@ -29,7 +27,7 @@ start_polling <- function(timeout = 10, clean = FALSE, verbose = FALSE){
 
     if (inherits(updates, "try-error")){
       if (check_error(updates[1])){
-        if (verbose) cat("Stopping Updater\n")
+        if (verbose) cat("End polling\n")
         private$running <- FALSE 
       }
       else{
@@ -42,7 +40,7 @@ start_polling <- function(timeout = 10, clean = FALSE, verbose = FALSE){
 
       if (!private$running){
         if (verbose && !is.null(updates) && length(updates) > 0)
-          if (verbose) print("Updates ignored and will be pulled again on restart.\n")
+          if (verbose) cat("Updates ignored and will be pulled again on restart.\n")
         break
       }
       
@@ -96,7 +94,6 @@ UpdaterClass <-
 
                 ## args
                 bot = NULL,
-                
                 dispatcher = NULL,
 
                 ## initialize
@@ -133,10 +130,10 @@ UpdaterClass <-
 
                   if (verbose) cat("Cleaning updates from Telegram server\n")
 
-                  updates <- self$bot$getUpdates()
+                  updates <- self$bot$get_updates()
 
                   if (length(updates))
-                    updates <- self$bot$getUpdates(updates$update_id[nrow(updates)] + 1)
+                    updates <- self$bot$get_updates(updates[[length(updates)]]$update_id + 1)
                 }
               )
 )

@@ -5,13 +5,17 @@ To make participation as pleasant as possible, please review our [Code of Conduc
 
 ## Submitting changes
 
-Please send a [GitHub Pull Request to telegram.ext](https://github.com/ebeneditos/telegram.ext/pull/new/master) with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests/)). Please follow our [coding conventions](CONTRIBUTING.md#coding-conventions) and make sure all of your commits are atomic (one feature per commit).
+To ease the submit review, please take a look on our [coding conventions](CONTRIBUTING.md#coding-conventions) and make sure all of your commits are atomic (one feature per commit). In order to structure the feature development, we suggest to do the following:
 
-Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
+1. **Fork the master main** repository [`ebeneditos/telegram.ext`](https://github.com/ebeneditos/telegram.ext).
 
-    $ git commit -m "A brief summary of the commit
-    > 
-    > A paragraph describing what changed and its impact."
+2. **Create a branch** with an easy-to-identify name for the feature you want to develop (e.g. 'create-class-handler'). We recommend to make a different branch per feature.
+
+3. **Develop the feature** and make the necessary tests to prove it works fine.
+
+4. **Send a GitHub Pull Request** to [`telegram.ext`](https://github.com/ebeneditos/telegram.ext/pull/new/master) with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests/)). Always write a clear log message for your commits.
+
+5. **Receive a sincere thanks!** If we have any doubts we will let you know.
 
 ## Coding conventions
 

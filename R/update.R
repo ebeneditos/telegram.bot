@@ -1,3 +1,4 @@
+
 #### METHODS ####
 
 #' effective_user
