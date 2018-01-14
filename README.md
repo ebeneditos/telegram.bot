@@ -1,23 +1,20 @@
 # telegram.ext
 
-> Building a Telegram Bot with R
+> Develop a Telegram Bot with R
+
+[![Version](https://img.shields.io/badge/version-0.7.0--dev-green.svg)]()
+[![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.ext.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.ext)
+[![License](https://img.shields.io/cran/l/telegram.svg)](https://www.gnu.org/licenses/licenses.html)
 
 This package features a number of tools to make the development of Telegram bots with R easy and straightforward.
 It is an extension of the 
 [`telegram`](https://github.com/lbraglia/telegram) package, an R wrapper around the
-[Telegram Bot API](http://core.telegram.org/bots/api); and it is inspired by Python's submodule `telegram.ext` from the
+[Telegram Bot API](http://core.telegram.org/bots/api); and it is inspired by Python's submodule `telegram.ext` from
 [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot) library.
 
 ## Installing
 
-It is compatible with `telegram` package's version [`0.6.2-dev`](https://github.com/ebeneditos/telegram), which allows the use of Long Polling.
-This version is being revised in order to update the stable version, so for the moment you can download its developers version with:
-
-```r
-devtools::install_github('ebeneditos/telegram')
-```
-
-Then you can download the `telegram.ext` developers version:
+You can download the `telegram.ext` developers version with:
 
 ```r
 devtools::install_github('ebeneditos/telegram.ext')

@@ -1,6 +1,6 @@
 # How to contribute
 
-I'm really grateful that you're reading this, it is because of the generous help from contributors that open source projects like this one can come to fruition.
+We are really grateful that you're reading this, it is because of the generous help from contributors that open source projects like this one can come to fruition.
 To make participation as pleasant as possible, please review our [Code of Conduct](https://github.com/ebeneditos/telegram.ext/blob/master/CODE_OF_CONDUCT.md).
 
 ## Submitting changes
@@ -18,9 +18,11 @@ Always write a clear log message for your commits. One-line messages are fine fo
 Start reading our code and you'll get the hang of it. We optimize for readability:
 
   * For Telegram methods and variables, use [Telegram Bot API](http://core.telegram.org/bots/api) nomenclature.
+  * In order to have a starting point for new classes, we are basing its structure and nomenclature on Python's submodule  [`telegram.ext`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/telegram/ext) from
+[`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot) library, so please take a look on it.
   * Set intuitive variable names.
   * Follow the structure of the already done work.
   * Put spaces after list items and method parameters (`c(1, 2, 3)`, not `c(1,2,3)`), around operators (`x + 1`, not `x+1`), and when assigning them (`y <- 1` or `y = 1`; not `y<-1` or `y=1`).
   * This is open source project. Consider the people who will read your code, and make it look nice for them.
 
-Thanks!
+Thanks 🙂
