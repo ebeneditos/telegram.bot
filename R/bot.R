@@ -6,9 +6,12 @@
 #' Use this method to receive incoming updates using long polling.
 #'
 #' 1. This method will not work if an outgoing webhook is set up.
+#' 
 #' 2. In order to avoid getting duplicate updates, recalculate offset after each
 #' server response.
+#' 
 #' 3. To take full advantage of this library take a look at \code{\link{Updater}}.
+#' 
 #' @param offset Identifier of the first update to be returned
 #'     returned.
 #' @param limit Limits the number of updates to be retrieved. Values
@@ -16,9 +19,15 @@
 #' @param timeout Timeout in seconds for long polling. Defaults to 0,
 #'     i.e. usual short polling. Should be positive, short polling should
 #'     be used for testing purposes only.
+#' @param allowed_updates Vector with the types of updates you want your
+#'     bot to receive. For example, specify \code{c("message", "edited_channel_post",
+#'     "callback_query")} to only receive updates of these types. See
+#'     \href{https://core.telegram.org/bots/api#update}{Update}
+#'     for a complete list of available update types.
 get_updates <- function(offset = NULL,
                        limit = 100,
-                       timeout = 0)
+                       timeout = 0,
+                       allowed_updates = NULL)
 {
   url <- sprintf('%s/getUpdates', private$base_url)
 
@@ -28,6 +37,10 @@ get_updates <- function(offset = NULL,
     data[['offset']] <- offset
   if (!missing(limit))
     data[['limit']] <- limit
+  if (!missing(allowed_updates))
+    data[['allowed_updates']] <- I(allowed_updates)
+  
+  print(data)
 
   result <- private$request_post(url, data)
 
@@ -141,7 +154,7 @@ BotClass <-
 
                 # Request an URL.
                 request_post = function(url, data){
-                  result <- httr::POST(url = url, body = data)
+                  result <- httr::POST(url = url, body = data, encode = 'json')
                   httr::stop_for_status(result)
 
                   if (result$status >= 200 && result$status <= 299){

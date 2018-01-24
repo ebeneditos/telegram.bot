@@ -4,7 +4,8 @@
 \alias{get_updates}
 \title{get_updates}
 \usage{
-get_updates(offset = NULL, limit = 100, timeout = 0)
+get_updates(offset = NULL, limit = 100, timeout = 0,
+  allowed_updates = NULL)
 }
 \arguments{
 \item{offset}{Identifier of the first update to be returned
@@ -16,13 +17,21 @@ between 1-100 are accepted. Defaults to 100.}
 \item{timeout}{Timeout in seconds for long polling. Defaults to 0,
 i.e. usual short polling. Should be positive, short polling should
 be used for testing purposes only.}
+
+\item{allowed_updates}{Vector with the types of updates you want your
+bot to receive. For example, specify \code{c("message", "edited_channel_post",
+"callback_query")} to only receive updates of these types. See
+\href{https://core.telegram.org/bots/api#update}{Update}
+for a complete list of available update types.}
 }
 \description{
 Use this method to receive incoming updates using long polling.
 }
 \details{
 1. This method will not work if an outgoing webhook is set up.
+
 2. In order to avoid getting duplicate updates, recalculate offset after each
 server response.
+
 3. To take full advantage of this library take a look at \code{\link{Updater}}.
 }

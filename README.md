@@ -33,7 +33,7 @@ To get started with `telegram.ext`, you can check these resources:
 ## Contributing
 
 The package is in a starting phase, so contributions of all sizes are very welcome. Please:
-- Review our [contribution guidelines](https://github.com/ebeneditos/telegram.ext/blob/master/CONTRIBUTING.md) to get started.
+- Review our [contribution guidelines](https://github.com/ebeneditos/telegram.ext/blob/master/.github/CONTRIBUTING.md) to get started.
 - You can also help by [reporting bugs](https://github.com/ebeneditos/telegram.ext/issues/new).
 
 ## License
