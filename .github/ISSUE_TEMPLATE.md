@@ -1,6 +1,4 @@
-# Issue Template
-
-Please choose one of the following with an `[x]` and fill the appropriate field:
+Please choose one of the following and fill the appropriate field:
 
 - [ ] Bug Report
 - [ ] New Feature
