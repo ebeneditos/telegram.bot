@@ -1,4 +1,4 @@
-# How to contribute
+# Contributing to `telegram.ext`
 
 We are really grateful that you're reading this, it is because of the generous help from contributors that open source projects like this one can come to fruition.
 To make participation as pleasant as possible, please review our [Code of Conduct](https://github.com/ebeneditos/telegram.ext/blob/master/CODE_OF_CONDUCT.md).
