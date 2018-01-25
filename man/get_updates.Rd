@@ -8,17 +8,17 @@ get_updates(offset = NULL, limit = 100, timeout = 0,
   allowed_updates = NULL)
 }
 \arguments{
-\item{offset}{Identifier of the first update to be returned
+\item{offset}{(Optional). Identifier of the first update to be returned
 returned.}
 
-\item{limit}{Limits the number of updates to be retrieved. Values
+\item{limit}{(Optional). Limits the number of updates to be retrieved. Values
 between 1-100 are accepted. Defaults to 100.}
 
-\item{timeout}{Timeout in seconds for long polling. Defaults to 0,
+\item{timeout}{(Optional). Timeout in seconds for long polling. Defaults to 0,
 i.e. usual short polling. Should be positive, short polling should
 be used for testing purposes only.}
 
-\item{allowed_updates}{Vector with the types of updates you want your
+\item{allowed_updates}{(Optional). Vector with the types of updates you want your
 bot to receive. For example, specify \code{c("message", "edited_channel_post",
 "callback_query")} to only receive updates of these types. See
 \href{https://core.telegram.org/bots/api#update}{Update}

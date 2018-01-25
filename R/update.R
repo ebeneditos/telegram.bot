@@ -108,7 +108,7 @@ effective_message <- function(){
 
 #' Update
 #'
-#' This object represents an incoming update.
+#' This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.

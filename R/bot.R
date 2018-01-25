@@ -12,14 +12,14 @@
 #' 
 #' 3. To take full advantage of this library take a look at \code{\link{Updater}}.
 #' 
-#' @param offset Identifier of the first update to be returned
+#' @param offset (Optional). Identifier of the first update to be returned
 #'     returned.
-#' @param limit Limits the number of updates to be retrieved. Values
+#' @param limit (Optional). Limits the number of updates to be retrieved. Values
 #'     between 1-100 are accepted. Defaults to 100.
-#' @param timeout Timeout in seconds for long polling. Defaults to 0,
+#' @param timeout (Optional). Timeout in seconds for long polling. Defaults to 0,
 #'     i.e. usual short polling. Should be positive, short polling should
 #'     be used for testing purposes only.
-#' @param allowed_updates Vector with the types of updates you want your
+#' @param allowed_updates (Optional). Vector with the types of updates you want your
 #'     bot to receive. For example, specify \code{c("message", "edited_channel_post",
 #'     "callback_query")} to only receive updates of these types. See
 #'     \href{https://core.telegram.org/bots/api#update}{Update}
@@ -39,12 +39,91 @@ get_updates <- function(offset = NULL,
     data[['limit']] <- limit
   if (!missing(allowed_updates))
     data[['allowed_updates']] <- I(allowed_updates)
-  
-  print(data)
 
   result <- private$request_post(url, data)
 
   return(lapply(result, function(u) Update(u)))
+}
+
+
+#' set_webhook
+#'
+#' Use this method to specify a url and receive incoming updates via an outgoing webhook.
+#' Whenever there is an update for the bot, we will send an HTTPS POST request to the
+#' specified url, containing a JSON-serialized
+#' \href{https://core.telegram.org/bots/api#update}{Update}.
+#'
+#' If you'd like to make sure that the Webhook request comes from Telegram, we recommend
+#' using a secret path in the URL, e.g. \code{https://www.example.com/<token>}.
+#' 
+#' @param url HTTPS url to send updates to. Use an empty string to remove webhook
+#'     integration.
+#' @param certificate (Optional). Upload your public key certificate so that the root
+#'     certificate in use can be checked. See Telegram's
+#'     \href{https://core.telegram.org/bots/self-signed}{self-signed guide} for details.
+#' @param max_connections (Optional). Maximum allowed number of simultaneous HTTPS
+#'     connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower
+#'     values to limit the load on your bot's server, and higher values to increase your
+#'     bot's throughput.
+#' @param allowed_updates (Optional). Vector with the types of updates you want your
+#'     bot to receive. For example, specify \code{c("message", "edited_channel_post",
+#'     "callback_query")} to only receive updates of these types. See
+#'     \href{https://core.telegram.org/bots/api#update}{Update}
+#'     for a complete list of available update types.
+set_webhook <- function(url = NULL,
+                        certificate = NULL,
+                        max_connections = 40,
+                        allowed_updates = NULL)
+{
+  url <- sprintf('%s/setWebhook', private$base_url)
+  
+  data <- list()
+  
+  if (!missing(url))
+    data[['url']] <- url
+  if (!missing(certificate) && check_file(certificate))
+    data[['certificate']] <- httr::upload_file(certificate)
+  if (!missing(max_connections))
+    data[['max_connections']] <- max_connections
+  if (!missing(allowed_updates))
+    data[['allowed_updates']] <- I(allowed_updates)
+  
+  result <- private$request_post(url, data)
+  
+  return(result)
+}
+
+
+#' delete_webhook
+#'
+#' Use this method to remove webhook integration if you decide to switch back to
+#' \code{getUpdates}. Requires no parameters.
+delete_webhook <- function()
+{
+  url <- sprintf('%s/deleteWebhook', private$base_url)
+  
+  data <- list()
+  
+  result <- private$request_post(url, data)
+  
+  return(result)
+}
+
+
+#' get_webhook_info
+#'
+#' Use this method to get current webhook status. Requires no parameters.
+#' 
+#' If the bot is using \code{getUpdates}, will return an object with the url field empty.
+get_webhook_info <- function()
+{
+  url <- sprintf('%s/getWebhookInfo', private$base_url)
+  
+  data <- list()
+  
+  result <- private$request_post(url, data)
+  
+  return(result)
 }
 
 
@@ -54,7 +133,9 @@ get_updates <- function(offset = NULL,
 #'
 #' This object represents a Telegram Bot. It inherits from \code{\link{TGBot}}.
 #' Thus, it has immplemented all the API methods from that class. It also features
-#' the \code{\link{get_updates}} method, which allows the use of long polling.
+#' the \code{\link{get_updates}} method, which allows the use of long polling; and
+#' the \code{\link{set_webhook}}, \code{\link{delete_webhook}} and 
+#' \code{\link{get_webhook_info}} functions, which allow to manage webhooks.
 #'
 #' To take full advantage of this library take a look at \code{\link{Updater}}.
 #' @docType class
@@ -124,7 +205,8 @@ BotClass <-
                 },
 
                 ## methods
-                get_updates  = get_updates
+                get_updates  = get_updates,
+                set_webhook = set_webhook
 
               ),
               private = list(

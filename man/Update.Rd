@@ -12,7 +12,7 @@ Update(data)
 \item{data}{Data of the update.}
 }
 \description{
-This object represents an incoming update.
+This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.
 }
 \section{Methods}{
  \describe{

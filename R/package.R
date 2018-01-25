@@ -28,4 +28,5 @@
 #' @importFrom httr POST
 #' @importFrom httr content
 #' @importFrom httr stop_for_status
+#' @importFrom httr upload_file
 NULL

@@ -4,7 +4,7 @@
 #' start_polling
 #'
 #' Starts polling updates from Telegram.
-#' @param timeout (Optional). Passed to \code{\link{getUpdates}}. Default is 10.
+#' @param timeout (Optional). Passed to \code{\link{get_updates}}. Default is 10.
 #' @param clean (Optional). Whether to clean any pending updates on Telegram servers
 #'   before actually starting to poll. Default is \code{FALSE}.
 #' @param verbose (Optional). If \code{TRUE}, prints status of the pollings. Default is \code{FALSE}.

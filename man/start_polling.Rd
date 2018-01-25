@@ -7,7 +7,7 @@
 start_polling(timeout = 10, clean = FALSE, verbose = FALSE)
 }
 \arguments{
-\item{timeout}{(Optional). Passed to \code{\link{getUpdates}}. Default is 10.}
+\item{timeout}{(Optional). Passed to \code{\link{get_updates}}. Default is 10.}
 
 \item{clean}{(Optional). Whether to clean any pending updates on Telegram servers
 before actually starting to poll. Default is \code{FALSE}.}
