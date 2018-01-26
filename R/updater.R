@@ -7,31 +7,33 @@
 #' @param timeout (Optional). Passed to \code{\link{get_updates}}. Default is 10.
 #' @param clean (Optional). Whether to clean any pending updates on Telegram servers
 #'   before actually starting to poll. Default is \code{FALSE}.
+#' @param allowed_updates (Optional). Passed to \code{\link{get_updates}}.
 #' @param verbose (Optional). If \code{TRUE}, prints status of the pollings. Default is \code{FALSE}.
-start_polling <- function(timeout = 10, clean = FALSE, verbose = FALSE){
-
+start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, verbose = FALSE){
+  
+  private$verbose <- verbose
   if (!private$running) private$running <- TRUE
+  
+  if (private$verbose) cat("Start polling\n")
 
-  if (verbose) cat("Start polling\n")
-
-  if (clean) private$clean_updates(verbose)
+  if (clean) private$clean_updates()
 
   while (private$running){
 
     updates <- try(
       self$bot$get_updates(
           offset = private$last_update_id,
-          timeout = timeout),
+          timeout = timeout,
+          allowed_updates = allowed_updates),
       silent = TRUE
     )
 
     if (inherits(updates, "try-error")){
-      if (check_error(updates[1])){
-        if (verbose) cat("End polling\n")
-        private$running <- FALSE 
+      if (check_stop(updates)){
+        self$stop_polling()
       }
       else{
-        if (verbose) cat("Error while getting Updates\n")
+        if (private$verbose) cat("Error while getting Updates\n")
         self$dispatcher$process_update(NULL)    
       }
     }
@@ -39,8 +41,8 @@ start_polling <- function(timeout = 10, clean = FALSE, verbose = FALSE){
     else{
 
       if (!private$running){
-        if (verbose && !is.null(updates) && length(updates) > 0)
-          if (verbose) cat("Updates ignored and will be pulled again on restart.\n")
+        if (!is.null(updates) && length(updates) > 0)
+          if (private$verbose) cat("Updates ignored and will be pulled again on restart.\n")
         break
       }
       
@@ -48,7 +50,7 @@ start_polling <- function(timeout = 10, clean = FALSE, verbose = FALSE){
 
         for (update in updates){
 
-          if (verbose) cat(sprintf("Processing Update: %i\n", update$update_id))
+          if (private$verbose) cat(sprintf("Processing Update: %i\n", update$update_id))
           self$dispatcher$process_update(update)
         }
         
@@ -56,6 +58,17 @@ start_polling <- function(timeout = 10, clean = FALSE, verbose = FALSE){
       }
     }
   }
+}
+
+
+#' stop_polling
+#'
+#' Stops the polling.
+stop_polling <- function(){
+  
+  if (private$verbose) cat("End polling\n")
+  if (private$running) private$running <- FALSE
+  
 }
 
 
@@ -114,7 +127,8 @@ UpdaterClass <-
                 },
 
                 ## methods
-                start_polling = start_polling
+                start_polling = start_polling,
+                stop_polling = stop_polling
 
               ),
               private = list(
@@ -122,13 +136,14 @@ UpdaterClass <-
                 ## members
                 last_update_id = 0,
                 running = FALSE,
+                verbose = FALSE,
 
                 ## functions
 
                 # Clean updates when starting polling
-                clean_updates = function(verbose){
+                clean_updates = function(){
 
-                  if (verbose) cat("Cleaning updates from Telegram server\n")
+                  if (private$verbose) cat("Cleaning updates from Telegram server\n")
 
                   updates <- self$bot$get_updates()
 

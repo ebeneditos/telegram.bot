@@ -19,11 +19,15 @@
 #' @param timeout (Optional). Timeout in seconds for long polling. Defaults to 0,
 #'     i.e. usual short polling. Should be positive, short polling should
 #'     be used for testing purposes only.
-#' @param allowed_updates (Optional). Vector with the types of updates you want your
-#'     bot to receive. For example, specify \code{c("message", "edited_channel_post",
-#'     "callback_query")} to only receive updates of these types. See
+#' @param allowed_updates (Optional). String or vector of strings with the types of
+#'     updates you want your bot to receive. For example, specify \code{c("message",
+#'     "edited_channel_post", "callback_query")} to only receive updates of these types. See
 #'     \href{https://core.telegram.org/bots/api#update}{Update}
-#'     for a complete list of available update types.
+#'     for a complete list of available update types. Specify an empty string to receive all
+#'     updates regardless of type (default). If not specified, the previous setting will be used.
+#'     
+#'     Please note that this parameter doesn't affect updates created before the call
+#'     to the get_updates, so unwanted updates may be received for a short period of time.
 get_updates <- function(offset = NULL,
                        limit = 100,
                        timeout = 0,
@@ -37,7 +41,7 @@ get_updates <- function(offset = NULL,
     data[['offset']] <- offset
   if (!missing(limit))
     data[['limit']] <- limit
-  if (!missing(allowed_updates))
+  if (!missing(allowed_updates) && !is.null(allowed_updates))
     data[['allowed_updates']] <- I(allowed_updates)
 
   result <- private$request_post(url, data)
@@ -65,17 +69,21 @@ get_updates <- function(offset = NULL,
 #'     connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower
 #'     values to limit the load on your bot's server, and higher values to increase your
 #'     bot's throughput.
-#' @param allowed_updates (Optional). Vector with the types of updates you want your
-#'     bot to receive. For example, specify \code{c("message", "edited_channel_post",
-#'     "callback_query")} to only receive updates of these types. See
+#' @param allowed_updates (Optional). String or vector of strings with the types of
+#'     updates you want your bot to receive. For example, specify \code{c("message",
+#'     "edited_channel_post", "callback_query")} to only receive updates of these types. See
 #'     \href{https://core.telegram.org/bots/api#update}{Update}
-#'     for a complete list of available update types.
+#'     for a complete list of available update types. Specify an empty string to receive all
+#'     updates regardless of type (default). If not specified, the previous setting will be used.
+#'     
+#'     Please note that this parameter doesn't affect updates created before the call
+#'     to the get_updates, so unwanted updates may be received for a short period of time.
 set_webhook <- function(url = NULL,
                         certificate = NULL,
                         max_connections = 40,
                         allowed_updates = NULL)
 {
-  url <- sprintf('%s/setWebhook', private$base_url)
+  url_ <- sprintf('%s/setWebhook', private$base_url)
   
   data <- list()
   
@@ -85,10 +93,10 @@ set_webhook <- function(url = NULL,
     data[['certificate']] <- httr::upload_file(certificate)
   if (!missing(max_connections))
     data[['max_connections']] <- max_connections
-  if (!missing(allowed_updates))
+  if (!missing(allowed_updates) && !is.null(allowed_updates))
     data[['allowed_updates']] <- I(allowed_updates)
   
-  result <- private$request_post(url, data)
+  result <- private$request_post(url_, data)
   
   return(result)
 }

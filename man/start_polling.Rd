@@ -4,13 +4,16 @@
 \alias{start_polling}
 \title{start_polling}
 \usage{
-start_polling(timeout = 10, clean = FALSE, verbose = FALSE)
+start_polling(timeout = 10, clean = FALSE, allowed_updates = NULL,
+  verbose = FALSE)
 }
 \arguments{
 \item{timeout}{(Optional). Passed to \code{\link{get_updates}}. Default is 10.}
 
 \item{clean}{(Optional). Whether to clean any pending updates on Telegram servers
 before actually starting to poll. Default is \code{FALSE}.}
+
+\item{allowed_updates}{(Optional). Passed to \code{\link{get_updates}}.}
 
 \item{verbose}{(Optional). If \code{TRUE}, prints status of the pollings. Default is \code{FALSE}.}
 }

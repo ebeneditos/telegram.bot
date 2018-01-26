@@ -18,11 +18,15 @@ between 1-100 are accepted. Defaults to 100.}
 i.e. usual short polling. Should be positive, short polling should
 be used for testing purposes only.}
 
-\item{allowed_updates}{(Optional). Vector with the types of updates you want your
-bot to receive. For example, specify \code{c("message", "edited_channel_post",
-"callback_query")} to only receive updates of these types. See
+\item{allowed_updates}{(Optional). String or vector of strings with the types of
+updates you want your bot to receive. For example, specify \code{c("message",
+"edited_channel_post", "callback_query")} to only receive updates of these types. See
 \href{https://core.telegram.org/bots/api#update}{Update}
-for a complete list of available update types.}
+for a complete list of available update types. Specify an empty string to receive all
+updates regardless of type (default). If not specified, the previous setting will be used.
+
+Please note that this parameter doesn't affect updates created before the call
+to the get_updates, so unwanted updates may be received for a short period of time.}
 }
 \description{
 Use this method to receive incoming updates using long polling.

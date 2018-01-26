@@ -4,8 +4,8 @@ private <- 'For R CMD CHECK'
 
 not_implemented <- function() stop('Currently not implemented')
 
-check_error <- function(error){
-  return(error == "Error in curl::curl_fetch_memory(url, handle = handle) : \n  Operation was aborted by an application callback\n")
+check_stop <- function(error){
+  return(attr(error, 'condition')$message == "Operation was aborted by an application callback")
 }
 
 check_file <- function(path, required = FALSE){
