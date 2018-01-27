@@ -31,71 +31,71 @@
 #' @export
 Filters <- list(
   'all' =
-    All <- function(message){
+    function(message){
       TRUE
     },
   'text' =
-    Text <- function(message){
+    function(message){
       !is.null(message$text) && !startsWith(message$text, '/')
     },
   'command' =
-    Command <- function(message){
+    function(message){
       !is.null(message$text) && startsWith(message$text, '/')
     },
   'reply' =
-    Reply <- function(message){
+    function(message){
       !is.null(message$reply_to_message)
     },
   'audio' =
-    Audio <- function(message){
+    function(message){
       !is.null(message$audio)
     },
   'document' =
-    Document <- function(message){
+    function(message){
       !is.null(message$document)
     },
   'photo' =
-    Photo <- function(message){
+    function(message){
       !is.null(message$photo)
     },
   'sticker' =
-    Sticker <- function(message){
+    function(message){
       !is.null(message$sticker)
     },
   'video' =
-    Video <- function(message){
+    function(message){
       !is.null(message$video)
     },
   'voice' =
-    Voice <- function(message){
+    function(message){
       !is.null(message$voice)
     },
   'contact' =
-    Contact <- function(message){
+    function(message){
       !is.null(message$contact)
     },
   'location' =
-    Location <- function(message){
+    function(message){
       !is.null(message$location)
     },
   'venue' =
-    Venue <- function(message){
+    function(message){
       !is.null(message$venue)
     },
   'forwarded' =
-    Forwarded <- function(message){
+    function(message){
       !is.null(message$forward_date)
     },
   'game' =
-    Game <- function(message){
+    function(message){
       !is.null(message$game)
     },
   'invoice' =
-    Game <- function(message){
+    function(message){
       !is.null(message$invoice)
     },
   'successful_payment' =
-    SuccessfulPayment <- function(message){
+    function(message){
       !is.null(message$successful_payment)
     }
 )

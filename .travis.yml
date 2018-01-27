@@ -6,3 +6,16 @@ r:
  - oldrel
  - release
  - devel
+ 
+branches:
+  only:
+    - master
+
+r_github_packages:
+  - ebeneditos/telegram.ext
+  
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e "covr::codecov(function_exclusions = 'start_polling')"

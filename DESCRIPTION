@@ -11,6 +11,8 @@ Imports: R6, httr
 Depends:
     R (>= 3.2.3),
     telegram (>= 0.6.0)
+Suggests:
+    testthat
 License: LGPL-3
 Encoding: UTF-8
 LazyData: true

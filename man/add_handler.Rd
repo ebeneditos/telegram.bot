@@ -13,7 +13,7 @@ add_handler(handler, group = 1)
 }
 \description{
 Register a handler. A handler must be an instance of a subclass of \code{\link{Handler}}. All handlers
-are organized in groups with a numeric value. The default group is 0. All groups will be
+are organized in groups with a numeric value. The default group is 1. All groups will be
 evaluated for handling an update, but only 0 or 1 handler per group will be used.
 }
 \details{

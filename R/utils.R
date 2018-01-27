@@ -12,7 +12,7 @@ check_file <- function(path, required = FALSE){
   if (file.exists(path))
     path
   else {
-    if (required) stop(path, 'is not a valid path')
+    if (required) stop(path, ' is not a valid path')
     else NULL
   }
 }

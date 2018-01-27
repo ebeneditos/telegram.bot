@@ -16,7 +16,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
   
   if (private$verbose) cat("Start polling\n")
 
-  if (clean) private$clean_updates()
+  if (clean) self$clean_updates()
 
   while (private$running){
 
@@ -128,7 +128,18 @@ UpdaterClass <-
 
                 ## methods
                 start_polling = start_polling,
-                stop_polling = stop_polling
+                stop_polling = stop_polling,
+                
+                # Clean updates when starting polling
+                clean_updates = function(){
+                  
+                  if (private$verbose) cat("Cleaning updates from Telegram server\n")
+                  
+                  updates <- self$bot$get_updates()
+                  
+                  if (length(updates))
+                    updates <- self$bot$get_updates(updates[[length(updates)]]$update_id + 1)
+                }
 
               ),
               private = list(
@@ -136,19 +147,7 @@ UpdaterClass <-
                 ## members
                 last_update_id = 0,
                 running = FALSE,
-                verbose = FALSE,
+                verbose = FALSE
 
-                ## functions
-
-                # Clean updates when starting polling
-                clean_updates = function(){
-
-                  if (private$verbose) cat("Cleaning updates from Telegram server\n")
-
-                  updates <- self$bot$get_updates()
-
-                  if (length(updates))
-                    updates <- self$bot$get_updates(updates[[length(updates)]]$update_id + 1)
-                }
               )
 )

@@ -6,14 +6,15 @@
 \title{MessageHandler}
 \format{An \code{\link{R6Class}} object.}
 \usage{
-MessageHandler(filters, callback)
+MessageHandler(callback, filters = NULL)
 }
 \arguments{
-\item{filters}{Only allow updates with these Filters. Use \code{Filters$all}
-for no filtering. See \code{\link{Filters}} for a full list of all available filters.}
-
 \item{callback}{The callback function for this handler.
 See \code{\link{Handler}} for information about this function.}
+
+\item{filters}{(Optional). Only allow updates with these Filters. Use \code{NULL}
+(default) or \code{Filters$all} for no filtering. See \code{\link{Filters}} for a
+full list of all available filters.}
 }
 \description{
 \code{\link{Handler}} class to handle Telegram messages. They might contain text, media or status updates.
@@ -21,6 +22,6 @@ See \code{\link{Handler}} for information about this function.}
 \examples{
 \dontrun{
 # No filtering
-message_handler <- MessageHandler(Filters$all, callback_method)
+message_handler <- MessageHandler(callback_method, Filters$all)
 }
 }

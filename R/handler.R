@@ -19,7 +19,7 @@ check_update = function(update){
 #' @param update The update to be handled.
 #' @param dispatcher The dispatcher to collect optional args.
 handle_update = function(update, dispatcher){
-  not_implemented()
+  self$callback(dispatcher$bot, update)
 }
 
 
@@ -65,15 +65,17 @@ HandlerClass <-
                 ## args
                 callback = NULL,
 
+                ## methods
+                check_update = check_update,
+                handle_update = handle_update,
+                
                 ## initialize
                 initialize =
                   function(callback){
                     self$callback <- callback
-                  },
-
-                ## methods
-                check_update = check_update,
-                handle_update = handle_update
+                    unlockBinding('check_update', environment(self$check_update)$self)
+                    unlockBinding('handle_update', environment(self$handle_update)$self)
+                  }
               )
 )
 

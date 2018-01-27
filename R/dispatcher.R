@@ -4,7 +4,7 @@
 #' add_handler
 #'
 #' Register a handler. A handler must be an instance of a subclass of \code{\link{Handler}}. All handlers
-#' are organized in groups with a numeric value. The default group is 0. All groups will be
+#' are organized in groups with a numeric value. The default group is 1. All groups will be
 #' evaluated for handling an update, but only 0 or 1 handler per group will be used.
 #'
 #' The priority/order of handlers is determined as follows:
@@ -95,7 +95,7 @@ DispatcherClass <-
                   # An error happened while polling
                   if(is.null(update)){
                     res <- try(self$dispatch_error(update))
-                    if(res != T) warning('An uncaught error was raised while handling the error')
+                    if(inherits(res, 'try-error')) warning('An uncaught error was raised while handling the error')
                     return()
                   }
 
@@ -114,7 +114,7 @@ DispatcherClass <-
                 # Dispatches an error.
                 dispatch_error = function(update){
 
-                  if (length(private$error_handlers != 0))
+                  if (length(private$error_handlers) != 0)
                     for (callback in private$error_handlers){
                       callback(self$bot, update)
                     }

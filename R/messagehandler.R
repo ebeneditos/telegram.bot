@@ -7,17 +7,18 @@
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
-#' @param filters Only allow updates with these Filters. Use \code{Filters$all}
-#'   for no filtering. See \code{\link{Filters}} for a full list of all available filters.
 #' @param callback The callback function for this handler.
 #'   See \code{\link{Handler}} for information about this function.
+#' @param filters (Optional). Only allow updates with these Filters. Use \code{NULL}
+#'   (default) or \code{Filters$all} for no filtering. See \code{\link{Filters}} for a
+#'   full list of all available filters.
 #' @examples \dontrun{
 #' # No filtering
-#' message_handler <- MessageHandler(Filters$all, callback_method)
+#' message_handler <- MessageHandler(callback_method, Filters$all)
 #' }
 #' @export
-MessageHandler <- function(filters, callback){
-  MessageHandlerClass$new(filters, callback)
+MessageHandler <- function(callback, filters = NULL){
+  MessageHandlerClass$new(callback, filters)
 }
 
 
@@ -27,14 +28,14 @@ MessageHandlerClass <-
               public = list(
 
                 ## args
-                filters = NULL,
                 callback = NULL,
+                filters = NULL,
 
                 ## initialize
                 initialize =
-                  function(filters, callback){
-                    self$filters <- filters
+                  function(callback, filters){
                     self$callback <- callback
+                    self$filters <- filters
                   },
 
                 ## methods

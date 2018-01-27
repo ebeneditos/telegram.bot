@@ -214,7 +214,9 @@ BotClass <-
 
                 ## methods
                 get_updates  = get_updates,
-                set_webhook = set_webhook
+                set_webhook = set_webhook,
+                delete_webhook = delete_webhook,
+                get_webhook_info = get_webhook_info
 
               ),
               private = list(
