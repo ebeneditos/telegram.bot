@@ -13,6 +13,11 @@
 #'   (default) or \code{Filters$all} for no filtering. See \code{\link{Filters}} for a
 #'   full list of all available filters.
 #' @examples \dontrun{
+#' callback_method <- function(bot, update){
+#'   chat_id <- update$message$chat_id
+#'   bot$sendMessage(chat_id = chat_id, text = 'Hello')
+#' }
+#' 
 #' # No filtering
 #' message_handler <- MessageHandler(callback_method, Filters$all)
 #' }

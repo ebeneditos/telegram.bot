@@ -35,6 +35,14 @@ test_that("Get Updates", {
   
 })
 
+test_that("Clean Updates", {
+  
+  skip_if_offline(bot)
+  
+  expect_null(bot$clean_updates())
+  
+})
+
 test_that("Webhooks", {
   
   skip_if_offline(bot)

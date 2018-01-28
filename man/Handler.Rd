@@ -21,6 +21,7 @@ The base class for all update handlers. Create custom handlers by inheriting fro
 this handler instance.}
     \item{\code{\link{handle_update}}}{Called if it was determined that an update should indeed
 be handled by this instance.}
+    \item{\code{\link{set_method}}}{Used to override the previous methods.}
 }
 }
 
@@ -35,7 +36,7 @@ be handled by this instance.}
 \examples{
 # Example of a Handler
 callback_method <- function(bot, update){
-  chat_id <- update$message$chat$id
+  chat_id <- update$effective_chat()$id
   bot$sendMessage(chat_id = chat_id, text = 'Hello')
 }
 

@@ -24,11 +24,3 @@ test_that("Stop Polling", {
   expect_silent(updater$stop_polling())
   
 })
-
-test_that("Clean Updates", {
-  
-  skip_if_offline(updater$bot)
-  
-  expect_null(updater$clean_updates())
-  
-})

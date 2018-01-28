@@ -13,7 +13,9 @@ handle_update(update, dispatcher)
 }
 \description{
 This method is called if it was determined that an update should indeed
-be handled by this instance. It should also be overridden, but in most
-cases call \code{self$callback(dispatcher$bot, update)}, possibly along with
-optional arguments.
+be handled by this instance. It should also be overridden (see \code{\link{set_method}}).
+}
+\details{
+In most cases \code{self$callback(dispatcher$bot, update)} can be called,
+possibly along with optional arguments.
 }

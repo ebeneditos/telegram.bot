@@ -23,10 +23,10 @@
 #' }
 #' @examples \dontrun{
 #' # Use to filter all video messages
-#' video_handler <- MessageHandler(Filters$video, callback_method)
+#' video_handler <- MessageHandler(callback_method, Filters$video)
 #'
 #' # To filter all contacts, etc.
-#' contact_handler <- MessageHandler(Filters$contact, callback_method)
+#' contact_handler <- MessageHandler(callback_method, Filters$contact)
 #' }
 #' @export
 Filters <- list(

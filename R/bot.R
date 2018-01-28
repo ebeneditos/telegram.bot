@@ -50,6 +50,19 @@ get_updates <- function(offset = NULL,
 }
 
 
+#' clean_updates
+#' 
+#' Use this method to clean any pending updates on Telegram servers.
+#' Requires no parameters.
+clean_updates = function(){
+  
+  updates <- self$get_updates()
+  
+  if (length(updates))
+    updates <- self$get_updates(updates[[length(updates)]]$update_id + 1)
+}
+
+
 #' set_webhook
 #'
 #' Use this method to specify a url and receive incoming updates via an outgoing webhook.
@@ -142,8 +155,8 @@ get_webhook_info <- function()
 #' This object represents a Telegram Bot. It inherits from \code{\link{TGBot}}.
 #' Thus, it has immplemented all the API methods from that class. It also features
 #' the \code{\link{get_updates}} method, which allows the use of long polling; and
-#' the \code{\link{set_webhook}}, \code{\link{delete_webhook}} and 
-#' \code{\link{get_webhook_info}} functions, which allow to manage webhooks.
+#' the \code{\link{set_webhook}}, \code{\link{delete_webhook}} and
+#' \code{\link{get_webhook_info}} methods, which allow to manage webhooks.
 #'
 #' To take full advantage of this library take a look at \code{\link{Updater}}.
 #' @docType class
@@ -214,6 +227,7 @@ BotClass <-
 
                 ## methods
                 get_updates  = get_updates,
+                clean_updates = clean_updates,
                 set_webhook = set_webhook,
                 delete_webhook = delete_webhook,
                 get_webhook_info = get_webhook_info

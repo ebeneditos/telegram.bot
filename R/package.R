@@ -1,10 +1,10 @@
 #' telegram.ext.
 #'
-#' This package features a number of tools to make the development of
-#' Telegram bots with R easy and straightforward. It is an extension of
-#' the \code{\link{telegram}} package, an R wrapper around the
-#' \href{http://core.telegram.org/bots/api}{Telegram Bot API},
-#' which eases the access to Telegram's messaging facilities.
+#' Features a number of tools to make the development of Telegram bots
+#' with R easy and straightforward, providing an easy-to-use interface
+#' that takes some work off the programmer. It is built on top of the
+#' pure API implementation, being an extension of the \code{\link{telegram}}
+#' package, an R wrapper around the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
 #' 
 #' In \href{https://github.com/ebeneditos/telegram.ext/wiki/Tutorial-–-Your-first-R-Bot-in-5-steps}{this tutorial}
 #' you can learn how to build a Bot quickly with this package.
