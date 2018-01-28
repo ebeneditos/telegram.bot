@@ -21,3 +21,15 @@ foo_update <- list(update_id = 0,
 # Foo callbackquery
 foo_callbackquery <- list(update_id = 1,
                           callback_query = list(data = 'foo'))
+
+# Foo bot 
+# only used for start_polling testing, as the bot features are tested in other contexts
+foo_bot <- list(
+  clean_updates = function(...){}
+)
+class(foo_bot) <- 'Bot'
+
+foo_updater <- Updater(bot = foo_bot)
+
+stop_handler <- function(...){foo_updater$stop_polling()}
+

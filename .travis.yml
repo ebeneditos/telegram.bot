@@ -18,4 +18,4 @@ r_packages:
   - covr
 
 after_success:
-  - Rscript -e "covr::codecov(function_exclusions = 'start_polling')"
+  - Rscript -e 'covr::codecov()'

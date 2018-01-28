@@ -3,12 +3,20 @@
 
 #' start_polling
 #'
-#' Starts polling updates from Telegram.
+#' Starts polling updates from Telegram. You can stop the polling either by using the the
+#' \code{interrupt R} command in the session menu or with the \code{\link{stop_polling}}
+#' method.
 #' @param timeout (Optional). Passed to \code{\link{get_updates}}. Default is 10.
 #' @param clean (Optional). Whether to clean any pending updates on Telegram servers
 #'   before actually starting to poll. Default is \code{FALSE}.
 #' @param allowed_updates (Optional). Passed to \code{\link{get_updates}}.
 #' @param verbose (Optional). If \code{TRUE}, prints status of the pollings. Default is \code{FALSE}.
+#' @examples \dontrun{
+#' # Start polling example
+#' updater <- Updater(token = 'TOKEN')
+#' 
+#' updater$start_polling(verbose = TRUE)
+#' }
 start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, verbose = FALSE){
   
   private$verbose <- verbose
@@ -66,7 +74,23 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
 
 #' stop_polling
 #'
-#' Stops the polling.
+#' Stops the polling. Requires no parameters.
+#' @examples \dontrun{
+#' # Supperassign the updater
+#' updater <<- Updater(token = 'TOKEN')
+#' 
+#' # Example of a 'kill' command
+#' kill <- function(bot, update){
+#'   bot$sendMessage(chat_id = update$message$chat_id,
+#'                   text = "Bye!")
+#'   bot$clean_updates()
+#'   updater$stop_polling()
+#' }
+#' 
+#' updater$dispatcher$add_handler(CommandHandler('kill', kill))
+#' 
+#' updater$start_polling(verbose = T) # Send '/kill' to the bot
+#' }
 stop_polling <- function(){
   
   if (private$verbose) cat("End polling\n")
@@ -88,9 +112,10 @@ stop_polling <- function(){
 #' \strong{Note:} You \strong{must} supply either a \code{bot} or a \code{token} argument.
 #' @format An \code{\link{R6Class}} object.
 #' @param token (Optional). The bot's token given by the @BotFather.
-#' @param bot (Optional). A pre-initialized \code{TGBot} instance.
+#' @param bot (Optional). A pre-initialized \code{Bot} instance.
 #' @section Methods: \describe{
 #'     \item{\code{\link{start_polling}}}{Starts polling updates from Telegram.}
+#'     \item{\code{\link{stop_polling}}}{Stops the polling.}
 #' }
 #' @references \href{http://core.telegram.org/bots}{Bots: An
 #'     introduction for developers} and
@@ -120,8 +145,12 @@ UpdaterClass <-
                   if (!is.null(token) & !is.null(bot))
                     stop('`token` and `bot` are mutually exclusive')
 
-                  if (!is.null(bot))
-                    self$bot <- bot
+                  if (!is.null(bot)){
+                    if (inherits(bot, 'Bot'))
+                      self$bot <- bot
+                    else stop("`bot` must be of class 'Bot'")
+                  }
+                    
                   else
                     self$bot <- Bot(token)
 

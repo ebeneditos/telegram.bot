@@ -7,5 +7,23 @@
 stop_polling()
 }
 \description{
-Stops the polling.
+Stops the polling. Requires no parameters.
+}
+\examples{
+\dontrun{
+# Supperassign the updater
+updater <<- Updater(token = 'TOKEN')
+
+# Example of a 'kill' command
+kill <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = "Bye!")
+  bot$clean_updates()
+  updater$stop_polling()
+}
+
+updater$dispatcher$add_handler(CommandHandler('kill', kill))
+
+updater$start_polling(verbose = T) # Send '/kill' to the bot
+}
 }

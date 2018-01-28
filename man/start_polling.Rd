@@ -18,5 +18,15 @@ before actually starting to poll. Default is \code{FALSE}.}
 \item{verbose}{(Optional). If \code{TRUE}, prints status of the pollings. Default is \code{FALSE}.}
 }
 \description{
-Starts polling updates from Telegram.
+Starts polling updates from Telegram. You can stop the polling either by using the the
+\code{interrupt R} command in the session menu or with the \code{\link{stop_polling}}
+method.
+}
+\examples{
+\dontrun{
+# Start polling example
+updater <- Updater(token = 'TOKEN')
+
+updater$start_polling(verbose = TRUE)
+}
 }

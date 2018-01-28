@@ -10,7 +10,7 @@ Updater(token = NULL, bot = NULL)
 \arguments{
 \item{token}{(Optional). The bot's token given by the @BotFather.}
 
-\item{bot}{(Optional). A pre-initialized \code{TGBot} instance.}
+\item{bot}{(Optional). A pre-initialized \code{Bot} instance.}
 }
 \description{
 Package main class. This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
@@ -25,6 +25,7 @@ commands and even arbitrary types.
 \section{Methods}{
  \describe{
     \item{\code{\link{start_polling}}}{Starts polling updates from Telegram.}
+    \item{\code{\link{stop_polling}}}{Stops the polling.}
 }
 }
 

@@ -24,3 +24,38 @@ test_that("Stop Polling", {
   expect_silent(updater$stop_polling())
   
 })
+
+test_that("Start Polling", {
+  
+  expect_error(foo_updater$dispatcher$add_error_handler(stop_handler), NA)
+  
+  # check error during get updates
+  expect_null(foo_updater$start_polling(clean = T))
+  
+  
+  # check stop
+  foo_updater$bot$get_updates <- function(...){
+    stop('Operation was aborted by an application callback')
+  }
+  
+  expect_null(foo_updater$start_polling())
+  
+  # check warning when stopping polling
+  foo_updater$bot$get_updates <- function(...){
+    foo_updater$stop_polling()
+    return(list(Update(foo_update)))
+  }
+  
+  expect_null(foo_updater$start_polling())
+  
+  # check processing updates
+  foo_updater$bot$get_updates <- function(...){
+    return(list(Update(foo_update)))
+  }
+  
+  expect_error(foo_updater$dispatcher$add_handler(
+    handler = CommandHandler('foo', stop_handler)), NA)
+  
+  expect_null(foo_updater$start_polling())
+  
+})
