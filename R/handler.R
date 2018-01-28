@@ -4,7 +4,7 @@
 #' check_update
 #'
 #' This method is called to determine if an update should be handled by
-#' this handler instance. It should always be overridden (see \code{\link{set_method}}).
+#' this handler instance. It should always be overridden (see \code{\link{Handler}}).
 #' @param update The update to be tested.
 check_update <- function(update){
   not_implemented()
@@ -13,7 +13,7 @@ check_update <- function(update){
 #' handle_update
 #'
 #' This method is called if it was determined that an update should indeed
-#' be handled by this instance. It should also be overridden (see \code{\link{set_method}}).
+#' be handled by this instance. It should also be overridden (see \code{\link{Handler}}).
 #' 
 #' In most cases \code{self$callback(dispatcher$bot, update)} can be called,
 #' possibly along with optional arguments.
@@ -21,48 +21,6 @@ check_update <- function(update){
 #' @param dispatcher The dispatcher to collect optional args.
 handle_update <- function(update, dispatcher){
   not_implemented()
-}
-
-
-#' set_method
-#'
-#' This method allows you to override the \code{\link{check_update}} and
-#' \code{\link{handle_update}} methods.
-#' @param name Name of the method to be changed. It can be either
-#'   \code{'check_update'} or \code{'handle_update'}.
-#' @param method The method function you are overriding.
-#' @examples
-#' # Example of a Handler
-#' callback_method <- function(bot, update){
-#'   chat_id <- update$effective_chat()$id
-#'   bot$sendMessage(chat_id = chat_id, text = 'Hello')
-#' }
-#'
-#' hello_handler <- Handler(callback_method)
-#' 
-#' # Setting the methods
-#' check_update <- function(update){
-#'   TRUE
-#' }
-#' hello_handler$set_method('check_update', check_update)
-#' 
-#' handle_update <- function(update, dispatcher){
-#'   self$callback(dispatcher$bot, update)
-#' }
-#' hello_handler$set_method('handle_update', handle_update)
-set_method <- function(name, method){
-  
-  if (!(name %in% c('check_update', 'handle_update')))
-    stop("Invalid method name.")
-  if (!inherits(method, 'function'))
-    stop("Method must be a function.")
-  
-  self_env <- environment(self[[name]])$self
-  proper_env <- environment(self[[name]])
-  unlockBinding(name, self_env)
-  self_env[[name]] <- method
-  environment(self_env[[name]]) <- proper_env
-  lockBinding(name, self_env)
 }
 
 
@@ -79,7 +37,6 @@ set_method <- function(name, method){
 #' this handler instance.}
 #'     \item{\code{\link{handle_update}}}{Called if it was determined that an update should indeed
 #' be handled by this instance.}
-#'     \item{\code{\link{set_method}}}{Used to override the previous methods.}
 #' }
 #' @section Sub-classes: \describe{
 #'     \item{\code{\link{MessageHandler}}}{To handle Telegram messages.}
@@ -88,6 +45,12 @@ set_method <- function(name, method){
 #' }
 #' @param callback The callback function for this handler. Its inputs will be \code{(bot, update)},
 #'   where \code{bot} is a \code{\link{Bot}} instance and \code{update} an \code{\link{Update}} class.
+#' @param check_update Function that will override the default \code{\link{check_update}}
+#'   method. Use it if you want to create your own \code{Handler}.
+#' @param handle_update Function that will override the default \code{\link{handle_update}}
+#'   method. Use it if you want to create your own \code{Handler}.
+#' @param handlername Name of the customized class, which will inherit from \code{Handler}.
+#'   If \code{NULL} (default) it will create a \code{Handler} class.
 #' @examples
 #' # Example of a Handler
 #' callback_method <- function(bot, update){
@@ -96,9 +59,32 @@ set_method <- function(name, method){
 #' }
 #'
 #' hello_handler <- Handler(callback_method)
+#' 
+#' # Customizing Handler
+#' check_update <- function(update){
+#'   TRUE
+#' }
+#' 
+#' handle_update <- function(update, dispatcher){
+#'   self$callback(dispatcher$bot, update)
+#' }
+#' 
+#' foo_handler <- Handler(callback_method,
+#'                        check_update = check_update,
+#'                        handle_update = handle_update,
+#'                        handlername = 'FooHandler')
 #' @export
-Handler <- function(callback){
-  HandlerClass$new(callback)
+Handler <- function(callback, check_update = NULL, handle_update = NULL, handlername = NULL){
+  
+  HandlerClassInherit <- R6::R6Class(classname = handlername, inherit = HandlerClass)
+  
+  if (!missing(check_update))
+    HandlerClassInherit$set('public', 'check_update', check_update, overwrite = T)
+  
+  if (!missing(handle_update))
+    HandlerClassInherit$set('public', 'handle_update', handle_update, overwrite = T)
+  
+  HandlerClassInherit$new(callback)
 }
 
 
@@ -117,9 +103,7 @@ HandlerClass <-
                 initialize =
                   function(callback){
                     self$callback <- callback
-                  },
-                
-                set_method = set_method
+                  }
                 
               )
 )

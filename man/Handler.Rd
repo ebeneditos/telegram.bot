@@ -6,11 +6,21 @@
 \title{Handler}
 \format{An \code{\link{R6Class}} object.}
 \usage{
-Handler(callback)
+Handler(callback, check_update = NULL, handle_update = NULL,
+  handlername = NULL)
 }
 \arguments{
 \item{callback}{The callback function for this handler. Its inputs will be \code{(bot, update)},
 where \code{bot} is a \code{\link{Bot}} instance and \code{update} an \code{\link{Update}} class.}
+
+\item{check_update}{Function that will override the default \code{\link{check_update}}
+method. Use it if you want to create your own \code{Handler}.}
+
+\item{handle_update}{Function that will override the default \code{\link{handle_update}}
+method. Use it if you want to create your own \code{Handler}.}
+
+\item{handlername}{Name of the customized class, which will inherit from \code{Handler}.
+If \code{NULL} (default) it will create a \code{Handler} class.}
 }
 \description{
 The base class for all update handlers. Create custom handlers by inheriting from it.
@@ -21,7 +31,6 @@ The base class for all update handlers. Create custom handlers by inheriting fro
 this handler instance.}
     \item{\code{\link{handle_update}}}{Called if it was determined that an update should indeed
 be handled by this instance.}
-    \item{\code{\link{set_method}}}{Used to override the previous methods.}
 }
 }
 
@@ -41,4 +50,18 @@ callback_method <- function(bot, update){
 }
 
 hello_handler <- Handler(callback_method)
+
+# Customizing Handler
+check_update <- function(update){
+  TRUE
+}
+
+handle_update <- function(update, dispatcher){
+  self$callback(dispatcher$bot, update)
+}
+
+foo_handler <- Handler(callback_method,
+                       check_update = check_update,
+                       handle_update = handle_update,
+                       handlername = 'FooHandler')
 }
