@@ -42,7 +42,3 @@ class(foo_bot) <- 'Bot'
 foo_updater <- Updater(bot = foo_bot)
 
 stop_handler <- function(...){foo_updater$stop_polling()}
-
-# Write DESCRIPTION.json file
-devtools::install_github("codemeta/codemetar")
-codemetar::write_codemeta('../..', path = '../../docs/DESCRIPTION.json', force_update = F)
