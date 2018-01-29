@@ -3,11 +3,7 @@
 > Develop a Telegram Bot with R
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-<<<<<<< HEAD
 [![GitHub package version](https://img.shields.io/badge/dynamic/json.svg?label=dev&colorB=FFA500&prefix=&suffix=&query=$.version&uri=https://raw.githubusercontent.com/ebeneditos/telegram.ext/master/docs/codemeta.json)](http://www.r-pkg.org/pkg/telegram.ext)
-=======
-[![GitHub package version](https://img.shields.io/badge/dynamic/json.svg?label=dev&colorB=FFA500&prefix=&suffix=&query=$.version&uri=https://raw.githubusercontent.com/ebeneditos/telegram.ext/master/docs/DESCRIPTION.json)](https://rdrr.io/github/ebeneditos/telegram.ext)
->>>>>>> c0466f75dd88bd5828a7d16e8d1a2865c90879a3
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.ext.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.ext)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.ext?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-ext)
 [![Codecov](https://img.shields.io/codecov/c/github/ebeneditos/telegram.ext.svg)](https://codecov.io/gh/ebeneditos/telegram.ext)
