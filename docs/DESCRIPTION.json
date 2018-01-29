@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/ebeneditos/telegram.ext",
   "issueTracker": "http://github.com/ebeneditos/telegram.ext/issues",
   "license": "https://spdx.org/licenses/LGPL-3.0",
-  "version": "1.0.0",
+  "version": "0.7.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -87,5 +87,5 @@
   "contIntegration": "https://travis-ci.org/ebeneditos/telegram",
   "developmentStatus": "active",
   "readme": "https://github.com/ebeneditos/telegram.ext/blob/master/README.md",
-  "fileSize": "15.291KB"
+  "fileSize": "15.294KB"
 }
