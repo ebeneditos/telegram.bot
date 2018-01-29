@@ -3,10 +3,10 @@
 > Develop a Telegram Bot with R
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Version](https://img.shields.io/badge/version-0.7.0--dev-orange.svg)]()
+[![Version](https://img.shields.io/badge/dev-0.7.0-green.svg)](https://rdrr.io/github/ebeneditos/telegram.ext)
 [![License](https://img.shields.io/badge/license-LGLP--3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.ext.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.ext)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.ext?branch=master&svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram.ext)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.ext?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-ext)
 [![Codecov](https://img.shields.io/codecov/c/github/ebeneditos/telegram.ext.svg)](https://codecov.io/gh/ebeneditos/telegram.ext)
 
 This package features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer. It is built on top of the pure API implementation, being an extension of the
