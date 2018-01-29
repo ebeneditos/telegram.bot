@@ -6,3 +6,5 @@
 ^LICENSE$
 ^tests$
 ^appveyor\.yml$
+^docs$
+^codemeta\.json$
