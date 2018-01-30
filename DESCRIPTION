@@ -1,7 +1,7 @@
 Package: telegram.ext
 Type: Package
 Title: Develop a Telegram Bot with R
-Version: 0.7.0.9000
+Version: 0.7.0
 Authors@R: person("Ernest", "Benedito", email = "ebeneditos@gmail.com", role = c("aut", "cre"))
 Maintainer: Ernest Benedito <ebeneditos@gmail.com>
 Description: Features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer. It is built on top of the pure API implementation, being an extension of the 'telegram' package, an R wrapper around the Telegram Bot API.
@@ -12,6 +12,7 @@ Depends:
     R (>= 3.2.3),
     telegram (>= 0.6.0)
 Suggests:
+    covr,
     testthat
 License: LGPL-3
 Encoding: UTF-8

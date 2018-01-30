@@ -16,12 +16,13 @@ This package features a number of tools to make the development of Telegram bots
 It is inspired by Python's submodule `telegram.ext` from
 [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot) library.
 
-## Installing
+## Installation
 
-You can download the `telegram.ext` developers version with:
+You can install `telegram.ext` from GitHub with:
 
-```r
-devtools::install_github('ebeneditos/telegram.ext')
+``` r
+# install.packages("devtools")
+devtools::install_github("ebeneditos/telegram.ext")
 ```
 
 Make sure you have the `devtools` package updated.
