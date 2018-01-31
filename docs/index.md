@@ -60,7 +60,7 @@ The `Updater` class continuously fetches new updates from Telegram and passes th
 
 With that said, let's *get started*!
 
-## 1. Creating the `Updater` object
+## 1. Creating the Updater object
 
 First, you first must create an `Update` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
 
