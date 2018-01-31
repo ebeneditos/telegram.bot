@@ -1,10 +1,12 @@
+# Table of Contents
+
 In this tutorial you will learn how to build a Bot with R and `telegram.ext`, with the following sections:
 
 - [Introducing `telegram.ext`](#introducing-telegramext)
 - [Building a Bot in 3 steps](#building-a-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
 
-## Introducing `telegram.ext`
+# Introducing `telegram.ext`
 
 The `telegram.ext` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegra-bot` library, using the nomenclature from its `telegram.ext` submodule. 
 
@@ -15,13 +17,13 @@ If you create an `Updater` object, it will create a `Dispatcher`. You can then r
 
 To begin, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 
-## Building a Bot in 3 steps
+# Building a Bot in 3 steps
 
 With that said, let's *get started*!
 
-### 1. Creating the `Updater` object
+## 1. Creating the `Updater` object
 
-First, you first must create an `Update` object. Replace `'TOKEN'` with your Bot's API token.
+First, you first must create an `Update` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
 
 ```r
 library(telegram.ext)
@@ -64,7 +66,7 @@ updater <- Updater(token = bot_token('RBot'))
 dispatcher <- updater$dispatcher
 ```
 
-### 2. The first function
+## 2. The first function
 
 Now, you can define a function that should process a specific type of update:
 
@@ -82,7 +84,7 @@ start_handler <- CommandHandler('start', start)
 dispatcher$add_handler(start_handler)
 ```
 
-### 3. Starting the Bot
+## 3. Starting the Bot
 
 And that's all you need. To start the bot, run:
 
@@ -92,7 +94,7 @@ updater$start_polling()
 
 Give it a try! Start a chat with your bot and issue the `/start` command - if all went right, it will reply.
 
-## Adding Functionalities
+# Adding Functionalities
 
 We have already built a Telegram Bot with R. However, it can now only answer to the `/start` command, so now we are going to add a couple of functionalities, including:
 
@@ -101,7 +103,7 @@ We have already built a Telegram Bot with R. However, it can now only answer to 
 - [Unknown command handling](#unknown-command-handling)
 - [Stopping the Bot](#stopping-the-bot)
 
-### Text responses
+## Text responses
 
 Let's add another handler that listens for regular messages.
 Use the `MessageHandler`, another `Handler` subclass, to echo to all text messages:
@@ -123,7 +125,7 @@ From now on, your bot should echo all non-command messages it receives.
 Any message that returns `TRUE` for at least one of the filters passed to `MessageHandler` will be accepted.
 You can also write your own filters if you want.
 
-### Commands with arguments
+## Commands with arguments
 
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS.
 To make things easy, you can receive the arguments (as a `vector`, split on spaces) that were passed to a command in the callback function:
@@ -143,7 +145,7 @@ This is required to let the handler know that you want it to pass the list of co
 All handler classes have keyword arguments like this. Some are the same among all handlers, some are specific to the handler class.
 If you use a new type of handler for the first time, look it up in the docs and see if one of them is useful to you.
 
-### Unknown command handling
+## Unknown command handling
 
 Not bad! However, some confused users might try to send commands to the bot that it doesn't understand, so you can use a `MessageHandler` with a `command` filter to reply to all commands that were not recognized by the previous handlers.
 
@@ -157,7 +159,7 @@ unknown_handler <- MessageHandler(unknown, Filters$command)
 dispatcher$add_handler(unknown_handler)
 ```
 
-### Stopping the Bot
+## Stopping the Bot
 
 If you're done playing around, you can stop the Bot either by using the the `interrupt R` command in the session menu (in *RStudio* you can press the `STOP` button) or by calling the `updater$stop_polling()` method. Below we will define a command that uses this method:
 
@@ -185,6 +187,12 @@ Now you can send the command `/kill` from Telegram to stop the Bot.
 
 That's it for now! With this you may have the first guidelines to develop your R bot!
 
-## Want more?
+# Want more?
 
-Visit `telegram.ext` [GitHub Repo](https://github.com/ebeneditos/telegram.ext) or its [Wiki](https://github.com/ebeneditos/telegram.ext/wiki) to learn more on how to build Bot's with R.
+If you want to learn more about Telegram Bots with R, you can look at these resources:
+- Package `telegram.ext` [GitHub Repo](https://github.com/ebeneditos/telegram.ext) or its [Wiki](https://github.com/ebeneditos/telegram.ext/wiki) to look at all methods and features available.
+- Telegram's documentation [Bots: An introduction for developers](http://core.telegram.org/bots) and [Telegram Bot API](http://core.telegram.org/bots/api) to familiarize with the API.
+
+# Attribution
+
+This tutorial is adapted from [`python-telegram-bot` Wiki](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
