@@ -1,4 +1,7 @@
-# Build a Chatbot using Telegram with R
+---
+title: "Build a Chatbot using Telegram with R"
+---
+# Table of Contents
 
 In this tutorial you will learn how to build a Bot with R and `telegram.ext`, with the following sections:
 
@@ -7,6 +10,8 @@ In this tutorial you will learn how to build a Bot with R and `telegram.ext`, wi
 - [The telegram.ext Package](#the-telegramext-package)
 - [Building a Bot in 3 steps](#building-a-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
+
+So, let's *get started*!
 
 # Creating a Telegram Bot
 
@@ -58,7 +63,11 @@ The `Updater` class continuously fetches new updates from Telegram and passes th
 
 # Building a Bot in 3 steps
 
-With that said, let's *get started*!
+In this section we will explain to build a Bot with R and `telegram.ext`, following the next steps:
+
+1. [Creating the Updater object](#1-creating-the-updater-object)
+2. [The first function](#2-the-first-function)
+3. [Starting the Bot](#3-starting-the-bot)
 
 ## 1. Creating the Updater object
 
