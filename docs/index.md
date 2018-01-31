@@ -24,7 +24,7 @@ We can control our Bot by sending HTTPS requests to Telegram. This means that th
 
 `https://api.telegram.org/botTOKEN/getMe`
 
-The first part of the URL indicates that we want to communicate with the Telegram API (api.telegram.org). We follow this with `/bot` to say that we want to send a command to our Bot, and immediately after we add our token to identify which bot we want to send the command to and to prove that we own it. Finally, we specify the command that we want to send (`/getMe`) which in this case just returns basic information about our Bot using JSON.
+The first part of the URL indicates that we want to communicate with the Telegram API (api.telegram.org). We follow this with `/bot` to say that we want to send a command to our Bot, and immediately after we add our `TOKEN` to identify which bot we want to send the command to and to prove that we own it. Finally, we specify the command that we want to send (`/getMe`) which in this case just returns basic information about our Bot using JSON.
 
 ## Retrieving messages sent to our Bot
 
