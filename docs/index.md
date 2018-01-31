@@ -13,7 +13,7 @@ It consists of several `R6` classes, but the two most important ones are `Update
 The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class. 
 If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
 
-To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
+To begin, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 
 ## Building a Bot in 3 steps
 
@@ -64,7 +64,7 @@ updater <- Updater(token = bot_token('RBot'))
 dispatcher <- updater$dispatcher
 ```
 
-### 2.The first function
+### 2. The first function
 
 Now, you can define a function that should process a specific type of update:
 
@@ -185,6 +185,6 @@ Now you can send the command `/kill` from Telegram to stop the Bot.
 
 That's it for now! With this you may have the first guidelines to develop your R bot!
 
-## Attribution
+## Want more?
 
-This tutorial is adapted from [Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot) tutorial for `python-telegram-bot`. Functions have been named with same nomenclature so to make it easier to follow.
+Visit `telegram.ext` [GitHub Repo](https://github.com/ebeneditos/telegram.ext) or its [Wiki](https://github.com/ebeneditos/telegram.ext/wiki) to learn more on how to build Bot's with R.
