@@ -1,5 +1,6 @@
 theme: jekyll-theme-slate
 name: telegram.ext
 title: Build a Chatbot from scratch using Telegram with R
+description: An introduction to telegram.ext package
 repository: https://github.com/ebeneditos/telegram.ext
 authors: Ernest Benedito
