@@ -1,6 +1,6 @@
 In this tutorial you will learn how to build a Bot with R and `telegram.ext`, with the following sections:
 
-- [Introducing `telegram.ext`](#introducing-telegram.ext)
+- [Introducing `telegram.ext`](#introducing-telegramext)
 - [Building a Bot in 3 steps](#building-a-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
 
