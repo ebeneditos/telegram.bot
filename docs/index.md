@@ -1,14 +1,54 @@
-# Table of Contents
+# Build a Chatbot using Telegram with R
 
 In this tutorial you will learn how to build a Bot with R and `telegram.ext`, with the following sections:
 
-- [Introducing `telegram.ext`](#introducing-telegramext)
+- [Creating a Telegram Bot](#creating-a-telegram-bot)
+- [Introduction to the Telegram Bot API](#introduction-to-the-telegram-bot-api)
+- [The telegram.ext Package](#the-telegramext-package)
 - [Building a Bot in 3 steps](#building-a-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
 
+# Creating a Telegram Bot
+
 To begin, though, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [@BotFather](https://telegram.me/botfather) and following a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 
-# Introducing `telegram.ext`
+After doing so, BotFather will send you a "Congratulations" message, which will include a token. The token should look something like this:
+
+`123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`
+
+For the rest of this tutorial, we'll indicate where you need to put your token by using `TOKEN`. Take note of the token, as we'll need it in the code that we're about to write.
+
+# Introduction to the Telegram Bot API
+
+We can control our Bot by sending HTTPS requests to Telegram. This means that the simplest way to interact with our Bot is through a web browser. By visiting different URLs, we send different commands to our Bot. The simplest command is one where we get information about our Bot. Visit the following URL in your browser (substituting the bot token that you got before)
+
+`https://api.telegram.org/botTOKEN/getMe`
+
+The first part of the URL indicates that we want to communicate with the Telegram API (api.telegram.org). We follow this with `/bot` to say that we want to send a command to our Bot, and immediately after we add our token to identify which bot we want to send the command to and to prove that we own it. Finally, we specify the command that we want to send (`/getMe`) which in this case just returns basic information about our Bot using JSON.
+
+## Retrieving messages sent to our Bot
+
+The simplest way for us to retrieve messages sent to our Bot is through the getUpdates call. If you visit `https://api.telegram.org/botTOKEN/getUpdates`, you'll get a JSON response of all the new messages sent to your Bot. Try sending a message to your Bot and visit that URL.
+
+## Sending a message from our Bot
+
+The final API call that we'll try out in our browser is that used to send a message. To do this, we need the chat ID for the chat where we want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field (24860000 in the example above, but yours will be different). Once you have this ID, visit the following URL in your browser, substituting `CHATID` for your chat ID.
+
+`https://api.telegram.org/botTOKEN/sendMessage?chat_id=CHATID&text=TestReply`
+
+Once you've visited this URL, you should see a message from your Bot sent to your which says "TestReply".
+
+## Bot core structure
+
+Thus, in order to build an operative Bot, we could do it so by programming a code that loops a structure such as:
+
+1. Get updates through the `getUpdates` method.
+2. Make a function that processes those updates.
+3. Send an answer with the `sendMessage` method.
+
+Fortunately, there is a package that allows you to do that, which will be introduced below.
+
+# The telegram.ext Package
 
 The `telegram.ext` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegram-bot` library, using nomenclature from its `telegram.ext` submodule. 
 
@@ -194,4 +234,4 @@ If you want to learn more about Telegram Bots with R, you can look at these reso
 
 # Attribution
 
-This tutorial is adapted from [`python-telegram-bot` Wiki](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
+This tutorial is inspired by [this tutorial](https://www.codementor.io/garethdwyer/building-a-telegram-bot-using-python-part-1-goi5fncay) and partially adapted from [`python-telegram-bot` Wiki](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
