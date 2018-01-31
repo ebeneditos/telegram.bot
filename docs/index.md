@@ -20,7 +20,7 @@ For the rest of this tutorial, we'll indicate where you need to put your token b
 
 # Introduction to the Telegram Bot API
 
-We can control our Bot by sending HTTPS requests to Telegram. This means that the simplest way to interact with our Bot is through a web browser. By visiting different URLs, we send different commands to our Bot. The simplest command is one where we get information about our Bot. Visit the following URL in your browser (substituting the bot token that you got before)
+We can control our Bot by sending HTTPS requests to Telegram. This means that the simplest way to interact with our Bot is through a web browser. By visiting different URLs, we send different commands to our Bot. The simplest command is one where we get information about our Bot. Visit the following URL in your browser (substituting the `TOKEN` that you got before)
 
 `https://api.telegram.org/botTOKEN/getMe`
 
