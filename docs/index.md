@@ -6,16 +6,15 @@ In this tutorial you will learn how to build a Bot with R and `telegram.ext`, wi
 - [Building a Bot in 3 steps](#building-a-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
 
+To begin, though, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [@BotFather](https://telegram.me/botfather) and following a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
+
 # Introducing `telegram.ext`
 
-The `telegram.ext` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegra-bot` library, using the nomenclature from its `telegram.ext` submodule. 
+The `telegram.ext` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegram-bot` library, using nomenclature from its `telegram.ext` submodule. 
 
 It consists of several `R6` classes, but the two most important ones are `Updater` and `Dispatcher`.
 
-The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class. 
-If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
-
-To begin, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
+The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class. If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
 
 # Building a Bot in 3 steps
 
