@@ -32,7 +32,7 @@ The simplest way for us to retrieve messages sent to our Bot is through the getU
 
 ## Sending a message from our Bot
 
-The final API call that we'll try out in our browser is that used to send a message. To do this, we need the chat ID for the chat where we want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field (24860000 in the example above, but yours will be different). Once you have this ID, visit the following URL in your browser, substituting `CHATID` for your chat ID.
+The final API call that we'll try out in our browser is that used to send a message. To do this, we need the chat ID for the chat where we want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field. Once you have this ID, visit the following URL in your browser, substituting `CHATID` for your chat ID.
 
 `https://api.telegram.org/botTOKEN/sendMessage?chat_id=CHATID&text=TestReply`
 
