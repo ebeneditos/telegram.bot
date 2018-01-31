@@ -44,5 +44,5 @@ You may copy, distribute and modify the software provided that modifications are
 ## Attribution
 
 This package is inspired by Python's library
-[`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot), specially its submodule `telegram.ext`.
+[`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot), specially by its submodule `telegram.ext`.
 
