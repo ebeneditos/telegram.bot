@@ -1,12 +1,10 @@
-In this tutorial we will explain to build a Bot with R and `telegram.ext`, with the following sections:
+In this tutorial you will learn how to build a Bot with R and `telegram.ext`, with the following sections:
 
-- [Introduction to `telegram.ext`](#introduction-to-telegram.ext)
-- [Creating the `Updater` object](#creating-the-updater-object)
-- [The first function](#the-first-function)
-- [Starting the Bot](#starting-the-bot)
+- [Introducing `telegram.ext`](#introducing-telegram.ext)
+- [Building a Bot in 3 steps](#building-a-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
 
-## Introduction to `telegram.ext`
+## Introducing `telegram.ext`
 
 The `telegram.ext` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegra-bot` library, using the nomenclature from its `telegram.ext` submodule. 
 
@@ -17,9 +15,11 @@ If you create an `Updater` object, it will create a `Dispatcher`. You can then r
 
 To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
 
+## Building a Bot in 3 steps
+
 With that said, let's *get started*!
 
-## Creating the `Updater` object
+### 1. Creating the `Updater` object
 
 First, you first must create an `Update` object. Replace `'TOKEN'` with your Bot's API token.
 
@@ -64,7 +64,7 @@ updater <- Updater(token = bot_token('RBot'))
 dispatcher <- updater$dispatcher
 ```
 
-## The first function
+### 2.The first function
 
 Now, you can define a function that should process a specific type of update:
 
@@ -82,7 +82,7 @@ start_handler <- CommandHandler('start', start)
 dispatcher$add_handler(start_handler)
 ```
 
-## Starting the Bot
+### 3. Starting the Bot
 
 And that's all you need. To start the bot, run:
 
@@ -185,6 +185,6 @@ Now you can send the command `/kill` from Telegram to stop the Bot.
 
 That's it for now! With this you may have the first guidelines to develop your R bot!
 
-### Attribution
+## Attribution
 
 This tutorial is adapted from [Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot) tutorial for `python-telegram-bot`. Functions have been named with same nomenclature so to make it easier to follow.
