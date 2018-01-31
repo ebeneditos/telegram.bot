@@ -9,7 +9,6 @@
 [![Codecov](https://img.shields.io/codecov/c/github/ebeneditos/telegram.ext.svg)](https://codecov.io/gh/ebeneditos/telegram.ext)
 [![License](https://img.shields.io/badge/license-LGLP--3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
 
-
 This package features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer. It is built on top of the pure API implementation, being an extension of the
 [`telegram`](https://github.com/lbraglia/telegram) package, an R wrapper around the
 [Telegram Bot API](http://core.telegram.org/bots/api).
@@ -32,7 +31,7 @@ Make sure you have the `devtools` package updated.
 To get started with `telegram.ext`, you can check these resources:
 
 - [Introduction to `telegram`](https://github.com/lbraglia/telegram#telegram).
-- Tutorial: [Your first R Bot in 5 steps](https://github.com/ebeneditos/telegram.ext/wiki/Tutorial-–-Your-first-R-Bot-in-5-steps).
+- Tutorial: [Your first R Bot in 3 steps](https://github.com/ebeneditos/telegram.ext/wiki/Tutorial-–-Your-first-R-Bot-in-3-steps).
 
 ## Contributing
 
