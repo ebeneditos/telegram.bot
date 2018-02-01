@@ -3,7 +3,7 @@ title: "Build a Chatbot with R"
 ---
 # Table of Contents
 
-In this tutorial you will learn how to build a Bot with R and `telegram.ext`, with the following sections:
+In this page you will learn how to build a Telegram Bot with R and the `telegram.ext` package, with the following sections:
 
 - [Creating a Telegram Bot](#creating-a-telegram-bot)
 - [Introduction to the Telegram Bot API](#introduction-to-the-telegram-bot-api)
@@ -68,7 +68,7 @@ To check if your credentials are correct, call the [getMe](https://core.telegram
 print(bot$get_me())
 ```
 
-**Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use `telegram.me/<your-bot-username>` links or username search to find your bot (searching for @<your-bot-username> in any of the Telegram clients).
+**Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use `telegram.me/<your-bot-username>` links or username search to find your bot (searching for `@<your-bot-username>` in any of the Telegram clients).
 
 ## Getting and retreiving messages
 
