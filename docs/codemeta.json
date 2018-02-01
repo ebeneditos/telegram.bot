@@ -32,6 +32,17 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
       "provider": {
@@ -87,5 +98,5 @@
   "contIntegration": "https://travis-ci.org/ebeneditos/telegram",
   "developmentStatus": "active",
   "readme": "https://github.com/ebeneditos/telegram.ext/blob/master/README.md",
-  "fileSize": "15.294KB"
+  "fileSize": "15.225KB"
 }

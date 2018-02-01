@@ -29,7 +29,7 @@ Make sure you have the `devtools` package updated.
 To get started with `telegram.ext`, you can check these resources:
 
 - [Introduction to `telegram`](https://github.com/lbraglia/telegram#telegram).
-- Tutorial: [Your first R Bot in 3 steps](https://github.com/ebeneditos/telegram.ext/wiki/Tutorial-–-Your-first-R-Bot-in-3-steps).
+- Tutorial: [Building an R Bot in 3 steps](https://github.com/ebeneditos/telegram.ext/wiki/Tutorial-–-Building-an-R-Bot-in-3-steps).
 
 ## Contributing
 

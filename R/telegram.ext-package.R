@@ -6,7 +6,7 @@
 #' pure API implementation, being an extension of the \code{\link{telegram}}
 #' package, an R wrapper around the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
 #' 
-#' In \href{https://github.com/ebeneditos/telegram.ext/wiki/Tutorial-–-Your-first-R-Bot-in-3-steps}{this tutorial}
+#' In \href{https://ebeneditos.github.io/telegram.ext/}{this page}
 #' you can learn how to build a Bot quickly with this package.
 #' 
 #' @section Main Classes: \describe{
