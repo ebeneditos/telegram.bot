@@ -25,19 +25,19 @@ For the rest of this tutorial, we'll indicate where you need to put your token b
 
 # Introduction to the Telegram Bot API
 
-You can control our Bot by sending HTTPS requests to Telegram. This means that the simplest way to interact with our Bot is through a web browser. By visiting different URLs, you send different commands to your Bot. The simplest command is one where you get information about your Bot. Visit the following URL in your browser (substituting the `TOKEN` that you got before):
+You can control your Bot by sending HTTPS requests to Telegram. This means that the simplest way to interact with your Bot is through a web browser. By visiting different URLs, you send different commands to your Bot. The simplest command is one where you get information about your Bot. Visit the following URL in your browser (substituting the `TOKEN` that you got before):
 
 `https://api.telegram.org/bot<your-bot-token>/getMe`
 
 The first part of the URL indicates that you want to communicate with the Telegram API (`api.telegram.org`). You follow this with `/bot` to say that we want to send a command to your Bot, and immediately after you add your `TOKEN` to identify which bot you want to send the command to and to prove that we own it. Finally, you specify the command that you want to send (`/getMe`) which in this case just returns basic information about our Bot using JSON.
 
-## Retrieving messages sent to our Bot
+## Retrieving messages sent to your Bot
 
 The simplest way to retrieve messages sent to your Bot is through the `getUpdates` call. If you visit `https://api.telegram.org/bot<your-bot-token>/getUpdates`, you'll get a JSON response of all the new messages sent to your Bot. Try sending a message to your Bot and visit that URL.
 
-## Sending a message from our Bot
+## Sending a message from your Bot
 
-The final API call that we'll try out in our browser is that used to send a message. To do this, you need the chat ID for the chat where we want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field. Once you have this ID, visit the following URL in your browser, substituting `<chat-id>` for your chat ID.
+The final API call that we'll try out in the browser is that used to send a message. To do this, you need the chat ID for the chat where we want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field. Once you have this ID, visit the following URL in your browser, substituting `<chat-id>` for your chat ID.
 
 `https://api.telegram.org/bot<your-bot-token>/sendMessage?chat_id=<chat-id>&text=TestReply`
 
@@ -45,9 +45,9 @@ Once you've visited this URL, you should see a message from your Bot sent to you
 
 # The telegram.ext Package
 
-You could program with R some functions that sends these HTTPS requests and processes its responses. Fortunately, there is a package that allows you to do that: `telegram.ext`. It uses `httr` and `jsonlite` packages to do such work. Additionally, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
+You could program with R some functions that send these HTTPS requests and processes its responses. Fortunately, there is a package that allows you to do that: `telegram.ext`. It uses `httr` and `jsonlite` packages to do such work. Additionally, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
 
-Thus, the `telegram.ext` package consists of several `R6` classes, and the API is exposed via the `Bot` class. The methods are the *snake_case* equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact *camelCase* method names as in the Telegram docs are also available for your convenience. So for example `Bot$get_updates` is the same as `Bot$getUpdates`.
+Thereby, the `telegram.ext` package consists of several `R6` classes, and the API is exposed via the `Bot` class. The methods are the *snake_case* equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact *camelCase* method names as in the Telegram docs are also available for your convenience. So for example `Bot$get_updates` is the same as `Bot$getUpdates`.
 
 ## Creating a Bot instance
 
