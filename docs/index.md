@@ -15,13 +15,23 @@ So, let's *get started!*
 
 # Creating a Telegram Bot
 
-To begin, though, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [@BotFather](https://telegram.me/botfather) and following a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
+First, you must have or [create a Telegram account](https://web.telegram.org). Second, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [`@BotFather`](https://telegram.me/botfather) and following a [few simple steps](https://core.telegram.org/bots#6-botfather). Telegram bots can receive *messages* or *commands*. The former are simply text that you send as if you were sending a message to another person, while the latter are prefixed with a `/` character. To create a new bot, send the following command to *BotFather* as a chat (exactly as if you were talking to another person on Telegram):
 
-After doing so, BotFather will send you a "Congratulations" message, which will include a token. The token should look something like this:
+    /newbot
+    
+You should get a reply instantly that asks you to choose a name for your Bot. You have to send then the name you want for the bot, which can be anyone, for instance:
+
+    RBot
+
+*BotFather* will now ask you to pick a username for your Bot. This username has to end in `bot`, and be globally unique. In this tutorial we'll indicate the Bot's username with `<your-bot-username>`, so you'll have to substitute your chosen username wherever relevant from now on. Send your chosen username to *BotFather*:
+
+    <your-bot-username>
+    
+After doing so, *BotFather* will send you a "Congratulations" message, which will include a token. The token should look something like this:
 
 `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`
 
-For the rest of this tutorial, we'll indicate where you need to put your token by using `<your-bot-token>` or just `TOKEN`. Take note of the token, as we'll need it in the code that we're about to write.
+For the rest of this tutorial, we'll indicate where you need to put your token by using `<your-bot-token>` or just `TOKEN`. Take note of the token, as you'll need it in the code that you are about to write.
 
 # Introduction to the Telegram Bot API
 
@@ -29,7 +39,7 @@ You can control your Bot by sending HTTPS requests to Telegram. This means that 
 
 `https://api.telegram.org/bot<your-bot-token>/getMe`
 
-The first part of the URL indicates that you want to communicate with the Telegram API (`api.telegram.org`). You follow this with `/bot` to say that we want to send a command to your Bot, and immediately after you add your `TOKEN` to identify which bot you want to send the command to and to prove that we own it. Finally, you specify the command that you want to send (`/getMe`) which in this case just returns basic information about our Bot using JSON.
+The first part of the URL indicates that you want to communicate with the Telegram API (`api.telegram.org`). You follow this with `/bot` to say that you want to send a command to your Bot, and immediately after you add your `TOKEN` to identify which bot you want to send the command to and to prove that you own it. Finally, you specify the command that you want to send (`/getMe`) which in this case just returns basic information about our Bot using JSON.
 
 ## Retrieving messages sent to your Bot
 
@@ -37,7 +47,7 @@ The simplest way to retrieve messages sent to your Bot is through the `getUpdate
 
 ## Sending a message from your Bot
 
-The final API call that we'll try out in the browser is that used to send a message. To do this, you need the chat ID for the chat where we want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field. Once you have this ID, visit the following URL in your browser, substituting `<chat-id>` for your chat ID.
+The final API call that we'll try out in the browser is that used to send a message. To do this, you need the chat ID for the chat where you want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field. Once you have this ID, visit the following URL in your browser, substituting `<chat-id>` for your chat ID.
 
 `https://api.telegram.org/bot<your-bot-token>/sendMessage?chat_id=<chat-id>&text=TestReply`
 
@@ -187,6 +197,7 @@ We have already built a Telegram Bot with R. However, it can now only answer to 
 - [Commands with arguments](#commands-with-arguments)
 - [Unknown command handling](#unknown-command-handling)
 - [Stopping the Bot](#stopping-the-bot)
+- [Custom Filters](#custom-filters)
 
 ## Text responses
 
@@ -258,7 +269,9 @@ updater <<- Updater(token = 'TOKEN')
 kill <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
                   text = "Bye!")
-  bot$clean_updates()
+  # Clean 'kill' update
+  bot$get_updates(offset = update$update_id + 1)
+  # Stop the updater polling
   updater$stop_polling()
 }
 
@@ -266,15 +279,33 @@ kill_handler <- CommandHandler('kill', kill)
 dispatcher$add_handler(kill_handler)
 ```
 
-Now you can send the command `/kill` from Telegram to stop the Bot.
+Now you can send the command `/kill` from Telegram to stop the Bot. However, in a production environment it wouldn't be recommendable to leave this command as it is now, as anyone could stop the bot. To solve this, you can create a customed filter in order to make this command available only for a certain `user_id`, for instance. This is explained in the next section.
 
 **Note:** With the [*superassignment* operator `<<-`](https://stat.ethz.ch/pipermail/r-help/2011-April/275905.html) we assign the `updater` in the enclosing environment so to call it from inside the `kill` function.
 
-That's it for now! With this you may have the first guidelines to develop your R bot!
+## Custom Filters
+
+It is also possible to write your own filters used with `MessageHandler` and `CommandHandler`. In essence, a filter is simply a function that receives a `Message` instance and returns either `TRUE` or `FALSE`. If a filter evaluates to `TRUE`, the message will be handled. 
+
+For the `kill` example it would be useful to filter that command so to make it accessible only for a specific `<user-id>`. Thereby, you could add a filter:
+
+    filter_user <- function(message){
+                       message$from_user  == <user-id>
+                   }
+
+Now, you could update the handler with this filter:
+
+    kill_handler <- CommandHandler('kill', kill, filter_user)
+
+Filters can also be added to the `Filters` object. Within it, we can see that `Filters$text` and `Filters$command` are mutually exclusive, so we could add a filter for messages that can be either one of them. This would result as:
+
+    Filters$text_or_command <- function(message){
+                                   !is.null(message$text)
+                               }
 
 # Want more?
 
-If you want to learn more about Telegram Bots with R, you can look at these resources:
+That's it for now! With this you may have the first guidelines to develop your R bot. If you want to learn more about Telegram Bots with R, you can look at these resources:
 - Package `telegram.ext` [GitHub Repo](https://github.com/ebeneditos/telegram.ext) or its [Wiki](https://github.com/ebeneditos/telegram.ext/wiki) to look at all methods and features available.
 - You can also check Telegram's documentation [Bots: An introduction for developers](http://core.telegram.org/bots) and [Telegram Bot API](http://core.telegram.org/bots/api) to familiarize with the API.
 
