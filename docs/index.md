@@ -49,7 +49,11 @@ The first part of the URL indicates that you want to communicate with the Telegr
 
 ## Retrieving messages sent to your Bot
 
-The simplest way to retrieve messages sent to your Bot is through the `getUpdates` call. If you visit `https://api.telegram.org/bot<your-bot-token>/getUpdates`, you'll get a JSON response of all the new messages sent to your Bot. Try sending a message to your Bot and visit that URL.
+The simplest way to retrieve messages sent to your Bot is through the `getUpdates` call:
+
+`https://api.telegram.org/bot<your-bot-token>/getUpdates`
+
+If you this page ou'll get a JSON response of all the new messages sent to your Bot. Try sending a message to your Bot and visit that URL.
 
 ## Sending a message from your Bot
 
@@ -313,11 +317,13 @@ Filters can also be added to the `Filters` object. Within it, we can see that `F
 Filters$text_or_command <- function(message){
                                !is.null(message$text)
                            }
-```			   
+```
+
+That's it for now! With this tutorial you may have the first guidelines to develop your R bot.
 
 # Want more?
 
-That's it for now! With this you may have the first guidelines to develop your R bot. If you want to learn more about Telegram Bots with R, you can look at these resources:
+If you want to learn more about Telegram Bots with R, you can look at these resources:
 - Package `telegram.ext` [GitHub Repo](https://github.com/ebeneditos/telegram.ext) or its [Wiki](https://github.com/ebeneditos/telegram.ext/wiki) to look at all methods and features available.
 - You can also check Telegram's documentation [Bots: An introduction for developers](http://core.telegram.org/bots) and [Telegram Bot API](http://core.telegram.org/bots/api) to familiarize with the API.
 
