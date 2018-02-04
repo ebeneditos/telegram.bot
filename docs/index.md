@@ -17,15 +17,21 @@ So, let's *get started!*
 
 First, you must have or [create a Telegram account](https://web.telegram.org). Second, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [`@BotFather`](https://telegram.me/botfather) and following a [few simple steps](https://core.telegram.org/bots#6-botfather). Telegram bots can receive *messages* or *commands*. The former are simply text that you send as if you were sending a message to another person, while the latter are prefixed with a `/` character. To create a new bot, send the following command to *BotFather* as a chat (exactly as if you were talking to another person on Telegram):
 
-    /newbot
-    
+```bash
+/newbot
+```
+
 You should get a reply instantly that asks you to choose a name for your Bot. You have to send then the name you want for the bot, which can be anyone, for instance:
 
-    RBot
+```bash
+RBot
+```
 
 *BotFather* will now ask you to pick a username for your Bot. This username has to end in `bot`, and be globally unique. In this tutorial we'll indicate the Bot's username with `<your-bot-username>`, so you'll have to substitute your chosen username wherever relevant from now on. Send your chosen username to *BotFather*:
 
-    <your-bot-username>
+```bash
+<your-bot-username>
+```
     
 After doing so, *BotFather* will send you a "Congratulations" message, which will include a token. The token should look something like this:
 
@@ -289,19 +295,25 @@ It is also possible to write your own filters used with `MessageHandler` and `Co
 
 For the `kill` example it would be useful to filter that command so to make it accessible only for a specific `<user-id>`. Thereby, you could add a filter:
 
-    filter_user <- function(message){
-                       message$from_user  == <user-id>
-                   }
+```r
+filter_user <- function(message){
+                   message$from_user  == <user-id>
+               }
+```	       
 
 Now, you could update the handler with this filter:
 
-    kill_handler <- CommandHandler('kill', kill, filter_user)
+```r
+kill_handler <- CommandHandler('kill', kill, filter_user)
+```
 
 Filters can also be added to the `Filters` object. Within it, we can see that `Filters$text` and `Filters$command` are mutually exclusive, so we could add a filter for messages that can be either one of them. This would result as:
 
-    Filters$text_or_command <- function(message){
-                                   !is.null(message$text)
-                               }
+```r
+Filters$text_or_command <- function(message){
+                               !is.null(message$text)
+                           }
+```			   
 
 # Want more?
 
