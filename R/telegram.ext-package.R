@@ -1,4 +1,4 @@
-#' telegram.ext.
+#' telegram.ext
 #'
 #' Features a number of tools to make the development of Telegram bots
 #' with R easy and straightforward, providing an easy-to-use interface
