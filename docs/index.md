@@ -3,11 +3,11 @@ title: "Build a Chatbot with R"
 ---
 # Table of Contents
 
-In this page you will learn how to build a Telegram Bot with R and the `telegram.ext` package, with the following sections:
+In this page you will learn how to build a Telegram Bot with R and the `telegram.bot` package, with the following sections:
 
 - [Creating a Telegram Bot](#creating-a-telegram-bot)
 - [Introduction to the Telegram Bot API](#introduction-to-the-telegram-bot-api)
-- [The telegram.ext Package](#the-telegramext-package)
+- [The telegram.bot Package](#the-telegramext-package)
 - [Building an R Bot in 3 steps](#building-an-r-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
 
@@ -63,21 +63,21 @@ The final API call that we'll try out in the browser is that used to send a mess
 
 Once you've visited this URL, you should see a message from your Bot sent to your which says "TestReply".
 
-# The telegram.ext Package
+# The telegram.bot Package
 
-You could program with R some functions that send these HTTPS requests and processes its responses. Fortunately, there is a package that allows you to do that: `telegram.ext`. It uses `httr` and `jsonlite` packages to do such work. Additionally, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
+You could program with R some functions that send these HTTPS requests and processes its responses. Fortunately, there is a package that allows you to do that: `telegram.bot`. It uses `httr` and `jsonlite` packages to do such work. Additionally, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
 
-Thereby, the `telegram.ext` package consists of several `R6` classes, and the API is exposed via the `Bot` class. The methods are the *snake_case* equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact *camelCase* method names as in the Telegram docs are also available for your convenience. So for example `Bot$get_updates` is the same as `Bot$getUpdates`.
+Thereby, the `telegram.bot` package consists of several `R6` classes, and the API is exposed via the `Bot` class. The methods are the *snake_case* equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact *camelCase* method names as in the Telegram docs are also available for your convenience. So for example `Bot$get_updates` is the same as `Bot$getUpdates`.
 
 ## Creating a Bot instance
 
-To get a feeling for the API and how to use it with `telegram.ext`, we will reproduce the URL based example we just saw, done with R with this package.
+To get a feeling for the API and how to use it with `telegram.bot`, we will reproduce the URL based example we just saw, done with R with this package.
 
 First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from `@BotFather`:
 
 ```r
 # install.packages("devtools")
-devtools::install_github("ebeneditos/telegram.ext")
+devtools::install_github("ebeneditos/telegram.bot")
 
 bot = Bot(token = 'TOKEN')
 ```
@@ -106,7 +106,7 @@ bot$send_message(chat_id = <chat-id>, text = 'TestReply')
 
 ## Develop a Telegram Bot with R
 
-In order to build a bot that is continuously running and is able to respond to multiple input data formats, the `telegram.ext` package features several `R6` classes, but the two most important ones here are `Updater` and `Dispatcher`.
+In order to build a bot that is continuously running and is able to respond to multiple input data formats, the `telegram.bot` package features several `R6` classes, but the two most important ones here are `Updater` and `Dispatcher`.
 
 The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class.  If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
 
@@ -120,7 +120,7 @@ Below we explain how to build a bot with this structure.
 
 # Building an R Bot in 3 steps
 
-In this section we will explain how to build a Bot with R and `telegram.ext` following the next steps:
+In this section we will explain how to build a Bot with R and `telegram.bot` following the next steps:
 
 1. [Creating the Updater object](#1-creating-the-updater-object)
 2. [The first function](#2-the-first-function)
@@ -131,7 +131,7 @@ In this section we will explain how to build a Bot with R and `telegram.ext` fol
 First, you first must create an `Update` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
 
 ```r
-library(telegram.ext)
+library(telegram.bot)
 updater <- Updater(token='TOKEN')
 ```
 
@@ -324,7 +324,7 @@ That's it for now! With this tutorial you may have the first guidelines to devel
 # Want more?
 
 If you want to learn more about Telegram Bots with R, you can look at these resources:
-- Package `telegram.ext` [GitHub Repo](https://github.com/ebeneditos/telegram.ext) or its [Wiki](https://github.com/ebeneditos/telegram.ext/wiki) to look at all methods and features available.
+- Package `telegram.bot` [GitHub Repo](https://github.com/ebeneditos/telegram.bot) or its [Wiki](https://github.com/ebeneditos/telegram.bot/wiki) to look at all methods and features available.
 - You can also check Telegram's documentation [Bots: An introduction for developers](http://core.telegram.org/bots) and [Telegram Bot API](http://core.telegram.org/bots/api) to familiarize with the API.
 
 # Attribution

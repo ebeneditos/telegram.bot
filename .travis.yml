@@ -12,7 +12,7 @@ branches:
     - master
 
 r_github_packages:
-  - ebeneditos/telegram.ext
+  - ebeneditos/telegram.bot
   
 r_packages:
   - covr

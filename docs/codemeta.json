@@ -1,11 +1,11 @@
 {
   "@context": ["http://purl.org/codemeta/2.0", "http://schema.org"],
   "@type": "SoftwareSourceCode",
-  "identifier": "telegram.ext",
+  "identifier": "telegram.bot",
   "description": "Features a number of tools to make the development of 'Telegram' bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer. It is built on top of the pure API implementation, being an extension of the 'telegram' package, an R wrapper around the 'Telegram Bot API' <http://core.telegram.org/bots/api>.",
-  "name": "telegram.ext: Develop a 'Telegram Bot' with R",
+  "name": "telegram.bot: Develop a 'Telegram Bot' with R",
   "codeRepository": "https://github.com/ebeneditos/telegram.ext",
-  "issueTracker": "http://github.com/ebeneditos/telegram.ext/issues",
+  "issueTracker": "http://github.com/ebeneditos/telegram.bot/issues",
   "license": "https://spdx.org/licenses/LGPL-3.0",
   "version": "0.7.0",
   "programmingLanguage": {
@@ -98,5 +98,5 @@
   "contIntegration": "https://travis-ci.org/ebeneditos/telegram",
   "developmentStatus": "active",
   "readme": "https://github.com/ebeneditos/telegram.ext/blob/master/README.md",
-  "fileSize": "15.291KB"
+  "fileSize": "15.302KB"
 }

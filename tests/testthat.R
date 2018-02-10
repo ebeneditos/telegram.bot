@@ -1,4 +1,4 @@
 library(testthat)
-library(telegram.ext)
+library(telegram.bot)
 
-test_check("telegram.ext")
+test_check("telegram.bot")

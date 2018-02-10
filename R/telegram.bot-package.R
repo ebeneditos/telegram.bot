@@ -1,4 +1,4 @@
-#' telegram.ext
+#' telegram.bot
 #'
 #' Features a number of tools to make the development of Telegram bots
 #' with R easy and straightforward, providing an easy-to-use interface
@@ -6,7 +6,7 @@
 #' pure API implementation, being an extension of the \code{\link{telegram}}
 #' package, an R wrapper around the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
 #' 
-#' In \href{https://ebeneditos.github.io/telegram.ext/}{this page}
+#' In \href{https://ebeneditos.github.io/telegram.bot/}{this page}
 #' you can learn how to build a Bot quickly with this package.
 #' 
 #' @section Main Classes: \describe{
@@ -21,7 +21,7 @@
 #'     \item{\code{\link{Bot}}}{This object represents a Telegram Bot.}
 #' }
 #' 
-#' @name telegram.ext
+#' @name telegram.bot
 #' @docType package
 #' @import telegram
 #' @importFrom R6 R6Class
