@@ -10,7 +10,7 @@
 #' @param clean (Optional). Whether to clean any pending updates on Telegram servers
 #'   before actually starting to poll. Default is \code{FALSE}.
 #' @param allowed_updates (Optional). Passed to \code{\link{get_updates}}.
-#' @param verbose (Optional). If \code{TRUE}, prints status of the pollings. Default is \code{FALSE}.
+#' @param verbose (Optional). If \code{TRUE}, prints status of the polling. Default is \code{FALSE}.
 #' @examples \dontrun{
 #' # Start polling example
 #' updater <- Updater(token = 'TOKEN')

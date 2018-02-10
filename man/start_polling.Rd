@@ -15,7 +15,7 @@ before actually starting to poll. Default is \code{FALSE}.}
 
 \item{allowed_updates}{(Optional). Passed to \code{\link{get_updates}}.}
 
-\item{verbose}{(Optional). If \code{TRUE}, prints status of the pollings. Default is \code{FALSE}.}
+\item{verbose}{(Optional). If \code{TRUE}, prints status of the polling. Default is \code{FALSE}.}
 }
 \description{
 Starts polling updates from Telegram. You can stop the polling either by using the the

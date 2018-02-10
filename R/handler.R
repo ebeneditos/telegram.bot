@@ -18,7 +18,7 @@ check_update <- function(update){
 #' In most cases \code{self$callback(dispatcher$bot, update)} can be called,
 #' possibly along with optional arguments.
 #' @param update The update to be handled.
-#' @param dispatcher The dispatcher to collect optional args.
+#' @param dispatcher The dispatcher to collect optional arguments.
 handle_update <- function(update, dispatcher){
   not_implemented()
 }

@@ -8,9 +8,9 @@
 #' evaluated for handling an update, but only 0 or 1 handler per group will be used.
 #'
 #' The priority/order of handlers is determined as follows:
-#' \itemize{
+#' \enumerate{
 #'   \item{Priority of the group (lower group number = higher priority)}
-#'   \item{The first handler in a group which should handle an update will be used. Other handlers from the group willnot be used.
+#'   \item{The first handler in a group which should handle an update will be used. Other handlers from the group will not be used.
 #'     The order in which handlers were added to the group defines the priority.
 #'   }
 #' }

@@ -9,7 +9,7 @@ handle_update(update, dispatcher)
 \arguments{
 \item{update}{The update to be handled.}
 
-\item{dispatcher}{The dispatcher to collect optional args.}
+\item{dispatcher}{The dispatcher to collect optional arguments.}
 }
 \description{
 This method is called if it was determined that an update should indeed

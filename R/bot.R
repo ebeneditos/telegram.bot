@@ -153,7 +153,7 @@ get_webhook_info <- function()
 #' Bot
 #'
 #' This object represents a Telegram Bot. It inherits from \code{\link{TGBot}}.
-#' Thus, it has immplemented all the API methods from that class. It also features
+#' Thus, it has implemented all the API methods from that class. It also features
 #' the \code{\link{get_updates}} method, which allows the use of long polling; and
 #' the \code{\link{set_webhook}}, \code{\link{delete_webhook}} and
 #' \code{\link{get_webhook_info}} methods, which allow to manage webhooks.
