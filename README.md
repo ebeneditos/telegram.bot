@@ -26,7 +26,24 @@ Make sure you have the `devtools` package updated.
 
 ## Getting started
 
-To get started with `telegram.bot`, you can check these resources:
+The `telegram.bot` package is fun, easy and free to use! You can quickly build a bot with a few lines:
+
+```r
+library(telegram.bot)
+
+hello <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = sprintf("Hello %s!", update$message$from_user$first_name))
+}
+
+updater <- Updater('YOUR TOKEN HERE')
+
+updater$dispatcher$add_handler(CommandHandler('hello', hello))
+
+updater$start_polling()
+```
+
+To know more about it, you can check these resources:
 
 - [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API).
 - Tutorial: [Building an R Bot in 3 steps](https://github.com/ebeneditos/telegram.bot/wiki/Tutorial-–-Building-an-R-Bot-in-3-steps).
