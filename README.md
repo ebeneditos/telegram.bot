@@ -26,7 +26,7 @@ Make sure you have the `devtools` package updated.
 
 ## Getting started
 
-The `telegram.bot` package is fun, easy and free to use! You can quickly build a bot with a few lines:
+The `telegram.bot` package is easy, fun and free to use! You can quickly build a chatbot with a few lines:
 
 ```r
 library(telegram.bot)
