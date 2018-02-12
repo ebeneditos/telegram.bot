@@ -1,10 +1,8 @@
 ^.github$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^README.md$
 ^.travis.yml$
 ^LICENSE$
-^tests$
 ^appveyor\.yml$
 ^docs$
 ^codemeta\.json$
