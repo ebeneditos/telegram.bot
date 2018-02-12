@@ -33,7 +33,7 @@ library(telegram.bot)
 
 hello <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
-                  text = sprintf("Hello %s!", update$message$from_user$first_name))
+                  text = sprintf("Hello %s!", update$message$from$first_name))
 }
 
 updater <- Updater('YOUR TOKEN HERE')
