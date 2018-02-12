@@ -131,7 +131,6 @@ In this section we will explain how to build a Bot with R and `telegram.bot` fol
 First, you first must create an `Update` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
 
 ```r
-library(telegram.bot)
 updater <- Updater(token='TOKEN')
 ```
 
