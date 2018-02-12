@@ -60,7 +60,7 @@ To get you started with `telegram.bot`, we recommend to take a look at its [Wiki
 You can also check these other resources:
 
 - [Telegram Bot API Documentation](https://core.telegram.org/bots/api)
-- [telegram.bot CRAN Documentation](https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf)
+- ['telegram.bot' CRAN Documentation](https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf)
 
 ## Contributing
 
