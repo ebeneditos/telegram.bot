@@ -76,9 +76,10 @@ To get a feeling for the API and how to use it with `telegram.bot`, we will repr
 First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from `@BotFather`:
 
 ```r
-install.packages("telegram.bot")
+# install.packages("telegram.bot")
+library(telegram.bot)
 
-bot = Bot(token = 'TOKEN')
+bot <- Bot(token = 'TOKEN')
 ```
 
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
