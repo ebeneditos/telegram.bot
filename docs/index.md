@@ -76,8 +76,7 @@ To get a feeling for the API and how to use it with `telegram.bot`, we will repr
 First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from `@BotFather`:
 
 ```r
-# install.packages("devtools")
-devtools::install_github("ebeneditos/telegram.bot")
+install.packages("telegram.bot")
 
 bot = Bot(token = 'TOKEN')
 ```
