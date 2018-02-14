@@ -85,7 +85,7 @@ bot <- Bot(token = 'TOKEN')
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
 
 ```r
-print(bot$get_me())
+print(bot$getMe())
 ```
 
 **Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use `telegram.me/<your-bot-username>` links or username search to find your bot (searching for `@<your-bot-username>` in any of the Telegram clients).
@@ -95,13 +95,13 @@ print(bot$get_me())
 You can get updates from your bot with the command:
 
 ```r
-updates <- bot$get_updates()
+updates <- bot$getUpdates()
 ```
 
 This will retreive a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
 
 ```r
-bot$send_message(chat_id = <chat-id>, text = 'TestReply')
+bot$sendMessage(chat_id = <chat-id>, text = 'TestReply')
 ```
 
 ## Develop a Telegram Bot with R
