@@ -19,7 +19,7 @@ kill <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
                   text = "Bye!")
   # Clean 'kill' update
-  bot$get_updates(offset = update$update_id + 1)
+  bot$getUpdates(offset = update$update_id + 1)
   # Stop the updater polling
   updater$stop_polling()
 }
