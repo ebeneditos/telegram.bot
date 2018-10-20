@@ -90,7 +90,7 @@ print(bot$getMe())
 
 **Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use `telegram.me/<your-bot-username>` links or username search to find your bot (searching for `@<your-bot-username>` in any of the Telegram clients).
 
-## Getting and retreiving messages
+## Getting and retrieving messages
 
 You can get updates from your bot with the command:
 
@@ -98,7 +98,7 @@ You can get updates from your bot with the command:
 updates <- bot$getUpdates()
 ```
 
-This will retreive a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
+This will retrieve a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
 
 ```r
 bot$sendMessage(chat_id = <chat-id>, text = 'TestReply')
