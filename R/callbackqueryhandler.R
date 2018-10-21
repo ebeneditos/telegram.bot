@@ -49,10 +49,10 @@ CallbackQueryHandlerClass <-
                     if(!is.null(self$pattern) && !is.null(update$callback_query$data))
                       return(grepl(self$pattern, update$callback_query$data))
 
-                    else return(TRUE)
+                    else return(TRUE) # nocov
                   }
 
-                  else return(FALSE)
+                  else return(FALSE) # nocov
                 },
 
                 # This method is called if it was determined that an update should indeed

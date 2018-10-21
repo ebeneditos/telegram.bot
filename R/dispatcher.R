@@ -95,7 +95,8 @@ DispatcherClass <-
                   # An error happened while polling
                   if(is.null(update)){
                     res <- try(self$dispatch_error(update))
-                    if(inherits(res, 'try-error')) warning('An uncaught error was raised while handling the error')
+                    if(inherits(res, 'try-error'))
+                      warning('An uncaught error was raised while handling the error') # nocov
                     return()
                   }
 

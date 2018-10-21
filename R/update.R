@@ -5,7 +5,7 @@
 #'
 #' The user that sent this update, no matter what kind of update this
 #' is. Will be \code{NULL} for \code{channel_post}.
-effective_user <- function(){
+effective_user <- function(){ # nocov start
 
   if (!is.null(private$effective_user_))
     return(private$effective_user_)
@@ -35,7 +35,7 @@ effective_user <- function(){
 
   private$effective_user_ <- user
   return(user)
-}
+} # nocov end
 
 
 #' effective_chat
@@ -44,7 +44,7 @@ effective_user <- function(){
 #' update this is. Will be \code{None} for \code{inline_query},
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
-effective_chat <- function(){
+effective_chat <- function(){ # nocov start
 
   if (!is.null(private$effective_chat_))
     return(private$effective_chat_)
@@ -68,7 +68,7 @@ effective_chat <- function(){
 
   private$effective_chat_ <- chat
   return(chat)
-}
+} # nocov end
 
 
 #' effective_message
@@ -77,7 +77,7 @@ effective_chat <- function(){
 #' update this is. Will be \code{None} for \code{inline_query},
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
-effective_message <- function(){
+effective_message <- function(){ # nocov start
 
   if (!is.null(private$effective_message_))
     return(private$effective_message_)
@@ -101,7 +101,7 @@ effective_message <- function(){
 
   private$effective_message_ <- message
   return(message)
-}
+} # nocov end
 
 
 ### CLASS ####

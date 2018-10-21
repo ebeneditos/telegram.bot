@@ -7,6 +7,12 @@ test_that("Initialize", {
   
   skip_if_offline(bot)
   
+  # invalid token 1
+  expect_error(Bot(token = ' '), 'invalid token.')
+  
+  # invalid token 2
+  expect_error(Bot(token = '123456ABCDEF'), 'invalid token.')
+  
   # print
   expect_error(print(bot), NA)
   

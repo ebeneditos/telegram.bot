@@ -59,7 +59,7 @@ clean_updates = function(){
   updates <- self$get_updates()
   
   if (length(updates))
-    updates <- self$get_updates(updates[[length(updates)]]$update_id + 1)
+    updates <- self$get_updates(updates[[length(updates)]]$update_id + 1) # nocov
 }
 
 
@@ -103,7 +103,7 @@ set_webhook <- function(url = NULL,
   if (!missing(url))
     data[['url']] <- url
   if (!missing(certificate) && check_file(certificate))
-    data[['certificate']] <- httr::upload_file(certificate)
+    data[['certificate']] <- httr::upload_file(certificate) # nocov
   if (!missing(max_connections))
     data[['max_connections']] <- max_connections
   if (!missing(allowed_updates) && !is.null(allowed_updates))
@@ -268,7 +268,7 @@ BotClass <-
                     return(private$parse(result))
                   }
                   else
-                    stop('HTTPError')
+                    stop('HTTPError') # nocov
                 },
 
                 parse = function(result){
@@ -279,7 +279,7 @@ BotClass <-
                     return(data$result)
                   }
                   else
-                    stop('Invalid server response')
+                    stop('Invalid server response') # nocov
                 }
               )
 )

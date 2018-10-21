@@ -75,10 +75,10 @@ CommandHandlerClass <-
                       return(res && (tolower(command[1]) %in% self$command))
                     }
 
-                    else return(FALSE)
+                    else return(FALSE) # nocov
                   }
 
-                  else return(FALSE)
+                  else return(FALSE) # nocov
                 },
 
                 # This method is called if it was determined that an update should indeed

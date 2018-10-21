@@ -11,6 +11,9 @@ test_that("Initialize", {
   # Mutually exclusive
   expect_error(Updater(token = token, bot = Bot(token)), '`token` and `bot` are mutually exclusive')
   
+  # Wrong bot
+  expect_error(Updater(bot = 'bot'), "`bot` must be of class 'Bot'")
+  
   # Initialize with bot
   expect_is(Updater(bot = Bot(token)), "Updater")
   
@@ -30,15 +33,14 @@ test_that("Start Polling", {
   expect_error(foo_updater$dispatcher$add_error_handler(stop_handler), NA)
   
   # check error during get updates
-  expect_null(foo_updater$start_polling(clean = T))
-  
+  expect_null(foo_updater$start_polling(clean = T, verbose = T))
   
   # check stop
   foo_updater$bot$get_updates <- function(...){
     stop('Operation was aborted by an application callback')
   }
   
-  expect_null(foo_updater$start_polling())
+  expect_null(foo_updater$start_polling(verbose = T))
   
   # check warning when stopping polling
   foo_updater$bot$get_updates <- function(...){
@@ -46,7 +48,7 @@ test_that("Start Polling", {
     return(list(Update(foo_update)))
   }
   
-  expect_null(foo_updater$start_polling())
+  expect_null(foo_updater$start_polling(verbose = T))
   
   # check processing updates
   foo_updater$bot$get_updates <- function(...){
@@ -56,6 +58,6 @@ test_that("Start Polling", {
   expect_error(foo_updater$dispatcher$add_handler(
     handler = CommandHandler('foo', stop_handler)), NA)
   
-  expect_null(foo_updater$start_polling())
+  expect_null(foo_updater$start_polling(verbose = T))
   
 })
