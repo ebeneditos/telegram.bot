@@ -39,14 +39,14 @@ The `telegram.bot` package is easy, fun and free to use! You can quickly build a
 ```r
 library(telegram.bot)
 
-hello <- function(bot, update){
+start <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
                   text = sprintf("Hello %s!", update$message$from$first_name))
 }
 
 updater <- Updater('YOUR TOKEN HERE')
 
-updater$dispatcher$add_handler(CommandHandler('hello', hello))
+updater$dispatcher$add_handler(CommandHandler('start', start))
 
 updater$start_polling()
 ```
