@@ -15,7 +15,7 @@ should listen for.}
 \item{callback}{The callback function for this handler.
 See \code{\link{Handler}} for information about this function.}
 
-\item{filters}{(Optional). Only allow updates with these Filters. See
+\item{filters}{(Optional). Only allow updates with these filters. See
 \code{\link{Filters}} for a full list of all available filters.}
 
 \item{pass_args}{(Optional). Determines whether the handler should be passed

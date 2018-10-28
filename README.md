@@ -4,16 +4,14 @@
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![CRAN](http://www.r-pkg.org/badges/version/telegram.bot)](https://cran.r-project.org/package=telegram.bot)
+[![GitHub package version](https://img.shields.io/badge/dev-1.2.0-orange.svg)](https://github.com/ebeneditos/telegram.bot/tree/dev)
 [![Downloads](https://cranlogs.r-pkg.org/badges/telegram.bot)](https://www.r-pkg.org/pkg/telegram.bot)
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.bot.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.bot)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.bot?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-bot)
 [![Codecov](https://img.shields.io/codecov/c/github/ebeneditos/telegram.bot.svg)](https://codecov.io/gh/ebeneditos/telegram.bot)
 [![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
-<!-- [![GitHub package version](https://img.shields.io/badge/dynamic/json.svg?label=dev&colorB=FFA500&prefix=&suffix=&query=$.version&uri=https://raw.githubusercontent.com/ebeneditos/telegram.bot/master/docs/codemeta.json)](http://www.r-pkg.org/pkg/telegram.bot) -->
 
-This package features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer. It is built on top of the pure API implementation, being an extension of the
-[`telegram`](https://github.com/lbraglia/telegram) package, an R wrapper around the
-[Telegram Bot API](http://core.telegram.org/bots/api).
+This package provides a pure R interface for the [Telegram Bot API](http://core.telegram.org/bots/api). In addition to the pure API implementation, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
 
 ## Installation
 

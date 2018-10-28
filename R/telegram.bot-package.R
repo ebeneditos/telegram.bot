@@ -1,10 +1,10 @@
 #' telegram.bot
 #'
-#' Features a number of tools to make the development of Telegram bots
-#' with R easy and straightforward, providing an easy-to-use interface
-#' that takes some work off the programmer. It is built on top of the
-#' pure API implementation, being an extension of the \code{\link{telegram}}
-#' package, an R wrapper around the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
+#' Provides a pure interface for the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
+#' In addition to the pure API implementation, it features a number of
+#' tools to make the development of Telegram bots with R easy and
+#' straightforward, providing an easy-to-use interface that takes some
+#' work off the programmer.
 #' 
 #' In \href{https://ebeneditos.github.io/telegram.bot/}{this page}
 #' you can learn how to build a Bot quickly with this package.
@@ -23,10 +23,10 @@
 #' 
 #' @name telegram.bot
 #' @docType package
-#' @import telegram
 #' @importFrom R6 R6Class
 #' @importFrom httr POST
 #' @importFrom httr content
 #' @importFrom httr stop_for_status
 #' @importFrom httr upload_file
+#' @importFrom jsonlite toJSON
 NULL

@@ -5,10 +5,23 @@
 \title{Updater}
 \format{An \code{\link{R6Class}} object.}
 \usage{
-Updater(token = NULL, bot = NULL)
+Updater(token = NULL, base_url = NULL, base_file_url = NULL,
+  request_config = NULL, bot = NULL)
 }
 \arguments{
 \item{token}{(Optional). The bot's token given by the @BotFather.}
+
+\item{base_url}{(Optional). Telegram Bot API service URL.}
+
+\item{base_file_url}{(Optional). Telegram Bot API file URL.}
+
+\item{request_config}{(Optional). Additional configuration settings
+to be passed to the bot's POST requests. See the \code{config}
+parameter from \code{?httr::POST} for further details.
+
+The \code{request_config} settings are very
+useful for the advanced users who would like to control the
+default timeouts and/or control the proxy used for http communication.}
 
 \item{bot}{(Optional). A pre-initialized \code{Bot} instance.}
 }

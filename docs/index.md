@@ -176,7 +176,8 @@ Now, you can define a function that should process a specific type of update:
 
 ```r
 start <- function(bot, update){
-	bot$sendMessage(chat_id = update$message$chat_id, text = "Hello Creator!")
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = sprintf("Hello %s!", update$message$from$first_name))
 }
 ```
 
@@ -314,8 +315,8 @@ Filters can also be added to the `Filters` object. Within it, we can see that `F
 
 ```r
 Filters$text_or_command <- function(message){
-                               !is.null(message$text)
-                           }
+                                      !is.null(message$text)
+                                  }
 ```
 
 That's it for now! With this tutorial you may have the first guidelines to develop your R bot.

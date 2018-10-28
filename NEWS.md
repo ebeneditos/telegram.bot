@@ -1,6 +1,5 @@
-# telegram.bot 1.0.0
+## v1.0.0
 
-First public release.
+### NOTES
 
-
-
+- First release on CRAN.

@@ -43,6 +43,7 @@ be handled by this instance.}
 }
 
 \examples{
+\dontrun{
 # Example of a Handler
 callback_method <- function(bot, update){
   chat_id <- update$effective_chat()$id
@@ -64,4 +65,5 @@ foo_handler <- Handler(callback_method,
                        check_update = check_update,
                        handle_update = handle_update,
                        handlername = 'FooHandler')
+}
 }

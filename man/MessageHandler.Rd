@@ -12,7 +12,7 @@ MessageHandler(callback, filters = NULL)
 \item{callback}{The callback function for this handler.
 See \code{\link{Handler}} for information about this function.}
 
-\item{filters}{(Optional). Only allow updates with these Filters. Use \code{NULL}
+\item{filters}{(Optional). Only allow updates with these filters. Use \code{NULL}
 (default) or \code{Filters$all} for no filtering. See \code{\link{Filters}} for a
 full list of all available filters.}
 }
