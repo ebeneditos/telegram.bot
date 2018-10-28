@@ -42,3 +42,10 @@ server response or use \code{Bot} method \code{\link{clean_updates}}.
 
 You can also use it's snake_case equivalent \code{get_updates}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+
+updates <- bot$getUpdates()
+}
+}
