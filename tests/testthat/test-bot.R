@@ -135,7 +135,7 @@ test_that("Send Animation", {
   skip_if_offline(bot)
   
   expect_is(bot$sendAnimation(chat_id = chat_id,
-                              animation = "https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif",
+                              animation = "https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif",
                               duration = NULL,
                               width = NULL,
                               height = NULL,

@@ -1035,6 +1035,11 @@ editMessageReplyMarkup <- function(chat_id = NULL,
 #'     
 #'     Please note that this parameter doesn't affect updates created before the call
 #'     to the getUpdates, so unwanted updates may be received for a short period of time.
+#' @examples \dontrun{
+#' bot <- Bot(token = bot_token('RBot'))
+#' 
+#' updates <- bot$getUpdates()
+#' }
 getUpdates <- function(offset = NULL,
                        limit = 100,
                        timeout = 0,
