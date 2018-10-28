@@ -4,7 +4,7 @@
 \alias{ReplyKeyboardRemove}
 \title{ReplyKeyboardRemove}
 \usage{
-ReplyKeyboardRemove(remove_keyboard, selective = NULL)
+ReplyKeyboardRemove(remove_keyboard = TRUE, selective = NULL)
 }
 \arguments{
 \item{remove_keyboard}{Requests clients to remove the custom keyboard.

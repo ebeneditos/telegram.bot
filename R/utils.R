@@ -2,7 +2,7 @@
 self <- 'Only for R CMD check'
 private <- 'Only for R CMD check'
 
-not_implemented <- function() stop('Currently not implemented')
+not_implemented <- function() stop('Currently not implemented.')
 
 #### Export functions ####
 
@@ -18,7 +18,7 @@ not_implemented <- function() stop('Currently not implemented')
 #' }
 #' @export
 bot_token <- function(bot_name){
-  Sys.getenv(paste0("R_TELEGRAM_BOT_", bot_name))
+  Sys.getenv(paste0("R_TELEGRAM_BOT_", bot_name)) # nocov
 }
 
 #' user_id
@@ -33,7 +33,7 @@ bot_token <- function(bot_name){
 #' }
 #' @export
 user_id <- function(user_name){
-  Sys.getenv(paste0("R_TELEGRAM_USER_", user_name))
+  Sys.getenv(paste0("R_TELEGRAM_USER_", user_name)) # nocov
 }
 
 
@@ -43,7 +43,7 @@ reply_markup_to_json <- function(reply_markup = NULL){
   if(is.null(reply_markup)) NULL
   else{
     if(!inherits(reply_markup, "ReplyMarkup")) stop("Incorrect Keyboard type.")
-    jsonlite::toJSON(reply_markup, auto_unbox = T, force = T)
+    jsonlite::toJSON(reply_markup, auto_unbox = T, force = T) # nocov
   }
 }
 

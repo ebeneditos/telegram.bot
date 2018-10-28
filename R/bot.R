@@ -18,7 +18,7 @@ bot.print <- function()
   # If there's another class besides first class and R6
   classes <- setdiff(class(self), "R6")
   if (length(classes) >= 2) {
-    ret <- c(ret, paste0("  Inherits from: <", classes[2], ">"))
+    ret <- c(ret, paste0("  Inherits from: <", classes[2], ">")) # nocov
   }
   
   ret <- c(ret,
@@ -72,6 +72,7 @@ bot.parse <- function(result)
   else
     stop('Invalid server response') # nocov
 }
+
 
 #### API METHODS ####
 
@@ -160,7 +161,7 @@ sendMessage <- function(chat_id,
 #' @param message_id Identifier of the message to delete
 deleteMessage <- function(chat_id,
                           message_id)
-{
+{ # nocov start
   url <- sprintf('%s/deleteMessage', private$base_url)
   
   data <- list(chat_id = chat_id,
@@ -169,7 +170,7 @@ deleteMessage <- function(chat_id,
   result <- private$request(url, data)
   
   return(invisible(result))
-}
+} # nocov end
 
 
 #' forwardMessage
@@ -188,7 +189,7 @@ forwardMessage <- function(chat_id,
                            from_chat_id,
                            message_id,
                            disable_notification = FALSE)
-{
+{ # nocov start
   url <- sprintf('%s/forwardMessage', private$base_url)
   
   data <- list(chat_id = chat_id,
@@ -201,7 +202,7 @@ forwardMessage <- function(chat_id,
   result <- private$request(url, data)
   
   return(invisible(result))
-}
+} # nocov end
 
 
 #' sendPhoto
@@ -239,7 +240,7 @@ sendPhoto <- function(chat_id,
   url <- sprintf('%s/sendPhoto', private$base_url)
   
   if (file.exists(photo))
-    photo <- httr::upload_file(photo)
+    photo <- httr::upload_file(photo) # nocov
   
   data <- list(chat_id = chat_id, photo = photo)
   
@@ -304,7 +305,7 @@ sendAudio <- function(chat_id,
   url <- sprintf('%s/sendAudio', private$base_url)
   
   if (file.exists(audio))
-    audio <- httr::upload_file(audio)
+    audio <- httr::upload_file(audio) # nocov
   
   data <- list(chat_id = chat_id, audio = audio)
   
@@ -367,7 +368,7 @@ sendDocument <- function(chat_id,
   url <- sprintf('%s/sendDocument', private$base_url)
   
   if (file.exists(document))
-    document <- httr::upload_file(document)
+    document <- httr::upload_file(document) # nocov
   
   data <- list(chat_id = chat_id, document = document)
   
@@ -419,7 +420,7 @@ sendSticker <- function(chat_id,
   url <- sprintf('%s/sendSticker', private$base_url)
   
   if (file.exists(sticker))
-    sticker <- httr::upload_file(sticker)
+    sticker <- httr::upload_file(sticker) # nocov
   
   data <- list(chat_id = chat_id, sticker = sticker)
   
@@ -480,7 +481,7 @@ sendVideo <- function(chat_id,
   url <- sprintf('%s/sendVideo', private$base_url)
   
   if (file.exists(video))
-    video <- httr::upload_file(video)
+    video <- httr::upload_file(video) # nocov
   
   data <- list(chat_id = chat_id, video = video)
   
@@ -543,7 +544,7 @@ sendVideoNote <- function(chat_id,
   url <- sprintf('%s/sendVideoNote', private$base_url)
   
   if (file.exists(video_note))
-    video_note <- httr::upload_file(video_note)
+    video_note <- httr::upload_file(video_note) # nocov
   
   data <- list(chat_id = chat_id, video_note = video_note)
   
@@ -604,7 +605,7 @@ sendAnimation <- function(chat_id,
   url <- sprintf('%s/sendAnimation', private$base_url)
   
   if (file.exists(animation))
-    animation <- httr::upload_file(animation)
+    animation <- httr::upload_file(animation) # nocov
   
   data <- list(chat_id = chat_id, animation = animation)
   
@@ -670,7 +671,7 @@ sendVoice <- function(chat_id,
   url <- sprintf('%s/sendVoice', private$base_url)
   
   if (file.exists(voice))
-    voice <- httr::upload_file(voice)
+    voice <- httr::upload_file(voice) # nocov
   
   data <- list(chat_id = chat_id, voice = voice)
   
@@ -811,7 +812,7 @@ getUserProfilePhotos <- function(user_id,
 #' You can also use it's snake_case equivalent \code{get_file}.
 #' @param file_id The file identifier
 getFile <- function(file_id)
-{
+{ #nocov start
   url <- sprintf('%s/getFile', private$base_url)
   
   data <- list(file_id = file_id)
@@ -819,7 +820,7 @@ getFile <- function(file_id)
   result <- private$request(url, data)
   
   return(invisible(result))
-}
+} # nocov end
 
 
 #' answerCallbackQuery
@@ -845,7 +846,7 @@ answerCallbackQuery <- function(callback_query_id = NULL,
                                 show_alert = FALSE,
                                 url = NULL,
                                 cache_time = NULL)
-{
+{ # nocov start
   url <- sprintf('%s/answerCallbackQuery', private$base_url)
   
   data <- list(callback_query_id = callback_query_id)
@@ -862,7 +863,7 @@ answerCallbackQuery <- function(callback_query_id = NULL,
   result <- private$request(url, data)
   
   return(invisible(result))
-}
+} # nocov end
 
 
 #' editMessageReplyMarkup
@@ -887,7 +888,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
                                    message_id = NULL,
                                    inline_message_id = NULL,
                                    reply_markup = NULL)
-{
+{ # nocov start
   if (is.null(inline_message_id) & (is.null(chat_id) | is.null(message_id)))
     stop("editMessageReplyMarkup: Both 'chat_id' and 'message_id' are required when ",
          "'inline_message_id' is not specified")
@@ -908,7 +909,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
   result <- private$request(url, data)
   
   return(invisible(result))
-}
+} # nocov end
 
 
 #' getUpdates
@@ -1003,10 +1004,10 @@ setWebhook <- function(url = NULL,
   if (!missing(url))
     data[['url']] <- url
   if (!missing(certificate)){
-    if(file.exists(certificate))
+    if(file.exists(certificate)) # nocov
       data[['certificate']] <- httr::upload_file(certificate) # nocov
     else
-      data[['certificate']] <- certificate
+      data[['certificate']] <- certificate # nocov
   }
   if (!missing(max_connections))
     data[['max_connections']] <- max_connections
@@ -1063,7 +1064,7 @@ getWebhookInfo <- function()
 #' @param chat_id Unique identifier for the target chat or username of
 #'     the target channel
 leaveChat <- function(chat_id)
-{
+{ # nocov start
   url <- sprintf('%s/leaveChat', private$base_url)
   
   data <- list(chat_id = chat_id)
@@ -1071,7 +1072,7 @@ leaveChat <- function(chat_id)
   result <- private$request(url, data)
   
   return(invisible(result))
-}
+} # nocov end
 
 
 #### OTHER METHODS ####
@@ -1086,6 +1087,8 @@ clean_updates = function(){
   
   if (length(updates))
     self$get_updates(updates[[length(updates)]]$update_id + 1) # nocov
+  
+  return(invisible(NULL))
 }
 
 
@@ -1096,6 +1099,8 @@ clean_updates = function(){
 set_token <- function(token){
   if (!missing(token))
     private$token <- token
+  
+  return(invisible(NULL))
 }
 
 
@@ -1185,7 +1190,7 @@ BotClass <-
                       base_url <- 'https://api.telegram.org/bot'
                     if (is.null(base_file_url))
                       base_file_url <- 'https://api.telegram.org/file/bot'
-                    if (is.null(base_file_url))
+                    if (is.null(request_config))
                       request_config <- list()
 
                     private$base_url <- paste0(as.character(base_url),

@@ -81,7 +81,7 @@ ReplyKeyboardMarkup <- function(
   ## check dimensions and class
   if(!all(unlist(lapply(keyboard, is.list))) |
      !all(unlist(lapply(keyboard, function(x){lapply(x, function(x){inherits(x, "KeyboardButton")})})))) {
-    stop("keyboard parameter must be a list of button rows, each represented by a list of KeyboardButton objects")
+    stop("`keyboard` parameter must be a list of button rows, each represented by a list of KeyboardButton objects.")
   }
   ## build object
   ReplyKeyboardMarkup <- list(keyboard = keyboard,
@@ -204,7 +204,7 @@ InlineKeyboardMarkup <- function(
   ## check dimensions and class
   if(!all(unlist(lapply(inline_keyboard, is.list))) |
      !all(unlist(lapply(inline_keyboard, function(x){lapply(x, function(x){inherits(x, "InlineKeyboardButton")})})))) {
-    stop("keyboard parameter must be a list of button rows, each represented by a list of InlineKeyboardButton objects")
+    stop("`inline_keyboard` parameter must be a list of button rows, each represented by a list of KeyboardButton objects.")
   }
   ## build object
   InlineKeyboardMarkup <- list(inline_keyboard = inline_keyboard)
@@ -255,7 +255,7 @@ InlineKeyboardMarkup <- function(
 #' }
 #' @export
 ReplyKeyboardRemove <- function(
-  remove_keyboard,
+  remove_keyboard = TRUE,
   selective = NULL)
 {
   ## build object

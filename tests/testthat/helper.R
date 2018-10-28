@@ -2,6 +2,7 @@
 # You must define a valid TOKEN in Travis Environment Variables Settings
 # NOTE: https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings
 token <- Sys.getenv('TOKEN')
+chat_id <- Sys.getenv('CHAT_ID')
 
 # Check if the token is valid, otherwise set a default token
 # NOTE: This will skip the connection tests, as this token is not valid
@@ -19,6 +20,9 @@ skip_if_offline <- function(bot){
   else if (inherits(res, 'response') && res$status_code != 200)
     skip('Bad request.')
 }
+
+# Foo text
+foo_text <- 'foo'
 
 # Handler function
 foo_handler <- function(bot, update, ...){return(update)}

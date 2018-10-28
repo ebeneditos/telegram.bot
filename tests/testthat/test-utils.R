@@ -3,7 +3,7 @@ context("Utils")
 
 test_that("Not Implemented", {
 
-  expect_error(not_implemented(), 'Currently not implemented')
+  expect_error(not_implemented(), 'Currently not implemented.')
 
 })
 
@@ -14,18 +14,9 @@ test_that("Check Stop", {
 
 })
 
-test_that("Check File", {
-
-  path_wrong <- 'test'
-  path_right <- getwd()
-
-  # wrong required
-  expect_error(check_file(path_wrong, required = T), paste(path_wrong, 'is not a valid path'))
-
-  # wrong not required
-  expect_null(check_file(path_wrong))
+test_that("Reply Markup to JSON", {
   
-  # right
-  expect_equal(check_file(path_right), path_right)
-
+  expect_null(reply_markup_to_json())
+  expect_error(reply_markup_to_json(foo_text), 'Incorrect Keyboard type.')
+  
 })

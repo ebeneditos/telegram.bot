@@ -4,12 +4,11 @@
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![CRAN](http://www.r-pkg.org/badges/version/telegram.bot)](https://cran.r-project.org/package=telegram.bot)
-[![GitHub package version](https://img.shields.io/badge/dev-1.2.0-orange.svg)](https://github.com/ebeneditos/telegram.bot/tree/dev)
 [![Downloads](https://cranlogs.r-pkg.org/badges/telegram.bot)](https://www.r-pkg.org/pkg/telegram.bot)
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.bot.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.bot)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.bot?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-bot)
 [![Codecov](https://img.shields.io/codecov/c/github/ebeneditos/telegram.bot.svg)](https://codecov.io/gh/ebeneditos/telegram.bot)
-[![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
+[![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 This package provides a pure R interface for the [Telegram Bot API](http://core.telegram.org/bots/api). In addition to the pure API implementation, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
 
@@ -25,7 +24,7 @@ Or the development version from GitHub:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ebeneditos/telegram.bot")
+devtools::install_github("ebeneditos/telegram.bot", ref = "dev")
 ```
 
 Make sure you have the `devtools` package updated.
@@ -66,10 +65,6 @@ You can also check these other resources:
 The package is in a starting phase, so contributions of all sizes are very welcome. Please:
 - Review our [contribution guidelines](https://github.com/ebeneditos/telegram.bot/blob/master/.github/CONTRIBUTING.md) to get started.
 - You can also help by [reporting bugs](https://github.com/ebeneditos/telegram.bot/issues/new).
-
-## License
-
-You may copy, distribute and modify the software provided that modifications are described and licensed for free under [LGPL-3](https://www.gnu.org/licenses/lgpl-3.0.html). Derivatives works (including modifications or anything statically linked to the package) can only be redistributed under LGPL-3, but applications that use the library don't have to be.
 
 ## Attribution
 
