@@ -10,6 +10,7 @@ r:
 branches:
   only:
     - master
+    - dev
 
 r_github_packages:
   - ebeneditos/telegram.bot
