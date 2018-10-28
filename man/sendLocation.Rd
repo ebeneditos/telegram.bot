@@ -34,3 +34,13 @@ Use this method to send point on the map.
 \details{
 You can also use it's snake_case equivalent \code{send_location}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+
+bot$sendLocation(chat_id = chat_id,
+                 latitude = 51.521727,
+                 longitude = -0.117255)
+}
+}

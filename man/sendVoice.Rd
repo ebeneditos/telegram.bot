@@ -45,3 +45,13 @@ encoded with OPUS (other formats may be sent with \code{\link{sendAudio}} or \co
 \details{
 You can also use it's snake_case equivalent \code{send_voice}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+voice_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
+
+bot$sendVoice(chat_id = chat_id,
+              voice = voice_url)
+}
+}

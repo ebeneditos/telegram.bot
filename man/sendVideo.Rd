@@ -51,3 +51,13 @@ Use this method to send video files, Telegram clients support mp4 videos
 \details{
 You can also use it's snake_case equivalent \code{send_video}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+video_url <- "http://techslides.com/demos/sample-videos/small.mp4"
+
+bot$sendVideo(chat_id = chat_id,
+              video = video_url)
+}
+}

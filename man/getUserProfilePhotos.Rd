@@ -21,3 +21,11 @@ Use this method to get a list of profile pictures for a user.
 \details{
 You can also use it's snake_case equivalent \code{get_user_profile_photos}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+
+bot$getUserProfilePhotos(chat_id = chat_id)
+}
+}

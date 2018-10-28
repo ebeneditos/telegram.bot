@@ -47,3 +47,13 @@ Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without s
 \details{
 You can also use it's snake_case equivalent \code{send_animation}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+animation_url <- "http://techslides.com/demos/sample-videos/small.mp4"
+
+bot$sendAnimation(chat_id = chat_id,
+                  animation = animation_url)
+}
+}

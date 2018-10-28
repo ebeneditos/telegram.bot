@@ -40,3 +40,14 @@ Use this method to send photos.
 \details{
 You can also use it's snake_case equivalent \code{send_photo}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+photo_url <- "https://telegram.org/img/t_logo.png"
+
+bot$sendPhoto(chat_id = chat_id,
+               photo = photo_url,
+               caption = "Telegram Logo")
+}
+}

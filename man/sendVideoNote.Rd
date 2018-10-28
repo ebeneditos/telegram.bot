@@ -40,3 +40,13 @@ Use this method to send video messages.
 \details{
 You can also use it's snake_case equivalent \code{send_video_note}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+video_note_url <- "http://techslides.com/demos/sample-videos/small.mp4"
+
+bot$sendVideoNote(chat_id = chat_id,
+                  video_note = video_note_url)
+}
+}

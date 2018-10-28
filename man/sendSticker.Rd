@@ -34,3 +34,13 @@ Use this method to send \code{.webp} stickers.
 \details{
 You can also use it's snake_case equivalent \code{send_sticker}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+sticker_url <- "https://www.gstatic.com/webp/gallery/1.webp"
+
+bot$sendSticker(chat_id = chat_id,
+                sticker = sticker_url)
+}
+}

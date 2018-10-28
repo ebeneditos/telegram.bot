@@ -42,3 +42,13 @@ Use this method to send general files.
 \details{
 You can also use it's snake_case equivalent \code{send_document}.
 }
+\examples{
+\dontrun{
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+document_url <- "https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf"
+
+bot$sendDocument(chat_id = chat_id,
+                 document = document_url)
+}
+}

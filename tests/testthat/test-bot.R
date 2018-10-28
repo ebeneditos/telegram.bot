@@ -167,8 +167,8 @@ test_that("Send Location", {
   skip_if_offline(bot)
   
   expect_is(bot$sendLocation(chat_id = chat_id,
-                             latitude = 0,
-                             longitude = 0,
+                             latitude = 51.521727,
+                             longitude = -0.117255,
                              disable_notification = FALSE,
                              reply_to_message_id = NULL,
                              reply_markup = NULL), 'list')
