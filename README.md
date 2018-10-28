@@ -48,6 +48,65 @@ updater$dispatcher$add_handler(CommandHandler('start', start))
 updater$start_polling()
 ```
 
+## Telegram API Methods
+
+One of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are some examples:
+
+```r
+# Initialize bot
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+
+# Get bot info
+bot$getMe()
+
+# Get updates
+updates <- bot$getUpdates()
+
+# Send message
+bot$sendMessage(chat_id = chat_id,
+                text = '*foo bold text*',
+                parse_mode = 'Markdown')
+
+# Send photo
+bot$sendPhoto(chat_id = chat_id,
+               photo = "https://telegram.org/img/t_logo.png")
+
+# Send audio
+bot$sendAudio(chat_id = chat_id,
+              audio = "http://www.largesound.com/ashborytour/sound/brobob.mp3")
+
+# Send document
+bot$sendDocument(chat_id = chat_id,
+                 document = "https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf")
+
+# Send sticker
+bot$sendSticker(chat_id = chat_id,
+                sticker = "https://www.gstatic.com/webp/gallery/1.webp")
+
+# Send video
+bot$sendVideo(chat_id = chat_id,
+              video = "http://techslides.com/demos/sample-videos/small.mp4")
+
+# Send gif
+bot$sendAnimation(chat_id = chat_id,
+                  animation = "https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif")
+
+# Send location
+bot$sendLocation(chat_id = chat_id,
+                 latitude = 51.521727,
+                 longitude = -0.117255)
+
+# Send chat action
+bot$sendChatAction(chat_id = chat_id,
+                   action = 'typing')
+
+# Get user profile photos
+bot$getUserProfilePhotos(user_id = chat_id)
+```
+
+Note that you can also send local files by passing their path instead of an URL. Additionaly, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
+
 ## Getting Started
 
 To get you started with `telegram.bot`, we recommend to take a look at its [Wiki](https://github.com/ebeneditos/telegram.bot/wiki):
