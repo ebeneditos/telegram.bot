@@ -146,7 +146,7 @@ sendMessage <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -268,7 +268,7 @@ sendPhoto <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   if (!missing(parse_mode))
     data[['parse_mode']] <- parse_mode
   
@@ -347,7 +347,7 @@ sendAudio <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   if (!missing(parse_mode))
     data[['parse_mode']] <- parse_mode
   
@@ -414,7 +414,7 @@ sendDocument <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   if (!missing(parse_mode))
     data[['parse_mode']] <- parse_mode
   
@@ -470,7 +470,7 @@ sendSticker <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -547,7 +547,7 @@ sendVideo <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   if (!missing(parse_mode))
     data[['parse_mode']] <- parse_mode
   if (!missing(supports_streaming))
@@ -614,7 +614,7 @@ sendVideoNote <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -687,7 +687,7 @@ sendAnimation <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   if (!missing(parse_mode))
     data[['parse_mode']] <- parse_mode
   
@@ -757,7 +757,7 @@ sendVoice <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   if (!missing(parse_mode))
     data[['parse_mode']] <- parse_mode
   
@@ -810,7 +810,7 @@ sendLocation <- function(chat_id,
   if (!missing(reply_to_message_id))
     data[['reply_to_message_id']] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup_to_json(reply_markup)
+    data[['reply_markup']] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -867,9 +867,9 @@ sendChatAction <- function(chat_id,
 #' 
 #' You can also use it's snake_case equivalent \code{get_user_profile_photos}.
 #' @param user_id Unique identifier of the target user
-#' @param offset Sequential number of the first photo to be returned.
+#' @param offset (Optional). Sequential number of the first photo to be returned.
 #'     By default, all photos are returned
-#' @param limit Limits the number of photos to be retrieved. Values
+#' @param limit (Optional). Limits the number of photos to be retrieved. Values
 #'     between 1-100 are accepted. Defaults to 100.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RBot'))
@@ -927,15 +927,15 @@ getFile <- function(file_id)
 #' 
 #' You can also use it's snake_case equivalent \code{answer_callback_query}.
 #' @param callback_query_id Unique identifier for the query to be answered
-#' @param text Text of the notification. If not specified, nothing will be
+#' @param text (Optional). Text of the notification. If not specified, nothing will be
 #'     shown to the user, 0-200 characters
-#' @param show_alert If \code{TRUE}, an alert will be shown by the client instead
-#'     of a notification at the top of the chat screen. Defaults to \code{FALSE}.
-#' @param url URL that will be opened by the user's client
-#' @param cache_time The maximum amount of time in seconds that the result of the
+#' @param show_alert (Optional). If \code{TRUE}, an alert will be shown by the client instead
+#'     of a notification at the top of the chat screen. Defaults to \code{FALSE}
+#' @param url (Optional). URL that will be opened by the user's client
+#' @param cache_time (Optional). The maximum amount of time in seconds that the result of the
 #'     callback query may be cached client-side. Telegram apps will support caching
 #'     starting in version 3.14. Defaults to 0
-answerCallbackQuery <- function(callback_query_id = NULL,
+answerCallbackQuery <- function(callback_query_id,
                                 text = NULL,
                                 show_alert = FALSE,
                                 url = NULL,
@@ -953,6 +953,72 @@ answerCallbackQuery <- function(callback_query_id = NULL,
     data[['url']] <- url
   if (!missing(cache_time))
     data[['cache_time']] <- cache_time
+  
+  result <- private$request(url, data)
+  
+  return(invisible(result))
+} # nocov end
+
+
+#' answerInlineQuery
+#'
+#' Use this method to send answers to an inline query. No more than 50 results per query are
+#' allowed.
+#' 
+#' To enable this option, send the \code{/setinline} command to
+#' \href{https://t.me/botfather}{@BotFather} and provide the placeholder text that the user
+#' will see in the input field after typing your bot’s name.
+#' 
+#' You can also use it's snake_case equivalent \code{answer_inline_query}.
+#' @param inline_query_id Unique identifier for the answered query
+#' @param results A list of \code{\link{InlineQueryResult}} for the inline query
+#' @param cache_time (Optional). The maximum amount of time in seconds that the
+#'     result of the inline query may be cached on the server
+#' @param is_personal (Optional). Pass \code{TRUE}, if results may be cached on the server
+#'     side only for the user that sent the query. By default, results may be returned to
+#'     any user who sends the same query
+#' @param next_offset (Optional). Pass the offset that a client should send in the
+#'     next query with the same text to receive more results. Pass an empty string if
+#'     there are no more results or if you don't support pagination. Offset length can't
+#'     exceed 64 bytes
+#' @param switch_pm_text (Optional). If passed, clients will display a button with
+#'     specified text that switches the user to a private chat with the bot and sends the
+#'     bot a start message with the parameter \code{switch_pm_parameter}
+#' @param switch_pm_parameter (Optional). Deep-linking parameter for the \code{/start}
+#'     message sent to the bot when user presses the switch button. 1-64 characters,
+#'     only \code{A-Z}, \code{a-z}, \code{0-9}, \code{_} and \code{-} are allowed.
+#'     
+#'     \emph{Example:} An inline bot that sends YouTube videos can ask the user to connect the bot to their
+#'     YouTube account to adapt search results accordingly. To do this, it displays a
+#'     Connect your YouTube account' button above the results, or even before showing any.
+#'     The user presses the button, switches to a private chat with the bot and, in doing so,
+#'     passes a start parameter that instructs the bot to return an oauth link. Once done, the
+#'     bot can offer a switch_inline button so that the user can easily return to the chat
+#'     where they wanted to use the bot's inline capabilities.
+answerInlineQuery <- function(inline_query_id,
+                              results,
+                              cache_time = 300,
+                              is_personal = NULL,
+                              next_offset = NULL,
+                              switch_pm_text = NULL,
+                              switch_pm_parameter = NULL)
+{ # nocov start
+  url <- sprintf('%s/answerInlineQuery', private$base_url)
+  
+  results <- to_json(results)
+  
+  data <- list(inline_query_id = inline_query_id, results = results)
+  
+  if (!missing(cache_time))
+    data[['cache_time']] <- cache_time
+  if (!missing(is_personal))
+    data[['is_personal']] <- is_personal
+  if (!is.null(next_offset))
+    data[['next_offset']] <- next_offset
+  if (!missing(switch_pm_text))
+    data[['switch_pm_text']] <- switch_pm_text
+  if (!missing(switch_pm_parameter))
+    data[['switch_pm_parameter']] <- switch_pm_parameter
   
   result <- private$request(url, data)
   
@@ -1334,6 +1400,8 @@ BotClass <-
                 get_file = getFile,
                 answerCallbackQuery = answerCallbackQuery,
                 answer_callback_query = answerCallbackQuery,
+                answerInlineQuery = answerInlineQuery,
+                answer_inline_query = answerInlineQuery,
                 editMessageReplyMarkup = editMessageReplyMarkup,
                 edit_message_reply_markup = editMessageReplyMarkup,
                 getUpdates = getUpdates,

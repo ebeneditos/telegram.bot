@@ -39,11 +39,10 @@ user_id <- function(user_name){
 
 #### Auxiliar Functions ####
 
-reply_markup_to_json <- function(reply_markup = NULL){
-  if(is.null(reply_markup)) NULL
+to_json <- function(x = NULL){
+  if(is.null(x)) NULL
   else{
-    if(!inherits(reply_markup, "ReplyMarkup")) stop("Incorrect Keyboard type.")
-    jsonlite::toJSON(reply_markup, auto_unbox = T, force = T) # nocov
+    jsonlite::toJSON(x, auto_unbox = T, force = T) # nocov
   }
 }
 

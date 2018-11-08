@@ -16,7 +16,6 @@ test_that("Check Stop", {
 
 test_that("Reply Markup to JSON", {
   
-  expect_null(reply_markup_to_json())
-  expect_error(reply_markup_to_json(foo_text), 'Incorrect Keyboard type.')
-  
+  expect_null(to_json())
+
 })
