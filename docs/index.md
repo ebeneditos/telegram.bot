@@ -53,7 +53,7 @@ The simplest way to retrieve messages sent to your Bot is through the `getUpdate
 
 `https://api.telegram.org/bot<your-bot-token>/getUpdates`
 
-If you this page ou'll get a JSON response of all the new messages sent to your Bot. Try sending a message to your Bot and visit that URL.
+If you this page you'll get a JSON response of all the new messages sent to your Bot. Try sending a message to your Bot and visit that URL.
 
 ## Sending a message from your Bot
 
@@ -153,7 +153,7 @@ bot$sendChatAction(chat_id = chat_id,
 bot$getUserProfilePhotos(user_id = chat_id)
 ```
 
-Note that you can also send local files by passing their path instead of an URL. Additionaly, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
+Note that you can also send local files by passing their path instead of an URL. Additionally, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
 
 ## Develop a Telegram Bot with R
 
@@ -188,7 +188,7 @@ updater <- Updater(token='TOKEN')
 **Recommendation:** Following [Hadley's API
 guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
-enviroment variables set in `.Renviron` file.
+environment variables set in `.Renviron` file.
 
 So let's say you have named your bot `RBot` (it's the first question
 you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R commands:
@@ -233,7 +233,7 @@ start <- function(bot, update){
 ```
 
 The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command.
-To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` subclasses) and register it in the dispatcher:
+To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` sub-classes) and register it in the dispatcher:
 
 ```r
 start_handler <- CommandHandler('start', start)
@@ -340,7 +340,7 @@ kill_handler <- CommandHandler('kill', kill)
 dispatcher$add_handler(kill_handler)
 ```
 
-Now you can send the command `/kill` from Telegram to stop the Bot. However, in a production environment it wouldn't be recommendable to leave this command as it is now, as anyone could stop the bot. To solve this, you can create a customed filter in order to make this command available only for a certain `user_id`, for instance. This is explained in the next section.
+Now you can send the command `/kill` from Telegram to stop the Bot. However, in a production environment it wouldn't be recommendable to leave this command as it is now, as anyone could stop the bot. To solve this, you can create a customized filter in order to make this command available only for a certain `user_id`, for instance. This is explained in the next section.
 
 **Note:** With the [*superassignment* operator `<<-`](https://stat.ethz.ch/pipermail/r-help/2011-April/275905.html) we assign the `updater` in the enclosing environment so to call it from inside the `kill` function.
 
