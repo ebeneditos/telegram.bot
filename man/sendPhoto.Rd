@@ -15,7 +15,7 @@ the target channel}
 the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
 get a photo from the Internet, or upload a local photo by passing a file path}
 
-\item{caption}{(Optional). Photo caption (may also be used when resending photos
+\item{caption}{(Optional). Photo caption (may also be used when re-sending photos
 by file_id), 0-1024 characters}
 
 \item{disable_notification}{(Optional). Sends the message silently. Users will

@@ -36,6 +36,7 @@ You can also use its methods \code{snake_case} equivalent.
  \describe{
     \item{\code{\link{answerCallbackQuery}}}{Send
     answers to callback queries sent from inline keyboard}
+    \item{\code{\link{answerInlineQuery}}}{Send answers to an inline query}
     \item{\code{\link{deleteMessage}}}{Delete a message}
     \item{\code{\link{deleteWebhook}}}{Remove webhook integration}
     \item{\code{\link{editMessageReplyMarkup}}}{Edit the reply

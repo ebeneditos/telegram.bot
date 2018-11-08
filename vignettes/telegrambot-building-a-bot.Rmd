@@ -26,7 +26,7 @@ First, though, let's introduce the `telegram.bot` package.
 
 ### Introduction
 
-The `telegram.bot` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegram-bot` library, using the nomenclature from its `telegram.ext` submodule. 
+The `telegram.bot` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegram-bot` library, using the nomenclature from its `telegram.ext` sub-module. 
 
 In order to build a bot that is continuously running and is able to respond to multiple input data formats, the `telegram.bot` package features several `R6` classes, but the two most important ones here are `Updater` and `Dispatcher`.
 
@@ -49,7 +49,7 @@ updater <- Updater(token='TOKEN')
 **Recommendation:** Following [Hadley's API
 guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
-enviroment variables set in `.Renviron` file.
+environment variables set in `.Renviron` file.
 
 So let's say you have named your bot `RBot` (it's the first question
 you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R commands:
@@ -94,7 +94,7 @@ start <- function(bot, update){
 ```
 
 The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command.
-To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` subclasses) and register it in the dispatcher:
+To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` sub-classes) and register it in the dispatcher:
 
 ```{r, eval = F}
 start_handler <- CommandHandler('start', start)

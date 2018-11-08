@@ -223,7 +223,7 @@ forwardMessage <- function(chat_id,
 #' @param photo Photo to send. Pass a file_id as String to send a photo that exists on
 #'     the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
 #'     get a photo from the Internet, or upload a local photo by passing a file path
-#' @param caption (Optional). Photo caption (may also be used when resending photos
+#' @param caption (Optional). Photo caption (may also be used when re-sending photos
 #'     by file_id), 0-1024 characters
 #' @param disable_notification (Optional). Sends the message silently. Users will
 #'     receive a notification with no sound
@@ -992,7 +992,7 @@ answerCallbackQuery <- function(callback_query_id,
 #'     YouTube account to adapt search results accordingly. To do this, it displays a
 #'     Connect your YouTube account' button above the results, or even before showing any.
 #'     The user presses the button, switches to a private chat with the bot and, in doing so,
-#'     passes a start parameter that instructs the bot to return an oauth link. Once done, the
+#'     passes a start parameter that instructs the bot to return an auth link. Once done, the
 #'     bot can offer a switch_inline button so that the user can easily return to the chat
 #'     where they wanted to use the bot's inline capabilities.
 answerInlineQuery <- function(inline_query_id,
@@ -1281,6 +1281,7 @@ set_token <- function(token){
 #' @section API Methods: \describe{
 #'     \item{\code{\link{answerCallbackQuery}}}{Send
 #'     answers to callback queries sent from inline keyboard}
+#'     \item{\code{\link{answerInlineQuery}}}{Send answers to an inline query}
 #'     \item{\code{\link{deleteMessage}}}{Delete a message}
 #'     \item{\code{\link{deleteWebhook}}}{Remove webhook integration}
 #'     \item{\code{\link{editMessageReplyMarkup}}}{Edit the reply
