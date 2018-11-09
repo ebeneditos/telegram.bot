@@ -135,7 +135,7 @@ bot$sendAudio(chat_id = chat_id,
 
 # Send document
 bot$sendDocument(chat_id = chat_id,
-                 document = "https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf")
+                 document = "https://cran.rstudio.com/web/packages/telegram.bot/telegram.bot.pdf")
 
 # Send sticker
 bot$sendSticker(chat_id = chat_id,
@@ -163,11 +163,3 @@ bot$getUserProfilePhotos(user_id = chat_id)
 ```
 
 Note that you can also send local files by passing their path instead of an URL. Additionally, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
-
-### What to read next?
-
-If you want to learn how to build a bot that is continuously running and is able to respond to multiple input data formats, you can check the next section, [Building an R Bot in 3 steps](https://github.com/ebeneditos/telegram.bot/wiki/Tutorial-–-Building-an-R-Bot-in-3-steps).
-
-### Attribution
-
-This vignette was inspired by [this tutorial](https://www.codementor.io/garethdwyer/building-a-telegram-bot-using-python-part-1-goi5fncay).

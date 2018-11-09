@@ -126,7 +126,7 @@ bot$sendAudio(chat_id = chat_id,
 
 # Send document
 bot$sendDocument(chat_id = chat_id,
-                 document = "https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf")
+                 document = "https://cran.rstudio.com/web/packages/telegram.bot/telegram.bot.pdf")
 
 # Send sticker
 bot$sendSticker(chat_id = chat_id,

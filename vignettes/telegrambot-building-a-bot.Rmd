@@ -110,11 +110,3 @@ updater$start_polling()
 ```
 
 Give it a try! Start a chat with your bot and issue the `/start` command - if all went right, it will reply.
-
-### What to read next?
-
-Want more? In the next page [Basic Functionalities](https://github.com/ebeneditos/telegram.bot/wiki/basic-functionalities) you can learn how to add some useful functionalities to the Bot.
-
-### Attribution
-
-This vignette is partially adapted from [`python-telegram-bot` Wiki](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).

@@ -24,7 +24,7 @@ Or the development version from GitHub:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ebeneditos/telegram.bot", ref = "dev")
+devtools::install_github("ebeneditos/telegram.bot")
 ```
 
 Make sure you have the `devtools` package updated.
@@ -78,7 +78,7 @@ bot$sendAudio(chat_id = chat_id,
 
 # Send document
 bot$sendDocument(chat_id = chat_id,
-                 document = "https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf")
+                 document = "https://cran.rstudio.com/web/packages/telegram.bot/telegram.bot.pdf")
 
 # Send sticker
 bot$sendSticker(chat_id = chat_id,
@@ -117,7 +117,7 @@ To get you started with `telegram.bot`, we recommend to take a look at its [Wiki
 You can also check these other resources:
 
 - [Telegram Bot API Documentation](https://core.telegram.org/bots/api)
-- ['telegram.bot' CRAN Documentation](https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf)
+- ['telegram.bot' CRAN Documentation](https://cran.rstudio.com/web/packages/telegram.bot/telegram.bot.pdf)
 
 ## Contributing
 

@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-In the [previous tutorial](https://github.com/ebeneditos/telegram.bot/wiki/Tutorial-–-Your-first-R-Bot-in-3-steps) we saw how to build a Telegram Bot with R. However, it can now only answer to the `/start` command, so now we are going to add a couple of functionalities, including:
+In the *Introduction* we saw how to build a Telegram Bot with R. However, it can now only answer to the `/start` command, so now we are going to add a couple of functionalities, including:
 
 - [Text responses](#text-responses)
 - [Commands with arguments](#commands-with-arguments)
@@ -106,11 +106,3 @@ dispatcher$add_handler(kill_handler)
 Now you can send the command `/kill` from Telegram to stop the Bot. However, in a production environment it wouldn't be recommendable to leave this command as it is now, as anyone could stop the bot. To solve this, you can create a customized filter in order to make this command available only for a certain `user_id`, for instance. This is explained in the next section.
 
 **Note:** With the [*superassignment* operator `<<-`](https://stat.ethz.ch/pipermail/r-help/2011-April/275905.html) we assign the `updater` in the enclosing environment so to call it from inside the `kill` function.
-
-### What to read next?
-
-You can read more about customizing filters in the next page: [Custom Filters](https://github.com/ebeneditos/telegram.bot/wiki/Custom-Filters).
-
-### Attribution
-
-This vignette is partially adapted from [`python-telegram-bot` Wiki](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
