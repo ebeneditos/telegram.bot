@@ -1332,6 +1332,9 @@ set_token <- function(token){
 #'     default timeouts and/or control the proxy used for http communication.
 #' @examples \dontrun{
 #' bot <- Bot(token = 'TOKEN')
+#' 
+#' # In case you want to set a proxy (see ?httr:use_proxy for setting details)
+#' bot <- Bot(token = 'TOKEN', request_config = httr::use_proxy(...))
 #' }
 #' @export
 Bot <- function(token,
