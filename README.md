@@ -78,7 +78,7 @@ bot$sendAudio(chat_id = chat_id,
 
 # Send document
 bot$sendDocument(chat_id = chat_id,
-                 document = "https://github.com/ebeneditos/telegram.bot/tree/gh-pages/docs/telegram.bot.pdf")
+                 document = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf")
 
 # Send sticker
 bot$sendSticker(chat_id = chat_id,
