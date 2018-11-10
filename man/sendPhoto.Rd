@@ -47,7 +47,7 @@ chat_id <- user_id('me')
 photo_url <- "https://telegram.org/img/t_logo.png"
 
 bot$sendPhoto(chat_id = chat_id,
-               photo = photo_url,
-               caption = "Telegram Logo")
+              photo = photo_url,
+              caption = "Telegram Logo")
 }
 }

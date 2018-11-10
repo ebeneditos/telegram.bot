@@ -121,8 +121,8 @@ getMe <- function()
 #' chat_id <- user_id('me')
 #' 
 #' bot$sendMessage(chat_id = chat_id,
-#'                  text = "*foo bold text*",
-#'                  parse_mode = "Markdown")
+#'                 text = "*foo bold text*",
+#'                 parse_mode = "Markdown")
 #' }
 sendMessage <- function(chat_id,
                         text,
@@ -243,8 +243,8 @@ forwardMessage <- function(chat_id,
 #' photo_url <- "https://telegram.org/img/t_logo.png"
 #' 
 #' bot$sendPhoto(chat_id = chat_id,
-#'                photo = photo_url,
-#'                caption = "Telegram Logo")
+#'               photo = photo_url,
+#'               caption = "Telegram Logo")
 #' }
 sendPhoto <- function(chat_id,
                       photo,

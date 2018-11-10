@@ -46,7 +46,7 @@ bot <- Bot(token = bot_token('RBot'))
 chat_id <- user_id('me')
 
 bot$sendMessage(chat_id = chat_id,
-                 text = "*foo bold text*",
-                 parse_mode = "Markdown")
+                text = "*foo bold text*",
+                parse_mode = "Markdown")
 }
 }
