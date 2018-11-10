@@ -109,7 +109,7 @@ bot$sendMessage(chat_id = <chat-id>, text = 'TestReply')
 As you see, one of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are some more examples:
 
 ```r
-chat_id <- <chat-id>
+chat_id <- 'CHAT_ID' # you can get it by sending a message to the bot and then check it with bot$getUpdates()
 
 # Send message
 bot$sendMessage(chat_id = chat_id,
