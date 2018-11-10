@@ -384,7 +384,7 @@ sendAudio <- function(chat_id,
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RBot'))
 #' chat_id <- user_id('me')
-#' document_url <- "https://cran.rstudio.com/web/packages/telegram.bot/telegram.bot.pdf"
+#' document_url <- "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
 #' 
 #' bot$sendDocument(chat_id = chat_id,
 #'                  document = document_url)

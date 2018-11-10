@@ -1,6 +1,0 @@
-theme: jekyll-theme-cayman
-name: telegram.bot
-title: Build a Chatbot with R
-description: An introduction to the Telegram Bot API and the telegram.bot package
-repository: https://github.com/ebeneditos/telegram.bot
-authors: Ernest Benedito

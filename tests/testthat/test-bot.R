@@ -76,7 +76,7 @@ test_that("Send Document", {
   skip_if_offline(bot)
   
   expect_is(bot$sendDocument(chat_id = chat_id,
-                             document = "https://cran.rstudio.com/web/packages/telegram.bot/telegram.bot.pdf",
+                             document = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf",
                              filename = NULL,
                              caption = NULL,
                              disable_notification = FALSE,

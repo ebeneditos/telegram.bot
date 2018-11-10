@@ -15,7 +15,7 @@
 #'             type = "document",
 #'             id = 1,
 #'             title = "Documentation",
-#'             document_url = "https://cran.rstudio.com/web/packages/telegram.bot/telegram.bot.pdf",
+#'             document_url = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf",
 #'             mime_type = "application/pdf")
 #' }
 #' @export
