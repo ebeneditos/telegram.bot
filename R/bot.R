@@ -50,7 +50,7 @@ bot.request <- function(url, data)
   result <- httr::POST(url = url,
                        body = data,
                        config = private$request_config,
-                       encode = 'json')
+                       encode = 'multipart')
   httr::stop_for_status(result)
   
   if (result$status >= 200 && result$status <= 299){

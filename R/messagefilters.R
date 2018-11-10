@@ -1,5 +1,5 @@
 
-#' Filters
+#' MessageFilters
 #'
 #' Predefined filters for use as the \code{filter} argument of class \code{\link{MessageHandler}}.
 #'
@@ -23,13 +23,13 @@
 #' }
 #' @examples \dontrun{
 #' # Use to filter all video messages
-#' video_handler <- MessageHandler(callback_method, Filters$video)
+#' video_handler <- MessageHandler(callback_method, MessageFilters$video)
 #'
 #' # To filter all contacts, etc.
-#' contact_handler <- MessageHandler(callback_method, Filters$contact)
+#' contact_handler <- MessageHandler(callback_method, MessageFilters$contact)
 #' }
 #' @export
-Filters <- list(
+MessageFilters <- list(
   'all' =
     function(message){
       TRUE

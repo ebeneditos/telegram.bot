@@ -25,8 +25,8 @@ optional parameters).
 \examples{
 \dontrun{
 # Initialize bot
-bot <- TGBot$new(token = bot_token('RBot'))
-bot$set_default_chat_id(user_id('me'))
+bot <- Bot(token = 'TOKEN')
+chat_id <- 'CHAT_ID'
 
 # Create Inline Keyboard
 text <- "Could you type their phone number, please?"
@@ -48,6 +48,6 @@ IKM <- InlineKeyboardMarkup(
   )
 
 # Send Inline Keyboard
-bot$sendMessage(text, reply_markup = IKM)
+bot$sendMessage(chat_id, text, reply_markup = IKM)
 }
 }
