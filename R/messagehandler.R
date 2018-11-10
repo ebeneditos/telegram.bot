@@ -9,7 +9,7 @@
 #' @format An \code{\link{R6Class}} object.
 #' @param callback The callback function for this handler.
 #'   See \code{\link{Handler}} for information about this function.
-#' @param filters (Optional). Only allow updates with these Filters. Use \code{NULL}
+#' @param filters (Optional). Only allow updates with these filters. Use \code{NULL}
 #'   (default) or \code{Filters$all} for no filtering. See \code{\link{Filters}} for a
 #'   full list of all available filters.
 #' @examples \dontrun{

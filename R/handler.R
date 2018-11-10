@@ -51,7 +51,7 @@ handle_update <- function(update, dispatcher){
 #'   method. Use it if you want to create your own \code{Handler}.
 #' @param handlername Name of the customized class, which will inherit from \code{Handler}.
 #'   If \code{NULL} (default) it will create a \code{Handler} class.
-#' @examples
+#' @examples \dontrun{
 #' # Example of a Handler
 #' callback_method <- function(bot, update){
 #'   chat_id <- update$effective_chat()$id
@@ -73,6 +73,7 @@ handle_update <- function(update, dispatcher){
 #'                        check_update = check_update,
 #'                        handle_update = handle_update,
 #'                        handlername = 'FooHandler')
+#' }
 #' @export
 Handler <- function(callback, check_update = NULL, handle_update = NULL, handlername = NULL){
   

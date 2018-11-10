@@ -6,25 +6,78 @@
 \title{Bot}
 \format{An \code{\link{R6Class}} object.}
 \usage{
-Bot(token, base_url = NULL, base_file_url = NULL)
+Bot(token, base_url = NULL, base_file_url = NULL,
+  request_config = NULL)
 }
 \arguments{
 \item{token}{Bot's unique authentication.}
 
-\item{base_url}{Telegram Bot API service URL.}
+\item{base_url}{(Optional). Telegram Bot API service URL.}
 
-\item{base_file_url}{Telegram Bot API file URL.}
+\item{base_file_url}{(Optional). Telegram Bot API file URL.}
+
+\item{request_config}{(Optional). Additional configuration settings
+to be passed to the bot's POST requests. See the \code{config}
+parameter from \code{?httr::POST} for further details.
+
+The \code{request_config} settings are very
+useful for the advanced users who would like to control the
+default timeouts and/or control the proxy used for http communication.}
 }
 \description{
-This object represents a Telegram Bot. It inherits from \code{\link{TGBot}}.
-Thus, it has implemented all the API methods from that class. It also features
-the \code{\link{get_updates}} method, which allows the use of long polling; and
-the \code{\link{set_webhook}}, \code{\link{delete_webhook}} and
-\code{\link{get_webhook_info}} methods, which allow to manage webhooks.
+This object represents a Telegram Bot.
 }
 \details{
 To take full advantage of this library take a look at \code{\link{Updater}}.
+
+You can also use its methods \code{snake_case} equivalent.
 }
+\section{API Methods}{
+ \describe{
+    \item{\code{\link{answerCallbackQuery}}}{Send
+    answers to callback queries sent from inline keyboard}
+    \item{\code{\link{answerInlineQuery}}}{Send answers to an inline query}
+    \item{\code{\link{deleteMessage}}}{Delete a message}
+    \item{\code{\link{deleteWebhook}}}{Remove webhook integration}
+    \item{\code{\link{editMessageReplyMarkup}}}{Edit the reply
+    markup of a message}
+    \item{\code{\link{forwardMessage}}}{Forward messages of any
+    kind}
+    \item{\code{\link{getFile}}}{Get info about a file and
+    prepare it for downloading}
+    \item{\code{\link{getMe}}}{Test your bot's auth
+    token}
+    \item{\code{\link{getUpdates}}}{Receive incoming
+    updates}
+    \item{\code{\link{getUserProfilePhotos}}}{Get a list
+    of profile pictures for a user}
+    \item{\code{\link{getWebhookInfo}}}{Get current webhook status}
+    \item{\code{\link{leaveChat}}}{Leave a group, supergroup or channel}
+    \item{\code{\link{sendAnimation}}}{Send animation files}
+    \item{\code{\link{sendAudio}}}{Send audio files}
+    \item{\code{\link{sendChatAction}}}{Tell the user that something
+    is happening on the bot's side}
+    \item{\code{\link{sendDocument}}}{Send general files}
+    \item{\code{\link{sendLocation}}}{Send point on the map}
+    \item{\code{\link{sendMessage}}}{Send text messages}
+    \item{\code{\link{sendPhoto}}}{Send image files}
+    \item{\code{\link{sendSticker}}}{Send \code{.webp} stickers}
+    \item{\code{\link{sendVideo}}}{Send \code{mp4} videos}
+    \item{\code{\link{sendVideoNote}}}{Send videos messages}
+    \item{\code{\link{sendVoice}}}{Send \code{.ogg} files encoded with
+    OPUS}
+    \item{\code{\link{setWebhook}}}{Receive incoming updates via an
+    outgoing webhook}
+}
+}
+
+\section{Other Methods}{
+ \describe{
+    \item{\code{\link{clean_updates}}}{Clean any pending updates}
+    \item{\code{\link{set_token}}}{Change your bot's auth token}
+}
+}
+
 \examples{
 \dontrun{
 bot <- Bot(token = 'TOKEN')

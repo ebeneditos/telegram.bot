@@ -8,12 +8,9 @@
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.bot.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.bot)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.bot?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-bot)
 [![Codecov](https://img.shields.io/codecov/c/github/ebeneditos/telegram.bot.svg)](https://codecov.io/gh/ebeneditos/telegram.bot)
-[![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
-<!-- [![GitHub package version](https://img.shields.io/badge/dynamic/json.svg?label=dev&colorB=FFA500&prefix=&suffix=&query=$.version&uri=https://raw.githubusercontent.com/ebeneditos/telegram.bot/master/docs/codemeta.json)](http://www.r-pkg.org/pkg/telegram.bot) -->
+[![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-This package features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer. It is built on top of the pure API implementation, being an extension of the
-[`telegram`](https://github.com/lbraglia/telegram) package, an R wrapper around the
-[Telegram Bot API](http://core.telegram.org/bots/api).
+This package provides a pure R interface for the [Telegram Bot API](http://core.telegram.org/bots/api). In addition to the pure API implementation, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
 
 ## Installation
 
@@ -51,27 +48,82 @@ updater$dispatcher$add_handler(CommandHandler('start', start))
 updater$start_polling()
 ```
 
+## Telegram API Methods
+
+One of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are some examples:
+
+```r
+# Initialize bot
+bot <- Bot(token = bot_token('RBot'))
+chat_id <- user_id('me')
+
+# Get bot info
+bot$getMe()
+
+# Get updates
+updates <- bot$getUpdates()
+
+# Send message
+bot$sendMessage(chat_id = chat_id,
+                text = '*foo bold text*',
+                parse_mode = 'Markdown')
+
+# Send photo
+bot$sendPhoto(chat_id = chat_id,
+               photo = "https://telegram.org/img/t_logo.png")
+
+# Send audio
+bot$sendAudio(chat_id = chat_id,
+              audio = "http://www.largesound.com/ashborytour/sound/brobob.mp3")
+
+# Send document
+bot$sendDocument(chat_id = chat_id,
+                 document = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf")
+
+# Send sticker
+bot$sendSticker(chat_id = chat_id,
+                sticker = "https://www.gstatic.com/webp/gallery/1.webp")
+
+# Send video
+bot$sendVideo(chat_id = chat_id,
+              video = "http://techslides.com/demos/sample-videos/small.mp4")
+
+# Send gif
+bot$sendAnimation(chat_id = chat_id,
+                  animation = "https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif")
+
+# Send location
+bot$sendLocation(chat_id = chat_id,
+                 latitude = 51.521727,
+                 longitude = -0.117255)
+
+# Send chat action
+bot$sendChatAction(chat_id = chat_id,
+                   action = 'typing')
+
+# Get user profile photos
+bot$getUserProfilePhotos(user_id = chat_id)
+```
+
+Note that you can also send local files by passing their path instead of an URL. Additionaly, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
+
 ## Getting Started
 
 To get you started with `telegram.bot`, we recommend to take a look at its [Wiki](https://github.com/ebeneditos/telegram.bot/wiki):
 
 - [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API).
-- Tutorial: [Building an R Bot in 3 steps](https://github.com/ebeneditos/telegram.bot/wiki/Tutorial-–-Building-an-R-Bot-in-3-steps).
+- Tutorial: [Building an R Bot in 3 steps](https://github.com/ebeneditos/telegram.bot/wiki/Building-an-R-Bot-in-3-steps).
 
 You can also check these other resources:
 
 - [Telegram Bot API Documentation](https://core.telegram.org/bots/api)
-- ['telegram.bot' CRAN Documentation](https://cran.r-project.org/web/packages/telegram.bot/telegram.bot.pdf)
+- ['telegram.bot' CRAN Documentation](https://CRAN.R-project.org/package=telegram.bot/telegram.bot.pdf)
 
 ## Contributing
 
 The package is in a starting phase, so contributions of all sizes are very welcome. Please:
 - Review our [contribution guidelines](https://github.com/ebeneditos/telegram.bot/blob/master/.github/CONTRIBUTING.md) to get started.
 - You can also help by [reporting bugs](https://github.com/ebeneditos/telegram.bot/issues/new).
-
-## License
-
-You may copy, distribute and modify the software provided that modifications are described and licensed for free under [LGPL-3](https://www.gnu.org/licenses/lgpl-3.0.html). Derivatives works (including modifications or anything statically linked to the package) can only be redistributed under LGPL-3, but applications that use the library don't have to be.
 
 ## Attribution
 

@@ -1,0 +1,165 @@
+---
+title: "Introduction to the API"
+author: "Ernest Benedito"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette you will learn how the Telegram Bot API works and how you can connect to it from R, with the following sections:
+
+- [Creating a Telegram Bot](#creating-a-telegram-bot)
+- [Introduction to the Telegram Bot API](#introduction-to-the-telegram-bot-api)
+- [The `telegram.bot` Package](#the-telegrambot-package)
+
+### Creating a Telegram Bot
+
+First, you must have or [create a Telegram account](https://web.telegram.org). Second, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [`@BotFather`](https://telegram.me/botfather) and following a [few simple steps](https://core.telegram.org/bots#6-botfather). Telegram bots can receive *messages* or *commands*. The former are simply text that you send as if you were sending a message to another person, while the latter are prefixed with a `/` character. To create a new bot, send the following command to *BotFather* as a chat (exactly as if you were talking to another person on Telegram):
+
+```{bash, eval = F}
+/newbot
+```
+
+You should get a reply instantly that asks you to choose a name for your Bot. You have to send then the name you want for the bot, which can be anyone, for instance:
+
+```{bash, eval = F}
+RBot
+```
+
+*BotFather* will now ask you to pick a username for your Bot. This username has to end in `bot`, and be globally unique. In this tutorial we'll indicate the Bot's username with `<your-bot-username>`, so you'll have to substitute your chosen username wherever relevant from now on. Send your chosen username to *BotFather*:
+
+```{bash, eval = F}
+<your-bot-username>
+```
+    
+After doing so, *BotFather* will send you a "Congratulations" message, which will include a token. The token should look something like this:
+
+`123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`
+
+For the rest of this tutorial, we'll indicate where you need to put your token by using `<your-bot-token>` or just `TOKEN`. Take note of the token, as you'll need it in the code that you are about to write.
+
+### Introduction to the Telegram Bot API
+
+You can control your Bot by sending HTTPS requests to Telegram. This means that the simplest way to interact with your Bot is through a web browser. By visiting different URLs, you send different commands to your Bot. The simplest command is one where you get information about your Bot. Visit the following URL in your browser (substituting the `TOKEN` that you got before):
+
+`https://api.telegram.org/bot<your-bot-token>/getMe`
+
+The first part of the URL indicates that you want to communicate with the Telegram API (`api.telegram.org`). You follow this with `/bot` to say that you want to send a command to your Bot, and immediately after you add your `TOKEN` to identify which bot you want to send the command to and to prove that you own it. Finally, you specify the command that you want to send (`/getMe`) which in this case just returns basic information about our Bot using JSON.
+
+#### Retrieving messages sent to your Bot
+
+The simplest way to retrieve messages sent to your Bot is through the `getUpdates` call:
+
+`https://api.telegram.org/bot<your-bot-token>/getUpdates`
+
+If you this page you'll get a JSON response of all the new messages sent to your Bot. Try sending a message to your Bot and visit that URL.
+
+#### Sending a message from your Bot
+
+The final API call that we'll try out in the browser is that used to send a message. To do this, you need the chat ID for the chat where you want to send the message. There are a bunch of different IDs in the JSON response from the `getUpdates` call, so make sure you get the right one. It's the id field which is inside the chat field. Once you have this ID, visit the following URL in your browser, substituting `<chat-id>` for your chat ID.
+
+`https://api.telegram.org/bot<your-bot-token>/sendMessage?chat_id=<chat-id>&text=TestReply`
+
+Once you've visited this URL, you should see a message from your Bot sent to your which says "TestReply".
+
+### The telegram.bot Package
+
+You could program with R some functions that send these HTTPS requests and processes its responses. Fortunately, there is a package that allows you to do that: `telegram.bot`. It uses `httr` and `jsonlite` packages to do such work. Additionally, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
+
+Thereby, the `telegram.bot` package consists of several `R6` classes, and the API is exposed via the `Bot` class. The methods names are equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact *snake_case* method names are also available for your convenience. So for example `Bot$get_updates` is the same as `Bot$getUpdates`.
+
+#### Creating a Bot instance
+
+To get a feeling for the API and how to use it with `telegram.bot`, we will reproduce the URL based example we just saw, done with R with this package.
+
+First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from `@BotFather`:
+
+```{r, eval = F}
+# install.packages("telegram.bot")
+library(telegram.bot)
+
+bot <- Bot(token = 'TOKEN')
+```
+
+To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
+
+```{r, eval = F}
+print(bot$getMe())
+```
+
+**Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use `telegram.me/<your-bot-username>` links or username search to find your bot (searching for `@<your-bot-username>` in any of the Telegram clients).
+
+#### Getting and retrieving messages
+
+You can get updates from your bot with the command:
+
+```{r, eval = F}
+updates <- bot$getUpdates()
+```
+
+This will retrieve a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
+
+```{r, eval = F}
+bot$sendMessage(chat_id = <chat-id>, text = 'TestReply')
+```
+
+#### Other methods
+
+As you see, one of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are a few more examples:
+
+```{r, eval = F}
+chat_id <- <chat-id>
+
+# Send message
+bot$sendMessage(chat_id = chat_id,
+                text = '*foo bold text*',
+                parse_mode = 'Markdown')
+
+# Send photo
+bot$sendPhoto(chat_id = chat_id,
+               photo = "https://telegram.org/img/t_logo.png")
+
+# Send audio
+bot$sendAudio(chat_id = chat_id,
+              audio = "http://www.largesound.com/ashborytour/sound/brobob.mp3")
+
+# Send document
+bot$sendDocument(chat_id = chat_id,
+                 document = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf")
+
+# Send sticker
+bot$sendSticker(chat_id = chat_id,
+                sticker = "https://www.gstatic.com/webp/gallery/1.webp")
+
+# Send video
+bot$sendVideo(chat_id = chat_id,
+              video = "http://techslides.com/demos/sample-videos/small.mp4")
+
+# Send gif
+bot$sendAnimation(chat_id = chat_id,
+                  animation = "https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif")
+
+# Send location
+bot$sendLocation(chat_id = chat_id,
+                 latitude = 51.521727,
+                 longitude = -0.117255)
+
+# Send chat action
+bot$sendChatAction(chat_id = chat_id,
+                   action = 'typing')
+
+# Get user profile photos
+bot$getUserProfilePhotos(user_id = chat_id)
+```
+
+Note that you can also send local files by passing their path instead of an URL. Additionally, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).

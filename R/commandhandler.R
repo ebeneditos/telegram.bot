@@ -11,7 +11,7 @@
 #'   should listen for.
 #' @param callback The callback function for this handler.
 #'   See \code{\link{Handler}} for information about this function.
-#' @param filters (Optional). Only allow updates with these Filters. See
+#' @param filters (Optional). Only allow updates with these filters. See
 #'   \code{\link{Filters}} for a full list of all available filters.
 #' @param pass_args (Optional). Determines whether the handler should be passed
 #'   \code{args}, received as a \code{vector}, split on spaces.

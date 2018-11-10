@@ -6,10 +6,10 @@
 #' Starts polling updates from Telegram. You can stop the polling either by using the the
 #' \code{interrupt R} command in the session menu or with the \code{\link{stop_polling}}
 #' method.
-#' @param timeout (Optional). Passed to \code{\link{get_updates}}. Default is 10.
+#' @param timeout (Optional). Passed to \code{\link{getUpdates}}. Default is 10.
 #' @param clean (Optional). Whether to clean any pending updates on Telegram servers
 #'   before actually starting to poll. Default is \code{FALSE}.
-#' @param allowed_updates (Optional). Passed to \code{\link{get_updates}}.
+#' @param allowed_updates (Optional). Passed to \code{\link{getUpdates}}.
 #' @param verbose (Optional). If \code{TRUE}, prints status of the polling. Default is \code{FALSE}.
 #' @examples \dontrun{
 #' # Start polling example
@@ -22,10 +22,10 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
   private$verbose <- verbose
   if (!private$running) private$running <- TRUE
   
-  if (private$verbose) cat("Start polling\n")
+  if (private$verbose) cat("Start polling", fill = TRUE)
 
   if (clean){
-    if (private$verbose) cat("Cleaning updates from Telegram server\n")
+    if (private$verbose) cat("Cleaning updates from Telegram server", fill = TRUE)
     self$bot$clean_updates()
   }
 
@@ -44,7 +44,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
         self$stop_polling()
       }
       else{
-        if (private$verbose) cat("Error while getting Updates\n")
+        if (private$verbose) cat("Error while getting Updates", fill = TRUE)
         self$dispatcher$process_update(NULL)    
       }
     }
@@ -53,7 +53,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
 
       if (!private$running){
         if (!is.null(updates) && length(updates) > 0)
-          if (private$verbose) cat("Updates ignored and will be pulled again on restart.\n")
+          if (private$verbose) cat("Updates ignored and will be pulled again on restart.", fill = TRUE)
         break
       }
       
@@ -61,7 +61,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
 
         for (update in updates){
 
-          if (private$verbose) cat(sprintf("Processing Update: %i\n", update$update_id))
+          if (private$verbose) cat(sprintf("Processing Update: %i", update$update_id), fill = TRUE)
           self$dispatcher$process_update(update)
         }
         
@@ -95,7 +95,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
 #' }
 stop_polling <- function(){
   
-  if (private$verbose) cat("End polling\n")
+  if (private$verbose) cat("End polling", fill = TRUE)
   if (private$running) private$running <- FALSE
   
 }
@@ -114,6 +114,15 @@ stop_polling <- function(){
 #' \strong{Note:} You \strong{must} supply either a \code{bot} or a \code{token} argument.
 #' @format An \code{\link{R6Class}} object.
 #' @param token (Optional). The bot's token given by the @BotFather.
+#' @param base_url (Optional). Telegram Bot API service URL.
+#' @param base_file_url (Optional). Telegram Bot API file URL.
+#' @param request_config (Optional). Additional configuration settings
+#'     to be passed to the bot's POST requests. See the \code{config}
+#'     parameter from \code{?httr::POST} for further details.
+#'     
+#'     The \code{request_config} settings are very
+#'     useful for the advanced users who would like to control the
+#'     default timeouts and/or control the proxy used for http communication.
 #' @param bot (Optional). A pre-initialized \code{Bot} instance.
 #' @section Methods: \describe{
 #'     \item{\code{\link{start_polling}}}{Starts polling updates from Telegram.}
@@ -126,8 +135,12 @@ stop_polling <- function(){
 #' updater <- Updater(token = 'TOKEN')
 #' }
 #' @export
-Updater <- function(token = NULL, bot = NULL){
-  UpdaterClass$new(token, bot)
+Updater <- function(token = NULL,
+                    base_url = NULL,
+                    base_file_url = NULL,
+                    request_config = NULL,
+                    bot = NULL){
+  UpdaterClass$new(token, base_url, base_file_url, request_config, bot)
 }
 
 
@@ -140,7 +153,7 @@ UpdaterClass <-
                 dispatcher = NULL,
 
                 ## initialize
-                initialize = function(token, bot){
+                initialize = function(token, base_url, base_file_url, request_config, bot){
 
                   if (is.null(token) & is.null(bot))
                     stop('`token` or `bot` must be passed')
@@ -152,9 +165,10 @@ UpdaterClass <-
                       self$bot <- bot
                     else stop("`bot` must be of class 'Bot'")
                   }
-                    
-                  else
-                    self$bot <- Bot(token)
+                  
+                  else{
+                    self$bot <- Bot(token, base_url, base_file_url, request_config)
+                  }
 
                   self$dispatcher <- Dispatcher(self$bot)
 

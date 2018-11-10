@@ -1,0 +1,112 @@
+---
+title: "Tutorial – Building an R Bot in 3 steps"
+author: "Ernest Benedito"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorial – Building an R Bot in 3 steps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this tutorial we will explain how to build a Bot with R and `telegram.bot` following the next steps:
+
+1. [Creating the `Updater` object](#1-creating-the-updater-object)
+2. [The first function](#2-the-first-function)
+3. [Starting the Bot](#3-starting-the-bot)
+
+First, though, let's introduce the `telegram.bot` package.
+
+### Introduction
+
+The `telegram.bot` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegram-bot` library, using the nomenclature from its `telegram.ext` sub-module. 
+
+In order to build a bot that is continuously running and is able to respond to multiple input data formats, the `telegram.bot` package features several `R6` classes, but the two most important ones here are `Updater` and `Dispatcher`.
+
+The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class.  If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
+
+To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
+
+With that said, let's *get started!*
+
+### 1. Creating the Updater object
+
+First, you first must create an `Update` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
+
+```{r, eval = F}
+library(telegram.bot)
+
+updater <- Updater(token='TOKEN')
+```
+
+**Recommendation:** Following [Hadley's API
+guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
+it's unsafe to type the `TOKEN` just in the R script. It's better to use
+environment variables set in `.Renviron` file.
+
+So let's say you have named your bot `RBot` (it's the first question
+you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R commands:
+
+```{r, eval = F}
+user_renviron <- path.expand(file.path("~", ".Renviron"))
+file.edit(user_renviron) # Open with another text editor if this fails
+```
+
+And put the following line with
+your `TOKEN` in your `.Renviron`:
+
+```{bash, eval = F}
+R_TELEGRAM_BOT_RBot=TOKEN
+```
+If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
+to use the `bot_token` function (otherwise you'll have to get
+these variable from `Sys.getenv`).
+
+After you've finished these steps **restart R** in order to have
+working environment variables. You can then create the `Updater` object as:
+
+```{r, eval = F}
+updater <- Updater(token = bot_token('RBot'))
+```
+
+**Recommendation 2:** For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
+
+```{r, eval = F}
+dispatcher <- updater$dispatcher
+```
+
+### 2. The first function
+
+Now, you can define a function that should process a specific type of update:
+
+```{r, eval = F}
+start <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = sprintf("Hello %s!", update$message$from$first_name))
+}
+```
+
+The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command.
+To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` sub-classes) and register it in the dispatcher:
+
+```{r, eval = F}
+start_handler <- CommandHandler('start', start)
+dispatcher$add_handler(start_handler)
+```
+
+### 3. Starting the Bot
+
+And that's all you need. To start the bot, run:
+
+```{r, eval = F}
+updater$start_polling()
+```
+
+Give it a try! Start a chat with your bot and issue the `/start` command - if all went right, it will reply.

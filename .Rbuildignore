@@ -1,3 +1,5 @@
+^CRAN-RELEASE$
+^cran-comments\.md$
 ^.github$
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -6,4 +8,3 @@
 ^LICENSE$
 ^appveyor\.yml$
 ^docs$
-^codemeta\.json$

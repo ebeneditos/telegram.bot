@@ -6,11 +6,11 @@
 \alias{telegram.bot-package}
 \title{telegram.bot}
 \description{
-Features a number of tools to make the development of Telegram bots
-with R easy and straightforward, providing an easy-to-use interface
-that takes some work off the programmer. It is built on top of the
-pure API implementation, being an extension of the \code{\link{telegram}}
-package, an R wrapper around the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
+Provides a pure interface for the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
+In addition to the pure API implementation, it features a number of
+tools to make the development of Telegram bots with R easy and
+straightforward, providing an easy-to-use interface that takes some
+work off the programmer.
 }
 \details{
 In \href{https://ebeneditos.github.io/telegram.bot/}{this page}
