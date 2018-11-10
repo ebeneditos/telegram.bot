@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 
 In the *Introduction* we saw how to build a Telegram Bot with R. However, it can now only answer to the `/start` command, so now we are going to add a couple of functionalities, including:
 
-- [Text responses](#text-responses)
-- [Commands with arguments](#commands-with-arguments)
-- [Unknown command handling](#unknown-command-handling)
-- [Stopping the Bot](#stopping-the-bot)
+- Text responses
+- Commands with arguments
+- Unknown command handling
+- Stopping the Bot
 
 ### Text responses
 

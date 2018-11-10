@@ -31,7 +31,7 @@ Make sure you have the `devtools` package updated.
 
 ## Usage
 
-The `telegram.bot` package is easy, fun and free to use! You can quickly build a chatbot with a few lines:
+You can quickly build a chatbot with a few lines:
 
 ```r
 library(telegram.bot)
@@ -55,7 +55,7 @@ One of the core instances from the package is `Bot`, which represents a Telegram
 ```r
 # Initialize bot
 bot <- Bot(token = "TOKEN")
-chat_id <- "CHAT_ID" # you can get it by sending a message to the bot and then check it with bot$getUpdates()
+chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
 
 # Get bot info
 bot$getMe()
