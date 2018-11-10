@@ -27,8 +27,8 @@ button (see \code{\link{ReplyKeyboardMarkup}}).
 \examples{
 \dontrun{
 # Initialize bot
-bot <- TGBot$new(token = bot_token('RBot'))
-bot$set_default_chat_id(user_id('me'))
+bot <- Bot(token = 'TOKEN')
+chat_id <- 'CHAT_ID'
 
 # Create Custom Keyboard
 text <- "Don't forget to send me the answer!"
@@ -42,9 +42,9 @@ RKM <- ReplyKeyboardMarkup(
 )
 
 # Send Custom Keyboard
-bot$sendMessage(text, reply_markup = RKM)
+bot$sendMessage(chat_id, text, reply_markup = RKM)
 
 # Remove Keyboard
-bot$sendMessage("Okay, thanks!", reply_markup = ReplyKeyboardRemove())
+bot$sendMessage(chat_id, "Okay, thanks!", reply_markup = ReplyKeyboardRemove())
 }
 }

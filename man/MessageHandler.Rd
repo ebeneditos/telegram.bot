@@ -13,7 +13,7 @@ MessageHandler(callback, filters = NULL)
 See \code{\link{Handler}} for information about this function.}
 
 \item{filters}{(Optional). Only allow updates with these filters. Use \code{NULL}
-(default) or \code{Filters$all} for no filtering. See \code{\link{Filters}} for a
+(default) or \code{MessageFilters$all} for no filtering. See \code{\link{MessageFilters}} for a
 full list of all available filters.}
 }
 \description{
@@ -27,6 +27,6 @@ callback_method <- function(bot, update){
 }
 
 # No filtering
-message_handler <- MessageHandler(callback_method, Filters$all)
+message_handler <- MessageHandler(callback_method, MessageFilters$all)
 }
 }
