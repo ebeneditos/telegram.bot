@@ -54,8 +54,8 @@ One of the core instances from the package is `Bot`, which represents a Telegram
 
 ```r
 # Initialize bot
-bot <- Bot(token = bot_token('RBot'))
-chat_id <- user_id('me')
+bot <- Bot('TOKEN')
+chat_id <- 'CHAT_ID' # you can get it by sending a message to the bot and then check it with bot$getUpdates()
 
 # Get bot info
 bot$getMe()
