@@ -11,11 +11,13 @@
 #'     \href{https://core.telegram.org/bots/api#inlinequeryresult}{documentation}
 #'     for the description of the parameters depending on the \code{InlineQueryResult} type
 #' @examples \dontrun{
+#' document_url <- "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
+#' 
 #' result <- InlineQueryResult(
 #'             type = "document",
 #'             id = 1,
 #'             title = "Documentation",
-#'             document_url = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf",
+#'             document_url = document_url,
 #'             mime_type = "application/pdf")
 #' }
 #' @export
