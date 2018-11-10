@@ -54,8 +54,8 @@ One of the core instances from the package is `Bot`, which represents a Telegram
 
 ```r
 # Initialize bot
-bot <- Bot('TOKEN')
-chat_id <- 'CHAT_ID' # you can get it by sending a message to the bot and then check it with bot$getUpdates()
+bot <- Bot(token = "TOKEN")
+chat_id <- "CHAT_ID" # you can get it by sending a message to the bot and then check it with bot$getUpdates()
 
 # Get bot info
 bot$getMe()
@@ -65,8 +65,8 @@ updates <- bot$getUpdates()
 
 # Send message
 bot$sendMessage(chat_id = chat_id,
-                text = '*foo bold text*',
-                parse_mode = 'Markdown')
+                text = "*foo bold text*",
+                parse_mode = "Markdown")
 
 # Send photo
 bot$sendPhoto(chat_id = chat_id,
@@ -99,7 +99,7 @@ bot$sendLocation(chat_id = chat_id,
 
 # Send chat action
 bot$sendChatAction(chat_id = chat_id,
-                   action = 'typing')
+                   action = "typing")
 
 # Get user profile photos
 bot$getUserProfilePhotos(user_id = chat_id)
