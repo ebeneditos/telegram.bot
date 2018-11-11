@@ -41,9 +41,9 @@ start <- function(bot, update){
                   text = sprintf("Hello %s!", update$message$from$first_name))
 }
 
-updater <- Updater('YOUR TOKEN HERE')
+updater <- Updater("YOUR TOKEN HERE")
 
-updater$dispatcher$add_handler(CommandHandler('start', start))
+updater$dispatcher$add_handler(CommandHandler("start", start))
 
 updater$start_polling()
 ```
