@@ -8,13 +8,13 @@ not_implemented <- function() stop('Currently not implemented.')
 
 #' bot_token
 #'
-#' Obtain token from system variables (in \code{Renviron}) set
+#' Obtain token from system variables (in \code{.Renviron}) set
 #' according to the naming convention \code{R_TELEGRAM_BOT_X}
 #' where \code{X} is the bot's name.
 #'
 #' @param bot_name The bot's name
 #' @examples \dontrun{
-#' bot_token('RBot')
+#' bot_token('RTelegramBot')
 #' }
 #' @export
 bot_token <- function(bot_name){
@@ -23,7 +23,7 @@ bot_token <- function(bot_name){
 
 #' user_id
 #'
-#' Obtain Telegram user id from system variables (in \code{Renviron}) set
+#' Obtain Telegram user id from system variables (in \code{.Renviron}) set
 #' according to the naming convention \code{R_TELEGRAM_USER_X}
 #' where \code{X} is the user's name.
 #'

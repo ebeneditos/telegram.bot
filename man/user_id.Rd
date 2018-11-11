@@ -10,7 +10,7 @@ user_id(user_name)
 \item{user_name}{The user's name}
 }
 \description{
-Obtain Telegram user id from system variables (in \code{Renviron}) set
+Obtain Telegram user id from system variables (in \code{.Renviron}) set
 according to the naming convention \code{R_TELEGRAM_USER_X}
 where \code{X} is the user's name.
 }

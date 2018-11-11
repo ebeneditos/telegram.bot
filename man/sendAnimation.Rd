@@ -49,7 +49,7 @@ You can also use it's snake_case equivalent \code{send_animation}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RBot'))
+bot <- Bot(token = bot_token('RTelegramBot'))
 chat_id <- user_id('me')
 animation_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 

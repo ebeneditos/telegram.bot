@@ -33,7 +33,7 @@ First, you must have or [create a Telegram account](https://web.telegram.org). S
 You should get a reply instantly that asks you to choose a name for your Bot. You have to send then the name you want for the bot, which can be anyone, for instance:
 
 ```{bash, eval = F}
-RBot
+RTelegramBot
 ```
 
 *BotFather* will now ask you to pick a username for your Bot. This username has to end in `bot`, and be globally unique. In this tutorial we'll indicate the Bot's username with `<your-bot-username>`, so you'll have to substitute your chosen username wherever relevant from now on. Send your chosen username to *BotFather*:

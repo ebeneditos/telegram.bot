@@ -35,7 +35,7 @@ You can also use it's snake_case equivalent \code{send_chat_action}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RBot'))
+bot <- Bot(token = bot_token('RTelegramBot'))
 chat_id <- user_id('me')
 
 bot$sendChatAction(chat_id = chat_id,
