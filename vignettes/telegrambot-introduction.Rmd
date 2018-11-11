@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 
 In this vignette you will learn how the Telegram Bot API works and how you can connect to it from R, with the following sections:
 
-- [Creating a Telegram Bot](#creating-a-telegram-bot)
-- [Introduction to the Telegram Bot API](#introduction-to-the-telegram-bot-api)
-- [The `telegram.bot` Package](#the-telegrambot-package)
+- Creating a Telegram Bot
+- Introduction to the Telegram Bot API
+- The `telegram.bot` Package
 
 ### Creating a Telegram Bot
 
@@ -88,7 +88,7 @@ First, create an instance of the `Bot` class, where `TOKEN` should be replaced b
 # install.packages("telegram.bot")
 library(telegram.bot)
 
-bot <- Bot(token = 'TOKEN')
+bot <- Bot(token = "TOKEN")
 ```
 
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
@@ -110,7 +110,8 @@ updates <- bot$getUpdates()
 This will retrieve a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
 
 ```{r, eval = F}
-bot$sendMessage(chat_id = <chat-id>, text = 'TestReply')
+chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
+bot$sendMessage(chat_id = chat_id, text = "Test reply")
 ```
 
 #### Other methods
@@ -118,12 +119,10 @@ bot$sendMessage(chat_id = <chat-id>, text = 'TestReply')
 As you see, one of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are a few more examples:
 
 ```{r, eval = F}
-chat_id <- <chat-id>
-
 # Send message
 bot$sendMessage(chat_id = chat_id,
-                text = '*foo bold text*',
-                parse_mode = 'Markdown')
+                text = "*foo bold text*",
+                parse_mode = "Markdown")
 
 # Send photo
 bot$sendPhoto(chat_id = chat_id,
@@ -156,7 +155,7 @@ bot$sendLocation(chat_id = chat_id,
 
 # Send chat action
 bot$sendChatAction(chat_id = chat_id,
-                   action = 'typing')
+                   action = "typing")
 
 # Get user profile photos
 bot$getUserProfilePhotos(user_id = chat_id)

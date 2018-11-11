@@ -16,12 +16,12 @@ test_that("Process Message", {
   expect_null(dispatcher$process_update(update))
   
   # one filter
-  message_handler$filters <- Filters$all
+  message_handler$filters <- MessageFilters$all
   expect_error(dispatcher$add_handler(handler = message_handler), NA)
   expect_null(dispatcher$process_update(update))
   
   # list of filters
-  message_handler$filters <- list(Filters$text, Filters$command)
+  message_handler$filters <- list(MessageFilters$text, MessageFilters$command)
   expect_error(dispatcher$add_handler(handler = message_handler), NA)
   expect_null(dispatcher$process_update(update))
   

@@ -16,7 +16,7 @@ should listen for.}
 See \code{\link{Handler}} for information about this function.}
 
 \item{filters}{(Optional). Only allow updates with these filters. See
-\code{\link{Filters}} for a full list of all available filters.}
+\code{\link{MessageFilters}} for a full list of all available filters.}
 
 \item{pass_args}{(Optional). Determines whether the handler should be passed
 \code{args}, received as a \code{vector}, split on spaces.}

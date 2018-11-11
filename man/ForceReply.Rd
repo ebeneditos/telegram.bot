@@ -21,13 +21,13 @@ message and tapped 'Reply').
 \examples{
 \dontrun{
 # Initialize bot
-bot <- TGBot$new(token = bot_token('RBot'))
-bot$set_default_chat_id(user_id('me'))
+bot <- Bot(token = 'TOKEN')
+chat_id <- 'CHAT_ID'
 
 # Set input parameters
 text <- "Don't forget to send me the answer!"
 
 # Send reply message
-bot$sendMessage(text, reply_markup = ForceReply())
+bot$sendMessage(chat_id, text, reply_markup = ForceReply())
 }
 }

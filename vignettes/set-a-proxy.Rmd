@@ -1,0 +1,31 @@
+---
+title: "Set a Proxy"
+author: "Ernest Benedito"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Set a Proxy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+If you want to set a proxy, you can do it by passing an `httr::use_proxy` instance into the `request_config` parameter when calling the `Bot` object:
+
+```{r, eval = F}
+bot <- Bot(token = 'TOKEN', request_config = httr::use_proxy(...))
+```
+
+Also, the same `request_config` parameter can be passed through the `Updater` object:
+
+```{r, eval = F}
+updater <- Updater(token = 'TOKEN', request_config = httr::use_proxy(...))
+```
+
+The details for the proxy settings can be found in `?httr::use_proxy`.

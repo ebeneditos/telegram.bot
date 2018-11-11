@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 
 In this tutorial we will explain how to build a Bot with R and `telegram.bot` following the next steps:
 
-1. [Creating the `Updater` object](#1-creating-the-updater-object)
-2. [The first function](#2-the-first-function)
-3. [Starting the Bot](#3-starting-the-bot)
+1. Creating the `Updater` object
+2. The first function
+3. Starting the Bot
 
 First, though, let's introduce the `telegram.bot` package.
 

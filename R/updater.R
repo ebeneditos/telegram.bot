@@ -133,6 +133,9 @@ stop_polling <- function(){
 #'     \href{http://core.telegram.org/bots/api}{Telegram Bot API}
 #' @examples \dontrun{
 #' updater <- Updater(token = 'TOKEN')
+#' 
+#' # In case you want to set a proxy (see ?httr:use_proxy for setting details)
+#' updater <- Updater(token = 'TOKEN', request_config = httr::use_proxy(...))
 #' }
 #' @export
 Updater <- function(token = NULL,

@@ -31,7 +31,7 @@ Make sure you have the `devtools` package updated.
 
 ## Usage
 
-The `telegram.bot` package is easy, fun and free to use! You can quickly build a chatbot with a few lines:
+You can quickly build a chatbot with a few lines:
 
 ```r
 library(telegram.bot)
@@ -41,9 +41,9 @@ start <- function(bot, update){
                   text = sprintf("Hello %s!", update$message$from$first_name))
 }
 
-updater <- Updater('YOUR TOKEN HERE')
+updater <- Updater("YOUR TOKEN HERE")
 
-updater$dispatcher$add_handler(CommandHandler('start', start))
+updater$dispatcher$add_handler(CommandHandler("start", start))
 
 updater$start_polling()
 ```
@@ -54,8 +54,8 @@ One of the core instances from the package is `Bot`, which represents a Telegram
 
 ```r
 # Initialize bot
-bot <- Bot('TOKEN')
-chat_id <- 'CHAT_ID' # you can get it by sending a message to the bot and then check it with bot$getUpdates()
+bot <- Bot(token = "TOKEN")
+chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
 
 # Get bot info
 bot$getMe()
@@ -65,8 +65,8 @@ updates <- bot$getUpdates()
 
 # Send message
 bot$sendMessage(chat_id = chat_id,
-                text = '*foo bold text*',
-                parse_mode = 'Markdown')
+                text = "*foo bold text*",
+                parse_mode = "Markdown")
 
 # Send photo
 bot$sendPhoto(chat_id = chat_id,
@@ -99,7 +99,7 @@ bot$sendLocation(chat_id = chat_id,
 
 # Send chat action
 bot$sendChatAction(chat_id = chat_id,
-                   action = 'typing')
+                   action = "typing")
 
 # Get user profile photos
 bot$getUserProfilePhotos(user_id = chat_id)

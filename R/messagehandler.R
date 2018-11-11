@@ -10,7 +10,7 @@
 #' @param callback The callback function for this handler.
 #'   See \code{\link{Handler}} for information about this function.
 #' @param filters (Optional). Only allow updates with these filters. Use \code{NULL}
-#'   (default) or \code{Filters$all} for no filtering. See \code{\link{Filters}} for a
+#'   (default) or \code{MessageFilters$all} for no filtering. See \code{\link{MessageFilters}} for a
 #'   full list of all available filters.
 #' @examples \dontrun{
 #' callback_method <- function(bot, update){
@@ -19,7 +19,7 @@
 #' }
 #' 
 #' # No filtering
-#' message_handler <- MessageHandler(callback_method, Filters$all)
+#' message_handler <- MessageHandler(callback_method, MessageFilters$all)
 #' }
 #' @export
 MessageHandler <- function(callback, filters = NULL){

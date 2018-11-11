@@ -54,8 +54,8 @@ KeyboardButton <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- TGBot$new(token = bot_token('RBot'))
-#' bot$set_default_chat_id(user_id('me'))
+#' bot <- Bot(token = 'TOKEN')
+#' chat_id <- 'CHAT_ID'
 #' 
 #' # Create Custom Keyboard
 #' text <- "Aren't those custom keyboards cool?"
@@ -69,7 +69,7 @@ KeyboardButton <- function(
 #' )
 #' 
 #' # Send Custom Keyboard
-#' bot$sendMessage(text, reply_markup = RKM)
+#' bot$sendMessage(chat_id, text, reply_markup = RKM)
 #' }
 #' @export
 ReplyKeyboardMarkup <- function(
@@ -172,8 +172,8 @@ InlineKeyboardButton <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- TGBot$new(token = bot_token('RBot'))
-#' bot$set_default_chat_id(user_id('me'))
+#' bot <- Bot(token = 'TOKEN')
+#' chat_id <- 'CHAT_ID'
 #' 
 #' # Create Inline Keyboard
 #' text <- "Could you type their phone number, please?"
@@ -195,7 +195,7 @@ InlineKeyboardButton <- function(
 #'   )
 #' 
 #' # Send Inline Keyboard
-#' bot$sendMessage(text, reply_markup = IKM)
+#' bot$sendMessage(chat_id, text, reply_markup = IKM)
 #' }
 #' @export
 InlineKeyboardMarkup <- function(
@@ -233,8 +233,8 @@ InlineKeyboardMarkup <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- TGBot$new(token = bot_token('RBot'))
-#' bot$set_default_chat_id(user_id('me'))
+#' bot <- Bot(token = 'TOKEN')
+#' chat_id <- 'CHAT_ID'
 #' 
 #' # Create Custom Keyboard
 #' text <- "Don't forget to send me the answer!"
@@ -248,10 +248,10 @@ InlineKeyboardMarkup <- function(
 #' )
 #' 
 #' # Send Custom Keyboard
-#' bot$sendMessage(text, reply_markup = RKM)
+#' bot$sendMessage(chat_id, text, reply_markup = RKM)
 #' 
 #' # Remove Keyboard
-#' bot$sendMessage("Okay, thanks!", reply_markup = ReplyKeyboardRemove())
+#' bot$sendMessage(chat_id, "Okay, thanks!", reply_markup = ReplyKeyboardRemove())
 #' }
 #' @export
 ReplyKeyboardRemove <- function(
@@ -281,14 +281,14 @@ ReplyKeyboardRemove <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- TGBot$new(token = bot_token('RBot'))
-#' bot$set_default_chat_id(user_id('me'))
+#' bot <- Bot(token = 'TOKEN')
+#' chat_id <- 'CHAT_ID'
 #' 
 #' # Set input parameters
 #' text <- "Don't forget to send me the answer!"
 #' 
 #' # Send reply message
-#' bot$sendMessage(text, reply_markup = ForceReply())
+#' bot$sendMessage(chat_id, text, reply_markup = ForceReply())
 #' }
 #' @export
 ForceReply <- function(

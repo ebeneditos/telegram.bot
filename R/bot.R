@@ -50,7 +50,7 @@ bot.request <- function(url, data)
   result <- httr::POST(url = url,
                        body = data,
                        config = private$request_config,
-                       encode = 'json')
+                       encode = 'multipart')
   httr::stop_for_status(result)
   
   if (result$status >= 200 && result$status <= 299){
@@ -121,8 +121,8 @@ getMe <- function()
 #' chat_id <- user_id('me')
 #' 
 #' bot$sendMessage(chat_id = chat_id,
-#'                  text = "*foo bold text*",
-#'                  parse_mode = "Markdown")
+#'                 text = "*foo bold text*",
+#'                 parse_mode = "Markdown")
 #' }
 sendMessage <- function(chat_id,
                         text,
@@ -243,8 +243,8 @@ forwardMessage <- function(chat_id,
 #' photo_url <- "https://telegram.org/img/t_logo.png"
 #' 
 #' bot$sendPhoto(chat_id = chat_id,
-#'                photo = photo_url,
-#'                caption = "Telegram Logo")
+#'               photo = photo_url,
+#'               caption = "Telegram Logo")
 #' }
 sendPhoto <- function(chat_id,
                       photo,
@@ -1332,6 +1332,9 @@ set_token <- function(token){
 #'     default timeouts and/or control the proxy used for http communication.
 #' @examples \dontrun{
 #' bot <- Bot(token = 'TOKEN')
+#' 
+#' # In case you want to set a proxy (see ?httr:use_proxy for setting details)
+#' bot <- Bot(token = 'TOKEN', request_config = httr::use_proxy(...))
 #' }
 #' @export
 Bot <- function(token,

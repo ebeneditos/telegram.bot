@@ -32,8 +32,8 @@ with reply options.
 \examples{
 \dontrun{
 # Initialize bot
-bot <- TGBot$new(token = bot_token('RBot'))
-bot$set_default_chat_id(user_id('me'))
+bot <- Bot(token = 'TOKEN')
+chat_id <- 'CHAT_ID'
 
 # Create Custom Keyboard
 text <- "Aren't those custom keyboards cool?"
@@ -47,6 +47,6 @@ RKM <- ReplyKeyboardMarkup(
 )
 
 # Send Custom Keyboard
-bot$sendMessage(text, reply_markup = RKM)
+bot$sendMessage(chat_id, text, reply_markup = RKM)
 }
 }
