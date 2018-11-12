@@ -3,7 +3,7 @@
 
 - Fixed a bug that affected sending local files.
 - Renamed `Filters` instance to `MessageFilters` in order to avoid masking from `utils::Filters` object.
-- Added **Set a Proxy** vignette and examples.
+- Added *Set a Proxy* vignette and examples.
 - Documentation updated.
 
 ## v2.0.0

@@ -75,12 +75,14 @@ If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
 to use the `bot_token` function (otherwise you'll have to get
 these variable from `Sys.getenv`).
 
-After you've finished these steps **restart R** in order to have
+Finally, **restart R** in order to have
 working environment variables. You can then create the `Updater` object as:
 
 ```r
 updater <- Updater(token = bot_token("RTelegramBot"))
 ```
+
+For further details about this process, you can take a look at the [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API) page.
 
 ## Telegram API Methods
 
