@@ -94,7 +94,7 @@ bot <- Bot(token = "TOKEN")
 chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
 
 # Get bot info
-bot$getMe()
+print(bot$getMe())∫
 
 # Get updates
 updates <- bot$getUpdates()
