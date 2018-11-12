@@ -68,7 +68,7 @@ file.edit(path.expand(file.path("~", ".Renviron")))
 And put the following line with
 your `TOKEN` in your `.Renviron`:
 
-```bash
+```r
 R_TELEGRAM_BOT_RTelegramBot=TOKEN
 ```
 If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
