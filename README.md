@@ -58,11 +58,11 @@ it's unsafe to type the `TOKEN` just in the R script. It's better to use
 enviroment variables set in `.Renviron` file.
 
 So let's say you have named your bot `RTelegramBot` (it's the first question
-you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R commands:
+you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R command:
 
 ```r
-user_renviron <- path.expand(file.path("~", ".Renviron"))
-file.edit(user_renviron) # Open with another text editor if this fails
+# Open with another text editor if this fails
+file.edit(path.expand(file.path("~", ".Renviron")))
 ```
 
 And put the following line with
@@ -94,7 +94,7 @@ bot <- Bot(token = "TOKEN")
 chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
 
 # Get bot info
-print(bot$getMe())∫
+print(bot$getMe())
 
 # Get updates
 updates <- bot$getUpdates()
