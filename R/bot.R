@@ -117,7 +117,7 @@ getMe <- function()
 #'      \item{\code{\link{ForceReply}}}
 #'     }
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' 
 #' bot$sendMessage(chat_id = chat_id,
@@ -238,7 +238,7 @@ forwardMessage <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' photo_url <- "https://telegram.org/img/t_logo.png"
 #' 
@@ -309,7 +309,7 @@ sendPhoto <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' audio_url <- "http://www.largesound.com/ashborytour/sound/brobob.mp3"
 #' 
@@ -382,7 +382,7 @@ sendAudio <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' document_url <- "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
 #' 
@@ -445,7 +445,7 @@ sendDocument <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' sticker_url <- "https://www.gstatic.com/webp/gallery/1.webp"
 #' 
@@ -508,7 +508,7 @@ sendSticker <- function(chat_id,
 #' @param supports_streaming (Optional). Pass \code{TRUE}, if the uploaded video is
 #'     suitable for streaming
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' video_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
@@ -583,7 +583,7 @@ sendVideo <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' video_note_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
@@ -649,7 +649,7 @@ sendVideoNote <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' animation_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
@@ -725,7 +725,7 @@ sendAnimation <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' voice_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
 #' 
@@ -787,7 +787,7 @@ sendVoice <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' 
 #' bot$sendLocation(chat_id = chat_id,
@@ -842,7 +842,7 @@ sendLocation <- function(chat_id,
 #'  \item{\code{record_video_note}}{ for video note recording}
 #' }
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' 
 #' bot$sendChatAction(chat_id = chat_id,
@@ -872,7 +872,7 @@ sendChatAction <- function(chat_id,
 #' @param limit (Optional). Limits the number of photos to be retrieved. Values
 #'     between 1-100 are accepted. Defaults to 100.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
 #' 
 #' bot$getUserProfilePhotos(chat_id = chat_id)
@@ -1102,7 +1102,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
 #'     Please note that this parameter doesn't affect updates created before the call
 #'     to the getUpdates, so unwanted updates may be received for a short period of time.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RBot'))
+#' bot <- Bot(token = bot_token('RTelegramBot'))
 #' 
 #' updates <- bot$getUpdates()
 #' }
@@ -1334,7 +1334,8 @@ set_token <- function(token){
 #' bot <- Bot(token = 'TOKEN')
 #' 
 #' # In case you want to set a proxy (see ?httr:use_proxy for setting details)
-#' bot <- Bot(token = 'TOKEN', request_config = httr::use_proxy(...))
+#' bot <- Bot(token = 'TOKEN',
+#'            request_config = httr::use_proxy(...))
 #' }
 #' @export
 Bot <- function(token,

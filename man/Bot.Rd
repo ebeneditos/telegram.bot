@@ -83,6 +83,7 @@ You can also use its methods \code{snake_case} equivalent.
 bot <- Bot(token = 'TOKEN')
 
 # In case you want to set a proxy (see ?httr:use_proxy for setting details)
-bot <- Bot(token = 'TOKEN', request_config = httr::use_proxy(...))
+bot <- Bot(token = 'TOKEN',
+           request_config = httr::use_proxy(...))
 }
 }

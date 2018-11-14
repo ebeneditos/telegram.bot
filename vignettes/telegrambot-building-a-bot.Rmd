@@ -51,7 +51,7 @@ guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
 environment variables set in `.Renviron` file.
 
-So let's say you have named your bot `RBot` (it's the first question
+So let's say you have named your bot `RTelegramBot` (it's the first question
 you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R commands:
 
 ```{r, eval = F}
@@ -63,7 +63,7 @@ And put the following line with
 your `TOKEN` in your `.Renviron`:
 
 ```{bash, eval = F}
-R_TELEGRAM_BOT_RBot=TOKEN
+R_TELEGRAM_BOT_RTelegramBot=TOKEN
 ```
 If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
 to use the `bot_token` function (otherwise you'll have to get
@@ -73,7 +73,7 @@ After you've finished these steps **restart R** in order to have
 working environment variables. You can then create the `Updater` object as:
 
 ```{r, eval = F}
-updater <- Updater(token = bot_token('RBot'))
+updater <- Updater(token = bot_token("RTelegramBot"))
 ```
 
 **Recommendation 2:** For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:

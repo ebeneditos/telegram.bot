@@ -135,7 +135,8 @@ stop_polling <- function(){
 #' updater <- Updater(token = 'TOKEN')
 #' 
 #' # In case you want to set a proxy (see ?httr:use_proxy for setting details)
-#' updater <- Updater(token = 'TOKEN', request_config = httr::use_proxy(...))
+#' updater <- Updater(token = 'TOKEN',
+#'                    request_config = httr::use_proxy(...))
 #' }
 #' @export
 Updater <- function(token = NULL,

@@ -48,6 +48,42 @@ updater$dispatcher$add_handler(CommandHandler("start", start))
 updater$start_polling()
 ```
 
+## Generating an Access Token
+
+To make it work, you'll need an access `TOKEN` (it should look something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`). If you don't have it, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
+
+**Recommendation:** Following [Hadley's API
+guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
+it's unsafe to type the `TOKEN` just in the R script. It's better to use
+enviroment variables set in `.Renviron` file.
+
+So let's say you have named your bot `RTelegramBot` (it's the first question
+you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R command:
+
+```r
+# Open with another text editor if this fails
+file.edit(path.expand(file.path("~", ".Renviron")))
+```
+
+And put the following line with
+your `TOKEN` in your `.Renviron`:
+
+```r
+R_TELEGRAM_BOT_RTelegramBot=TOKEN
+```
+If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
+to use the `bot_token` function (otherwise you'll have to get
+these variable from `Sys.getenv`).
+
+Finally, **restart R** in order to have
+working environment variables. You can then create the `Updater` object as:
+
+```r
+updater <- Updater(token = bot_token("RTelegramBot"))
+```
+
+For further details about this process, you can take a look at the [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API) page.
+
 ## Telegram API Methods
 
 One of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are some examples:
@@ -58,7 +94,7 @@ bot <- Bot(token = "TOKEN")
 chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
 
 # Get bot info
-bot$getMe()
+print(bot$getMe())
 
 # Get updates
 updates <- bot$getUpdates()
