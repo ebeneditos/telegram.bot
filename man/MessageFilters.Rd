@@ -11,6 +11,10 @@ MessageFilters
 \description{
 Predefined filters for use as the \code{filter} argument of class \code{\link{MessageHandler}}.
 }
+\details{
+See \code{\link{BaseFilter}} and \code{\link{filtersLogic}} for
+advanced filters.
+}
 \section{Functions}{
  \itemize{
     \item{\code{all}: All Messages.}

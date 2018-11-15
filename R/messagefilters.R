@@ -3,6 +3,9 @@
 #'
 #' Predefined filters for use as the \code{filter} argument of class \code{\link{MessageHandler}}.
 #'
+#' See \code{\link{BaseFilter}} and \code{\link{filtersLogic}} for
+#' advanced filters.
+#'     
 #' @docType data
 #' @format A \code{list} with filtering functions.
 #' @section Functions: \itemize{
@@ -30,72 +33,21 @@
 #' }
 #' @export
 MessageFilters <- list(
-  'all' =
-    function(message){
-      TRUE
-    },
-  'text' =
-    function(message){
-      !is.null(message$text) && !startsWith(message$text, '/')
-    },
-  'command' =
-    function(message){
-      !is.null(message$text) && startsWith(message$text, '/')
-    },
-  'reply' =
-    function(message){
-      !is.null(message$reply_to_message)
-    },
-  'audio' =
-    function(message){
-      !is.null(message$audio)
-    },
-  'document' =
-    function(message){
-      !is.null(message$document)
-    },
-  'photo' =
-    function(message){
-      !is.null(message$photo)
-    },
-  'sticker' =
-    function(message){
-      !is.null(message$sticker)
-    },
-  'video' =
-    function(message){
-      !is.null(message$video)
-    },
-  'voice' =
-    function(message){
-      !is.null(message$voice)
-    },
-  'contact' =
-    function(message){
-      !is.null(message$contact)
-    },
-  'location' =
-    function(message){
-      !is.null(message$location)
-    },
-  'venue' =
-    function(message){
-      !is.null(message$venue)
-    },
-  'forwarded' =
-    function(message){
-      !is.null(message$forward_date)
-    },
-  'game' =
-    function(message){
-      !is.null(message$game)
-    },
-  'invoice' =
-    function(message){
-      !is.null(message$invoice)
-    },
-  'successful_payment' =
-    function(message){
-      !is.null(message$successful_payment)
-    }
+  'all' = BaseFilter(function(message) TRUE),
+  'text' = BaseFilter(function(message) !is.null(message$text) && !startsWith(message$text, '/')),
+  'command' = BaseFilter(function(message) !is.null(message$text) && startsWith(message$text, '/')),
+  'reply' = BaseFilter(function(message) !is.null(message$reply_to_message)),
+  'audio' = BaseFilter(function(message) !is.null(message$audio)),
+  'document' = BaseFilter(function(message) !is.null(message$document)),
+  'photo' = BaseFilter(function(message) !is.null(message$photo)),
+  'sticker' = BaseFilter(function(message) !is.null(message$sticker)),
+  'video' = BaseFilter(function(message) !is.null(message$video)),
+  'voice' = BaseFilter(function(message) !is.null(message$voice)),
+  'contact' = BaseFilter(function(message) !is.null(message$contact)),
+  'location' = BaseFilter(function(message) !is.null(message$location)),
+  'venue' = BaseFilter(function(message) !is.null(message$venue)),
+  'forwarded' = BaseFilter(function(message) !is.null(message$forward_date)),
+  'game' = BaseFilter(function(message) !is.null(message$game)),
+  'invoice' = BaseFilter(function(message) !is.null(message$invoice)),
+  'successful_payment' = BaseFilter(function(message) !is.null(message$successful_payment))
 )
