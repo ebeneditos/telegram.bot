@@ -13,7 +13,13 @@
 #' @param verbose (Optional). If \code{TRUE}, prints status of the polling. Default is \code{FALSE}.
 #' @examples \dontrun{
 #' # Start polling example
-#' updater <- Updater(token = 'TOKEN')
+#' start <- function(bot, update){
+#'   bot$sendMessage(chat_id = update$message$chat_id,
+#'                   text = sprintf("Hello %s!",
+#'                                  update$message$from$first_name))
+#' }
+#' 
+#' updater <- Updater("TOKEN") + CommandHandler("start", start)
 #' 
 #' updater$start_polling(verbose = TRUE)
 #' }
@@ -89,7 +95,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
 #'   updater$stop_polling()
 #' }
 #' 
-#' updater$dispatcher$add_handler(CommandHandler('kill', kill))
+#' updater <- updater + CommandHandler('kill', kill)
 #' 
 #' updater$start_polling(verbose = T) # Send '/kill' to the bot
 #' }
@@ -106,13 +112,15 @@ stop_polling <- function(){
 #' Updater
 #'
 #' Package main class. This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
-#' class \code{\link{Bot}} to the programmer, so they can focus on coding the bot. Its purpose is to
+#' class \code{\link{Bot}} to the programmer, so you can focus on coding the bot. Its purpose is to
 #' receive the updates from Telegram and to deliver them to said dispatcher. The
 #' dispatcher supports \code{\link{Handler}} classes for different kinds of data: Updates from Telegram, basic text
-#' commands and even arbitrary types.
+#' commands and even arbitrary types. See \code{\link{add}} (\code{+}) to learn more about building your \code{Updater}.
 #'
 #' \strong{Note:} You \strong{must} supply either a \code{bot} or a \code{token} argument.
 #' @format An \code{\link{R6Class}} object.
+#' @name Updater
+#' @aliases is.Updater
 #' @param token (Optional). The bot's token given by the @BotFather.
 #' @param base_url (Optional). Telegram Bot API service URL.
 #' @param base_file_url (Optional). Telegram Bot API file URL.
@@ -132,11 +140,22 @@ stop_polling <- function(){
 #'     introduction for developers} and
 #'     \href{http://core.telegram.org/bots/api}{Telegram Bot API}
 #' @examples \dontrun{
-#' updater <- Updater(token = 'TOKEN')
+#' updater <- Updater(token = "TOKEN")
 #' 
-#' # In case you want to set a proxy (see ?httr:use_proxy for setting details)
-#' updater <- Updater(token = 'TOKEN',
+#' # In case you want to set a proxy (see ?httr:use_proxy)
+#' updater <- Updater(token = "TOKEN",
 #'                    request_config = httr::use_proxy(...))
+#'                    
+#' # Add a handler
+#' start <- function(bot, update){
+#'   bot$sendMessage(chat_id = update$message$chat_id,
+#'                   text = sprintf("Hello %s!",
+#'                                  update$message$from$first_name))
+#' }
+#' updater <- updater + CommandHandler("start", start)
+#' 
+#' # Start polling
+#' updater$start_polling(verbose = TRUE) # Send '/start' to the bot
 #' }
 #' @export
 Updater <- function(token = NULL,
@@ -150,6 +169,7 @@ Updater <- function(token = NULL,
 
 UpdaterClass <-
   R6::R6Class("Updater",
+              inherit = TelegramObject,
               public = list(
 
                 ## args
@@ -192,3 +212,10 @@ UpdaterClass <-
 
               )
 )
+
+#' @rdname Updater
+#' @export
+is.Updater <- function(x){
+  inherits(x, "Updater")
+}
+

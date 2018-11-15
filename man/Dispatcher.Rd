@@ -3,10 +3,13 @@
 \docType{class}
 \name{Dispatcher}
 \alias{Dispatcher}
+\alias{is.Dispatcher}
 \title{Dispatcher}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Dispatcher(bot)
+
+is.Dispatcher(x)
 }
 \arguments{
 \item{bot}{The bot object that should be passed to the handlers.}

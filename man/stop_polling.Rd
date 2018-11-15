@@ -24,7 +24,7 @@ kill <- function(bot, update){
   updater$stop_polling()
 }
 
-updater$dispatcher$add_handler(CommandHandler('kill', kill))
+updater <- updater + CommandHandler('kill', kill)
 
 updater$start_polling(verbose = T) # Send '/kill' to the bot
 }

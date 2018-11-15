@@ -3,11 +3,14 @@
 \docType{class}
 \name{Handler}
 \alias{Handler}
+\alias{is.Handler}
 \title{Handler}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Handler(callback, check_update = NULL, handle_update = NULL,
   handlername = NULL)
+
+is.Handler(x)
 }
 \arguments{
 \item{callback}{The callback function for this handler. Its inputs will be \code{(bot, update)},

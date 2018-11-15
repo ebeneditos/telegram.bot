@@ -20,9 +20,9 @@ add_handler <- function(handler,
                         group = 1)
 {
 
-  if(!inherits(handler, 'Handler'))
+  if(!is.Handler(handler))
     stop('handler is not an instance of Handler')
-  if(!inherits(group, 'numeric'))
+  if(!is.numeric(group))
     stop('group is not numeric')
   
   group <- round(group[1])
@@ -59,6 +59,8 @@ add_error_handler <- function(callback)
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
+#' @name Dispatcher
+#' @aliases is.Dispatcher
 #' @param bot The bot object that should be passed to the handlers.
 #' @section Methods: \describe{
 #'     \item{\code{\link{add_handler}}}{Registers a handler in the \code{Dispatcher}.}
@@ -72,6 +74,7 @@ Dispatcher <- function(bot){
 
 DispatcherClass <-
   R6::R6Class("Dispatcher",
+              inherit = TelegramObject,
               public = list(
 
                 ## args
@@ -137,4 +140,10 @@ DispatcherClass <-
                 # A vector of errorHandlers.
                 error_handlers = list()
               )
-  )
+)
+
+#' @rdname Dispatcher
+#' @export
+is.Dispatcher <- function(x){
+  inherits(x, "Dispatcher")
+}

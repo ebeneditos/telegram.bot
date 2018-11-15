@@ -1333,7 +1333,7 @@ set_token <- function(token){
 #' @examples \dontrun{
 #' bot <- Bot(token = 'TOKEN')
 #' 
-#' # In case you want to set a proxy (see ?httr:use_proxy for setting details)
+#' # In case you want to set a proxy (see ?httr:use_proxy)
 #' bot <- Bot(token = 'TOKEN',
 #'            request_config = httr::use_proxy(...))
 #' }
@@ -1348,6 +1348,7 @@ Bot <- function(token,
 
 BotClass <-
   R6::R6Class("Bot",
+              inherit = TelegramObject,
               public = list(
 
                 ## initialize

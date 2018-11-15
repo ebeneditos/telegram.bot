@@ -32,6 +32,8 @@ handle_update <- function(update, dispatcher){
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
+#' @name Handler
+#' @aliases is.Handler
 #' @section Methods: \describe{
 #'     \item{\code{\link{check_update}}}{Called to determine if an update should be handled by
 #' this handler instance.}
@@ -91,6 +93,7 @@ Handler <- function(callback, check_update = NULL, handle_update = NULL, handler
 
 HandlerClass <-
   R6::R6Class("Handler",
+              inherit = TelegramObject,
               public = list(
 
                 ## args
@@ -108,4 +111,10 @@ HandlerClass <-
                 
               )
 )
+
+#' @rdname Handler
+#' @export
+is.Handler <- function(x){
+  inherits(x, "Handler")
+}
 
