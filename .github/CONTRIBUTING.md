@@ -22,7 +22,7 @@ To ease the submit review, please take a look on our [coding conventions](CONTRI
 Start reading our code and you'll get the hang of it. We optimize for readability:
 
   * For Telegram methods and variables, use [Telegram Bot API](http://core.telegram.org/bots/api) nomenclature.
-  * In order to have a starting point for new classes, we are basing its structure and nomenclature on Python's submodule  [`telegram.bot`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/telegram/ext) from
+  * In order to have a starting point for new classes, we are basing its structure and nomenclature on Python's submodule  [`telegram.ext`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/telegram/ext) from
 [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot) library, so please take a look on it.
   * Set intuitive variable names.
   * Follow the structure of the already done work.
