@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{getWebhookInfo}
 \alias{getWebhookInfo}
-\title{getWebhookInfo}
+\title{Get current webhook status}
 \usage{
 getWebhookInfo()
 }

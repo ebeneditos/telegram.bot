@@ -34,7 +34,7 @@ NULL
 #' @export
 "|.BaseFilter" <- function(f, g) function(...) f(...) | g(...)
 
-#' BaseFilter
+#' The base of all filters
 #'
 #' Base class for all Message Filters.
 #' 

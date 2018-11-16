@@ -27,8 +27,6 @@ Or the development version from GitHub:
 devtools::install_github("ebeneditos/telegram.bot")
 ```
 
-Make sure you have the `devtools` package updated.
-
 ## Usage
 
 You can quickly build a chatbot with a few lines:
@@ -41,11 +39,9 @@ start <- function(bot, update){
                   text = sprintf("Hello %s!", update$message$from$first_name))
 }
 
-updater <- Updater("YOUR TOKEN HERE")
+updater <- Updater("TOKEN") + CommandHandler("start", start)
 
-updater$dispatcher$add_handler(CommandHandler("start", start))
-
-updater$start_polling()
+updater$start_polling() # Send '/start' to the bot
 ```
 
 ## Generating an Access Token
@@ -65,18 +61,14 @@ you answered to the *BotFather* when creating it); you can open the `.Renviron` 
 file.edit(path.expand(file.path("~", ".Renviron")))
 ```
 
-And put the following line with
-your `TOKEN` in your `.Renviron`:
+And put the following line with your `TOKEN` in your `.Renviron`:
 
 ```r
 R_TELEGRAM_BOT_RTelegramBot=TOKEN
 ```
 If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
 to use the `bot_token` function (otherwise you'll have to get
-these variable from `Sys.getenv`).
-
-Finally, **restart R** in order to have
-working environment variables. You can then create the `Updater` object as:
+these variable from `Sys.getenv`). Finally, **restart R** and you can then create the `Updater` object as:
 
 ```r
 updater <- Updater(token = bot_token("RTelegramBot"))
@@ -165,4 +157,3 @@ The package is in a starting phase, so contributions of all sizes are very welco
 
 This package is inspired by Python's library
 [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot), specially by its submodule `telegram.ext`.
-

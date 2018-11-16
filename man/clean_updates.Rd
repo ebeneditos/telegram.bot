@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{clean_updates}
 \alias{clean_updates}
-\title{clean_updates}
+\title{Clean any pending updates}
 \usage{
 clean_updates()
 }

@@ -3,7 +3,7 @@
 \name{Updater}
 \alias{Updater}
 \alias{is.Updater}
-\title{Updater}
+\title{Build a Bot}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Updater(token = NULL, base_url = NULL, base_file_url = NULL,
@@ -12,7 +12,7 @@ Updater(token = NULL, base_url = NULL, base_file_url = NULL,
 is.Updater(x)
 }
 \arguments{
-\item{token}{(Optional). The bot's token given by the @BotFather.}
+\item{token}{(Optional). The bot's token given by the \emph{BotFather}.}
 
 \item{base_url}{(Optional). Telegram Bot API service URL.}
 
@@ -26,7 +26,7 @@ The \code{request_config} settings are very
 useful for the advanced users who would like to control the
 default timeouts and/or control the proxy used for http communication.}
 
-\item{bot}{(Optional). A pre-initialized \code{Bot} instance.}
+\item{bot}{(Optional). A pre-initialized \code{\link{Bot}} instance.}
 }
 \description{
 Package main class. This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to

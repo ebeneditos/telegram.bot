@@ -2,7 +2,7 @@
 % Please edit documentation in R/updater.R
 \name{stop_polling}
 \alias{stop_polling}
-\title{stop_polling}
+\title{Stop polling}
 \usage{
 stop_polling()
 }

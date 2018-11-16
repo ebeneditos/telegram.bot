@@ -2,13 +2,13 @@
 % Please edit documentation in R/bot.R
 \name{sendChatAction}
 \alias{sendChatAction}
-\title{sendChatAction}
+\title{Send a chat action}
 \usage{
 sendChatAction(chat_id, action)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
 \item{action}{Type of action to broadcast. Choose one, depending on
 what the user is about to receive:

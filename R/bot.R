@@ -76,7 +76,7 @@ bot.parse <- function(result)
 
 #### API METHODS ####
 
-#' getMe
+#' Check your bot's information
 #'
 #' A simple method for testing your bot's auth token. Requires no parameters.
 #' 
@@ -93,22 +93,22 @@ getMe <- function()
 }
 
 
-#' sendMessage
+#' Send text messages
 #'
 #' Use this method to send text messages.
 #' 
 #' You can also use it's snake_case equivalent \code{send_message}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
-#' @param text Text of the message to be sent
+#'     the target channel.
+#' @param text Text of the message to be sent.
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-#'     italic, fixed-width text or inline URLs in your bot's message
+#'     italic, fixed-width text or inline URLs in your bot's message.
 #' @param disable_web_page_preview (Optional). Disables link previews for links in
-#'     this message
+#'     this message.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -154,7 +154,7 @@ sendMessage <- function(chat_id,
 }
 
 
-#' deleteMessage
+#' Delete a message
 #'
 #' Use this method to delete a message. A message can only be deleted if it was sent less
 #' than 48 hours ago. Any such recently sent outgoing message may be deleted. Additionally,
@@ -165,8 +165,8 @@ sendMessage <- function(chat_id,
 #' 
 #' You can also use it's snake_case equivalent \code{delete_message}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
-#' @param message_id Identifier of the message to delete
+#'     the target channel.
+#' @param message_id Identifier of the message to delete.
 deleteMessage <- function(chat_id,
                           message_id)
 { # nocov start
@@ -181,18 +181,18 @@ deleteMessage <- function(chat_id,
 } # nocov end
 
 
-#' forwardMessage
+#' Forward messages of any kind
 #'
 #' Use this method to forward messages of any kind.
 #' 
 #' You can also use it's snake_case equivalent \code{forward_message}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param from_chat_id Unique identifier for the chat where the
-#'     original message was sent
-#' @param message_id Message identifier in the chat specified in from_chat_id
+#'     original message was sent.
+#' @param message_id Message identifier in the chat specified in from_chat_id.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 forwardMessage <- function(chat_id,
                            from_chat_id,
                            message_id,
@@ -213,22 +213,22 @@ forwardMessage <- function(chat_id,
 } # nocov end
 
 
-#' sendPhoto
+#' Send image files
 #'
 #' Use this method to send photos.
 #' 
 #' You can also use it's snake_case equivalent \code{send_photo}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param photo Photo to send. Pass a file_id as String to send a photo that exists on
 #'     the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-#'     get a photo from the Internet, or upload a local photo by passing a file path
+#'     get a photo from the Internet, or upload a local photo by passing a file path.
 #' @param caption (Optional). Photo caption (may also be used when re-sending photos
-#'     by file_id), 0-1024 characters
+#'     by file_id), 0-1024 characters.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -236,7 +236,7 @@ forwardMessage <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-#'     italic, fixed-width text or inline URLs in your bot's message
+#'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
@@ -278,7 +278,7 @@ sendPhoto <- function(chat_id,
 }
 
 
-#' sendAudio
+#' Send audio files
 #'
 #' Use this method to send audio files, if you want Telegram clients to display them in the
 #' music player. Your audio must be in the .mp3 format. On success, the sent Message is
@@ -288,18 +288,18 @@ sendPhoto <- function(chat_id,
 #' 
 #' You can also use it's snake_case equivalent \code{send_audio}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param audio Audio file to send. Pass a file_id as String to send an audio that exists on
 #'     the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-#'     get an audio from the Internet, or upload a local audio file by passing a file path
-#' @param duration (Optional). Duration of sent audio in seconds
-#' @param performer (Optional). Performer
-#' @param title (Optional). Track name
-#' @param caption (Optional). Audio caption, 0-1024 characters
+#'     get an audio from the Internet, or upload a local audio file by passing a file path.
+#' @param duration (Optional). Duration of sent audio in seconds.
+#' @param performer (Optional). Performer.
+#' @param title (Optional). Track name.
+#' @param caption (Optional). Audio caption, 0-1024 characters.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -307,7 +307,7 @@ sendPhoto <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-#'     italic, fixed-width text or inline URLs in your bot's message
+#'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
@@ -357,22 +357,22 @@ sendAudio <- function(chat_id,
 }
 
 
-#' sendDocument
+#' Send general files
 #'
 #' Use this method to send general files.
 #' 
 #' You can also use it's snake_case equivalent \code{send_document}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param document File to send. Pass a file_id as String to send a file that exists on
 #'     the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
 #'     get a file from the Internet, or upload a local file by passing a file path
-#' @param filename (Optional). File name that shows in telegram message
-#' @param caption (Optional). Document caption, 0-1024 characters
+#' @param filename (Optional). File name that shows in telegram message.
+#' @param caption (Optional). Document caption, 0-1024 characters.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -380,7 +380,7 @@ sendAudio <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-#'     italic, fixed-width text or inline URLs in your bot's message
+#'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
@@ -424,20 +424,20 @@ sendDocument <- function(chat_id,
 }
 
 
-#' sendSticker
+#' Send a sticker
 #'
 #' Use this method to send \code{.webp} stickers.
 #' 
 #' You can also use it's snake_case equivalent \code{send_sticker}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param sticker Sticker to send. Pass a file_id as String to send a file that exists on
 #'     the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-#'     get a \code{.webp} file from the Internet, or upload a local one by passing a file path
+#'     get a \code{.webp} file from the Internet, or upload a local one by passing a file path.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -478,35 +478,35 @@ sendSticker <- function(chat_id,
 }
 
 
-#' sendVideo
+#' Send a video
 #'
 #' Use this method to send video files, Telegram clients support mp4 videos
 #' (other formats may be sent as Document).
 #' 
 #' You can also use it's snake_case equivalent \code{send_video}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param video Video file to send. Pass a file_id as String to send a video that exists on
 #'     the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-#'     get a video from the Internet, or upload a local video file by passing a file path
-#' @param duration (Optional). Duration of sent audio in seconds
-#' @param caption (Optional). Video caption, 0-1024 characters
+#'     get a video from the Internet, or upload a local video file by passing a file path.
+#' @param duration (Optional). Duration of sent audio in seconds.
+#' @param caption (Optional). Video caption, 0-1024 characters.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
 #'      \item{\code{\link{InlineKeyboardMarkup}}}
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
-#' @param width (Optional). Video width
-#' @param height (Optional). Video height
+#' @param width (Optional). Video width.
+#' @param height (Optional). Video height.
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-#'     italic, fixed-width text or inline URLs in your bot's message
+#'     italic, fixed-width text or inline URLs in your bot's message.
 #' @param supports_streaming (Optional). Pass \code{TRUE}, if the uploaded video is
-#'     suitable for streaming
+#'     suitable for streaming.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
@@ -559,23 +559,23 @@ sendVideo <- function(chat_id,
 }
 
 
-#' sendVideoNote
+#' Send video messages
 #'
 #' Use this method to send video messages.
 #' 
 #' You can also use it's snake_case equivalent \code{send_video_note}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param video_note Video note file to send. Pass a file_id as String to send a video
 #'     note that exists on the Telegram servers (recommended), pass an HTTP URL as a String
 #'     for Telegram to get a video note from the Internet, or upload a local video note
-#'     file by passing a file path
-#' @param duration (Optional). Duration of sent audio in seconds
-#' @param length (Optional). Video width and height
+#'     file by passing a file path.
+#' @param duration (Optional). Duration of sent audio in seconds.
+#' @param length (Optional). Video width and height.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -622,26 +622,26 @@ sendVideoNote <- function(chat_id,
 }
 
 
-#' sendAnimation
+#' Send animation files
 #'
 #' Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound).
 #' 
 #' You can also use it's snake_case equivalent \code{send_animation}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param animation Animation to send. Pass a file_id as String to send an animation that exists on
 #'     the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-#'     get an animation from the Internet, or upload a local file by passing a file path
-#' @param duration (Optional). Duration of sent audio in seconds
-#' @param width (Optional). Video width
-#' @param height (Optional). Video height
-#' @param caption (Optional). Animation caption, 0-1024 characters
+#'     get an animation from the Internet, or upload a local file by passing a file path.
+#' @param duration (Optional). Duration of sent audio in seconds.
+#' @param width (Optional). Video width.
+#' @param height (Optional). Video height.
+#' @param caption (Optional). Animation caption, 0-1024 characters.
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-#'     italic, fixed-width text or inline URLs in your bot's message
+#'     italic, fixed-width text or inline URLs in your bot's message.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -697,25 +697,25 @@ sendAnimation <- function(chat_id,
 }
 
 
-#' sendVoice
+#' Send voice files
 #'
 #' Use this method to send audio files, if you want Telegram clients to display the file
-#' as a playable voice message. For this to work, your audio must be in an .ogg file
+#' as a playable voice message. For this to work, your audio must be in an \code{.ogg} file
 #' encoded with OPUS (other formats may be sent with \code{\link{sendAudio}} or \code{\link{sendDocument}}).
 #' 
 #' You can also use it's snake_case equivalent \code{send_voice}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param voice Voice file to send. Pass a file_id as String to send a voice
 #'     file that exists on the Telegram servers (recommended), pass an HTTP URL as a String
 #'     for Telegram to get a voice file from the Internet, or upload a local voice file
-#'     file by passing a file path
-#' @param duration (Optional). Duration of sent audio in seconds
-#' @param caption (Optional). Voice message caption, 0-1024 characters
+#'     file by passing a file path.
+#' @param duration (Optional). Duration of sent audio in seconds.
+#' @param caption (Optional). Voice message caption, 0-1024 characters.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -723,7 +723,7 @@ sendAnimation <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-#'     italic, fixed-width text or inline URLs in your bot's message
+#'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
 #' chat_id <- user_id('me')
@@ -767,19 +767,19 @@ sendVoice <- function(chat_id,
 }
 
 
-#' sendLocation
+#' Send point on the map
 #'
 #' Use this method to send point on the map.
 #' 
 #' You can also use it's snake_case equivalent \code{send_location}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
-#' @param latitude Latitude of location
-#' @param longitude Longitude of location
+#'     the target channel.
+#' @param latitude Latitude of location.
+#' @param longitude Longitude of location.
 #' @param disable_notification (Optional). Sends the message silently. Users will
-#'     receive a notification with no sound
+#'     receive a notification with no sound.
 #' @param reply_to_message_id (Optional). If the message is a reply, ID of the
-#'     original message
+#'     original message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -818,7 +818,7 @@ sendLocation <- function(chat_id,
 }
 
 
-#' sendChatAction
+#' Send a chat action
 #'
 #' Use this method when you need to tell the user that something is happening on the bot's
 #' side. The status is set for 5 seconds or less (when a message arrives from your bot,
@@ -826,7 +826,7 @@ sendLocation <- function(chat_id,
 #' 
 #' You can also use it's snake_case equivalent \code{send_chat_action}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 #' @param action Type of action to broadcast. Choose one, depending on
 #' what the user is about to receive:
 #' \itemize{
@@ -861,14 +861,14 @@ sendChatAction <- function(chat_id,
 }
 
 
-#' getUserProfilePhotos
+#' Get a user's profile photos
 #'
 #' Use this method to get a list of profile pictures for a user.
 #' 
 #' You can also use it's snake_case equivalent \code{get_user_profile_photos}.
-#' @param user_id Unique identifier of the target user
+#' @param user_id Unique identifier of the target user.
 #' @param offset (Optional). Sequential number of the first photo to be returned.
-#'     By default, all photos are returned
+#'     By default, all photos are returned.
 #' @param limit (Optional). Limits the number of photos to be retrieved. Values
 #'     between 1-100 are accepted. Defaults to 100.
 #' @examples \dontrun{
@@ -896,7 +896,7 @@ getUserProfilePhotos <- function(user_id,
 }
 
 
-#' getFile
+#' Prepare a file for downloading
 #'
 #' Use this method to get basic info about a file and prepare it for downloading. For the
 #' moment, bots can download files of up to 20MB in size. It is guaranteed that the link will be
@@ -904,7 +904,7 @@ getUserProfilePhotos <- function(user_id,
 #' calling get_file again.
 #' 
 #' You can also use it's snake_case equivalent \code{get_file}.
-#' @param file_id The file identifier
+#' @param file_id The file identifier.
 getFile <- function(file_id)
 { #nocov start
   url <- sprintf('%s/getFile', private$base_url)
@@ -917,7 +917,7 @@ getFile <- function(file_id)
 } # nocov end
 
 
-#' answerCallbackQuery
+#' Send answers to callback queries
 #'
 #' Use this method to send answers to callback queries sent from 
 #' \href{https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating}{inline keyboard}
@@ -926,15 +926,15 @@ getFile <- function(file_id)
 #' is returned.
 #' 
 #' You can also use it's snake_case equivalent \code{answer_callback_query}.
-#' @param callback_query_id Unique identifier for the query to be answered
+#' @param callback_query_id Unique identifier for the query to be answered.
 #' @param text (Optional). Text of the notification. If not specified, nothing will be
-#'     shown to the user, 0-200 characters
+#'     shown to the user, 0-200 characters.
 #' @param show_alert (Optional). If \code{TRUE}, an alert will be shown by the client instead
-#'     of a notification at the top of the chat screen. Defaults to \code{FALSE}
-#' @param url (Optional). URL that will be opened by the user's client
+#'     of a notification at the top of the chat screen. Defaults to \code{FALSE}.
+#' @param url (Optional). URL that will be opened by the user's client.
 #' @param cache_time (Optional). The maximum amount of time in seconds that the result of the
 #'     callback query may be cached client-side. Telegram apps will support caching
-#'     starting in version 3.14. Defaults to 0
+#'     starting in version 3.14. Defaults to 0.
 answerCallbackQuery <- function(callback_query_id,
                                 text = NULL,
                                 show_alert = FALSE,
@@ -960,7 +960,7 @@ answerCallbackQuery <- function(callback_query_id,
 } # nocov end
 
 
-#' answerInlineQuery
+#' Send answers to an inline query
 #'
 #' Use this method to send answers to an inline query. No more than 50 results per query are
 #' allowed.
@@ -970,20 +970,20 @@ answerCallbackQuery <- function(callback_query_id,
 #' will see in the input field after typing your bot’s name.
 #' 
 #' You can also use it's snake_case equivalent \code{answer_inline_query}.
-#' @param inline_query_id Unique identifier for the answered query
-#' @param results A list of \code{\link{InlineQueryResult}} for the inline query
+#' @param inline_query_id Unique identifier for the answered query.
+#' @param results A list of \code{\link{InlineQueryResult}} for the inline query.
 #' @param cache_time (Optional). The maximum amount of time in seconds that the
-#'     result of the inline query may be cached on the server
+#'     result of the inline query may be cached on the server.
 #' @param is_personal (Optional). Pass \code{TRUE}, if results may be cached on the server
 #'     side only for the user that sent the query. By default, results may be returned to
-#'     any user who sends the same query
+#'     any user who sends the same query.
 #' @param next_offset (Optional). Pass the offset that a client should send in the
 #'     next query with the same text to receive more results. Pass an empty string if
 #'     there are no more results or if you don't support pagination. Offset length can't
-#'     exceed 64 bytes
+#'     exceed 64 bytes.
 #' @param switch_pm_text (Optional). If passed, clients will display a button with
 #'     specified text that switches the user to a private chat with the bot and sends the
-#'     bot a start message with the parameter \code{switch_pm_parameter}
+#'     bot a start message with the parameter \code{switch_pm_parameter}.
 #' @param switch_pm_parameter (Optional). Deep-linking parameter for the \code{/start}
 #'     message sent to the bot when user presses the switch button. 1-64 characters,
 #'     only \code{A-Z}, \code{a-z}, \code{0-9}, \code{_} and \code{-} are allowed.
@@ -1026,18 +1026,18 @@ answerInlineQuery <- function(inline_query_id,
 } # nocov end
 
 
-#' editMessageReplyMarkup
+#' Edit a reply markup
 #'
 #' Use this method to edit only the reply markup of messages sent by the bot or via the bot
 #' (for inline bots).
 #' 
 #' You can also use it's snake_case equivalent \code{edit_message_reply_markup}.
 #' @param chat_id (Optional). Unique identifier for the target chat or username
-#'     of the target channel
+#'     of the target channel.
 #' @param message_id (Optional). Required if inline_message_id is not specified.
-#'     Identifier of the sent message
+#'     Identifier of the sent message.
 #' @param inline_message_id (Optional). Required if chat_id and message_id are not
-#'     specified. Identifier of the inline message
+#'     specified. Identifier of the inline message.
 #' @param reply_markup (Optional). A Reply Markup parameter object, it can be either:
 #'     \itemize{
 #'      \item{\code{\link{ReplyKeyboardMarkup}}}
@@ -1072,7 +1072,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
 } # nocov end
 
 
-#' getUpdates
+#' Receive incoming updates
 #'
 #' Use this method to receive incoming updates. It returns a
 #' list of \code{\link{Update}} objects.
@@ -1128,7 +1128,7 @@ getUpdates <- function(offset = NULL,
 }
 
 
-#' setWebhook
+#' Set a webhook
 #'
 #' Use this method to specify a url and receive incoming updates via an outgoing webhook.
 #' Whenever there is an update for the bot, we will send an HTTPS POST request to the
@@ -1185,7 +1185,7 @@ setWebhook <- function(url = NULL,
 }
 
 
-#' deleteWebhook
+#' Remove webhook integration
 #'
 #' Use this method to remove webhook integration if you decide to switch back to
 #' \code{getUpdates}. Requires no parameters.
@@ -1203,7 +1203,7 @@ deleteWebhook <- function()
 }
 
 
-#' getWebhookInfo
+#' Get current webhook status
 #'
 #' Use this method to get current webhook status. Requires no parameters.
 #' 
@@ -1221,13 +1221,13 @@ getWebhookInfo <- function()
   return(invisible(result))
 }
 
-#' leaveChat
+#' Leave a chat
 #'
 #' Use this method for your bot to leave a group, supergroup or channel.
 #' 
 #' You can also use it's snake_case equivalent \code{leave_chat}.
 #' @param chat_id Unique identifier for the target chat or username of
-#'     the target channel
+#'     the target channel.
 leaveChat <- function(chat_id)
 { # nocov start
   url <- sprintf('%s/leaveChat', private$base_url)
@@ -1242,7 +1242,7 @@ leaveChat <- function(chat_id)
 
 #### OTHER METHODS ####
 
-#' clean_updates
+#' Clean any pending updates
 #' 
 #' Use this method to clean any pending updates on Telegram servers.
 #' Requires no parameters.
@@ -1257,10 +1257,10 @@ clean_updates = function(){
 }
 
 
-#' set_token
+#' Change your bot's auth token
 #' 
 #' Use this method to change your bot's auth token.
-#' @param token Bot's unique authentication.
+#' @param token The bot's token given by the \emph{BotFather}.
 set_token <- function(token){
   if (!missing(token))
     private$token <- token
@@ -1271,7 +1271,7 @@ set_token <- function(token){
 
 ### CLASS ####
 
-#' Bot
+#' The core of a Bot
 #'
 #' This object represents a Telegram Bot.
 #' 
@@ -1280,7 +1280,7 @@ set_token <- function(token){
 #' You can also use its methods \code{snake_case} equivalent.
 #' @section API Methods: \describe{
 #'     \item{\code{\link{answerCallbackQuery}}}{Send
-#'     answers to callback queries sent from inline keyboard}
+#'     answers to callback queries}
 #'     \item{\code{\link{answerInlineQuery}}}{Send answers to an inline query}
 #'     \item{\code{\link{deleteMessage}}}{Delete a message}
 #'     \item{\code{\link{deleteWebhook}}}{Remove webhook integration}
@@ -1288,31 +1288,25 @@ set_token <- function(token){
 #'     markup of a message}
 #'     \item{\code{\link{forwardMessage}}}{Forward messages of any
 #'     kind}
-#'     \item{\code{\link{getFile}}}{Get info about a file and
-#'     prepare it for downloading}
-#'     \item{\code{\link{getMe}}}{Test your bot's auth
-#'     token}
+#'     \item{\code{\link{getFile}}}{Prepare a file for downloading}
+#'     \item{\code{\link{getMe}}}{Check your bot's information}
 #'     \item{\code{\link{getUpdates}}}{Receive incoming
 #'     updates}
-#'     \item{\code{\link{getUserProfilePhotos}}}{Get a list
-#'     of profile pictures for a user}
+#'     \item{\code{\link{getUserProfilePhotos}}}{Get a user's profile photos}
 #'     \item{\code{\link{getWebhookInfo}}}{Get current webhook status}
-#'     \item{\code{\link{leaveChat}}}{Leave a group, supergroup or channel}
+#'     \item{\code{\link{leaveChat}}}{Leave a chat}
 #'     \item{\code{\link{sendAnimation}}}{Send animation files}
 #'     \item{\code{\link{sendAudio}}}{Send audio files}
-#'     \item{\code{\link{sendChatAction}}}{Tell the user that something
-#'     is happening on the bot's side}
+#'     \item{\code{\link{sendChatAction}}}{Send a chat action}
 #'     \item{\code{\link{sendDocument}}}{Send general files}
 #'     \item{\code{\link{sendLocation}}}{Send point on the map}
 #'     \item{\code{\link{sendMessage}}}{Send text messages}
 #'     \item{\code{\link{sendPhoto}}}{Send image files}
-#'     \item{\code{\link{sendSticker}}}{Send \code{.webp} stickers}
-#'     \item{\code{\link{sendVideo}}}{Send \code{mp4} videos}
-#'     \item{\code{\link{sendVideoNote}}}{Send videos messages}
-#'     \item{\code{\link{sendVoice}}}{Send \code{.ogg} files encoded with
-#'     OPUS}
-#'     \item{\code{\link{setWebhook}}}{Receive incoming updates via an
-#'     outgoing webhook}
+#'     \item{\code{\link{sendSticker}}}{Send a sticker}
+#'     \item{\code{\link{sendVideo}}}{Send a video}
+#'     \item{\code{\link{sendVideoNote}}}{Send video messages}
+#'     \item{\code{\link{sendVoice}}}{Send voice files}
+#'     \item{\code{\link{setWebhook}}}{Set a webhook}
 #' }
 #' @section Other Methods: \describe{
 #'     \item{\code{\link{clean_updates}}}{Clean any pending updates}
@@ -1320,7 +1314,7 @@ set_token <- function(token){
 #' }
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
-#' @param token Bot's unique authentication.
+#' @param token The bot's token given by the \emph{BotFather}.
 #' @param base_url (Optional). Telegram Bot API service URL.
 #' @param base_file_url (Optional). Telegram Bot API file URL.
 #' @param request_config (Optional). Additional configuration settings
@@ -1439,3 +1433,10 @@ BotClass <-
                 parse = bot.parse
               )
 )
+
+#' @rdname Bot
+#' @export
+is.Bot <- function(x){
+  inherits(x, "Bot")
+}
+

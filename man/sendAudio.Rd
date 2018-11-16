@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{sendAudio}
 \alias{sendAudio}
-\title{sendAudio}
+\title{Send audio files}
 \usage{
 sendAudio(chat_id, audio, duration = NULL, performer = NULL,
   title = NULL, caption = NULL, disable_notification = FALSE,
@@ -10,25 +10,25 @@ sendAudio(chat_id, audio, duration = NULL, performer = NULL,
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
 \item{audio}{Audio file to send. Pass a file_id as String to send an audio that exists on
 the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-get an audio from the Internet, or upload a local audio file by passing a file path}
+get an audio from the Internet, or upload a local audio file by passing a file path.}
 
-\item{duration}{(Optional). Duration of sent audio in seconds}
+\item{duration}{(Optional). Duration of sent audio in seconds.}
 
-\item{performer}{(Optional). Performer}
+\item{performer}{(Optional). Performer.}
 
-\item{title}{(Optional). Track name}
+\item{title}{(Optional). Track name.}
 
-\item{caption}{(Optional). Audio caption, 0-1024 characters}
+\item{caption}{(Optional). Audio caption, 0-1024 characters.}
 
 \item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound}
+receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
-original message}
+original message.}
 
 \item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
 \itemize{
@@ -38,7 +38,7 @@ original message}
  \item{\code{\link{ForceReply}}}}}
 
 \item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message}
+italic, fixed-width text or inline URLs in your bot's message.}
 }
 \description{
 Use this method to send audio files, if you want Telegram clients to display them in the

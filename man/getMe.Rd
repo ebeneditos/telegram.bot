@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{getMe}
 \alias{getMe}
-\title{getMe}
+\title{Check your bot's information}
 \usage{
 getMe()
 }

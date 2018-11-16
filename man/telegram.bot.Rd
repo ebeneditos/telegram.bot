@@ -4,7 +4,7 @@
 \name{telegram.bot}
 \alias{telegram.bot}
 \alias{telegram.bot-package}
-\title{telegram.bot}
+\title{Develop a Telegram Bot with R}
 \description{
 Provides a pure interface for the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
 In addition to the pure API implementation, it features a number of
@@ -30,3 +30,15 @@ you can learn how to build a Bot quickly with this package.
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{http://github.com/ebeneditos/telegram.bot}
+  \item Report bugs at \url{http://github.com/ebeneditos/telegram.bot/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Ernest Benedito \email{ebeneditos@gmail.com}
+
+}

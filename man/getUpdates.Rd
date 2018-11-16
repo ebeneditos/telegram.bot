@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{getUpdates}
 \alias{getUpdates}
-\title{getUpdates}
+\title{Receive incoming updates}
 \usage{
 getUpdates(offset = NULL, limit = 100, timeout = 0,
   allowed_updates = NULL)

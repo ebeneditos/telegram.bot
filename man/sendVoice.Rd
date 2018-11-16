@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{sendVoice}
 \alias{sendVoice}
-\title{sendVoice}
+\title{Send voice files}
 \usage{
 sendVoice(chat_id, voice, duration = NULL, caption = NULL,
   disable_notification = FALSE, reply_to_message_id = NULL,
@@ -10,22 +10,22 @@ sendVoice(chat_id, voice, duration = NULL, caption = NULL,
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
 \item{voice}{Voice file to send. Pass a file_id as String to send a voice
 file that exists on the Telegram servers (recommended), pass an HTTP URL as a String
 for Telegram to get a voice file from the Internet, or upload a local voice file
-file by passing a file path}
+file by passing a file path.}
 
-\item{duration}{(Optional). Duration of sent audio in seconds}
+\item{duration}{(Optional). Duration of sent audio in seconds.}
 
-\item{caption}{(Optional). Voice message caption, 0-1024 characters}
+\item{caption}{(Optional). Voice message caption, 0-1024 characters.}
 
 \item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound}
+receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
-original message}
+original message.}
 
 \item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
 \itemize{
@@ -35,11 +35,11 @@ original message}
  \item{\code{\link{ForceReply}}}}}
 
 \item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message}
+italic, fixed-width text or inline URLs in your bot's message.}
 }
 \description{
 Use this method to send audio files, if you want Telegram clients to display the file
-as a playable voice message. For this to work, your audio must be in an .ogg file
+as a playable voice message. For this to work, your audio must be in an \code{.ogg} file
 encoded with OPUS (other formats may be sent with \code{\link{sendAudio}} or \code{\link{sendDocument}}).
 }
 \details{

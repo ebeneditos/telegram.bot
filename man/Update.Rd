@@ -3,10 +3,13 @@
 \docType{class}
 \name{Update}
 \alias{Update}
-\title{Update}
+\alias{is.Update}
+\title{Represent an update}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Update(data)
+
+is.Update(x)
 }
 \arguments{
 \item{data}{Data of the update.}

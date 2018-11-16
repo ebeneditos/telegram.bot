@@ -2,19 +2,22 @@
 % Please edit documentation in R/replymarkup.R
 \name{InlineKeyboardButton}
 \alias{InlineKeyboardButton}
-\title{InlineKeyboardButton}
+\alias{is.InlineKeyboardButton}
+\title{Create an inline keyboard button}
 \usage{
 InlineKeyboardButton(text, url = NULL, callback_data = NULL,
   switch_inline_query = NULL, switch_inline_query_current_chat = NULL)
+
+is.InlineKeyboardButton(x)
 }
 \arguments{
-\item{text}{Label text on the button (Required).}
+\item{text}{Label text on the button.}
 
-\item{url}{(Optional). HTTP url to be opened when button is pressed}
+\item{url}{(Optional). HTTP url to be opened when button is pressed.}
 
 \item{callback_data}{(Optional). Data to be sent in a
 \href{https://core.telegram.org/bots/api#callbackquery}{callback query}
-to the bot when button is pressed, 1-64 bytes}
+to the bot when button is pressed, 1-64 bytes.}
 
 \item{switch_inline_query}{(Optional). If set, pressing the button will prompt the
 user to select one of their chats, open that chat and insert the

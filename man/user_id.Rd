@@ -2,12 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{user_id}
 \alias{user_id}
-\title{user_id}
+\title{Get a user from environment}
 \usage{
 user_id(user_name)
 }
 \arguments{
-\item{user_name}{The user's name}
+\item{user_name}{The user's name.}
 }
 \description{
 Obtain Telegram user id from system variables (in \code{.Renviron}) set

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dispatcher.R
 \name{add_handler}
 \alias{add_handler}
-\title{add_handler}
+\title{Add a handler}
 \usage{
 add_handler(handler, group = 1)
 }

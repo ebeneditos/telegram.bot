@@ -2,7 +2,7 @@
 % Please edit documentation in R/dispatcher.R
 \name{add_error_handler}
 \alias{add_error_handler}
-\title{add_error_handler}
+\title{Add an error handler}
 \usage{
 add_error_handler(callback)
 }

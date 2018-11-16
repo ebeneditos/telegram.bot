@@ -2,20 +2,20 @@
 % Please edit documentation in R/inlinequeryresult.R
 \name{InlineQueryResult}
 \alias{InlineQueryResult}
-\title{InlineQueryResult}
+\title{The base of inline query results}
 \usage{
 InlineQueryResult(type, id, ...)
 }
 \arguments{
 \item{type}{Type of the result. See the
 \href{https://core.telegram.org/bots/api#inlinequeryresult}{documentation}
-for a list of supported types}
+for a list of supported types.}
 
-\item{id}{Unique identifier for this result, 1-64 Bytes}
+\item{id}{Unique identifier for this result, 1-64 Bytes.}
 
 \item{...}{Additional parameters for the selected type. See the
 \href{https://core.telegram.org/bots/api#inlinequeryresult}{documentation}
-for the description of the parameters depending on the \code{InlineQueryResult} type}
+for the description of the parameters depending on the \code{InlineQueryResult} type.}
 }
 \description{
 Baseclass for the InlineQueryResult* classes.

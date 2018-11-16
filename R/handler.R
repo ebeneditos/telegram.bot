@@ -1,7 +1,7 @@
 
 #### METHODS ####
 
-#' check_update
+#' Check an update
 #'
 #' This method is called to determine if an update should be handled by
 #' this handler instance. It should always be overridden (see \code{\link{Handler}}).
@@ -10,7 +10,7 @@ check_update <- function(update){
   not_implemented()
 }
 
-#' handle_update
+#' Handle an update
 #'
 #' This method is called if it was determined that an update should indeed
 #' be handled by this instance. It should also be overridden (see \code{\link{Handler}}).
@@ -26,7 +26,7 @@ handle_update <- function(update, dispatcher){
 
 #### CLASS ####
 
-#' Handler
+#' The base of all handlers
 #'
 #' The base class for all update handlers. Create custom handlers by inheriting from it.
 #'

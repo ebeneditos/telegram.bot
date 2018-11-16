@@ -2,7 +2,7 @@
 % Please edit documentation in R/update.R
 \name{effective_user}
 \alias{effective_user}
-\title{effective_user}
+\title{Get the effective user}
 \usage{
 effective_user()
 }

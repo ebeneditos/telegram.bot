@@ -2,13 +2,13 @@
 % Please edit documentation in R/replymarkup.R
 \name{InlineKeyboardMarkup}
 \alias{InlineKeyboardMarkup}
-\title{InlineKeyboardMarkup}
+\title{Create an inline keyboard markup}
 \usage{
 InlineKeyboardMarkup(inline_keyboard)
 }
 \arguments{
 \item{inline_keyboard}{List of button rows, each represented by a list of
-\code{\link{InlineKeyboardButton}} objects}
+\code{\link{InlineKeyboardButton}} objects.}
 }
 \description{
 This object represents an \href{https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating}{inline keyboard}

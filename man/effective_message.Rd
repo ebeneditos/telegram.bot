@@ -2,7 +2,7 @@
 % Please edit documentation in R/update.R
 \name{effective_message}
 \alias{effective_message}
-\title{effective_message}
+\title{Get the effective message}
 \usage{
 effective_message()
 }

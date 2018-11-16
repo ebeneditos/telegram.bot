@@ -1,7 +1,7 @@
 
 #### METHODS ####
 
-#' start_polling
+#' Start polling
 #'
 #' Starts polling updates from Telegram. You can stop the polling either by using the the
 #' \code{interrupt R} command in the session menu or with the \code{\link{stop_polling}}
@@ -78,7 +78,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
 }
 
 
-#' stop_polling
+#' Stop polling
 #'
 #' Stops the polling. Requires no parameters.
 #' @examples \dontrun{
@@ -109,7 +109,7 @@ stop_polling <- function(){
 
 #### CLASS ####
 
-#' Updater
+#' Build a Bot
 #'
 #' Package main class. This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
 #' class \code{\link{Bot}} to the programmer, so you can focus on coding the bot. Its purpose is to
@@ -121,7 +121,7 @@ stop_polling <- function(){
 #' @format An \code{\link{R6Class}} object.
 #' @name Updater
 #' @aliases is.Updater
-#' @param token (Optional). The bot's token given by the @BotFather.
+#' @param token (Optional). The bot's token given by the \emph{BotFather}.
 #' @param base_url (Optional). Telegram Bot API service URL.
 #' @param base_file_url (Optional). Telegram Bot API file URL.
 #' @param request_config (Optional). Additional configuration settings
@@ -131,7 +131,7 @@ stop_polling <- function(){
 #'     The \code{request_config} settings are very
 #'     useful for the advanced users who would like to control the
 #'     default timeouts and/or control the proxy used for http communication.
-#' @param bot (Optional). A pre-initialized \code{Bot} instance.
+#' @param bot (Optional). A pre-initialized \code{\link{Bot}} instance.
 #' @section Methods: \describe{
 #'     \item{\code{\link{start_polling}}}{Starts polling updates from Telegram.}
 #'     \item{\code{\link{stop_polling}}}{Stops the polling.}
@@ -185,7 +185,7 @@ UpdaterClass <-
                     stop('`token` and `bot` are mutually exclusive')
 
                   if (!is.null(bot)){
-                    if (inherits(bot, 'Bot'))
+                    if (is.Bot(bot))
                       self$bot <- bot
                     else stop("`bot` must be of class 'Bot'")
                   }

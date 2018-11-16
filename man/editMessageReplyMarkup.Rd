@@ -2,20 +2,20 @@
 % Please edit documentation in R/bot.R
 \name{editMessageReplyMarkup}
 \alias{editMessageReplyMarkup}
-\title{editMessageReplyMarkup}
+\title{Edit a reply markup}
 \usage{
 editMessageReplyMarkup(chat_id = NULL, message_id = NULL,
   inline_message_id = NULL, reply_markup = NULL)
 }
 \arguments{
 \item{chat_id}{(Optional). Unique identifier for the target chat or username
-of the target channel}
+of the target channel.}
 
 \item{message_id}{(Optional). Required if inline_message_id is not specified.
-Identifier of the sent message}
+Identifier of the sent message.}
 
 \item{inline_message_id}{(Optional). Required if chat_id and message_id are not
-specified. Identifier of the inline message}
+specified. Identifier of the inline message.}
 
 \item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
 \itemize{

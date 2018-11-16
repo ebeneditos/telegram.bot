@@ -2,24 +2,24 @@
 % Please edit documentation in R/bot.R
 \name{sendLocation}
 \alias{sendLocation}
-\title{sendLocation}
+\title{Send point on the map}
 \usage{
 sendLocation(chat_id, latitude, longitude, disable_notification = FALSE,
   reply_to_message_id = NULL, reply_markup = NULL)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
-\item{latitude}{Latitude of location}
+\item{latitude}{Latitude of location.}
 
-\item{longitude}{Longitude of location}
+\item{longitude}{Longitude of location.}
 
 \item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound}
+receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
-original message}
+original message.}
 
 \item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
 \itemize{

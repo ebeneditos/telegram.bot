@@ -2,12 +2,12 @@
 % Please edit documentation in R/bot.R
 \name{getFile}
 \alias{getFile}
-\title{getFile}
+\title{Prepare a file for downloading}
 \usage{
 getFile(file_id)
 }
 \arguments{
-\item{file_id}{The file identifier}
+\item{file_id}{The file identifier.}
 }
 \description{
 Use this method to get basic info about a file and prepare it for downloading. For the

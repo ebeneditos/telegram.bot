@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{set_token}
 \alias{set_token}
-\title{set_token}
+\title{Change your bot's auth token}
 \usage{
 set_token(token)
 }

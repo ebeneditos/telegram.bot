@@ -2,7 +2,7 @@
 % Please edit documentation in R/update.R
 \name{effective_chat}
 \alias{effective_chat}
-\title{effective_chat}
+\title{Get the effective chat}
 \usage{
 effective_chat()
 }

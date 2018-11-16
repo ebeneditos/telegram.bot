@@ -3,14 +3,14 @@
 \name{+.TelegramObject}
 \alias{+.TelegramObject}
 \alias{add}
-\title{Add handlers to your updater}
+\title{Add handlers to an updater}
 \usage{
 \method{+}{TelegramObject}(e1, e2)
 }
 \arguments{
-\item{e1}{An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}}
+\item{e1}{An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}.}
 
-\item{e2}{An object of class \code{\link{Handler}}}
+\item{e2}{An object of class \code{\link{Handler}}.}
 }
 \description{
 With \code{+} you can add an object of type \code{Handler} to either

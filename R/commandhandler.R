@@ -53,7 +53,7 @@ CommandHandlerClass <-
                 # this handler instance.
                 check_update = function(update){
 
-                  if (inherits(update, 'Update') && self$is_allowed_update(update)){
+                  if (is.Update(update) && self$is_allowed_update(update)){
 
                     message <- update$message
 

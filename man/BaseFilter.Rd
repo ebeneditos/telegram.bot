@@ -4,7 +4,7 @@
 \alias{BaseFilter}
 \alias{as.BaseFilter}
 \alias{is.BaseFilter}
-\title{BaseFilter}
+\title{The base of all filters}
 \usage{
 BaseFilter(filter)
 

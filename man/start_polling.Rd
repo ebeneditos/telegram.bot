@@ -2,7 +2,7 @@
 % Please edit documentation in R/updater.R
 \name{start_polling}
 \alias{start_polling}
-\title{start_polling}
+\title{Start polling}
 \usage{
 start_polling(timeout = 10, clean = FALSE, allowed_updates = NULL,
   verbose = FALSE)

@@ -1,7 +1,7 @@
 
 #### METHODS ####
 
-#' add_handler
+#' Add a handler
 #'
 #' Register a handler. A handler must be an instance of a subclass of \code{\link{Handler}}. All handlers
 #' are organized in groups with a numeric value. The default group is 1. All groups will be
@@ -39,7 +39,7 @@ add_handler <- function(handler,
 }
 
 
-#' add_error_handler
+#' Add an error handler
 #'
 #' Registers an error handler in the \code{\link{Dispatcher}}.
 #' @param callback A function that takes \code{(Bot, Update)} as arguments.
@@ -53,7 +53,7 @@ add_error_handler <- function(callback)
 
 #### CLASS ####
 
-#' Dispatcher
+#' The dispatcher of all updates
 #'
 #' This class dispatches all kinds of updates to its registered handlers.
 #'

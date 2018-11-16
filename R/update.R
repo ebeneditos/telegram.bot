@@ -1,7 +1,7 @@
 
 #### METHODS ####
 
-#' effective_user
+#' Get the effective user
 #'
 #' The user that sent this update, no matter what kind of update this
 #' is. Will be \code{NULL} for \code{channel_post}.
@@ -38,7 +38,7 @@ effective_user <- function(){ # nocov start
 } # nocov end
 
 
-#' effective_chat
+#' Get the effective chat
 #'
 #' The chat that this update was sent in, no matter what kind of
 #' update this is. Will be \code{None} for \code{inline_query},
@@ -71,7 +71,7 @@ effective_chat <- function(){ # nocov start
 } # nocov end
 
 
-#' effective_message
+#' Get the effective message
 #'
 #' The message included in this update, no matter what kind of
 #' update this is. Will be \code{None} for \code{inline_query},
@@ -106,7 +106,7 @@ effective_message <- function(){ # nocov start
 
 ### CLASS ####
 
-#' Update
+#' Represent an update
 #'
 #' This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.
 #'
@@ -174,4 +174,11 @@ UpdateClass <-
                 effective_chat_ = NULL,
                 effective_message_ = NULL
               )
-  )
+)
+
+#' @rdname Update
+#' @export
+is.Update <- function(x){
+  inherits(x, "Update")
+}
+

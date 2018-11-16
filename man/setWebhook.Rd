@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{setWebhook}
 \alias{setWebhook}
-\title{setWebhook}
+\title{Set a webhook}
 \usage{
 setWebhook(url = NULL, certificate = NULL, max_connections = 40,
   allowed_updates = NULL)

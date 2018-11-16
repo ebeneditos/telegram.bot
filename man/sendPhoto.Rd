@@ -2,27 +2,27 @@
 % Please edit documentation in R/bot.R
 \name{sendPhoto}
 \alias{sendPhoto}
-\title{sendPhoto}
+\title{Send image files}
 \usage{
 sendPhoto(chat_id, photo, caption = NULL, disable_notification = FALSE,
   reply_to_message_id = NULL, reply_markup = NULL, parse_mode = NULL)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
 \item{photo}{Photo to send. Pass a file_id as String to send a photo that exists on
 the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-get a photo from the Internet, or upload a local photo by passing a file path}
+get a photo from the Internet, or upload a local photo by passing a file path.}
 
 \item{caption}{(Optional). Photo caption (may also be used when re-sending photos
-by file_id), 0-1024 characters}
+by file_id), 0-1024 characters.}
 
 \item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound}
+receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
-original message}
+original message.}
 
 \item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
 \itemize{
@@ -32,7 +32,7 @@ original message}
  \item{\code{\link{ForceReply}}}}}
 
 \item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message}
+italic, fixed-width text or inline URLs in your bot's message.}
 }
 \description{
 Use this method to send photos.

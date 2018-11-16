@@ -2,7 +2,7 @@
 % Please edit documentation in R/replymarkup.R
 \name{ReplyKeyboardRemove}
 \alias{ReplyKeyboardRemove}
-\title{ReplyKeyboardRemove}
+\title{Remove a keyboard}
 \usage{
 ReplyKeyboardRemove(remove_keyboard = TRUE, selective = NULL)
 }

@@ -3,13 +3,13 @@
 #' @rdname TelegramObject-add
 #' @aliases add
 #' 
-#' @title Add handlers to your updater
+#' @title Add handlers to an updater
 #'
 #' @description With \code{+} you can add an object of type \code{Handler} to either
 #'     an \code{\link{Updater}} or a \code{\link{Dispatcher}}.
 #'
-#' @param e1 An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}
-#' @param e2 An object of class \code{\link{Handler}}
+#' @param e1 An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}.
+#' @param e2 An object of class \code{\link{Handler}}.
 #' @examples \dontrun{
 #' # You can chain multiple handlers
 #' start <- function(bot, update){
@@ -56,7 +56,7 @@
   e1
 }
 
-#' TelegramObject
+#' The base of telegram.bot objects
 #'
 #' Base class for most telegram objects.
 #'

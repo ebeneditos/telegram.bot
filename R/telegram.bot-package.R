@@ -1,4 +1,5 @@
-#' telegram.bot
+
+#' Develop a Telegram Bot with R
 #'
 #' Provides a pure interface for the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
 #' In addition to the pure API implementation, it features a number of
@@ -29,4 +30,4 @@
 #' @importFrom httr stop_for_status
 #' @importFrom httr upload_file
 #' @importFrom jsonlite toJSON
-NULL
+"_PACKAGE"

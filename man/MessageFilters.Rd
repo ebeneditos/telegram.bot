@@ -3,7 +3,7 @@
 \docType{data}
 \name{MessageFilters}
 \alias{MessageFilters}
-\title{MessageFilters}
+\title{Filter message updates}
 \format{A \code{list} with filtering functions.}
 \usage{
 MessageFilters

@@ -2,12 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{bot_token}
 \alias{bot_token}
-\title{bot_token}
+\title{Get a token from environment}
 \usage{
 bot_token(bot_name)
 }
 \arguments{
-\item{bot_name}{The bot's name}
+\item{bot_name}{The bot's name.}
 }
 \description{
 Obtain token from system variables (in \code{.Renviron}) set

@@ -4,7 +4,7 @@
 \name{TelegramObject}
 \alias{TelegramObject}
 \alias{is.TelegramObject}
-\title{TelegramObject}
+\title{The base of telegram.bot objects}
 \format{An \code{\link{R6Class}} generator object.}
 \usage{
 TelegramObject

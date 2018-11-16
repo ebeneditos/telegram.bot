@@ -2,7 +2,7 @@
 % Please edit documentation in R/handler.R
 \name{handle_update}
 \alias{handle_update}
-\title{handle_update}
+\title{Handle an update}
 \usage{
 handle_update(update, dispatcher)
 }

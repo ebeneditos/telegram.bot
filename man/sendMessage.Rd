@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{sendMessage}
 \alias{sendMessage}
-\title{sendMessage}
+\title{Send text messages}
 \usage{
 sendMessage(chat_id, text, parse_mode = NULL,
   disable_web_page_preview = NULL, disable_notification = FALSE,
@@ -10,21 +10,21 @@ sendMessage(chat_id, text, parse_mode = NULL,
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
-\item{text}{Text of the message to be sent}
+\item{text}{Text of the message to be sent.}
 
 \item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message}
+italic, fixed-width text or inline URLs in your bot's message.}
 
 \item{disable_web_page_preview}{(Optional). Disables link previews for links in
-this message}
+this message.}
 
 \item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound}
+receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
-original message}
+original message.}
 
 \item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
 \itemize{

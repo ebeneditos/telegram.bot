@@ -2,7 +2,7 @@
 % Please edit documentation in R/replymarkup.R
 \name{ForceReply}
 \alias{ForceReply}
-\title{ForceReply}
+\title{Display a reply}
 \usage{
 ForceReply(force_reply = TRUE, selective = NULL)
 }
