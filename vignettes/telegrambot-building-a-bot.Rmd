@@ -76,12 +76,6 @@ working environment variables. You can then create the `Updater` object as:
 updater <- Updater(token = bot_token("RTelegramBot"))
 ```
 
-**Recommendation 2:** For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
-
-```{r, eval = F}
-dispatcher <- updater$dispatcher
-```
-
 ### 2. The first function
 
 Now, you can define a function that should process a specific type of update:
@@ -94,11 +88,11 @@ start <- function(bot, update){
 ```
 
 The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command.
-To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` sub-classes) and register it in the dispatcher:
+To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` sub-classes) and register it in the `updaters`'s `dispatcher` (which is done with the `+` operator):
 
 ```{r, eval = F}
 start_handler <- CommandHandler('start', start)
-dispatcher$add_handler(start_handler)
+updater <- updater + start_handler
 ```
 
 ### 3. Starting the Bot

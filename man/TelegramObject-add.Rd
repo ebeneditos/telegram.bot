@@ -3,7 +3,7 @@
 \name{+.TelegramObject}
 \alias{+.TelegramObject}
 \alias{add}
-\title{Add handlers to an updater}
+\title{Add handlers to an Updater's Dispatcher}
 \usage{
 \method{+}{TelegramObject}(e1, e2)
 }
@@ -13,8 +13,8 @@
 \item{e2}{An object of class \code{\link{Handler}}.}
 }
 \description{
-With \code{+} you can add an object of type \code{Handler} to either
-    an \code{\link{Updater}} or a \code{\link{Dispatcher}}.
+With \code{+} you can add any kind of \code{\link{Handler}} to
+    an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
 }
 \examples{
 \dontrun{

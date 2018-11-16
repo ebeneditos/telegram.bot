@@ -33,13 +33,12 @@ echo <- function(bot, update){
 	bot$sendMessage(chat_id = update$message$chat_id, text = update$message$text)
 }
 
-echo_handler <- MessageHandler(echo, MessageFilters$text)
-dispatcher$add_handler(echo_handler)
+updater <- updater + MessageHandler(echo, MessageFilters$text)
 ```
 
 From now on, your bot should echo all non-command messages it receives.
 
-**Note:** As soon as you add new handlers to `dispatcher`, they are in effect.
+**Note:** As soon as you add new handlers to the `updaters`'s `dispatcher` (done with the `+` operator), they are in effect.
 
 **Note:** The `MessageFilters` object contains a number of functions that filter incoming messages for text, images, status updates and more.
 Any message that returns `TRUE` for at least one of the filters passed to `MessageHandler` will be accepted.
@@ -56,8 +55,7 @@ caps <- function(bot, update, args){
 	bot$sendMessage(chat_id = update$message$chat_id, text = text_caps)
 }
 
-caps_handler <- CommandHandler('caps', caps, pass_args = TRUE)
-dispatcher$add_handler(caps_handler)
+updater <- updater + CommandHandler('caps', caps, pass_args = TRUE)
 ```
 
 **Note:** Take a look at the `pass_args = TRUE` in the `CommandHandler` initiation.
@@ -75,8 +73,7 @@ unknown <- function(bot, update){
                         text = "Sorry, I didn't understand that command.")
 }
 
-unknown_handler <- MessageHandler(unknown, MessageFilters$command)
-dispatcher$add_handler(unknown_handler)
+updater <- updater + MessageHandler(unknown, MessageFilters$command)
 ```
 
 ### Stopping the Bot
@@ -99,8 +96,7 @@ kill <- function(bot, update){
   updater$stop_polling()
 }
 
-kill_handler <- CommandHandler('kill', kill)
-dispatcher$add_handler(kill_handler)
+updater <- updater + CommandHandler('kill', kill)
 ```
 
 Now you can send the command `/kill` from Telegram to stop the Bot. However, in a production environment it wouldn't be recommendable to leave this command as it is now, as anyone could stop the bot. To solve this, you can create a customized filter in order to make this command available only for a certain `user_id`, for instance. This is explained in the next section.

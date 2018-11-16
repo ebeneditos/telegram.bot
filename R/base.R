@@ -3,10 +3,10 @@
 #' @rdname TelegramObject-add
 #' @aliases add
 #' 
-#' @title Add handlers to an updater
+#' @title Add handlers to an Updater's Dispatcher
 #'
-#' @description With \code{+} you can add an object of type \code{Handler} to either
-#'     an \code{\link{Updater}} or a \code{\link{Dispatcher}}.
+#' @description With \code{+} you can add any kind of \code{\link{Handler}} to
+#'     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
 #'
 #' @param e1 An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}.
 #' @param e2 An object of class \code{\link{Handler}}.
@@ -44,12 +44,20 @@
     stop("Cannot use `+.TelegramBot()` with a single argument. ",
          "Did you accidentally put + on a new line?",
          call. = FALSE)
+  }else if(!is.Handler(e2)){
+    stop("The second argument from `+.TelegramBot()` ",
+         "must be of class 'Handler'",
+         call. = FALSE)
   }
   
   if      (is.Updater(e1))  e1$dispatcher$add_handler(e2)
   else if (is.Dispatcher(e1)) dispatcher$add_handler(e2)
   else if (is.Handler(e1)) {
     stop("Cannot add 'Handler' objects together.",
+         call. = FALSE)
+  }else{
+    stop(sprintf("Cannot add '%s' and '%s' objects together.",
+                 class(e1), class(e2)),
          call. = FALSE)
   }
   

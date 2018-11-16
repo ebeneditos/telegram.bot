@@ -7,7 +7,7 @@
 set_token(token)
 }
 \arguments{
-\item{token}{Bot's unique authentication.}
+\item{token}{The bot's token given by the \emph{BotFather}.}
 }
 \description{
 Use this method to change your bot's auth token.

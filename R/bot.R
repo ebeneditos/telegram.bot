@@ -32,14 +32,14 @@ bot.print <- function()
 bot.validate_token <- function(token)
 {
   if (grepl(' ', token))
-    stop('invalid token.')
+    stop('Invalid token.')
   
   split <- strsplit(token, ':')[[1]]
   if (length(split) < 2 ||
       split[2] == '' ||
       grepl("\\D", split[1]) ||
       nchar(split[1]) < 3)
-    stop('invalid token.')
+    stop('Invalid token.')
   
   token
 }

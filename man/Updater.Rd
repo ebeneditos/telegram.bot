@@ -3,7 +3,7 @@
 \name{Updater}
 \alias{Updater}
 \alias{is.Updater}
-\title{Build a Bot}
+\title{Create a Telegram Bot intuitively}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Updater(token = NULL, base_url = NULL, base_file_url = NULL,
@@ -29,7 +29,7 @@ default timeouts and/or control the proxy used for http communication.}
 \item{bot}{(Optional). A pre-initialized \code{\link{Bot}} instance.}
 }
 \description{
-Package main class. This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
+This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
 class \code{\link{Bot}} to the programmer, so you can focus on coding the bot. Its purpose is to
 receive the updates from Telegram and to deliver them to said dispatcher. The
 dispatcher supports \code{\link{Handler}} classes for different kinds of data: Updates from Telegram, basic text

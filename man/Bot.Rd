@@ -13,7 +13,7 @@ Bot(token, base_url = NULL, base_file_url = NULL,
 is.Bot(x)
 }
 \arguments{
-\item{token}{Bot's unique authentication.}
+\item{token}{The bot's token given by the \emph{BotFather}.}
 
 \item{base_url}{(Optional). Telegram Bot API service URL.}
 

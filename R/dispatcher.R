@@ -21,13 +21,13 @@ add_handler <- function(handler,
 {
 
   if(!is.Handler(handler))
-    stop('handler is not an instance of Handler')
+    stop("`handler` is not an instance of 'Handler'")
   if(!is.numeric(group))
-    stop('group is not numeric')
+    stop("`group` is not numeric")
   
   group <- round(group[1])
   if (group < 1)
-    stop('group must be higher or equal to 1')
+    stop("`group` must be higher or equal to 1")
 
   if (group > length(private$groups) || is.null(private$handlers[[group]])){
     private$handlers[[group]] <- list()

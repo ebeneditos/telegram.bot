@@ -109,9 +109,9 @@ stop_polling <- function(){
 
 #### CLASS ####
 
-#' Build a Bot
+#' Create a Telegram Bot intuitively
 #'
-#' Package main class. This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
+#' This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
 #' class \code{\link{Bot}} to the programmer, so you can focus on coding the bot. Its purpose is to
 #' receive the updates from Telegram and to deliver them to said dispatcher. The
 #' dispatcher supports \code{\link{Handler}} classes for different kinds of data: Updates from Telegram, basic text
