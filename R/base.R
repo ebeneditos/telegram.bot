@@ -3,9 +3,9 @@
 #' @rdname TelegramObject-add
 #' @aliases add
 #' 
-#' @title Add handlers to an Updater's Dispatcher
+#' @title Constructing an Updater
 #'
-#' @description With \code{+} you can easily add any kind of \code{\link{Handler}} to
+#' @description With \code{+} you can add any kind of \code{\link{Handler}} to
 #'     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
 #'     
 #' @details See \code{\link{add_handler}} for further information.

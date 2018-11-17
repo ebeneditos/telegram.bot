@@ -5,7 +5,7 @@
 #' @aliases &
 #' @aliases |
 #'
-#' @title BaseFilter Logical Operators
+#' @title Combining Filters
 #'
 #' @description Creates a function which returns the corresponding logical
 #'     operation between what \code{f} and \code{g} return.

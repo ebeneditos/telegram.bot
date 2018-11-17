@@ -6,7 +6,7 @@
 \alias{!.BaseFilter}
 \alias{&.BaseFilter}
 \alias{|.BaseFilter}
-\title{BaseFilter Logical Operators}
+\title{Combining Filters}
 \usage{
 \method{!}{BaseFilter}(f)
 

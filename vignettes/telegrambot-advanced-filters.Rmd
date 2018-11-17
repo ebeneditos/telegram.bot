@@ -95,4 +95,3 @@ The filter can then be used as:
 ```{r, eval = F}
 handler = MessageHandler(callback, MessageFilters$text_or_command)
 ```
-

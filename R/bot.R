@@ -1271,7 +1271,7 @@ set_token <- function(token){
 
 ### CLASS ####
 
-#' The core of a Bot
+#' Creating a Bot
 #'
 #' This object represents a Telegram Bot.
 #' 

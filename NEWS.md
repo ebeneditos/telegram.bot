@@ -1,4 +1,13 @@
 
+## v2.2.0
+
+- Added `+.TelegramObject` operator, which eases the `Updater` construction. See [The *add* operator](https://github.com/ebeneditos/telegram.bot/wiki/The-add-operator) for details.
+- Added `!.BaseFilter`, `&.BaseFilter` and `|.BaseFilter` operators, which enables combining filters. See [Advanced Filters](https://github.com/ebeneditos/telegram.bot/wiki/Advanced-Filters) for details.
+- Vignettes update:
+  - Added *The add operator*.
+  - Substituted *Custom filters* vignette with *Advanced filters*.
+- Documentation updated.
+
 ## v2.1.0
 
 - Fixed a bug that affected sending local files.

@@ -1,5 +1,5 @@
 ---
-title: "The 'add' operator"
+title: "The add operator"
 author: "Ernest Benedito"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -46,8 +46,7 @@ echo <- function(bot, update){
                   text = update$message$text)
 }
 
-updater <- Updater("TOKEN") + CommandHandler("start", start) +
-  MessageHandler(echo, MessageFilters$text)
+updater <- Updater("TOKEN") + CommandHandler("start", start) + MessageHandler(echo, MessageFilters$text)
 ```
 
 And keep adding...
@@ -68,7 +67,7 @@ Give it a try! Start polling the updater:
 updater$start_polling()
 ```
 
-And send */start* to the bot, */caps foo* or just a simple text.
+And send ***/start*** to the bot, ***/caps foo*** or just a simple text.
 
 ### How it works
 

@@ -3,7 +3,7 @@
 \name{Updater}
 \alias{Updater}
 \alias{is.Updater}
-\title{Create a Telegram Bot intuitively}
+\title{Building a Telegram Bot}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Updater(token = NULL, base_url = NULL, base_file_url = NULL,
