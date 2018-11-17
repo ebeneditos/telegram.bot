@@ -41,9 +41,9 @@
 #' # Send '/start' to the bot, '/caps foo' or just a simple text
 #' }
 #' @export
-"+.TelegramObject" <- function(e1, e2) {
+"+.TelegramObject" <- function(e1, e2) { # nocov start
   if (missing(e2)) {
-    stop("Cannot use `+.TelegramBot()` with a single argument. ",
+    stop("Cannot use `+.TelegramBot()` with a single argument. ", # nocov
          "Did you accidentally put + on a new line?",
          call. = FALSE)
   }else if(!is.Handler(e2)){
@@ -64,7 +64,7 @@
   }
   
   e1
-}
+} # nocov end
 
 #' The base of telegram.bot objects
 #'

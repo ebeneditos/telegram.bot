@@ -121,7 +121,7 @@ getMe <- function()
 #' chat_id <- user_id('me')
 #' 
 #' bot$sendMessage(chat_id = chat_id,
-#'                 text = "*foo bold text*",
+#'                 text = "foo *bold* _italic_",
 #'                 parse_mode = "Markdown")
 #' }
 sendMessage <- function(chat_id,
@@ -906,7 +906,7 @@ getUserProfilePhotos <- function(user_id,
 #' You can also use it's snake_case equivalent \code{get_file}.
 #' @param file_id The file identifier.
 getFile <- function(file_id)
-{ #nocov start
+{ # nocov start
   url <- sprintf('%s/getFile', private$base_url)
   
   data <- list(file_id = file_id)

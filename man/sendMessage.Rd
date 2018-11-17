@@ -46,7 +46,7 @@ bot <- Bot(token = bot_token('RTelegramBot'))
 chat_id <- user_id('me')
 
 bot$sendMessage(chat_id = chat_id,
-                text = "*foo bold text*",
+                text = "foo *bold* _italic_",
                 parse_mode = "Markdown")
 }
 }

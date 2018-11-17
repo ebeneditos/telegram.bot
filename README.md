@@ -53,8 +53,7 @@ guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
 enviroment variables set in `.Renviron` file.
 
-So let's say you have named your bot `RTelegramBot` (it's the first question
-you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R command:
+So let's say you have named your bot `RTelegramBot`; you can open the `.Renviron` file with the R command:
 
 ```r
 # Open with another text editor if this fails
@@ -93,7 +92,7 @@ updates <- bot$getUpdates()
 
 # Send message
 bot$sendMessage(chat_id = chat_id,
-                text = "*foo bold text*",
+                text = "foo *bold* _italic_",
                 parse_mode = "Markdown")
 
 # Send photo

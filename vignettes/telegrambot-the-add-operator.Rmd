@@ -76,11 +76,15 @@ The operator is indeed calling the `add_handler` method from an `Updater`'s `Dis
 
 ```{r, eval = F}
 updater <- updater + start_handler
-# is equivalent to
+```
+
+Is equivalent to:
+
+```{r, eval = F}
 updater$dispatcher$add_handler(start_handler)
 ```
 
-Also, the `+` operator works with `Dispatcher` objects:
+Also, it works with `Dispatcher` objects:
 
 ```{r, eval = F}
 dispatcher <- updater$dispatcher

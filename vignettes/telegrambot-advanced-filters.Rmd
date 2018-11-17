@@ -85,6 +85,7 @@ MessageFilters$text_or_command <- BaseFilter(function(message) !is.null(message$
 ```
 
 The class can of cause be named however you want, the only important things are:
+
 - The class has to inherit from `BaseFilter`.
 - It has to implement a `filter` method.
 - The filter must be a `function` that takes a `message` as input and returns a boolean.
@@ -92,6 +93,6 @@ The class can of cause be named however you want, the only important things are:
 The filter can then be used as:
 
 ```{r, eval = F}
-handler = MessageHandler(callback, MessageFilters$text_or_command )
+handler = MessageHandler(callback, MessageFilters$text_or_command)
 ```
 
