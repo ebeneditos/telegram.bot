@@ -1435,6 +1435,7 @@ BotClass <-
 )
 
 #' @rdname Bot
+#' @param x Object to be tested.
 #' @export
 is.Bot <- function(x){
   inherits(x, "Bot")

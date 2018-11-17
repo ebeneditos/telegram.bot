@@ -27,6 +27,8 @@ useful for the advanced users who would like to control the
 default timeouts and/or control the proxy used for http communication.}
 
 \item{bot}{(Optional). A pre-initialized \code{\link{Bot}} instance.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to

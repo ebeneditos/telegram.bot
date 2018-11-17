@@ -147,6 +147,7 @@ DispatcherClass <-
 )
 
 #' @rdname Dispatcher
+#' @param x Object to be tested.
 #' @export
 is.Dispatcher <- function(x){
   inherits(x, "Dispatcher")

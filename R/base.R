@@ -53,7 +53,7 @@
   }
   
   if      (is.Updater(e1))  e1$dispatcher$add_handler(e2)
-  else if (is.Dispatcher(e1)) dispatcher$add_handler(e2)
+  else if (is.Dispatcher(e1)) e1$add_handler(e2)
   else if (is.Handler(e1)) {
     stop("Cannot add 'Handler' objects together.",
          call. = FALSE)
@@ -78,6 +78,7 @@
 TelegramObject <- R6::R6Class("TelegramObject")
 
 #' @rdname TelegramObject
+#' @param x Object to be tested.
 #' @export
 is.TelegramObject <- function(x){
   inherits(x, "TelegramObject")

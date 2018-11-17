@@ -26,6 +26,8 @@ parameter from \code{?httr::POST} for further details.
 The \code{request_config} settings are very
 useful for the advanced users who would like to control the
 default timeouts and/or control the proxy used for http communication.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This object represents a Telegram Bot.

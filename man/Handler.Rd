@@ -24,6 +24,8 @@ method. Use it if you want to create your own \code{Handler}.}
 
 \item{handlername}{Name of the customized class, which will inherit from \code{Handler}.
 If \code{NULL} (default) it will create a \code{Handler} class.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 The base class for all update handlers. Create custom handlers by inheriting from it.

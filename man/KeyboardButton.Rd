@@ -21,6 +21,8 @@ private chats only.}
 \item{request_location}{(Optional). If \code{TRUE}, the user's current location
 will be sent when the button is pressed. Available in private
 chats only.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This object represents one button of the reply keyboard. Optional

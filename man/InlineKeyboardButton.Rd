@@ -28,6 +28,8 @@ Can be empty, in which case just the bot's username will be inserted.}
 insert the bot's username and the specified inline query in the current
 chat's input field. Can be empty, in which case only the bot's username
 will be inserted.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This object represents one button of an inline keyboard. You

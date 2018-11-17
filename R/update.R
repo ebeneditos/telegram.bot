@@ -177,6 +177,7 @@ UpdateClass <-
 )
 
 #' @rdname Update
+#' @param x Object to be tested.
 #' @export
 is.Update <- function(x){
   inherits(x, "Update")

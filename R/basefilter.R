@@ -46,7 +46,14 @@ NULL
 #'     a \code{filter} function that takes a \code{message} as input and returns a boolean:
 #'     \code{TRUE} if the message should be handled, \code{FALSE} otherwise.
 #' @examples \dontrun{
+#' # Create a filter function
+#' text_or_command <- function(message) !is.null(message$text)
 #' 
+#' # Make it an instance of BaseFilter with its generator:
+#' text_or_command <- BaseFilter(filter = text_or_command)
+#' 
+#' # Or by coercing it with as.BaseFilter:
+#' text_or_command <- as.BaseFilter(function(message) !is.null(message$text))
 #' }
 #' @export
 BaseFilter <- function(filter){
@@ -55,6 +62,8 @@ BaseFilter <- function(filter){
 }
 
 #' @rdname BaseFilter
+#' @param x Object to be coerced or tested.
+#' @param ... Further arguments passed to or from other methods.
 #' @export
 as.BaseFilter <- function(x, ...){
   BaseFilter(x)
@@ -65,4 +74,3 @@ as.BaseFilter <- function(x, ...){
 is.BaseFilter <- function(x){
   inherits(x, "BaseFilter")
 }
-

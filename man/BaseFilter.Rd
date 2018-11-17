@@ -16,6 +16,10 @@ is.BaseFilter(x)
 \item{filter}{If you want to create your own filters you can call this generator passing by
 a \code{filter} function that takes a \code{message} as input and returns a boolean:
 \code{TRUE} if the message should be handled, \code{FALSE} otherwise.}
+
+\item{x}{Object to be coerced or tested.}
+
+\item{...}{Further arguments passed to or from other methods.}
 }
 \description{
 Base class for all Message Filters.
@@ -25,6 +29,13 @@ See \code{\link{filtersLogic}} to know more about combining filter functions.
 }
 \examples{
 \dontrun{
+# Create a filter function
+text_or_command <- function(message) !is.null(message$text)
 
+# Make it an instance of BaseFilter with its generator:
+text_or_command <- BaseFilter(filter = text_or_command)
+
+# Or by coercing it with as.BaseFilter:
+text_or_command <- as.BaseFilter(function(message) !is.null(message$text))
 }
 }

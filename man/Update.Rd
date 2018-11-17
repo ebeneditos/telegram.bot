@@ -13,6 +13,8 @@ is.Update(x)
 }
 \arguments{
 \item{data}{Data of the update.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.

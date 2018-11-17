@@ -11,6 +11,9 @@ TelegramObject
 
 is.TelegramObject(x)
 }
+\arguments{
+\item{x}{Object to be tested.}
+}
 \description{
 Base class for most telegram objects.
 }

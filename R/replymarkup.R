@@ -33,6 +33,7 @@ KeyboardButton <- function(
 }
 
 #' @rdname KeyboardButton
+#' @param x Object to be tested.
 #' @export
 is.KeyboardButton <- function(x){
   inherits(x, "KeyboardButton")
@@ -160,6 +161,7 @@ InlineKeyboardButton <- function(
 }
 
 #' @rdname InlineKeyboardButton
+#' @param x Object to be tested.
 #' @export
 is.InlineKeyboardButton <- function(x){
   inherits(x, "InlineKeyboardButton")

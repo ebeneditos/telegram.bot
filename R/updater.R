@@ -214,6 +214,7 @@ UpdaterClass <-
 )
 
 #' @rdname Updater
+#' @param x Object to be tested.
 #' @export
 is.Updater <- function(x){
   inherits(x, "Updater")

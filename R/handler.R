@@ -113,6 +113,7 @@ HandlerClass <-
 )
 
 #' @rdname Handler
+#' @param x Object to be tested.
 #' @export
 is.Handler <- function(x){
   inherits(x, "Handler")
