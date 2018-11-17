@@ -20,6 +20,9 @@ test_that("Initialize", {
   # Initialize with token
   expect_is(updater, "Updater")
   
+  # Check is.Updater
+  expect_true(is.Updater(updater))
+  
 })
 
 test_that("Stop Polling", {

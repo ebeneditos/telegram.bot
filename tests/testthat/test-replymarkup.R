@@ -12,7 +12,7 @@ test_that("Reply Markup", {
     one_time_keyboard = TRUE), "list")
   
   expect_error(ReplyKeyboardMarkup(foo_text),
-               "`keyboard` parameter must be a list of button rows, each represented by a list of KeyboardButton objects.")
+               "`keyboard` must be a list of button rows, each represented by a list of KeyboardButton objects.")
   
   expect_type(InlineKeyboardMarkup(
     inline_keyboard = list(
@@ -32,7 +32,7 @@ test_that("Reply Markup", {
   ), "list")
   
   expect_error(InlineKeyboardMarkup(foo_text),
-               "`inline_keyboard` parameter must be a list of button rows, each represented by a list of KeyboardButton objects.")
+               "`inline_keyboard` must be a list of button rows, each represented by a list of KeyboardButton objects.")
   
   expect_error(InlineKeyboardButton(foo_text, foo_text, foo_text),
                "You must use exactly one of the optional fields.")

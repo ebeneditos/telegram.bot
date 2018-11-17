@@ -6,10 +6,10 @@ bot <- Bot(token = token)
 test_that("Initialize", {
   
   # invalid token 1
-  expect_error(Bot(token = ' '), 'invalid token.')
+  expect_error(Bot(token = ' '), 'Invalid token.')
   
   # invalid token 2
-  expect_error(Bot(token = '123456ABCDEF'), 'invalid token.')
+  expect_error(Bot(token = '123456ABCDEF'), 'Invalid token.')
   
   # print
   expect_error(print(bot), NA)

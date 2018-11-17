@@ -5,7 +5,7 @@
 #' 
 #' @title Add handlers to an Updater's Dispatcher
 #'
-#' @description With \code{+} you can add any kind of \code{\link{Handler}} to
+#' @description With \code{+} you can easily add any kind of \code{\link{Handler}} to
 #'     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
 #'     
 #' @details See \code{\link{add_handler}} for further information.
@@ -27,7 +27,7 @@
 #' updater <- Updater("TOKEN") + CommandHandler("start", start) +
 #'   MessageHandler(echo, MessageFilters$text)
 #'   
-#' # And keep adding!
+#' # And keep adding...
 #' caps <- function(bot, update, args){
 #'   text_caps <- toupper(paste(args, collapse = " "))
 #'   bot$sendMessage(chat_id = update$message$chat_id,
@@ -36,7 +36,7 @@
 #' 
 #' updater <- updater + CommandHandler("caps", caps, pass_args = T)
 #' 
-#' # Give it a try
+#' # Give it a try!
 #' updater$start_polling()
 #' # Send '/start' to the bot, '/caps foo' or just a simple text
 #' }
@@ -48,7 +48,7 @@
          call. = FALSE)
   }else if(!is.Handler(e2)){
     stop("The second argument from `+.TelegramBot()` ",
-         "must be of class 'Handler'",
+         "must be an instance of 'Handler'.",
          call. = FALSE)
   }
   

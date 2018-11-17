@@ -13,7 +13,7 @@
 \item{e2}{An object of class \code{\link{Handler}}.}
 }
 \description{
-With \code{+} you can add any kind of \code{\link{Handler}} to
+With \code{+} you can easily add any kind of \code{\link{Handler}} to
     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
 }
 \details{
@@ -35,7 +35,7 @@ echo <- function(bot, update){
 updater <- Updater("TOKEN") + CommandHandler("start", start) +
   MessageHandler(echo, MessageFilters$text)
   
-# And keep adding!
+# And keep adding...
 caps <- function(bot, update, args){
   text_caps <- toupper(paste(args, collapse = " "))
   bot$sendMessage(chat_id = update$message$chat_id,
@@ -44,7 +44,7 @@ caps <- function(bot, update, args){
 
 updater <- updater + CommandHandler("caps", caps, pass_args = T)
 
-# Give it a try
+# Give it a try!
 updater$start_polling()
 # Send '/start' to the bot, '/caps foo' or just a simple text
 }

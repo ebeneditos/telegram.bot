@@ -86,7 +86,7 @@ ReplyKeyboardMarkup <- function(
   ## check dimensions and class
   if(!all(unlist(lapply(keyboard, is.list))) |
      !all(unlist(lapply(keyboard, function(x){lapply(x, is.KeyboardButton)})))) {
-    stop("`keyboard` parameter must be a list of button rows, each represented ",
+    stop("`keyboard` must be a list of button rows, each represented ",
          "by a list of KeyboardButton objects.")
   }
   ## build object

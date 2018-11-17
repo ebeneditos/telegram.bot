@@ -7,16 +7,19 @@ update <- Update(foo_update)
 
 test_that("Add Handler", {
   
+  # check is.Dispatcher
+  expect_true(is.Dispatcher(dispatcher))
+  
   # wrong handler
-  expect_error(dispatcher$add_handler(handler = 'foo'), 'handler is not an instance of Handler')
+  expect_error(dispatcher$add_handler(handler = 'foo'), "`handler` is not an instance of 'Handler")
   
   # wrong group type
   expect_error(dispatcher$add_handler(handler = handler, group = 'foo'), 
-               'group is not numeric')
+               '`group` is not numeric')
   
   # wrong group number
   expect_error(dispatcher$add_handler(handler = handler, group = 0), 
-               'group must be higher or equal to 1')
+               '`group` must be higher or equal to 1')
   
   # add handler
   expect_error(dispatcher$add_handler(handler = handler), NA)
