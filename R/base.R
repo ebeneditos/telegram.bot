@@ -7,6 +7,8 @@
 #'
 #' @description With \code{+} you can add any kind of \code{\link{Handler}} to
 #'     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
+#'     
+#' @details See \code{\link{add_handler}} for further information.
 #'
 #' @param e1 An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}.
 #' @param e2 An object of class \code{\link{Handler}}.

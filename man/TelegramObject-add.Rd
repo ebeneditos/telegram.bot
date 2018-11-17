@@ -16,6 +16,9 @@
 With \code{+} you can add any kind of \code{\link{Handler}} to
     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
 }
+\details{
+See \code{\link{add_handler}} for further information.
+}
 \examples{
 \dontrun{
 # You can chain multiple handlers

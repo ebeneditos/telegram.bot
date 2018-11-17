@@ -20,19 +20,19 @@ NULL
 #' @examples
 #' not_command <- ! MessageFilters$command
 #' @export
-"!.BaseFilter" <- function(f) function(...) ! f(...)
+"!.BaseFilter" <- function(f) BaseFilter(function(...) ! f(...))
 
 #' @rdname filtersLogic
 #' @examples
 #' text_and_reply <- MessageFilters$text & MessageFilters$reply
 #' @export
-"&.BaseFilter" <- function(f, g) function(...) f(...) & g(...)
+"&.BaseFilter" <- function(f, g) BaseFilter(function(...) f(...) & g(...))
 
 #' @rdname filtersLogic
 #' @examples
 #' audio_or_video <- MessageFilters$audio | MessageFilters$video
 #' @export
-"|.BaseFilter" <- function(f, g) function(...) f(...) | g(...)
+"|.BaseFilter" <- function(f, g) BaseFilter(function(...) f(...) | g(...))
 
 #' The base of all filters
 #'
