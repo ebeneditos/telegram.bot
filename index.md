@@ -7,7 +7,7 @@ In this page you will learn how to build a Telegram Bot with R and the `telegram
 
 - [Creating a Telegram Bot](#creating-a-telegram-bot)
 - [Introduction to the Telegram Bot API](#introduction-to-the-telegram-bot-api)
-- [The telegram.bot Package](#the-telegramext-package)
+- [The telegram.bot Package](#the-telegrambot-package)
 - [Building an R Bot in 3 steps](#building-an-r-bot-in-3-steps)
 - [Adding Functionalities](#adding-functionalities)
 
@@ -24,7 +24,7 @@ First, you must have or [create a Telegram account](https://web.telegram.org). S
 You should get a reply instantly that asks you to choose a name for your Bot. You have to send then the name you want for the bot, which can be anyone, for instance:
 
 ```bash
-RBot
+RTelegramBot
 ```
 
 *BotFather* will now ask you to pick a username for your Bot. This username has to end in `bot`, and be globally unique. In this tutorial we'll indicate the Bot's username with `<your-bot-username>`, so you'll have to substitute your chosen username wherever relevant from now on. Send your chosen username to *BotFather*:
@@ -67,7 +67,7 @@ Once you've visited this URL, you should see a message from your Bot sent to you
 
 You could program with R some functions that send these HTTPS requests and processes its responses. Fortunately, there is a package that allows you to do that: `telegram.bot`. It uses `httr` and `jsonlite` packages to do such work. Additionally, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
 
-Thereby, the `telegram.bot` package consists of several `R6` classes, and the API is exposed via the `Bot` class. The methods are the *snake_case* equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact *camelCase* method names as in the Telegram docs are also available for your convenience. So for example `Bot$get_updates` is the same as `Bot$getUpdates`.
+Thereby, the `telegram.bot` package consists of several `R6` classes, and the API is exposed via the `Bot` class. The methods names are equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact *snake_case* method names are also available for your convenience. So for example `Bot$get_updates` is the same as `Bot$getUpdates`.
 
 ## Creating a Bot instance
 
@@ -79,7 +79,7 @@ First, create an instance of the `Bot` class, where `TOKEN` should be replaced b
 # install.packages("telegram.bot")
 library(telegram.bot)
 
-bot <- Bot(token = 'TOKEN')
+bot <- Bot(token = "TOKEN")
 ```
 
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
@@ -101,20 +101,19 @@ updates <- bot$getUpdates()
 This will retrieve a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
 
 ```r
-bot$sendMessage(chat_id = <chat-id>, text = 'TestReply')
+chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
+bot$sendMessage(chat_id = chat_id, text = "Test reply")
 ```
 
 ## Other methods
 
-As you see, one of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are some more examples:
+As you see, one of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are a few more examples:
 
 ```r
-chat_id <- 'CHAT_ID' # you can get it by sending a message to the bot and then check it with bot$getUpdates()
-
 # Send message
 bot$sendMessage(chat_id = chat_id,
-                text = '*foo bold text*',
-                parse_mode = 'Markdown')
+                text = "*foo bold text*",
+                parse_mode = "Markdown")
 
 # Send photo
 bot$sendPhoto(chat_id = chat_id,
@@ -147,7 +146,7 @@ bot$sendLocation(chat_id = chat_id,
 
 # Send chat action
 bot$sendChatAction(chat_id = chat_id,
-                   action = 'typing')
+                   action = "typing")
 
 # Get user profile photos
 bot$getUserProfilePhotos(user_id = chat_id)
@@ -179,9 +178,12 @@ In this section we will explain how to build a Bot with R and `telegram.bot` fol
 
 ## 1. Creating the Updater object
 
+
 First, you first must create an `Update` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
 
 ```r
+library(telegram.bot)
+
 updater <- Updater(token='TOKEN')
 ```
 
@@ -190,7 +192,7 @@ guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
 environment variables set in `.Renviron` file.
 
-So let's say you have named your bot `RBot` (it's the first question
+So let's say you have named your bot `RTelegramBot` (it's the first question
 you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R commands:
 
 ```r
@@ -201,8 +203,8 @@ file.edit(user_renviron) # Open with another text editor if this fails
 And put the following line with
 your `TOKEN` in your `.Renviron`:
 
-```bash
-R_TELEGRAM_BOT_RBot=TOKEN
+```r
+R_TELEGRAM_BOT_RTelegramBot=TOKEN
 ```
 If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
 to use the `bot_token` function (otherwise you'll have to get
@@ -212,7 +214,7 @@ After you've finished these steps **restart R** in order to have
 working environment variables. You can then create the `Updater` object as:
 
 ```r
-updater <- Updater(token = bot_token('RBot'))
+updater <- Updater(token = bot_token("RTelegramBot"))
 ```
 
 **Recommendation 2:** For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
@@ -270,7 +272,7 @@ echo <- function(bot, update){
 	bot$sendMessage(chat_id = update$message$chat_id, text = update$message$text)
 }
 
-echo_handler <- MessageHandler(echo, Filters$text)
+echo_handler <- MessageHandler(echo, MessageFilters$text)
 dispatcher$add_handler(echo_handler)
 ```
 
@@ -278,8 +280,7 @@ From now on, your bot should echo all non-command messages it receives.
 
 **Note:** As soon as you add new handlers to `dispatcher`, they are in effect.
 
-**Note:** The `Filters` object contains a number of functions that filter incoming messages for text, images, status updates and more.
-Any message that returns `TRUE` for at least one of the filters passed to `MessageHandler` will be accepted.
+**Note:** The `MessageFilters` object contains a number of functions that filter incoming messages for text, images, status updates and more. Any message that returns `TRUE` for at least one of the filters passed to `MessageHandler` will be accepted.
 You can also write your own filters if you want.
 
 ## Commands with arguments
@@ -312,7 +313,7 @@ unknown <- function(bot, update){
                         text = "Sorry, I didn't understand that command.")
 }
 
-unknown_handler <- MessageHandler(unknown, Filters$command)
+unknown_handler <- MessageHandler(unknown, MessageFilters$command)
 dispatcher$add_handler(unknown_handler)
 ```
 
@@ -348,7 +349,9 @@ Now you can send the command `/kill` from Telegram to stop the Bot. However, in 
 
 It is also possible to write your own filters used with `MessageHandler` and `CommandHandler`. In essence, a filter is simply a function that receives a `Message` instance and returns either `TRUE` or `FALSE`. If a filter evaluates to `TRUE`, the message will be handled. 
 
-For the `kill` example it would be useful to filter that command so to make it accessible only for a specific `<user-id>`. Thereby, you could add a filter:
+### Restricting users
+
+For the `kill` example we saw in the [previous page](https://github.com/ebeneditos/telegram.bot/wiki/Basic-Functionalities#stopping-the-bot), it would be useful to filter that command so to make it accessible only for a specific `<user-id>`. Thereby, you could add a filter:
 
 ```r
 filter_user <- function(message){
@@ -362,12 +365,14 @@ Now, you could update the handler with this filter:
 kill_handler <- CommandHandler('kill', kill, filter_user)
 ```
 
-Filters can also be added to the `Filters` object. Within it, we can see that `Filters$text` and `Filters$command` are mutually exclusive, so we could add a filter for messages that can be either one of them. This would result as:
+### Text or command filter
+
+Filters can also be added to the `MessageFilters` object. Within it, we can see that `MessageFilters$text` and `MessageFilters$command` are mutually exclusive, so we could add a filter for messages that can be either one of them. This would result as:
 
 ```r
-Filters$text_or_command <- function(message){
-                                      !is.null(message$text)
-                                  }
+MessageFilters$text_or_command <- function(message){
+                               !is.null(message$text)
+                           }
 ```
 
 That's it for now! With this tutorial you may have the first guidelines to develop your R bot.
