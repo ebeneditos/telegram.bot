@@ -44,36 +44,7 @@ updater <- Updater("TOKEN") + CommandHandler("start", start)
 updater$start_polling() # Send '/start' to the bot
 ```
 
-## Generating an Access Token
-
-To make it work, you'll need an access `TOKEN` (it should look something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`). If you don't have it, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
-
-**Recommendation:** Following [Hadley's API
-guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
-it's unsafe to type the `TOKEN` just in the R script. It's better to use
-enviroment variables set in `.Renviron` file.
-
-So let's say you have named your bot `RTelegramBot`; you can open the `.Renviron` file with the R command:
-
-```r
-# Open with another text editor if this fails
-file.edit(path.expand(file.path("~", ".Renviron")))
-```
-
-And put the following line with your `TOKEN` in your `.Renviron`:
-
-```r
-R_TELEGRAM_BOT_RTelegramBot=TOKEN
-```
-If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
-to use the `bot_token` function (otherwise you'll have to get
-these variable from `Sys.getenv`). Finally, **restart R** and you can then create the `Updater` object as:
-
-```r
-updater <- Updater(token = bot_token("RTelegramBot"))
-```
-
-For further details about this process, you can take a look at the [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API) page.
+If you don't have a `TOKEN`, you can follow the steps explained [below](#generating-an-access-token) to generate one.
 
 ## Telegram API Methods
 
@@ -133,6 +104,35 @@ bot$getUserProfilePhotos(user_id = chat_id)
 ```
 
 Note that you can also send local files by passing their path instead of an URL. Additionaly, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
+
+## Generating an Access Token
+
+To make it work, you'll need an access `TOKEN` (it should look something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`). If you don't have it, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
+
+**Recommendation:** Following [Hadley's API
+guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
+it's unsafe to type the `TOKEN` just in the R script. It's better to use
+enviroment variables set in `.Renviron` file.
+
+So let's say you have named your bot `RTelegramBot`; you can open the `.Renviron` file with the R command:
+
+```r
+# Open with another text editor if this fails
+file.edit(path.expand(file.path("~", ".Renviron")))
+```
+
+And put the following line with your `TOKEN` in your `.Renviron`:
+
+```r
+R_TELEGRAM_BOT_RTelegramBot=TOKEN
+```
+If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able
+to use the `bot_token` function (otherwise you'll have to get
+these variable from `Sys.getenv`). Finally, **restart R** and you can then create the `Updater` object as:
+
+```r
+updater <- Updater(token = bot_token("RTelegramBot"))
+```
 
 ## Getting Started
 
