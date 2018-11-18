@@ -15,7 +15,7 @@ So, let's *get started!*
 
 # Creating a Telegram Bot
 
-First, you must have or [create a Telegram account](https://web.telegram.org). Second, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [`@BotFather`](https://telegram.me/botfather) and following a [few simple steps](https://core.telegram.org/bots#6-botfather). Telegram bots can receive *messages* or *commands*. The former are simply text that you send as if you were sending a message to another person, while the latter are prefixed with a `/` character. To create a new bot, send the following command to *BotFather* as a chat (exactly as if you were talking to another person on Telegram):
+First, you must have or [create a Telegram account](https://web.telegram.org). Second, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [@BotFather](https://telegram.me/botfather) and following a [few simple steps](https://core.telegram.org/bots#6-botfather). Telegram bots can receive *messages* or *commands*. The former are simply text that you send as if you were sending a message to another person, while the latter are prefixed with a `/` character. To create a new bot, send the following command to *BotFather* as a chat (exactly as if you were talking to another person on Telegram):
 
 ```bash
 /newbot
@@ -73,7 +73,7 @@ Thereby, the `telegram.bot` package consists of several `R6` classes, and the AP
 
 To get a feeling for the API and how to use it with `telegram.bot`, we will reproduce the URL based example we just saw, done with R with this package.
 
-First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from `@BotFather`:
+First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from *BotFather*:
 
 ```r
 # install.packages("telegram.bot")
