@@ -4,7 +4,7 @@
 \alias{setWebhook}
 \title{Set a webhook}
 \usage{
-setWebhook(url = NULL, certificate = NULL, max_connections = 40,
+setWebhook(url = NULL, certificate = NULL, max_connections = 40L,
   allowed_updates = NULL)
 }
 \arguments{

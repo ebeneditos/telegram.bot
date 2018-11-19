@@ -53,7 +53,7 @@ You can also use it's snake_case equivalent \code{send_audio}.
 \examples{
 \dontrun{
 bot <- Bot(token = bot_token('RTelegramBot'))
-chat_id <- user_id('me')
+chat_id <- user_id("Me")
 audio_url <- "http://www.largesound.com/ashborytour/sound/brobob.mp3"
 
 bot$sendAudio(chat_id = chat_id,

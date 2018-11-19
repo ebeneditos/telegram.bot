@@ -62,7 +62,7 @@ MessageHandlerClass <-
                     else{
                       message <- update$effective_message()
 
-                      if(inherits(self$filters, 'list')){
+                      if(inherits(self$filters, "list")){
                         res <- any(unlist(lapply(self$filters, function(func) func(message))))
                       }
 

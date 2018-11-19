@@ -43,7 +43,7 @@ You can also use it's snake_case equivalent \code{send_photo}.
 \examples{
 \dontrun{
 bot <- Bot(token = bot_token('RTelegramBot'))
-chat_id <- user_id('me')
+chat_id <- user_id("Me")
 photo_url <- "https://telegram.org/img/t_logo.png"
 
 bot$sendPhoto(chat_id = chat_id,

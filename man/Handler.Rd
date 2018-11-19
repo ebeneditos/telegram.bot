@@ -52,7 +52,7 @@ be handled by this instance.}
 # Example of a Handler
 callback_method <- function(bot, update){
   chat_id <- update$effective_chat()$id
-  bot$sendMessage(chat_id = chat_id, text = 'Hello')
+  bot$sendMessage(chat_id = chat_id, text = "Hello")
 }
 
 hello_handler <- Handler(callback_method)

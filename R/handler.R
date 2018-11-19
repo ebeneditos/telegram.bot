@@ -57,7 +57,7 @@ handle_update <- function(update, dispatcher){
 #' # Example of a Handler
 #' callback_method <- function(bot, update){
 #'   chat_id <- update$effective_chat()$id
-#'   bot$sendMessage(chat_id = chat_id, text = 'Hello')
+#'   bot$sendMessage(chat_id = chat_id, text = "Hello")
 #' }
 #'
 #' hello_handler <- Handler(callback_method)
@@ -82,10 +82,10 @@ Handler <- function(callback, check_update = NULL, handle_update = NULL, handler
   HandlerClassInherit <- R6::R6Class(classname = handlername, inherit = HandlerClass)
   
   if (!missing(check_update))
-    HandlerClassInherit$set('public', 'check_update', check_update, overwrite = T)
+    HandlerClassInherit$set("public", "check_update", check_update, overwrite = TRUE)
   
   if (!missing(handle_update))
-    HandlerClassInherit$set('public', 'handle_update', handle_update, overwrite = T)
+    HandlerClassInherit$set("public", "handle_update", handle_update, overwrite = TRUE)
   
   HandlerClassInherit$new(callback)
 }

@@ -17,7 +17,7 @@ skip_if_offline <- function(bot){
   
   if (inherits(res, 'try-error'))
     skip(attr(res, 'condition')$message)
-  else if (inherits(res, 'response') && res$status_code != 200)
+  else if (inherits(res, 'response') && res$status_code != 200L)
     skip('Bad request.')
 }
 
@@ -38,10 +38,7 @@ foo_callbackquery <- list(update_id = 1,
 
 # Foo bot and foo updater
 # NOTE: Only used for start_polling testing, as the bot features are tested in other contexts
-foo_bot <- list(
-  clean_updates = function(...){}
-)
-class(foo_bot) <- 'Bot'
+foo_bot <- structure(list(clean_updates = function(...){}), class = "Bot")
 
 foo_updater <- Updater(bot = foo_bot)
 

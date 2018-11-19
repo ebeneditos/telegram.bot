@@ -57,14 +57,14 @@ CommandHandlerClass <-
 
                     message <- update$message
 
-                    if (!is.null(message$text) && startsWith(message$text, '/')){
-                      command <- strsplit(substring(message$text, 2), ' ')[[1]]
+                    if (!is.null(message$text) && startsWith(message$text, "/")){
+                      command <- strsplit(substring(message$text, 2L), ' ')[[1L]]
 
                       if(is.null(self$filters)){
                         res <- TRUE
                       }
 
-                      else if(inherits(self$filters, 'list')){
+                      else if(inherits(self$filters, "list")){
                         res <- any(unlist(lapply(self$filters, function(func) func(message))))
                       }
 
@@ -72,7 +72,7 @@ CommandHandlerClass <-
                         res <-  self$filters(message)
                       }
                       
-                      return(res && (tolower(command[1]) %in% self$command))
+                      return(res && (tolower(command[1L]) %in% self$command))
                     }
 
                     else return(FALSE) # nocov
@@ -86,8 +86,8 @@ CommandHandlerClass <-
                 handle_update = function(update, dispatcher){
                   
                   if (self$pass_args){
-                    optional_args <- strsplit(update$message$text, ' ')[[1]]
-                    self$callback(dispatcher$bot, update, optional_args[2:length(optional_args)])
+                    optional_args <- strsplit(update$message$text, ' ')[[1L]]
+                    self$callback(dispatcher$bot, update, optional_args[2L:length(optional_args)])
                   }
                   else
                     self$callback(dispatcher$bot, update)

@@ -4,7 +4,7 @@
 \alias{getUserProfilePhotos}
 \title{Get a user's profile photos}
 \usage{
-getUserProfilePhotos(user_id, offset = NULL, limit = 100)
+getUserProfilePhotos(user_id, offset = NULL, limit = 100L)
 }
 \arguments{
 \item{user_id}{Unique identifier of the target user.}
@@ -24,7 +24,7 @@ You can also use it's snake_case equivalent \code{get_user_profile_photos}.
 \examples{
 \dontrun{
 bot <- Bot(token = bot_token('RTelegramBot'))
-chat_id <- user_id('me')
+chat_id <- user_id("Me")
 
 bot$getUserProfilePhotos(chat_id = chat_id)
 }

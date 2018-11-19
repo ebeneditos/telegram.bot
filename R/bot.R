@@ -10,15 +10,15 @@ bot.print <- function()
   dont_show <- c("clone", "initialize", "print")
   avail_methods <- sort(api_methods)
   remaining_methods <- sort(setdiff(obj, c(avail_methods, snake, dont_show)))
-  api_string <- method_summaries(avail_methods, indent = 4)
-  remaining_string <- method_summaries(remaining_methods, indent = 4)
+  api_string <- method_summaries(avail_methods, indent = 4L)
+  remaining_string <- method_summaries(remaining_methods, indent = 4L)
   
-  ret <- paste0("<", class(self)[1], ">")
+  ret <- paste0("<", class(self)[1L], ">")
   
   # If there's another class besides first class and R6
   classes <- setdiff(class(self), "R6")
-  if (length(classes) >= 2) {
-    ret <- c(ret, paste0("  Inherits from: <", classes[2], ">")) # nocov
+  if (length(classes) >= 2L) {
+    ret <- c(ret, paste0("  Inherits from: <", classes[2L], ">")) # nocov
   }
   
   ret <- c(ret,
@@ -34,11 +34,11 @@ bot.validate_token <- function(token)
   if (grepl(' ', token))
     stop('Invalid token.')
   
-  split <- strsplit(token, ':')[[1]]
-  if (length(split) < 2 ||
-      split[2] == '' ||
-      grepl("\\D", split[1]) ||
-      nchar(split[1]) < 3)
+  split <- strsplit(token, ':')[[1L]]
+  if (length(split) < 2L ||
+      split[2L] == '' ||
+      grepl("\\D", split[1L]) ||
+      nchar(split[1L]) < 3L)
     stop('Invalid token.')
   
   token
@@ -53,7 +53,7 @@ bot.request <- function(url, data)
                        encode = 'multipart')
   httr::stop_for_status(result)
   
-  if (result$status >= 200 && result$status <= 299){
+  if (result$status_code >= 200L && result$status_code < 300L){
     # 200-299 range are HTTP success statuses
     return(private$parse(result))
   }
@@ -64,13 +64,17 @@ bot.request <- function(url, data)
 # Parse result
 bot.parse <- function(result)
 {
-  data <- try(httr::content(result, as = 'parsed', encoding = 'UTF-8'))
+  data <- tryCatch({httr::content(result, as = 'parsed', encoding = 'UTF-8')},
+                   error = function(e) e)
   
   if (is.list(data) && data$ok){
     return(data$result)
   }
-  else
+  else if(inherits(data, "error")){
+    stop(as.character(data)) # nocov
+  }else{
     stop('Invalid server response') # nocov
+  }
 }
 
 
@@ -118,7 +122,7 @@ getMe <- function()
 #'     }
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' 
 #' bot$sendMessage(chat_id = chat_id,
 #'                 text = "foo *bold* _italic_",
@@ -239,7 +243,7 @@ forwardMessage <- function(chat_id,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' photo_url <- "https://telegram.org/img/t_logo.png"
 #' 
 #' bot$sendPhoto(chat_id = chat_id,
@@ -310,7 +314,7 @@ sendPhoto <- function(chat_id,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' audio_url <- "http://www.largesound.com/ashborytour/sound/brobob.mp3"
 #' 
 #' bot$sendAudio(chat_id = chat_id,
@@ -383,7 +387,7 @@ sendAudio <- function(chat_id,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' document_url <- "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
 #' 
 #' bot$sendDocument(chat_id = chat_id,
@@ -446,7 +450,7 @@ sendDocument <- function(chat_id,
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' sticker_url <- "https://www.gstatic.com/webp/gallery/1.webp"
 #' 
 #' bot$sendSticker(chat_id = chat_id,
@@ -509,7 +513,7 @@ sendSticker <- function(chat_id,
 #'     suitable for streaming.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' video_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
 #' bot$sendVideo(chat_id = chat_id,
@@ -584,7 +588,7 @@ sendVideo <- function(chat_id,
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' video_note_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
 #' bot$sendVideoNote(chat_id = chat_id,
@@ -650,7 +654,7 @@ sendVideoNote <- function(chat_id,
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' animation_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
 #' bot$sendAnimation(chat_id = chat_id,
@@ -726,7 +730,7 @@ sendAnimation <- function(chat_id,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' voice_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
 #' 
 #' bot$sendVoice(chat_id = chat_id,
@@ -788,7 +792,7 @@ sendVoice <- function(chat_id,
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' 
 #' bot$sendLocation(chat_id = chat_id,
 #'                  latitude = 51.521727,
@@ -843,7 +847,7 @@ sendLocation <- function(chat_id,
 #' }
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' 
 #' bot$sendChatAction(chat_id = chat_id,
 #'                    action = 'typing')
@@ -873,13 +877,13 @@ sendChatAction <- function(chat_id,
 #'     between 1-100 are accepted. Defaults to 100.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token('RTelegramBot'))
-#' chat_id <- user_id('me')
+#' chat_id <- user_id("Me")
 #' 
 #' bot$getUserProfilePhotos(chat_id = chat_id)
 #' }
 getUserProfilePhotos <- function(user_id,
                                  offset = NULL,
-                                 limit = 100)
+                                 limit = 100L)
 {
   url <- sprintf('%s/getUserProfilePhotos', private$base_url)
   
@@ -997,7 +1001,7 @@ answerCallbackQuery <- function(callback_query_id,
 #'     where they wanted to use the bot's inline capabilities.
 answerInlineQuery <- function(inline_query_id,
                               results,
-                              cache_time = 300,
+                              cache_time = 300L,
                               is_personal = NULL,
                               next_offset = NULL,
                               switch_pm_text = NULL,
@@ -1107,8 +1111,8 @@ editMessageReplyMarkup <- function(chat_id = NULL,
 #' updates <- bot$getUpdates()
 #' }
 getUpdates <- function(offset = NULL,
-                       limit = 100,
-                       timeout = 0,
+                       limit = 100L,
+                       timeout = 0L,
                        allowed_updates = NULL)
 {
   url <- sprintf('%s/getUpdates', private$base_url)
@@ -1159,7 +1163,7 @@ getUpdates <- function(offset = NULL,
 #'     to the get_updates, so unwanted updates may be received for a short period of time.
 setWebhook <- function(url = NULL,
                        certificate = NULL,
-                       max_connections = 40,
+                       max_connections = 40L,
                        allowed_updates = NULL)
 {
   url_ <- sprintf('%s/setWebhook', private$base_url)
@@ -1251,7 +1255,7 @@ clean_updates = function(){
   updates <- self$get_updates()
   
   if (length(updates))
-    self$get_updates(updates[[length(updates)]]$update_id + 1) # nocov
+    self$get_updates(updates[[length(updates)]]$update_id + 1L) # nocov
   
   return(invisible(NULL))
 }

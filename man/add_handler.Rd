@@ -4,7 +4,7 @@
 \alias{add_handler}
 \title{Add a handler}
 \usage{
-add_handler(handler, group = 1)
+add_handler(handler, group = 1L)
 }
 \arguments{
 \item{handler}{A \code{Handler} instance.}

@@ -37,7 +37,7 @@ You can also use it's snake_case equivalent \code{send_location}.
 \examples{
 \dontrun{
 bot <- Bot(token = bot_token('RTelegramBot'))
-chat_id <- user_id('me')
+chat_id <- user_id("Me")
 
 bot$sendLocation(chat_id = chat_id,
                  latitude = 51.521727,

@@ -33,21 +33,21 @@
 #' }
 #' @export
 MessageFilters <- list(
-  'all' = BaseFilter(function(message) TRUE),
-  'text' = BaseFilter(function(message) !is.null(message$text) && !startsWith(message$text, '/')),
-  'command' = BaseFilter(function(message) !is.null(message$text) && startsWith(message$text, '/')),
-  'reply' = BaseFilter(function(message) !is.null(message$reply_to_message)),
-  'audio' = BaseFilter(function(message) !is.null(message$audio)),
-  'document' = BaseFilter(function(message) !is.null(message$document)),
-  'photo' = BaseFilter(function(message) !is.null(message$photo)),
-  'sticker' = BaseFilter(function(message) !is.null(message$sticker)),
-  'video' = BaseFilter(function(message) !is.null(message$video)),
-  'voice' = BaseFilter(function(message) !is.null(message$voice)),
-  'contact' = BaseFilter(function(message) !is.null(message$contact)),
-  'location' = BaseFilter(function(message) !is.null(message$location)),
-  'venue' = BaseFilter(function(message) !is.null(message$venue)),
-  'forwarded' = BaseFilter(function(message) !is.null(message$forward_date)),
-  'game' = BaseFilter(function(message) !is.null(message$game)),
-  'invoice' = BaseFilter(function(message) !is.null(message$invoice)),
-  'successful_payment' = BaseFilter(function(message) !is.null(message$successful_payment))
+  "all" = BaseFilter(function(message) TRUE),
+  "text" = BaseFilter(function(message) !is.null(message$text) && !startsWith(message$text, "/")),
+  "command" = BaseFilter(function(message) !is.null(message$text) && startsWith(message$text, "/")),
+  "reply" = BaseFilter(function(message) !is.null(message$reply_to_message)),
+  "audio" = BaseFilter(function(message) !is.null(message$audio)),
+  "document" = BaseFilter(function(message) !is.null(message$document)),
+  "photo" = BaseFilter(function(message) !is.null(message$photo)),
+  "sticker" = BaseFilter(function(message) !is.null(message$sticker)),
+  "video" = BaseFilter(function(message) !is.null(message$video)),
+  "voice" = BaseFilter(function(message) !is.null(message$voice)),
+  "contact" = BaseFilter(function(message) !is.null(message$contact)),
+  "location" = BaseFilter(function(message) !is.null(message$location)),
+  "venue" = BaseFilter(function(message) !is.null(message$venue)),
+  "forwarded" = BaseFilter(function(message) !is.null(message$forward_date)),
+  "game" = BaseFilter(function(message) !is.null(message$game)),
+  "invoice" = BaseFilter(function(message) !is.null(message$invoice)),
+  "successful_payment" = BaseFilter(function(message) !is.null(message$successful_payment))
 )

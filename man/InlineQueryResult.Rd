@@ -2,9 +2,12 @@
 % Please edit documentation in R/inlinequeryresult.R
 \name{InlineQueryResult}
 \alias{InlineQueryResult}
+\alias{is.InlineQueryResult}
 \title{The base of inline query results}
 \usage{
 InlineQueryResult(type, id, ...)
+
+is.InlineQueryResult(x)
 }
 \arguments{
 \item{type}{Type of the result. See the
@@ -16,6 +19,8 @@ for a list of supported types.}
 \item{...}{Additional parameters for the selected type. See the
 \href{https://core.telegram.org/bots/api#inlinequeryresult}{documentation}
 for the description of the parameters depending on the \code{InlineQueryResult} type.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 Baseclass for the InlineQueryResult* classes.

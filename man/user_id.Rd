@@ -16,6 +16,6 @@ where \code{X} is the user's name.
 }
 \examples{
 \dontrun{
-user_id('me')
+user_id("Me")
 }
 }

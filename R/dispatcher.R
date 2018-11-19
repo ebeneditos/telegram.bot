@@ -21,7 +21,7 @@
 #' @param handler A \code{Handler} instance.
 #' @param group The group identifier, must be higher or equal to 1. Default is 1.
 add_handler <- function(handler,
-                        group = 1)
+                        group = 1L)
 {
 
   if(!is.Handler(handler))
@@ -29,8 +29,8 @@ add_handler <- function(handler,
   if(!is.numeric(group))
     stop("`group` is not numeric")
   
-  group <- round(group[1])
-  if (group < 1)
+  group <- round(group[1L])
+  if (group < 1L)
     stop("`group` must be higher or equal to 1")
 
   if (group > length(private$groups) || is.null(private$handlers[[group]])){
@@ -101,9 +101,10 @@ DispatcherClass <-
 
                   # An error happened while polling
                   if(is.null(update)){
-                    res <- try(self$dispatch_error(update))
-                    if(inherits(res, 'try-error'))
-                      warning('An uncaught error was raised while handling the error') # nocov
+                    res <- tryCatch({self$dispatch_error(update)},
+                                    error = function(e) {
+                                      warning(as.character(e)) # nocov
+                                    })
                     return()
                   }
 
@@ -122,12 +123,12 @@ DispatcherClass <-
                 # Dispatches an error.
                 dispatch_error = function(update){
 
-                  if (length(private$error_handlers) != 0)
+                  if (length(private$error_handlers) != 0L)
                     for (callback in private$error_handlers){
                       callback(self$bot, update)
                     }
 
-                  else warning('No error handlers are registered.')
+                  else warning("No error handlers are registered.")
                 }
               ),
               private = list(

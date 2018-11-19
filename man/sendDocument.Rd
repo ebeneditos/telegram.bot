@@ -45,7 +45,7 @@ You can also use it's snake_case equivalent \code{send_document}.
 \examples{
 \dontrun{
 bot <- Bot(token = bot_token('RTelegramBot'))
-chat_id <- user_id('me')
+chat_id <- user_id("Me")
 document_url <- "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
 
 bot$sendDocument(chat_id = chat_id,

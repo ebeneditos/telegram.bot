@@ -16,6 +16,6 @@ where \code{X} is the bot's name.
 }
 \examples{
 \dontrun{
-bot_token('RTelegramBot')
+bot_token("RTelegramBot")
 }
 }

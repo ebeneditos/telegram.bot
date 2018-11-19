@@ -26,14 +26,18 @@ InlineQueryResult <- function(
   id,
   ...)
 {
-  
   params <- list(...)
   
   InlineQueryResult <- c(list(type = as.character(type),
                               id = as.character(id)),
                          params)
   
-  class(InlineQueryResult) <- "InlineQueryResult"
-  
-  return(InlineQueryResult)
+  structure(InlineQueryResult, class = "InlineQueryResult")
+}
+
+#' @rdname InlineQueryResult
+#' @param x Object to be tested.
+#' @export
+is.InlineQueryResult <- function(x){
+  inherits(x, "InlineQueryResult")
 }

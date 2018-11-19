@@ -4,7 +4,7 @@
 \alias{answerInlineQuery}
 \title{Send answers to an inline query}
 \usage{
-answerInlineQuery(inline_query_id, results, cache_time = 300,
+answerInlineQuery(inline_query_id, results, cache_time = 300L,
   is_personal = NULL, next_offset = NULL, switch_pm_text = NULL,
   switch_pm_parameter = NULL)
 }

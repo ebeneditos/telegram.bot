@@ -1,8 +1,8 @@
 
-self <- 'Only for R CMD check'
-private <- 'Only for R CMD check'
+self <- "Only for R CMD check"
+private <- "Only for R CMD check"
 
-not_implemented <- function() stop('Currently not implemented.')
+not_implemented <- function() stop("Currently not implemented.")
 
 #### Export functions ####
 
@@ -14,7 +14,7 @@ not_implemented <- function() stop('Currently not implemented.')
 #'
 #' @param bot_name The bot's name.
 #' @examples \dontrun{
-#' bot_token('RTelegramBot')
+#' bot_token("RTelegramBot")
 #' }
 #' @export
 bot_token <- function(bot_name){
@@ -29,7 +29,7 @@ bot_token <- function(bot_name){
 #'
 #' @param user_name The user's name.
 #' @examples \dontrun{
-#' user_id('me')
+#' user_id("Me")
 #' }
 #' @export
 user_id <- function(user_name){
@@ -42,21 +42,17 @@ user_id <- function(user_name){
 to_json <- function(x = NULL){
   if(is.null(x)) NULL
   else{
-    jsonlite::toJSON(x, auto_unbox = T, force = T) # nocov
+    jsonlite::toJSON(x, auto_unbox = TRUE, force = TRUE) # nocov
   }
 }
 
-check_stop <- function(error){
-  return(attr(error, 'condition')$message == "Operation was aborted by an application callback")
-}
-
-method_summaries <- function(meth, indent = 0){
-  wrap_at <- 72 - indent
+method_summaries <- function(meth, indent = 0L){
+  wrap_at <- 72L - indent
   meth_string <- paste(meth, collapse = ", ")
   indent(strwrap(meth_string, width = wrap_at), indent)
 }
 
-indent <- function(str, indent = 0) {
+indent <- function(str, indent = 0L) {
   gsub("(^|\\n)(?!$)",
        paste0("\\1", paste(rep(" ", indent), collapse = "")),
        str,

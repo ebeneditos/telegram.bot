@@ -136,18 +136,18 @@ InlineKeyboardButton <- function(
   switch_inline_query_current_chat = NULL)
 {
   ## check if all optional parameters ar null
-  if (all(sapply(list(url,
+  if (all(unlist(lapply(list(url,
                       callback_data,
                       switch_inline_query,
                       switch_inline_query_current_chat),
-                 is.null)))
+                 is.null))))
     callback_data <- text
   ## check that 1 and only 1 optional parameter is not NULL
-  else if (sum(sapply(list(url,
+  else if (sum(unlist(lapply(list(url,
                            callback_data,
                            switch_inline_query,
                            switch_inline_query_current_chat),
-                      function(x) !is.null(x))) != 1)
+                      function(x) !is.null(x)))) != 1L)
     stop("You must use exactly one of the optional fields.")
   ## build object
   InlineKeyboardButton <- list(text = text,

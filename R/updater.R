@@ -23,7 +23,7 @@
 #' 
 #' updater$start_polling(verbose = TRUE)
 #' }
-start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, verbose = FALSE){
+start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, verbose = FALSE){
   
   private$verbose <- verbose
   if (!private$running) private$running <- TRUE
@@ -37,28 +37,26 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
 
   while (private$running){
 
-    updates <- try(
+    updates <- tryCatch({
       self$bot$get_updates(
           offset = private$last_update_id,
           timeout = timeout,
-          allowed_updates = allowed_updates),
-      silent = TRUE
-    )
-
-    if (inherits(updates, "try-error")){
-      if (check_stop(updates)){
+          allowed_updates = allowed_updates)
+    }, error = function(e) {
+      if (e$message == "Operation was aborted by an application callback"){
         self$stop_polling()
       }
       else{
-        if (private$verbose) cat("Error while getting Updates", fill = TRUE)
-        self$dispatcher$process_update(NULL)    
+        if (private$verbose) cat(as.character(e))
+        self$dispatcher$process_update(NULL)  
       }
-    }
+      NULL
+    })
     
-    else{
+    if(!is.null(updates)){
 
       if (!private$running){
-        if (!is.null(updates) && length(updates) > 0)
+        if (!is.null(updates) && length(updates) > 0L)
           if (private$verbose) cat("Updates ignored and will be pulled again on restart.", fill = TRUE)
         break
       }
@@ -71,7 +69,7 @@ start_polling <- function(timeout = 10, clean = FALSE, allowed_updates = NULL, v
           self$dispatcher$process_update(update)
         }
         
-        private$last_update_id <- updates[[length(updates)]]$update_id + 1
+        private$last_update_id <- updates[[length(updates)]]$update_id + 1L
       }
     }
   }
@@ -180,9 +178,9 @@ UpdaterClass <-
                 initialize = function(token, base_url, base_file_url, request_config, bot){
 
                   if (is.null(token) & is.null(bot))
-                    stop('`token` or `bot` must be passed')
+                    stop("`token` or `bot` must be passed")
                   if (!is.null(token) & !is.null(bot))
-                    stop('`token` and `bot` are mutually exclusive')
+                    stop("`token` and `bot` are mutually exclusive")
 
                   if (!is.null(bot)){
                     if (is.Bot(bot))
@@ -206,7 +204,7 @@ UpdaterClass <-
               private = list(
 
                 ## members
-                last_update_id = 0,
+                last_update_id = 0L,
                 running = FALSE,
                 verbose = FALSE
 

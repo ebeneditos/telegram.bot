@@ -182,4 +182,3 @@ UpdateClass <-
 is.Update <- function(x){
   inherits(x, "Update")
 }
-
