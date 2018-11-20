@@ -7,7 +7,7 @@ test_that("Reply Markup", {
     keyboard = list(
       list(KeyboardButton("Yes, they certainly are!")),
       list(KeyboardButton("I'm not quite sure")),
-      list(KeyboardButton('No...'))),
+      list(KeyboardButton("No..."))),
     resize_keyboard = FALSE,
     one_time_keyboard = TRUE), "list")
   

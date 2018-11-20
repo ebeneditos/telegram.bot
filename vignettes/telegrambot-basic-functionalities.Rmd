@@ -82,7 +82,7 @@ If you're done playing around, you can stop the Bot either by using the the `int
 
 ```{r, eval = F}
 # Replace the original line with
-updater <<- Updater(token = 'TOKEN')
+updater <<- Updater(token = "TOKEN")
 
 ...
 

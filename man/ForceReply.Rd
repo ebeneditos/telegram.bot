@@ -21,8 +21,8 @@ message and tapped 'Reply').
 \examples{
 \dontrun{
 # Initialize bot
-bot <- Bot(token = 'TOKEN')
-chat_id <- 'CHAT_ID'
+bot <- Bot(token = "TOKEN")
+chat_id <- "CHAT_ID"
 
 # Set input parameters
 text <- "Don't forget to send me the answer!"

@@ -1,8 +1,8 @@
 
-context('Base')
+context("Base")
 
 test_that("Telegram Object", {
   
-  expect_true(is.TelegramObject(TelegramObject$new()), 'TelegramObject')
+  expect_true(is.TelegramObject(TelegramObject$new()), "TelegramObject")
   
 })

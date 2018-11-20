@@ -27,8 +27,8 @@ button (see \code{\link{ReplyKeyboardMarkup}}).
 \examples{
 \dontrun{
 # Initialize bot
-bot <- Bot(token = 'TOKEN')
-chat_id <- 'CHAT_ID'
+bot <- Bot(token = "TOKEN")
+chat_id <- "CHAT_ID"
 
 # Create Custom Keyboard
 text <- "Don't forget to send me the answer!"

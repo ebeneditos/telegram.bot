@@ -32,8 +32,8 @@ with reply options.
 \examples{
 \dontrun{
 # Initialize bot
-bot <- Bot(token = 'TOKEN')
-chat_id <- 'CHAT_ID'
+bot <- Bot(token = "TOKEN")
+chat_id <- "CHAT_ID"
 
 # Create Custom Keyboard
 text <- "Aren't those custom keyboards cool?"

@@ -12,7 +12,7 @@ Stops the polling. Requires no parameters.
 \examples{
 \dontrun{
 # Supperassign the updater
-updater <<- Updater(token = 'TOKEN')
+updater <<- Updater(token = "TOKEN")
 
 # Example of a 'kill' command
 kill <- function(bot, update){

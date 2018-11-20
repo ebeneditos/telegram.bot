@@ -7,6 +7,7 @@
 - Vignettes update:
   - Added *The add operator*.
   - Substituted *Custom filters* vignette with *Advanced filters*.
+- Minor Bug fixes.
 - Documentation updated.
 
 ## v2.1.0

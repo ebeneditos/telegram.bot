@@ -36,7 +36,7 @@ You can also use it's snake_case equivalent \code{send_sticker}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RTelegramBot'))
+bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 sticker_url <- "https://www.gstatic.com/webp/gallery/1.webp"
 

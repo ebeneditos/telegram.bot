@@ -46,6 +46,14 @@ to_json <- function(x = NULL){
   }
 }
 
+interruptError <- function(){
+  "Operation was aborted by an application callback"
+}
+
+is.error <- function(x){
+  inherits(x, "error")
+}
+
 method_summaries <- function(meth, indent = 0L){
   wrap_at <- 72L - indent
   meth_string <- paste(meth, collapse = ", ")

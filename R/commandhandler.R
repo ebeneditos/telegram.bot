@@ -86,8 +86,14 @@ CommandHandlerClass <-
                 handle_update = function(update, dispatcher){
                   
                   if (self$pass_args){
-                    optional_args <- strsplit(update$message$text, ' ')[[1L]]
-                    self$callback(dispatcher$bot, update, optional_args[2L:length(optional_args)])
+                    args <- strsplit(update$message$text, " ")[[1L]]
+                    if (length(args) < 2L){
+                      args <- c()
+                    }
+                    else{
+                      args <- args[2L:length(args)]
+                    }
+                    self$callback(dispatcher$bot, update, args)
                   }
                   else
                     self$callback(dispatcher$bot, update)

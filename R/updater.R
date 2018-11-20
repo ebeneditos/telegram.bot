@@ -43,21 +43,21 @@ start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, 
           timeout = timeout,
           allowed_updates = allowed_updates)
     }, error = function(e) {
-      if (e$message == "Operation was aborted by an application callback"){
+      if (e$message == interruptError()){
         self$stop_polling()
       }
       else{
-        if (private$verbose) cat(as.character(e))
-        self$dispatcher$process_update(NULL)  
+        if (private$verbose) warning(as.character(e))
+        self$dispatcher$process_update(e)
       }
-      NULL
+      e
     })
     
-    if(!is.null(updates)){
+    if(!is.error(updates)){
 
       if (!private$running){
         if (!is.null(updates) && length(updates) > 0L)
-          if (private$verbose) cat("Updates ignored and will be pulled again on restart.", fill = TRUE)
+          if (private$verbose) cat("Updates ignored and will be pulled again on restart", fill = TRUE)
         break
       }
       
@@ -81,7 +81,7 @@ start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, 
 #' Stops the polling. Requires no parameters.
 #' @examples \dontrun{
 #' # Supperassign the updater
-#' updater <<- Updater(token = 'TOKEN')
+#' updater <<- Updater(token = "TOKEN")
 #' 
 #' # Example of a 'kill' command
 #' kill <- function(bot, update){
@@ -178,14 +178,14 @@ UpdaterClass <-
                 initialize = function(token, base_url, base_file_url, request_config, bot){
 
                   if (is.null(token) & is.null(bot))
-                    stop("`token` or `bot` must be passed")
+                    stop("`token` or `bot` must be passed.")
                   if (!is.null(token) & !is.null(bot))
-                    stop("`token` and `bot` are mutually exclusive")
+                    stop("`token` and `bot` are mutually exclusive.")
 
                   if (!is.null(bot)){
                     if (is.Bot(bot))
                       self$bot <- bot
-                    else stop("`bot` must be of class 'Bot'")
+                    else stop("`bot` must be of class 'Bot'.")
                   }
                   
                   else{

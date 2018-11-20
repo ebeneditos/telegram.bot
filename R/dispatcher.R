@@ -25,13 +25,13 @@ add_handler <- function(handler,
 {
 
   if(!is.Handler(handler))
-    stop("`handler` is not an instance of 'Handler'")
+    stop("`handler` is not an instance of 'Handler'.")
   if(!is.numeric(group))
-    stop("`group` is not numeric")
+    stop("`group` is not numeric.")
   
   group <- round(group[1L])
   if (group < 1L)
-    stop("`group` must be higher or equal to 1")
+    stop("`group` must be higher or equal to 1.")
 
   if (group > length(private$groups) || is.null(private$handlers[[group]])){
     private$handlers[[group]] <- list()
@@ -100,7 +100,7 @@ DispatcherClass <-
                 process_update = function(update){
 
                   # An error happened while polling
-                  if(is.null(update)){
+                  if(is.error(update)){
                     res <- tryCatch({self$dispatch_error(update)},
                                     error = function(e) {
                                       warning(as.character(e)) # nocov

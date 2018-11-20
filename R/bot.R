@@ -31,15 +31,15 @@ bot.print <- function()
 # A very basic validation on token
 bot.validate_token <- function(token)
 {
-  if (grepl(' ', token))
-    stop('Invalid token.')
+  if (grepl(" ", token))
+    stop("Invalid token.")
   
-  split <- strsplit(token, ':')[[1L]]
+  split <- strsplit(token, ":")[[1L]]
   if (length(split) < 2L ||
-      split[2L] == '' ||
+      split[2L] == "" ||
       grepl("\\D", split[1L]) ||
       nchar(split[1L]) < 3L)
-    stop('Invalid token.')
+    stop("Invalid token.")
   
   token
 }
@@ -50,7 +50,7 @@ bot.request <- function(url, data)
   result <- httr::POST(url = url,
                        body = data,
                        config = private$request_config,
-                       encode = 'multipart')
+                       encode = "multipart")
   httr::stop_for_status(result)
   
   if (result$status_code >= 200L && result$status_code < 300L){
@@ -58,22 +58,19 @@ bot.request <- function(url, data)
     return(private$parse(result))
   }
   else
-    stop('HTTPError') # nocov
+    stop("HTTPError") # nocov
 }
 
 # Parse result
 bot.parse <- function(result)
 {
-  data <- tryCatch({httr::content(result, as = 'parsed', encoding = 'UTF-8')},
-                   error = function(e) e)
+  data <- tryCatch({httr::content(result, as = "parsed", encoding = "UTF-8")})
   
   if (is.list(data) && data$ok){
     return(data$result)
   }
-  else if(inherits(data, "error")){
-    stop(as.character(data)) # nocov
-  }else{
-    stop('Invalid server response') # nocov
+  else{
+    stop("Invalid server response.") # nocov
   }
 }
 
@@ -87,7 +84,7 @@ bot.parse <- function(result)
 #' You can also use it's snake_case equivalent \code{get_me}.
 getMe <- function()
 {
-  url <- sprintf('%s/getMe', private$base_url)
+  url <- sprintf("%s/getMe", private$base_url)
   
   data <- list()
   
@@ -121,7 +118,7 @@ getMe <- function()
 #'      \item{\code{\link{ForceReply}}}
 #'     }
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' 
 #' bot$sendMessage(chat_id = chat_id,
@@ -136,21 +133,21 @@ sendMessage <- function(chat_id,
                         reply_to_message_id = NULL,
                         reply_markup = NULL)
 {
-  url <- sprintf('%s/sendMessage', private$base_url)
+  url <- sprintf("%s/sendMessage", private$base_url)
   
   data <- list(chat_id = chat_id,
                text = text)
   
   if (!missing(parse_mode))
-    data[['parse_mode']] <- parse_mode
+    data[["parse_mode"]] <- parse_mode
   if (!missing(disable_web_page_preview))
-    data[['disable_web_page_preview']] <- disable_web_page_preview
+    data[["disable_web_page_preview"]] <- disable_web_page_preview
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -174,7 +171,7 @@ sendMessage <- function(chat_id,
 deleteMessage <- function(chat_id,
                           message_id)
 { # nocov start
-  url <- sprintf('%s/deleteMessage', private$base_url)
+  url <- sprintf("%s/deleteMessage", private$base_url)
   
   data <- list(chat_id = chat_id,
                message_id = message_id)
@@ -202,14 +199,14 @@ forwardMessage <- function(chat_id,
                            message_id,
                            disable_notification = FALSE)
 { # nocov start
-  url <- sprintf('%s/forwardMessage', private$base_url)
+  url <- sprintf("%s/forwardMessage", private$base_url)
   
   data <- list(chat_id = chat_id,
                from_chat_id = from_chat_id,
                message_id = message_id)
   
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   
   result <- private$request(url, data)
   
@@ -242,7 +239,7 @@ forwardMessage <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' photo_url <- "https://telegram.org/img/t_logo.png"
 #' 
@@ -258,7 +255,7 @@ sendPhoto <- function(chat_id,
                       reply_markup = NULL,
                       parse_mode = NULL)
 {
-  url <- sprintf('%s/sendPhoto', private$base_url)
+  url <- sprintf("%s/sendPhoto", private$base_url)
   
   if (file.exists(photo))
     photo <- httr::upload_file(photo) # nocov
@@ -266,15 +263,15 @@ sendPhoto <- function(chat_id,
   data <- list(chat_id = chat_id, photo = photo)
   
   if (!missing(caption))
-    data[['caption']] <- caption
+    data[["caption"]] <- caption
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   if (!missing(parse_mode))
-    data[['parse_mode']] <- parse_mode
+    data[["parse_mode"]] <- parse_mode
   
   result <- private$request(url, data)
   
@@ -313,7 +310,7 @@ sendPhoto <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' audio_url <- "http://www.largesound.com/ashborytour/sound/brobob.mp3"
 #' 
@@ -331,7 +328,7 @@ sendAudio <- function(chat_id,
                       reply_markup = NULL,
                       parse_mode = NULL)
 {
-  url <- sprintf('%s/sendAudio', private$base_url)
+  url <- sprintf("%s/sendAudio", private$base_url)
   
   if (file.exists(audio))
     audio <- httr::upload_file(audio) # nocov
@@ -339,21 +336,21 @@ sendAudio <- function(chat_id,
   data <- list(chat_id = chat_id, audio = audio)
   
   if (!missing(duration))
-    data[['duration']] <- duration
+    data[["duration"]] <- duration
   if (!missing(performer))
-    data[['performer']] <- performer
+    data[["performer"]] <- performer
   if (!missing(title))
-    data[['title']] <- title
+    data[["title"]] <- title
   if (!missing(caption))
-    data[['caption']] <- caption
+    data[["caption"]] <- caption
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   if (!missing(parse_mode))
-    data[['parse_mode']] <- parse_mode
+    data[["parse_mode"]] <- parse_mode
   
   result <- private$request(url, data)
   
@@ -386,7 +383,7 @@ sendAudio <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' document_url <- "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
 #' 
@@ -402,7 +399,7 @@ sendDocument <- function(chat_id,
                          reply_markup = NULL,
                          parse_mode = NULL)
 {
-  url <- sprintf('%s/sendDocument', private$base_url)
+  url <- sprintf("%s/sendDocument", private$base_url)
   
   if (file.exists(document))
     document <- httr::upload_file(document) # nocov
@@ -410,17 +407,17 @@ sendDocument <- function(chat_id,
   data <- list(chat_id = chat_id, document = document)
   
   if (!missing(filename))
-    data[['filename']] <- filename
+    data[["filename"]] <- filename
   if (!missing(caption))
-    data[['caption']] <- caption
+    data[["caption"]] <- caption
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   if (!missing(parse_mode))
-    data[['parse_mode']] <- parse_mode
+    data[["parse_mode"]] <- parse_mode
   
   result <- private$request(url, data)
   
@@ -449,7 +446,7 @@ sendDocument <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' sticker_url <- "https://www.gstatic.com/webp/gallery/1.webp"
 #' 
@@ -462,7 +459,7 @@ sendSticker <- function(chat_id,
                         reply_to_message_id = NULL,
                         reply_markup = NULL)
 {
-  url <- sprintf('%s/sendSticker', private$base_url)
+  url <- sprintf("%s/sendSticker", private$base_url)
   
   if (file.exists(sticker))
     sticker <- httr::upload_file(sticker) # nocov
@@ -470,11 +467,11 @@ sendSticker <- function(chat_id,
   data <- list(chat_id = chat_id, sticker = sticker)
   
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -512,7 +509,7 @@ sendSticker <- function(chat_id,
 #' @param supports_streaming (Optional). Pass \code{TRUE}, if the uploaded video is
 #'     suitable for streaming.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' video_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
@@ -531,7 +528,7 @@ sendVideo <- function(chat_id,
                       parse_mode = NULL,
                       supports_streaming = NULL)
 {
-  url <- sprintf('%s/sendVideo', private$base_url)
+  url <- sprintf("%s/sendVideo", private$base_url)
   
   if (file.exists(video))
     video <- httr::upload_file(video) # nocov
@@ -539,23 +536,23 @@ sendVideo <- function(chat_id,
   data <- list(chat_id = chat_id, video = video)
   
   if (!missing(duration))
-    data[['duration']] <- duration
+    data[["duration"]] <- duration
   if (!missing(width))
-    data[['width']] <- width
+    data[["width"]] <- width
   if (!missing(height))
-    data[['height']] <- height
+    data[["height"]] <- height
   if (!missing(caption))
-    data[['caption']] <- caption
+    data[["caption"]] <- caption
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   if (!missing(parse_mode))
-    data[['parse_mode']] <- parse_mode
+    data[["parse_mode"]] <- parse_mode
   if (!missing(supports_streaming))
-    data[['supports_streaming']] <- supports_streaming
+    data[["supports_streaming"]] <- supports_streaming
   
   result <- private$request(url, data)
   
@@ -587,7 +584,7 @@ sendVideo <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' video_note_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
@@ -602,7 +599,7 @@ sendVideoNote <- function(chat_id,
                           reply_to_message_id = NULL,
                           reply_markup = NULL)
 {
-  url <- sprintf('%s/sendVideoNote', private$base_url)
+  url <- sprintf("%s/sendVideoNote", private$base_url)
   
   if (file.exists(video_note))
     video_note <- httr::upload_file(video_note) # nocov
@@ -610,15 +607,15 @@ sendVideoNote <- function(chat_id,
   data <- list(chat_id = chat_id, video_note = video_note)
   
   if (!missing(duration))
-    data[['duration']] <- duration
+    data[["duration"]] <- duration
   if (!missing(length))
-    data[['length']] <- length
+    data[["length"]] <- length
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -653,7 +650,7 @@ sendVideoNote <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' animation_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 #' 
@@ -671,7 +668,7 @@ sendAnimation <- function(chat_id,
                           reply_to_message_id = NULL,
                           reply_markup = NULL)
 {
-  url <- sprintf('%s/sendAnimation', private$base_url)
+  url <- sprintf("%s/sendAnimation", private$base_url)
   
   if (file.exists(animation))
     animation <- httr::upload_file(animation) # nocov
@@ -679,21 +676,21 @@ sendAnimation <- function(chat_id,
   data <- list(chat_id = chat_id, animation = animation)
   
   if (!missing(duration))
-    data[['duration']] <- duration
+    data[["duration"]] <- duration
   if (!missing(width))
-    data[['width']] <- width
+    data[["width"]] <- width
   if (!missing(height))
-    data[['height']] <- height
+    data[["height"]] <- height
   if (!missing(caption))
-    data[['caption']] <- caption
+    data[["caption"]] <- caption
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   if (!missing(parse_mode))
-    data[['parse_mode']] <- parse_mode
+    data[["parse_mode"]] <- parse_mode
   
   result <- private$request(url, data)
   
@@ -729,7 +726,7 @@ sendAnimation <- function(chat_id,
 #' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
 #'     italic, fixed-width text or inline URLs in your bot's message.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' voice_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
 #' 
@@ -745,7 +742,7 @@ sendVoice <- function(chat_id,
                       reply_markup = NULL,
                       parse_mode = NULL)
 {
-  url <- sprintf('%s/sendVoice', private$base_url)
+  url <- sprintf("%s/sendVoice", private$base_url)
   
   if (file.exists(voice))
     voice <- httr::upload_file(voice) # nocov
@@ -753,17 +750,17 @@ sendVoice <- function(chat_id,
   data <- list(chat_id = chat_id, voice = voice)
   
   if (!missing(duration))
-    data[['duration']] <- duration
+    data[["duration"]] <- duration
   if (!missing(caption))
-    data[['caption']] <- caption
+    data[["caption"]] <- caption
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   if (!missing(parse_mode))
-    data[['parse_mode']] <- parse_mode
+    data[["parse_mode"]] <- parse_mode
   
   result <- private$request(url, data)
   
@@ -791,7 +788,7 @@ sendVoice <- function(chat_id,
 #'      \item{\code{\link{ReplyKeyboardRemove}}}
 #'      \item{\code{\link{ForceReply}}}}
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' 
 #' bot$sendLocation(chat_id = chat_id,
@@ -805,16 +802,16 @@ sendLocation <- function(chat_id,
                           reply_to_message_id = NULL,
                           reply_markup = NULL)
 {
-  url <- sprintf('%s/sendLocation', private$base_url)
+  url <- sprintf("%s/sendLocation", private$base_url)
   
   data <- list(chat_id = chat_id, latitude = latitude, longitude = longitude)
 
   if (!missing(disable_notification))
-    data[['disable_notification']] <- disable_notification
+    data[["disable_notification"]] <- disable_notification
   if (!missing(reply_to_message_id))
-    data[['reply_to_message_id']] <- reply_to_message_id
+    data[["reply_to_message_id"]] <- reply_to_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- to_json(reply_markup)
+    data[["reply_markup"]] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
@@ -846,16 +843,16 @@ sendLocation <- function(chat_id,
 #'  \item{\code{record_video_note}}{ for video note recording}
 #' }
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' 
 #' bot$sendChatAction(chat_id = chat_id,
-#'                    action = 'typing')
+#'                    action = "typing")
 #' }
 sendChatAction <- function(chat_id,
                            action)
 {
-  url <- sprintf('%s/sendChatAction', private$base_url)
+  url <- sprintf("%s/sendChatAction", private$base_url)
   
   data <- list(chat_id = chat_id, action = action)
   
@@ -876,7 +873,7 @@ sendChatAction <- function(chat_id,
 #' @param limit (Optional). Limits the number of photos to be retrieved. Values
 #'     between 1-100 are accepted. Defaults to 100.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' 
 #' bot$getUserProfilePhotos(chat_id = chat_id)
@@ -885,14 +882,14 @@ getUserProfilePhotos <- function(user_id,
                                  offset = NULL,
                                  limit = 100L)
 {
-  url <- sprintf('%s/getUserProfilePhotos', private$base_url)
+  url <- sprintf("%s/getUserProfilePhotos", private$base_url)
   
   data <- list(user_id = user_id)
   
   if (!missing(offset))
-    data[['offset']] <- offset
+    data[["offset"]] <- offset
   if (!missing(limit))
-    data[['limit']] <- limit
+    data[["limit"]] <- limit
   
   result <- private$request(url, data)
   
@@ -911,7 +908,7 @@ getUserProfilePhotos <- function(user_id,
 #' @param file_id The file identifier.
 getFile <- function(file_id)
 { # nocov start
-  url <- sprintf('%s/getFile', private$base_url)
+  url <- sprintf("%s/getFile", private$base_url)
   
   data <- list(file_id = file_id)
   
@@ -945,18 +942,18 @@ answerCallbackQuery <- function(callback_query_id,
                                 url = NULL,
                                 cache_time = NULL)
 { # nocov start
-  url <- sprintf('%s/answerCallbackQuery', private$base_url)
+  url <- sprintf("%s/answerCallbackQuery", private$base_url)
   
   data <- list(callback_query_id = callback_query_id)
   
   if (!missing(text))
-    data[['text']] <- text
+    data[["text"]] <- text
   if (!missing(show_alert))
-    data[['show_alert']] <- show_alert
+    data[["show_alert"]] <- show_alert
   if (!missing(url))
-    data[['url']] <- url
+    data[["url"]] <- url
   if (!missing(cache_time))
-    data[['cache_time']] <- cache_time
+    data[["cache_time"]] <- cache_time
   
   result <- private$request(url, data)
   
@@ -1007,22 +1004,22 @@ answerInlineQuery <- function(inline_query_id,
                               switch_pm_text = NULL,
                               switch_pm_parameter = NULL)
 { # nocov start
-  url <- sprintf('%s/answerInlineQuery', private$base_url)
+  url <- sprintf("%s/answerInlineQuery", private$base_url)
   
   results <- to_json(results)
   
   data <- list(inline_query_id = inline_query_id, results = results)
   
   if (!missing(cache_time))
-    data[['cache_time']] <- cache_time
+    data[["cache_time"]] <- cache_time
   if (!missing(is_personal))
-    data[['is_personal']] <- is_personal
+    data[["is_personal"]] <- is_personal
   if (!is.null(next_offset))
-    data[['next_offset']] <- next_offset
+    data[["next_offset"]] <- next_offset
   if (!missing(switch_pm_text))
-    data[['switch_pm_text']] <- switch_pm_text
+    data[["switch_pm_text"]] <- switch_pm_text
   if (!missing(switch_pm_parameter))
-    data[['switch_pm_parameter']] <- switch_pm_parameter
+    data[["switch_pm_parameter"]] <- switch_pm_parameter
   
   result <- private$request(url, data)
   
@@ -1054,21 +1051,21 @@ editMessageReplyMarkup <- function(chat_id = NULL,
                                    reply_markup = NULL)
 { # nocov start
   if (is.null(inline_message_id) & (is.null(chat_id) | is.null(message_id)))
-    stop("editMessageReplyMarkup: Both 'chat_id' and 'message_id' are required when ",
-         "'inline_message_id' is not specified")
+    stop("editMessageReplyMarkup: Both `chat_id` and `message_id` are required when ",
+         "`inline_message_id` is not specified.")
   
-  url <- sprintf('%s/editMessageReplyMarkup', private$base_url)
+  url <- sprintf("%s/editMessageReplyMarkup", private$base_url)
   
   data <- list()
   
   if (!missing(chat_id))
-    data[['chat_id']] <- chat_id
+    data[["chat_id"]] <- chat_id
   if (!missing(message_id))
-    data[['message_id']] <- message_id
+    data[["message_id"]] <- message_id
   if (!missing(inline_message_id))
-    data[['inline_message_id']] <- inline_message_id
+    data[["inline_message_id"]] <- inline_message_id
   if (!missing(reply_markup))
-    data[['reply_markup']] <- reply_markup
+    data[["reply_markup"]] <- reply_markup
   
   result <- private$request(url, data)
   
@@ -1106,7 +1103,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
 #'     Please note that this parameter doesn't affect updates created before the call
 #'     to the getUpdates, so unwanted updates may be received for a short period of time.
 #' @examples \dontrun{
-#' bot <- Bot(token = bot_token('RTelegramBot'))
+#' bot <- Bot(token = bot_token("RTelegramBot"))
 #' 
 #' updates <- bot$getUpdates()
 #' }
@@ -1115,16 +1112,16 @@ getUpdates <- function(offset = NULL,
                        timeout = 0L,
                        allowed_updates = NULL)
 {
-  url <- sprintf('%s/getUpdates', private$base_url)
+  url <- sprintf("%s/getUpdates", private$base_url)
 
   data <- list(timeout = timeout)
 
   if (!missing(offset))
-    data[['offset']] <- offset
+    data[["offset"]] <- offset
   if (!missing(limit))
-    data[['limit']] <- limit
+    data[["limit"]] <- limit
   if (!missing(allowed_updates) && !is.null(allowed_updates))
-    data[['allowed_updates']] <- I(allowed_updates)
+    data[["allowed_updates"]] <- I(allowed_updates)
 
   result <- private$request(url, data)
 
@@ -1166,22 +1163,22 @@ setWebhook <- function(url = NULL,
                        max_connections = 40L,
                        allowed_updates = NULL)
 {
-  url_ <- sprintf('%s/setWebhook', private$base_url)
+  url_ <- sprintf("%s/setWebhook", private$base_url)
   
   data <- list()
   
   if (!missing(url))
-    data[['url']] <- url
+    data[["url"]] <- url
   if (!missing(certificate)){
     if(file.exists(certificate)) # nocov
-      data[['certificate']] <- httr::upload_file(certificate) # nocov
+      data[["certificate"]] <- httr::upload_file(certificate) # nocov
     else
-      data[['certificate']] <- certificate # nocov
+      data[["certificate"]] <- certificate # nocov
   }
   if (!missing(max_connections))
-    data[['max_connections']] <- max_connections
+    data[["max_connections"]] <- max_connections
   if (!missing(allowed_updates) && !is.null(allowed_updates))
-    data[['allowed_updates']] <- I(allowed_updates)
+    data[["allowed_updates"]] <- I(allowed_updates)
   
   result <- private$request(url_, data)
   
@@ -1197,7 +1194,7 @@ setWebhook <- function(url = NULL,
 #' You can also use it's snake_case equivalent \code{delete_webhook}.
 deleteWebhook <- function()
 {
-  url <- sprintf('%s/deleteWebhook', private$base_url)
+  url <- sprintf("%s/deleteWebhook", private$base_url)
   
   data <- list()
   
@@ -1216,7 +1213,7 @@ deleteWebhook <- function()
 #' You can also use it's snake_case equivalent \code{get_webhook_info}.
 getWebhookInfo <- function()
 {
-  url <- sprintf('%s/getWebhookInfo', private$base_url)
+  url <- sprintf("%s/getWebhookInfo", private$base_url)
   
   data <- list()
   
@@ -1234,7 +1231,7 @@ getWebhookInfo <- function()
 #'     the target channel.
 leaveChat <- function(chat_id)
 { # nocov start
-  url <- sprintf('%s/leaveChat', private$base_url)
+  url <- sprintf("%s/leaveChat", private$base_url)
   
   data <- list(chat_id = chat_id)
   
@@ -1329,10 +1326,10 @@ set_token <- function(token){
 #'     useful for the advanced users who would like to control the
 #'     default timeouts and/or control the proxy used for http communication.
 #' @examples \dontrun{
-#' bot <- Bot(token = 'TOKEN')
+#' bot <- Bot(token = "TOKEN")
 #' 
 #' # In case you want to set a proxy (see ?httr:use_proxy)
-#' bot <- Bot(token = 'TOKEN',
+#' bot <- Bot(token = "TOKEN",
 #'            request_config = httr::use_proxy(...))
 #' }
 #' @export
@@ -1356,9 +1353,9 @@ BotClass <-
                     private$token <- private$validate_token(token)
 
                     if (is.null(base_url))
-                      base_url <- 'https://api.telegram.org/bot'
+                      base_url <- "https://api.telegram.org/bot"
                     if (is.null(base_file_url))
-                      base_file_url <- 'https://api.telegram.org/file/bot'
+                      base_file_url <- "https://api.telegram.org/file/bot"
                     if (is.null(request_config))
                       request_config <- list()
 

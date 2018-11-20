@@ -3,7 +3,7 @@ context("Utils")
 
 test_that("Not Implemented", {
 
-  expect_error(not_implemented(), 'Currently not implemented.')
+  expect_error(not_implemented(), "Currently not implemented.")
 
 })
 

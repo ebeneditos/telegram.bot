@@ -47,7 +47,7 @@ You can also use it's snake_case equivalent \code{send_voice}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RTelegramBot'))
+bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 voice_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
 

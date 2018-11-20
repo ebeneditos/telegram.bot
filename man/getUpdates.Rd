@@ -44,7 +44,7 @@ You can also use it's snake_case equivalent \code{get_updates}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RTelegramBot'))
+bot <- Bot(token = bot_token("RTelegramBot"))
 
 updates <- bot$getUpdates()
 }

@@ -60,8 +60,8 @@ is.KeyboardButton <- function(x){
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Create Custom Keyboard
 #' text <- "Aren't those custom keyboards cool?"
@@ -184,8 +184,8 @@ is.InlineKeyboardButton <- function(x){
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Create Inline Keyboard
 #' text <- "Could you type their phone number, please?"
@@ -245,8 +245,8 @@ InlineKeyboardMarkup <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Create Custom Keyboard
 #' text <- "Don't forget to send me the answer!"
@@ -292,8 +292,8 @@ ReplyKeyboardRemove <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Set input parameters
 #' text <- "Don't forget to send me the answer!"

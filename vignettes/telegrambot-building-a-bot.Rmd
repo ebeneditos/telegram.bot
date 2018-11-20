@@ -43,7 +43,7 @@ First, you first must create an `Update` object. Replace `TOKEN` with your Teleg
 ```{r, eval = F}
 library(telegram.bot)
 
-updater <- Updater(token='TOKEN')
+updater <- Updater(token = "TOKEN")
 ```
 
 **Recommendation:** Following [Hadley's API

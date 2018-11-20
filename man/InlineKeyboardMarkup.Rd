@@ -25,8 +25,8 @@ optional parameters).
 \examples{
 \dontrun{
 # Initialize bot
-bot <- Bot(token = 'TOKEN')
-chat_id <- 'CHAT_ID'
+bot <- Bot(token = "TOKEN")
+chat_id <- "CHAT_ID"
 
 # Create Inline Keyboard
 text <- "Could you type their phone number, please?"

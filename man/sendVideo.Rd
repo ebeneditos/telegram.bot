@@ -53,7 +53,7 @@ You can also use it's snake_case equivalent \code{send_video}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RTelegramBot'))
+bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 video_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 
