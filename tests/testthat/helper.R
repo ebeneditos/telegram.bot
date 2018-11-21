@@ -41,7 +41,7 @@ foo_callbackquery <- list(update_id = 1,
                           callback_query = list(data = "foo"))
 
 # Foo error
-foo_error <- structure("Error", class = "error")
+foo_error <- simpleError("test error")
 
 # Foo bot and foo updater
 # NOTE: Only used for start_polling testing, as the bot features are tested in other contexts

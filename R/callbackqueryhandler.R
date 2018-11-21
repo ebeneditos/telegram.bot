@@ -1,7 +1,7 @@
 
 #### CLASS ####
 
-#' Handle callback queries
+#' Handling callback queries
 #'
 #' \code{\link{Handler}} class to handle Telegram callback queries. Optionally based on a regex.
 #'

@@ -8,7 +8,7 @@ URL: http://github.com/ebeneditos/telegram.bot
 BugReports: http://github.com/ebeneditos/telegram.bot/issues
 Imports: R6, httr, jsonlite
 Depends:
-    R (>= 3.2.3)
+    R (>= 3.1.0)
 Suggests:
     covr,
     testthat,

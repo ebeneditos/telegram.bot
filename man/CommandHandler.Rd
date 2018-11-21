@@ -3,13 +3,13 @@
 \docType{class}
 \name{CommandHandler}
 \alias{CommandHandler}
-\title{CommandHandler}
+\title{Handling commands}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 CommandHandler(command, callback, filters = NULL, pass_args = FALSE)
 }
 \arguments{
-\item{command}{The command or list of commands this handler
+\item{command}{The command or vector of commands this handler
 should listen for.}
 
 \item{callback}{The callback function for this handler.

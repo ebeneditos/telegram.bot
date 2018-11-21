@@ -50,10 +50,10 @@ It is also possible to write your own filters used with `MessageHandler` and `Co
 
 #### Restricting users
 
-Say that for the `kill` example we saw in the [previous page](https://github.com/ebeneditos/telegram.bot/wiki/Basic-Functionalities#stopping-the-bot), we would like to filter that command so to make it accessible only for a specific `<user-id>`. Thereby, you could add a filter:
+Say that for the `kill` example we saw in the [previous page](https://github.com/ebeneditos/telegram.bot/wiki/Basic-Functionalities#stopping-the-bot), we would like to filter that command so to make it accessible only for a specific `USER_ID`. Thereby, you could add a filter:
 
 ```{r, eval = F}
-filter_user <- function(message) message$from_user  == <user-id>
+filter_user <- function(message) message$from_user  == "USER_ID"
 ```
 
 You can make the function an instance of `BaseFilter` either with its generator:
@@ -65,7 +65,7 @@ filter_user <- BaseFilter(filter = filter_user)
 Or by coercing it with `as.BaseFilter`:
 
 ```{r, eval = F}
-filter_user <- as.BaseFilter(function(message) message$from_user  == <user-id>)
+filter_user <- as.BaseFilter(function(message) message$from_user  == "USER_ID")
 ```
 
 Remember that to make it work, your filter must be a `function` that takes a `message` as input and returns a boolean: `TRUE` if the message should be handled, `FALSE` otherwise.
@@ -73,7 +73,7 @@ Remember that to make it work, your filter must be a `function` that takes a `me
 Now, you could update the handler with this filter:
 
 ```{r, eval = F}
-kill_handler <- CommandHandler('kill', kill, filter_user)
+kill_handler <- CommandHandler("kill", kill, filter_user)
 ```
 
 #### Text or command filter
@@ -93,5 +93,5 @@ The class can of cause be named however you want, the only important things are:
 The filter can then be used as:
 
 ```{r, eval = F}
-handler = MessageHandler(callback, MessageFilters$text_or_command)
+handler <- MessageHandler(callback, MessageFilters$text_or_command)
 ```

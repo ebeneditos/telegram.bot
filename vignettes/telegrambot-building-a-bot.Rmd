@@ -32,7 +32,7 @@ In order to build a bot that is continuously running and is able to respond to m
 
 The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class.  If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
 
-To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
+To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/ebeneditos/telegram.bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [*@BotFather*](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
 
 With that said, let's *get started!*
 
@@ -91,7 +91,7 @@ The goal is to have this function called every time the Bot receives a Telegram 
 To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` sub-classes) and register it in the `updaters`'s `dispatcher` (which is done with the `+` operator):
 
 ```{r, eval = F}
-start_handler <- CommandHandler('start', start)
+start_handler <- CommandHandler("start", start)
 updater <- updater + start_handler
 ```
 

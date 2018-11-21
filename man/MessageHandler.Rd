@@ -3,7 +3,7 @@
 \docType{class}
 \name{MessageHandler}
 \alias{MessageHandler}
-\title{Handle a message}
+\title{Handling messages}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 MessageHandler(callback, filters = NULL)

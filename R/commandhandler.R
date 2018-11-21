@@ -1,13 +1,13 @@
 
 #### CLASS ####
 
-#' CommandHandler
+#' Handling commands
 #'
 #' \code{\link{Handler}} class to handle Telegram commands.
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
-#' @param command The command or list of commands this handler
+#' @param command The command or vector of commands this handler
 #'   should listen for.
 #' @param callback The callback function for this handler.
 #'   See \code{\link{Handler}} for information about this function.

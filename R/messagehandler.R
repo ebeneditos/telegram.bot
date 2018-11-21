@@ -1,7 +1,7 @@
 
 #### CLASS ####
 
-#' Handle a message
+#' Handling messages
 #'
 #' \code{\link{Handler}} class to handle Telegram messages. They might contain text, media or status updates.
 #'
