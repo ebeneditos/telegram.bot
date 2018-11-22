@@ -2,7 +2,7 @@
 #### INTERNAL METHODS ####
 
 # Print function
-bot.print <- function()
+.print <- function()
 {
   obj <- objects(self)
   api_methods <- obj[grepl("[A-Z]", obj)]
@@ -29,7 +29,7 @@ bot.print <- function()
 }
 
 # A very basic validation on token
-bot.validate_token <- function(token)
+.validate_token <- function(token)
 {
   if (grepl(" ", token))
     stop("Invalid token.")
@@ -45,7 +45,7 @@ bot.validate_token <- function(token)
 }
 
 # Request an URL
-bot.request <- function(url, data)
+.request <- function(url, data)
 {
   result <- httr::POST(url = url,
                        body = data,
@@ -62,7 +62,7 @@ bot.request <- function(url, data)
 }
 
 # Parse result
-bot.parse <- function(result)
+.parse <- function(result)
 {
   data <- tryCatch({httr::content(result, as = "parsed", encoding = "UTF-8")})
   
@@ -1366,7 +1366,7 @@ BotClass <-
                     private$request_config <- request_config
 
                 },
-                print = bot.print,
+                print = .print,
 
                 ## API Methods
                 getMe = getMe,
@@ -1429,9 +1429,9 @@ BotClass <-
                 request_config = NULL,
 
                 ## Internal Methods
-                validate_token = bot.validate_token,
-                request = bot.request,
-                parse = bot.parse
+                validate_token = .validate_token,
+                request = .request,
+                parse = .parse
               )
 )
 

@@ -24,6 +24,7 @@
 #' 
 #' @name telegram.bot
 #' @docType package
+#' @keywords internal
 #' @importFrom R6 R6Class
 #' @importFrom httr POST
 #' @importFrom httr content

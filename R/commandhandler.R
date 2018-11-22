@@ -15,9 +15,28 @@
 #'   \code{\link{MessageFilters}} for a full list of all available filters.
 #' @param pass_args (Optional). Determines whether the handler should be passed
 #'   \code{args}, received as a \code{vector}, split on spaces.
+#' @param username Bot's username, you can retrieve it from \code{bot$getMe()$username}.
+#'   If this parameter is passed, then the \code{CommandHandler} will also listen to the
+#'   command \code{/command@username}, as bot commands are often called this way.
+#' @examples \dontrun{
+#' 
+#' # Initialize bot
+#' bot <- Bot("TOKEN")
+#' username <- bot$getMe()$username
+#' updater <- Updater(bot = bot)
+#' 
+#' # Add a command
+#' start <- function(bot, update){
+#'   bot$sendMessage(chat_id = update$message$chat_id,
+#'                   text = "Hi, I am a bot!")
+#' }
+#' 
+#' updater <- updater + CommandHandler("start", start, username = username)
+#' }
 #' @export
-CommandHandler <- function(command, callback, filters = NULL, pass_args = FALSE){
-  CommandHandlerClass$new(command, callback, filters, pass_args)
+CommandHandler <- function(command, callback, filters = NULL,
+                           pass_args = FALSE, username = NULL){
+  CommandHandlerClass$new(command, callback, filters, pass_args, username)
 }
 
 
@@ -31,11 +50,16 @@ CommandHandlerClass <-
                 callback = NULL,
                 filters = NULL,
                 pass_args = NULL,
+                username = NULL,
 
                 ## initialize
                 initialize =
-                  function(command, callback, filters, pass_args){
-                    self$command <- tolower(command)
+                  function(command, callback, filters, pass_args, username){
+                    command <- tolower(command)
+                    if (is.null(username))
+                      self$command <- command
+                    else
+                      self$command <- c(command, paste(command, username, sep = "@"))
                     self$callback <- callback
 
                     if (!missing(filters))

@@ -6,7 +6,8 @@
 \title{Handling commands}
 \format{An \code{\link{R6Class}} object.}
 \usage{
-CommandHandler(command, callback, filters = NULL, pass_args = FALSE)
+CommandHandler(command, callback, filters = NULL, pass_args = FALSE,
+  username = NULL)
 }
 \arguments{
 \item{command}{The command or vector of commands this handler
@@ -20,7 +21,28 @@ See \code{\link{Handler}} for information about this function.}
 
 \item{pass_args}{(Optional). Determines whether the handler should be passed
 \code{args}, received as a \code{vector}, split on spaces.}
+
+\item{username}{Bot's username, you can retrieve it from \code{bot$getMe()$username}.
+If this parameter is passed, then the \code{CommandHandler} will also listen to the
+command \code{/command@username}, as bot commands are often called this way.}
 }
 \description{
 \code{\link{Handler}} class to handle Telegram commands.
+}
+\examples{
+\dontrun{
+
+# Initialize bot
+bot <- Bot("TOKEN")
+username <- bot$getMe()$username
+updater <- Updater(bot = bot)
+
+# Add a command
+start <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = "Hi, I am a bot!")
+}
+
+updater <- updater + CommandHandler("start", start, username = username)
+}
 }

@@ -7,8 +7,8 @@
 #' is. Will be \code{NULL} for \code{channel_post}.
 effective_user <- function(){ # nocov start
 
-  if (!is.null(private$effective_user_))
-    return(private$effective_user_)
+  if (!is.null(private$.effective_user))
+    return(private$.effective_user)
 
   user <- NULL
 
@@ -33,7 +33,7 @@ effective_user <- function(){ # nocov start
   else if (!is.null(self$pre_checkout_query))
     user <- self$pre_checkout_query$from_user
 
-  private$effective_user_ <- user
+  private$.effective_user <- user
   return(user)
 } # nocov end
 
@@ -46,8 +46,8 @@ effective_user <- function(){ # nocov start
 #' \code{shipping_query} and \code{pre_checkout_query}.
 effective_chat <- function(){ # nocov start
 
-  if (!is.null(private$effective_chat_))
-    return(private$effective_chat_)
+  if (!is.null(private$.effective_chat))
+    return(private$.effective_chat)
 
   chat <- NULL
 
@@ -66,7 +66,7 @@ effective_chat <- function(){ # nocov start
   else if (!is.null(self$edited_channel_post))
     chat <- self$edited_channel_post$chat
 
-  private$effective_chat_ <- chat
+  private$.effective_chat <- chat
   return(chat)
 } # nocov end
 
@@ -79,8 +79,8 @@ effective_chat <- function(){ # nocov start
 #' \code{shipping_query} and \code{pre_checkout_query}.
 effective_message <- function(){ # nocov start
 
-  if (!is.null(private$effective_message_))
-    return(private$effective_message_)
+  if (!is.null(private$.effective_message))
+    return(private$.effective_message)
 
   message <- NULL
 
@@ -99,7 +99,7 @@ effective_message <- function(){ # nocov start
   else if (!is.null(self$edited_channel_post))
     message <- self$edited_channel_post
 
-  private$effective_message_ <- message
+  private$.effective_message <- message
   return(message)
 } # nocov end
 
@@ -170,9 +170,9 @@ UpdateClass <-
               private = list(
 
                 ##args
-                effective_user_ = NULL,
-                effective_chat_ = NULL,
-                effective_message_ = NULL
+                .effective_user = NULL,
+                .effective_chat = NULL,
+                .effective_message = NULL
               )
 )
 

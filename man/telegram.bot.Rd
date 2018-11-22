@@ -42,3 +42,4 @@ Useful links:
 \strong{Maintainer}: Ernest Benedito \email{ebeneditos@gmail.com}
 
 }
+\keyword{internal}
