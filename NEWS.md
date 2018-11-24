@@ -4,10 +4,12 @@
 - New S3 methods:
   - Added `+` method for class `TelegramObject`, which eases the `Updater` construction (see [The *add* operator](https://github.com/ebeneditos/telegram.bot/wiki/The-add-operator)).
   - Added `!`, `&` and `|` methods for class `BaseFilter`, which enables combining filters (see [Advanced Filters](https://github.com/ebeneditos/telegram.bot/wiki/Advanced-Filters)).
+- Added `username` parameter for `CommandHandler` method with examples.
+- Added `chat_id` and `from_user` methods for `Update` class.
 - Vignettes update:
   - Added *The add operator*.
   - Substituted *Custom filters* vignette with *Advanced filters*.
-- Minor Bug fixes.
+- Minor bug fixes.
 - Documentation updated.
 
 ## v2.1.0

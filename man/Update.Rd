@@ -21,10 +21,14 @@ This object represents an incoming \href{https://core.telegram.org/bots/api#upda
 }
 \section{Methods}{
  \describe{
-    \item{\code{\link{effective_user}}}{To get the user that sent
-    this update, no matter what kind of update this is.}
+    \item{\code{\link{chat_id}}}{To get the \code{id} from the update's
+    effective chat.}
+    \item{\code{\link{from_user}}}{To get the \code{id} from the update's
+    effective user.}
     \item{\code{\link{effective_chat}}}{To get the chat that this
     update was sent in, no matter what kind of update this is.}
+    \item{\code{\link{effective_user}}}{To get the user that sent
+    this update, no matter what kind of update this is.}
     \item{\code{\link{effective_message}}}{To get the message
     included in this update, no matter what kind of  update this is.}}
 }

@@ -2,7 +2,7 @@
 context("CommandHandler")
 
 dispatcher <- Dispatcher(Bot(token))
-command_handler <- CommandHandler("foo", foo_handler, pass_args = TRUE)
+command_handler <- CommandHandler("foo", foo_handler, pass_args = TRUE, username = "fooBot")
 update <- Update(foo_update)
 
 test_that("Process Command", {

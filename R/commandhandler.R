@@ -15,9 +15,10 @@
 #'   \code{\link{MessageFilters}} for a full list of all available filters.
 #' @param pass_args (Optional). Determines whether the handler should be passed
 #'   \code{args}, received as a \code{vector}, split on spaces.
-#' @param username Bot's username, you can retrieve it from \code{bot$getMe()$username}.
-#'   If this parameter is passed, then the \code{CommandHandler} will also listen to the
-#'   command \code{/command@username}, as bot commands are often called this way.
+#' @param username (Optional). Bot's username, you can retrieve it from
+#'   \code{bot$getMe()$username}. If this parameter is passed, then the
+#'   \code{CommandHandler} will also listen to the command \code{/command@username},
+#'   as bot commands are often called this way.
 #' @examples \dontrun{
 #' 
 #' # Initialize bot

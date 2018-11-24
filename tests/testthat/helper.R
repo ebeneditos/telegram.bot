@@ -29,11 +29,11 @@ foo_handler <- function(bot, update, ...){return(update)}
 
 # Foo update
 foo_update <- list(update_id = 0,
-                   message = list(from_user = "Tester",
+                   message = list(from = list(id = 1),
                                   chat = list(id = 123456789),
                                   text = "/foo bar"))
 foo_command <- list(update_id = 0,
-                   message = list(from_user = "Tester",
+                   message = list(from = list(id = 1),
                                   chat = list(id = 123456789),
                                   text = "/foo"))
 # Foo callbackquery

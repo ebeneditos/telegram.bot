@@ -4,7 +4,7 @@
 \alias{effective_chat}
 \title{Get the effective chat}
 \usage{
-effective_chat()
+update$effective_chat()
 }
 \description{
 The chat that this update was sent in, no matter what kind of
