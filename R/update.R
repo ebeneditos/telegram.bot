@@ -1,11 +1,11 @@
 
 #### METHODS ####
 
-#' Get the update's chat ID
+#' Get an update's chat ID
 #'
-#' Get the \code{id} from the update's effective chat.
+#' Get the \code{id} from the \code{\link{Update}}'s effective chat.
 #' 
-#' @usage update$chat_id()
+#' @usage Update$chat_id()
 #' @format NULL
 chat_id <- function(){
   
@@ -19,11 +19,11 @@ chat_id <- function(){
 }
 
 
-#' Get the update's user ID
+#' Get an update's user ID
 #'
-#' Get the \code{id} from the update's effective user.
+#' Get the \code{id} from the \code{\link{Update}}'s effective user.
 #' 
-#' @usage update$from_user()
+#' @usage Update$from_user()
 from_user <- function(){
   
   if (!is.null(private$.from_user))
@@ -43,7 +43,7 @@ from_user <- function(){
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
 #' 
-#' @usage update$effective_chat()
+#' @usage Update$effective_chat()
 effective_chat <- function(){ # nocov start
 
   if (!is.null(private$.effective_chat))
@@ -76,7 +76,7 @@ effective_chat <- function(){ # nocov start
 #' The user that sent this update, no matter what kind of update this
 #' is. Will be \code{NULL} for \code{channel_post}.
 #' 
-#' @usage update$effective_user()
+#' @usage Update$effective_user()
 effective_user <- function(){ # nocov start
   
   if (!is.null(private$.effective_user))
@@ -117,7 +117,7 @@ effective_user <- function(){ # nocov start
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
 #' 
-#' @usage update$effective_message()
+#' @usage Update$effective_message()
 effective_message <- function(){ # nocov start
 
   if (!is.null(private$.effective_message))

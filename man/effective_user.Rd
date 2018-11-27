@@ -4,7 +4,7 @@
 \alias{effective_user}
 \title{Get the effective user}
 \usage{
-update$effective_user()
+Update$effective_user()
 }
 \description{
 The user that sent this update, no matter what kind of update this

@@ -44,6 +44,7 @@ handle_update <- function(update, dispatcher){
 #'     \item{\code{\link{MessageHandler}}}{To handle Telegram messages.}
 #'     \item{\code{\link{CommandHandler}}}{To handle Telegram commands.}
 #'     \item{\code{\link{CallbackQueryHandler}}}{To handle Telegram callback queries.}
+#'     \item{\code{\link{ErrorHandler}}}{To handle errors while polling for updates.}
 #' }
 #' @param callback The callback function for this handler. Its inputs will be \code{(bot, update)},
 #'   where \code{bot} is a \code{\link{Bot}} instance and \code{update} an \code{\link{Update}} class.

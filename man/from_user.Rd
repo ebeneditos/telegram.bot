@@ -2,10 +2,10 @@
 % Please edit documentation in R/update.R
 \name{from_user}
 \alias{from_user}
-\title{Get the update's user ID}
+\title{Get an update's user ID}
 \usage{
-update$from_user()
+Update$from_user()
 }
 \description{
-Get the \code{id} from the update's effective user.
+Get the \code{id} from the \code{\link{Update}}'s effective user.
 }

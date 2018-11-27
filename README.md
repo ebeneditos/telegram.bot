@@ -146,6 +146,8 @@ You can also check these other resources:
 - [Telegram Bot API Documentation](https://core.telegram.org/bots/api)
 - ['telegram.bot' CRAN Documentation](https://CRAN.R-project.org/package=telegram.bot/telegram.bot.pdf)
 
+If you have any other doubt about the package, you can [post a question on Stack Overflow](https://stackoverflow.com/questions/ask) under the `r-telegram-bot` tag or directly [e-mail the package's maintainer](mailto:ebeneditos@gmail.com).
+
 ## Contributing
 
 The package is in a starting phase, so contributions of all sizes are very welcome. Please:

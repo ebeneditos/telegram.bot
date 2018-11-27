@@ -3,11 +3,11 @@
 \docType{data}
 \name{chat_id}
 \alias{chat_id}
-\title{Get the update's chat ID}
+\title{Get an update's chat ID}
 \usage{
-update$chat_id()
+Update$chat_id()
 }
 \description{
-Get the \code{id} from the update's effective chat.
+Get the \code{id} from the \code{\link{Update}}'s effective chat.
 }
 \keyword{datasets}

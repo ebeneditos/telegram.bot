@@ -24,9 +24,13 @@ add_handler <- function(handler,
                         group = 1L)
 {
 
-  if(!is.Handler(handler))
+  if (is.ErrorHandler(handler)){
+    self$add_error_handler(handler$callback)
+    return()
+  }
+  if (!is.Handler(handler))
     stop("`handler` is not an instance of 'Handler'.")
-  if(!is.numeric(group))
+  if (!is.numeric(group))
     stop("`group` is not numeric.")
   
   group <- round(group[1L])
@@ -46,7 +50,25 @@ add_handler <- function(handler,
 #' Add an error handler
 #'
 #' Registers an error handler in the \code{\link{Dispatcher}}.
-#' @param callback A function that takes \code{(Bot, Update)} as arguments.
+#' 
+#' You can also use \code{\link{add_handler}} to register error handlers
+#' if the handler is of type \code{\link{ErrorHandler}}.
+#' @param callback A function that takes \code{(bot, error)} as arguments.
+#' @examples \dontrun{
+#' updater <- Updater(token = "TOKEN")
+#' 
+#' # Create error callback
+#' error_callback <- function(bot, error){
+#'   warning(simpleWarning(conditionMessage(error), call = "Updates polling"))
+#' }
+#' 
+#' # Register it to the updater's dispatcher
+#' updater$dispatcher$add_error_handler(error_callback)
+#' # or
+#' updater$dispatcher$add_handler(ErrorHandler(error_callback))
+#' # or
+#' updater <- updater + ErrorHandler(error_callback)
+#' }
 add_error_handler <- function(callback)
 {
 
