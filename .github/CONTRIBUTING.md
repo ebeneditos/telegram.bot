@@ -13,7 +13,7 @@ To ease the submit review, please take a look on our [coding conventions](CONTRI
 
 3. **Develop the feature** and make the necessary tests to prove it works fine.
 
-4. **Send a GitHub Pull Request** to [`telegram.bot`](https://github.com/ebeneditos/telegram.bot/pull/new/master) with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests/)). Always write a clear log message for your commits.
+4. **Send a GitHub Pull Request** to [`telegram.bot`](https://github.com/ebeneditos/telegram.bot/pull/new/master) with a clear list of what you've done. Always write a clear log message for your commits.
 
 5. **Receive a sincere thanks!** If we have any doubts we will let you know.
 
