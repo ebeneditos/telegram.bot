@@ -84,7 +84,7 @@ To get a feeling for the API and how to use it with `telegram.bot`, we will repr
 
 First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from *@BotFather*:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 # install.packages("telegram.bot")
 library(telegram.bot)
 
@@ -93,7 +93,7 @@ bot <- Bot(token = "TOKEN")
 
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 print(bot$getMe())
 ```
 
@@ -103,13 +103,13 @@ print(bot$getMe())
 
 You can get updates from your bot with the command:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 updates <- bot$getUpdates()
 ```
 
 This will retrieve a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
 bot$sendMessage(chat_id = chat_id, text = "TestReply")
 ```
@@ -118,7 +118,7 @@ bot$sendMessage(chat_id = chat_id, text = "TestReply")
 
 As you see, one of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are a few more examples:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 # Send message
 bot$sendMessage(chat_id = chat_id,
                 text = "foo *bold* _italic_",
@@ -161,7 +161,7 @@ bot$sendChatAction(chat_id = chat_id,
 photos <- bot$getUserProfilePhotos(user_id = chat_id)
 
 # Download user profile photo
-file_id <- photos$photos[[1]][[1]]$file_id
+file_id <- photos$photos[[1L]][[1L]]$file_id
 bot$getFile(file_id, destfile = "photo.jpg")
 ```
 

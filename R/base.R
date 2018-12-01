@@ -36,7 +36,7 @@
 #'   }
 #' }
 #' 
-#' updater <- updater + CommandHandler("caps", caps, pass_args = T)
+#' updater <- updater + CommandHandler("caps", caps, pass_args = TRUE)
 #' 
 #' # Give it a try!
 #' updater$start_polling()

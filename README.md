@@ -103,7 +103,7 @@ bot$sendChatAction(chat_id = chat_id,
 photos <- bot$getUserProfilePhotos(user_id = chat_id)
 
 # Download user profile photo
-file_id <- photos$photos[[1]][[1]]$file_id
+file_id <- photos$photos[[1L]][[1L]]$file_id
 bot$getFile(file_id, destfile = "photo.jpg")
 ```
 

@@ -14,7 +14,7 @@ with the name where the downloaded file is saved. See the \code{destfile}
 parameter from \code{?curl::curl_download} for further details.}
 
 \item{...}{(Optional). Additional parameters to be passed to
-\code{\link[curl]{curl_download}}.}
+\code{\link[curl]{curl_download}}. It is not used if \code{destfile} is \code{NULL}.}
 }
 \description{
 Use this method to get basic info about a file and prepare it for downloading. For the
@@ -33,7 +33,7 @@ chat_id <- user_id("Me")
 photos <- bot$getUserProfilePhotos(chat_id = chat_id)
 
 # Download user profile photo
-file_id <- photos$photos[[1]][[1]]$file_id
+file_id <- photos$photos[[1L]][[1L]]$file_id
 bot$getFile(file_id, destfile = "photo.jpg")
 }
 }

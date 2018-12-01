@@ -912,7 +912,7 @@ getUserProfilePhotos <- function(user_id,
 #'     with the name where the downloaded file is saved. See the \code{destfile}
 #'     parameter from \code{?curl::curl_download} for further details.
 #' @param ... (Optional). Additional parameters to be passed to
-#'     \code{\link[curl]{curl_download}}.
+#'     \code{\link[curl]{curl_download}}. It is not used if \code{destfile} is \code{NULL}.
 #' @examples \dontrun{
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
@@ -920,7 +920,7 @@ getUserProfilePhotos <- function(user_id,
 #' photos <- bot$getUserProfilePhotos(chat_id = chat_id)
 #' 
 #' # Download user profile photo
-#' file_id <- photos$photos[[1]][[1]]$file_id
+#' file_id <- photos$photos[[1L]][[1L]]$file_id
 #' bot$getFile(file_id, destfile = "photo.jpg")
 #' }
 getFile <- function(file_id, destfile = NULL, ...)

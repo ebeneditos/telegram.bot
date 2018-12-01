@@ -36,14 +36,14 @@ test_that("Start Polling", {
   expect_error(foo_updater$dispatcher$add_error_handler(stop_handler), NA)
   
   # check error during get updates
-  expect_null(foo_updater$start_polling(clean = T, verbose = T))
+  expect_null(foo_updater$start_polling(clean = TRUE, verbose = TRUE))
   
   # check stop
   foo_updater$bot$get_updates <- function(...){
     stop(interruptError())
   }
   
-  expect_null(foo_updater$start_polling(verbose = T))
+  expect_null(foo_updater$start_polling(verbose = TRUE))
   
   # check warning when stopping polling
   foo_updater$bot$get_updates <- function(...){
@@ -51,7 +51,7 @@ test_that("Start Polling", {
     return(list(Update(foo_update)))
   }
   
-  expect_null(foo_updater$start_polling(verbose = T))
+  expect_null(foo_updater$start_polling(verbose = TRUE))
   
   # check processing updates
   foo_updater$bot$get_updates <- function(...){

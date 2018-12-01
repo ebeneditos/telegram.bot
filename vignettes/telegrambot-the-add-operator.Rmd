@@ -22,7 +22,7 @@ The *add* operator (`+`, or more formally `+.TelegramObject`) is an S3 method fo
 
 Say you want to build a bot with a simple handler for the `/start` command:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 start <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
                   text = sprintf("Hello %s!",
@@ -34,13 +34,13 @@ start_handler <- CommandHandler("start", start)
 
 You can then build your updater with:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 updater <- Updater("TOKEN") + start_handler
 ```
 
 As things start to get more complex, you can chain multiple handlers in a single call:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 echo <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
                   text = update$message$text)
@@ -51,7 +51,7 @@ updater <- Updater("TOKEN") + CommandHandler("start", start) + MessageHandler(ec
 
 And keep adding...
 
-```{r, eval = F}
+```{r, eval = FALSE}
 caps <- function(bot, update, args){
   if (length(args > 0L)){
    	text_caps <- toupper(paste(args, collapse = " "))
@@ -60,12 +60,12 @@ caps <- function(bot, update, args){
   }
 }
 
-updater <- updater + CommandHandler("caps", caps, pass_args = T)
+updater <- updater + CommandHandler("caps", caps, pass_args = TRUE)
 ```
 
 Give it a try! Start polling the updater:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 updater$start_polling()
 ```
 
@@ -75,19 +75,19 @@ And send ***/start*** to the bot, ***/caps foo*** or just a simple text.
 
 The operator is indeed calling the `add_handler` method from an `Updater`'s `Dispatcher`. Then:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 updater <- updater + start_handler
 ```
 
 Is equivalent to:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 updater$dispatcher$add_handler(start_handler)
 ```
 
 Also, it works with `Dispatcher` objects:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 dispatcher <- updater$dispatcher
 dispatcher <- dispatcher + start_handler # equivalent to dispatcher$add_handler(start_handler)
 ```

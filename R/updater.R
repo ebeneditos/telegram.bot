@@ -92,7 +92,7 @@ start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, 
 #' 
 #' updater <<- updater + CommandHandler('kill', kill)
 #' 
-#' updater$start_polling(verbose = T) # Send '/kill' to the bot
+#' updater$start_polling(verbose = TRUE) # Send '/kill' to the bot
 #' }
 stop_polling <- function(){
   

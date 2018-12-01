@@ -23,6 +23,6 @@ kill <- function(bot, update){
 
 updater <<- updater + CommandHandler('kill', kill)
 
-updater$start_polling(verbose = T) # Send '/kill' to the bot
+updater$start_polling(verbose = TRUE) # Send '/kill' to the bot
 }
 }

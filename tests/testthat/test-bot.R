@@ -34,7 +34,7 @@ test_that("Send Message", {
                              text = foo_text,
                              parse_mode = "Markdown",
                              disable_web_page_preview = NULL,
-                             disable_notification = F,
+                             disable_notification = FALSE,
                              reply_to_message_id = NULL,
                              reply_markup = NULL), "list")
   
@@ -47,7 +47,7 @@ test_that("Send Photo", {
   expect_is(bot$send_photo(chat_id = chat_id,
                            photo = "https://telegram.org/img/t_logo.png",
                            caption = "Telegram Logo",
-                           disable_notification = F,
+                           disable_notification = FALSE,
                            reply_to_message_id = NULL,
                            reply_markup = NULL,
                            parse_mode = NULL), "list")
