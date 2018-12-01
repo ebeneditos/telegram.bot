@@ -26,8 +26,6 @@ First, though, let's introduce the `telegram.bot` package.
 
 ### Introduction
 
-The `telegram.bot` package is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer. It uses `telegram` package methods to connect to the API and is based on the `python-telegram-bot` library, using the nomenclature from its `telegram.ext` sub-module. 
-
 In order to build a bot that is continuously running and is able to respond to multiple input data formats, the `telegram.bot` package features several `R6` classes, but the two most important ones here are `Updater` and `Dispatcher`.
 
 The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class.  If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
@@ -38,7 +36,7 @@ With that said, let's *get started!*
 
 ### 1. Creating the Updater object
 
-First, you first must create an `Update` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
+First, you first must create an `Updater` object. Replace `TOKEN` with your Telegram Bot's API Access Token, which looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
 
 ```{r, eval = F}
 library(telegram.bot)
@@ -55,14 +53,13 @@ So let's say you have named your bot `RTelegramBot` (it's the first question
 you answered to the *BotFather* when creating it); you can open the `.Renviron` file with the R commands:
 
 ```{r, eval = F}
-user_renviron <- path.expand(file.path("~", ".Renviron"))
-file.edit(user_renviron) # Open with another text editor if this fails
+file.edit(path.expand(file.path("~", ".Renviron")))
 ```
 
 And put the following line with
 your `TOKEN` in your `.Renviron`:
 
-```{bash, eval = F}
+```{r, eval = F}
 R_TELEGRAM_BOT_RTelegramBot=TOKEN
 ```
 If you follow the suggested `R_TELEGRAM_BOT_` prefix convention you'll be able

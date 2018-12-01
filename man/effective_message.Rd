@@ -4,7 +4,7 @@
 \alias{effective_message}
 \title{Get the effective message}
 \usage{
-Update$effective_message()
+effective_message()
 }
 \description{
 The message included in this update, no matter what kind of

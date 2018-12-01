@@ -4,35 +4,30 @@
 #' Get an update's chat ID
 #'
 #' Get the \code{id} from the \code{\link{Update}}'s effective chat.
-#' 
-#' @usage Update$chat_id()
-#' @format NULL
-chat_id <- function(){
+from_chat_id <- function(){
   
-  if (!is.null(private$.chat_id))
-    return(private$.chat_id)
+  if (!is.null(private$.from_chat_id))
+    return(private$.from_chat_id)
   
-  chat_id <- self$effective_chat()$id
+  from_chat_id <- self$effective_chat()$id
   
-  private$.chat_id <- chat_id
-  return(chat_id)
+  private$.from_chat_id <- from_chat_id
+  return(from_chat_id)
 }
 
 
 #' Get an update's user ID
 #'
 #' Get the \code{id} from the \code{\link{Update}}'s effective user.
-#' 
-#' @usage Update$from_user()
-from_user <- function(){
+from_user_id <- function(){
   
-  if (!is.null(private$.from_user))
-    return(private$.from_user)
+  if (!is.null(private$.from_user_id))
+    return(private$.from_user_id)
   
-  from_user <- self$effective_user()$id
+  from_user_id <- self$effective_user()$id
   
-  private$.from_user <- from_user
-  return(from_user)
+  private$.from_user_id <- from_user_id
+  return(from_user_id)
 }
 
 
@@ -42,8 +37,6 @@ from_user <- function(){
 #' update this is. Will be \code{None} for \code{inline_query},
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
-#' 
-#' @usage Update$effective_chat()
 effective_chat <- function(){ # nocov start
 
   if (!is.null(private$.effective_chat))
@@ -75,8 +68,6 @@ effective_chat <- function(){ # nocov start
 #'
 #' The user that sent this update, no matter what kind of update this
 #' is. Will be \code{NULL} for \code{channel_post}.
-#' 
-#' @usage Update$effective_user()
 effective_user <- function(){ # nocov start
   
   if (!is.null(private$.effective_user))
@@ -116,8 +107,6 @@ effective_user <- function(){ # nocov start
 #' update this is. Will be \code{None} for \code{inline_query},
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
-#' 
-#' @usage Update$effective_message()
 effective_message <- function(){ # nocov start
 
   if (!is.null(private$.effective_message))
@@ -145,9 +134,6 @@ effective_message <- function(){ # nocov start
 } # nocov end
 
 
-
-
-
 ### CLASS ####
 
 #' Represent an update
@@ -158,9 +144,9 @@ effective_message <- function(){ # nocov start
 #' @format An \code{\link{R6Class}} object.
 #' @param data Data of the update.
 #' @section Methods: \describe{
-#'     \item{\code{\link{chat_id}}}{To get the \code{id} from the update's
+#'     \item{\code{\link{from_chat_id}}}{To get the \code{id} from the update's
 #'     effective chat.}
-#'     \item{\code{\link{from_user}}}{To get the \code{id} from the update's
+#'     \item{\code{\link{from_user_id}}}{To get the \code{id} from the update's
 #'     effective user.}
 #'     \item{\code{\link{effective_chat}}}{To get the chat that this
 #'     update was sent in, no matter what kind of update this is.}
@@ -217,8 +203,8 @@ UpdateClass <-
                 effective_user = effective_user,
                 effective_chat = effective_chat,
                 effective_message = effective_message,
-                chat_id = chat_id,
-                from_user = from_user
+                from_chat_id = from_chat_id,
+                from_user_id = from_user_id
               ),
               private = list(
 
@@ -226,8 +212,8 @@ UpdateClass <-
                 .effective_user = NULL,
                 .effective_chat = NULL,
                 .effective_message = NULL,
-                .chat_id = NULL,
-                .from_user = NULL
+                .from_chat_id = NULL,
+                .from_user_id = NULL
               )
 )
 

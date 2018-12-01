@@ -6,7 +6,7 @@
   - Added `!`, `&` and `|` methods for class `BaseFilter`, which enables combining filters (see [Advanced Filters](https://github.com/ebeneditos/telegram.bot/wiki/Advanced-Filters)).
 - Added `ErrorHandler` class with examples.
 - Added `username` parameter for `CommandHandler` method with examples.
-- Added `chat_id` and `from_user` methods for `Update` class.
+- Added `from_chat_id` and `from_user_id` methods for `Update` class.
 - Vignettes update:
   - Added *The add operator*.
   - Substituted *Custom filters* vignette with *Advanced filters*.

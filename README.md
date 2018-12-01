@@ -117,7 +117,6 @@ enviroment variables set in `.Renviron` file.
 So let's say you have named your bot `RTelegramBot`; you can open the `.Renviron` file with the R command:
 
 ```r
-# Open with another text editor if this fails
 file.edit(path.expand(file.path("~", ".Renviron")))
 ```
 

@@ -11,8 +11,8 @@ test_that("Effective User", {
 
 test_that("Effective User ID", {
   
-  expect_equal(update$from_user(), foo_update$message$from$id)
-  expect_equal(update$from_user(), foo_update$message$from$id)
+  expect_equal(update$from_user_id(), foo_update$message$from$id)
+  expect_equal(update$from_user_id(), foo_update$message$from$id)
   
 })
 
@@ -24,8 +24,8 @@ test_that("Effective Chat", {
 
 test_that("Effective Chat ID", {
   
-  expect_equal(update$chat_id(), foo_update$message$chat$id)
-  expect_equal(update$chat_id(), foo_update$message$chat$id)
+  expect_equal(update$from_chat_id(), foo_update$message$chat$id)
+  expect_equal(update$from_chat_id(), foo_update$message$chat$id)
   
 })
 
