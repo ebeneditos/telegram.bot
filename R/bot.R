@@ -990,7 +990,7 @@ answerCallbackQuery <- function(callback_query_id,
 #' 
 #' To enable this option, send the \code{/setinline} command to
 #' \href{https://t.me/botfather}{@BotFather} and provide the placeholder text that the user
-#' will see in the input field after typing your bot’s name.
+#' will see in the input field after typing your bot's name.
 #' 
 #' You can also use it's snake_case equivalent \code{answer_inline_query}.
 #' @param inline_query_id Unique identifier for the answered query.
