@@ -1,5 +1,5 @@
 
-#' KeyboardButton
+#' Create a keyboard button
 #'
 #' This object represents one button of the reply keyboard. Optional
 #' fields are mutually exclusive.
@@ -10,13 +10,13 @@
 #' 
 #' @param text Text of the button. If none of the optional
 #'     fields are used, it will be sent as a message when the button
-#'     is pressed
+#'     is pressed.
 #' @param request_contact (Optional). If \code{TRUE}, the user's phone number will be
 #'     sent as a contact when the button is pressed. Available in
-#'     private chats only
+#'     private chats only.
 #' @param request_location (Optional). If \code{TRUE}, the user's current location
 #'     will be sent when the button is pressed. Available in private
-#'     chats only
+#'     chats only.
 #' @export
 KeyboardButton <- function(
   text,
@@ -28,18 +28,24 @@ KeyboardButton <- function(
                          request_contact = request_contact,
                          request_location = request_location)
   KeyboardButton <- KeyboardButton[!unlist(lapply(KeyboardButton, is.null))]
-  class(KeyboardButton) <- "KeyboardButton"
   ## return object
-  return(KeyboardButton)
+  structure(KeyboardButton, class = "KeyboardButton")
 }
 
-#' ReplyKeyboardMarkup
+#' @rdname KeyboardButton
+#' @param x Object to be tested.
+#' @export
+is.KeyboardButton <- function(x){
+  inherits(x, "KeyboardButton")
+}
+
+#' Create a keyboard markup
 #'
 #' This object represents a \href{https://core.telegram.org/bots#keyboards}{custom keyboard}
 #' with reply options.
 #' 
 #' @param keyboard List of button rows, each represented by a list of
-#'     \code{\link{KeyboardButton}} objects
+#'     \code{\link{KeyboardButton}} objects.
 #' @param resize_keyboard (Optional). Requests clients to resize the keyboard vertically
 #'     for optimal fit. Defaults to \code{FALSE}, in which case the
 #'     custom keyboard is always of the same height as the app's standard
@@ -48,14 +54,14 @@ KeyboardButton <- function(
 #'     as it's been used. The keyboard will still be available, but clients
 #'     will automatically display the usual letter-keyboard in the chat -
 #'     the user can press a special button in the input field to see the
-#'     custom keyboard again. Defaults to \code{FALSE}
+#'     custom keyboard again. Defaults to \code{FALSE}.
 #' @param selective (Optional). Use this parameter if you want to show the keyboard
 #'     to specific users only.
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Create Custom Keyboard
 #' text <- "Aren't those custom keyboards cool?"
@@ -80,8 +86,9 @@ ReplyKeyboardMarkup <- function(
 {
   ## check dimensions and class
   if(!all(unlist(lapply(keyboard, is.list))) |
-     !all(unlist(lapply(keyboard, function(x){lapply(x, function(x){inherits(x, "KeyboardButton")})})))) {
-    stop("`keyboard` parameter must be a list of button rows, each represented by a list of KeyboardButton objects.")
+     !all(unlist(lapply(keyboard, function(x){lapply(x, is.KeyboardButton)})))) {
+    stop("`keyboard` must be a list of button rows, each represented ",
+         "by a list of KeyboardButton objects.")
   }
   ## build object
   ReplyKeyboardMarkup <- list(keyboard = keyboard,
@@ -89,12 +96,11 @@ ReplyKeyboardMarkup <- function(
                               one_time_keyboard = one_time_keyboard,
                               selective = selective)
   ReplyKeyboardMarkup <- ReplyKeyboardMarkup[!unlist(lapply(ReplyKeyboardMarkup, is.null))]
-  class(ReplyKeyboardMarkup) <- c("ReplyKeyboardMarkup", "ReplyMarkup")
   ## return object
-  return(ReplyKeyboardMarkup)
+  return(structure(ReplyKeyboardMarkup, class = c("ReplyKeyboardMarkup", "ReplyMarkup")))
 }
 
-#' InlineKeyboardButton
+#' Create an inline keyboard button
 #'
 #' This object represents one button of an inline keyboard. You
 #' \strong{must} use exactly one of the optional fields. If all optional fields
@@ -108,11 +114,11 @@ ReplyKeyboardMarkup <- function(
 #' to the user is needed (e.g., without specifying any of the
 #' optional parameters).
 #' 
-#' @param text Label text on the button (Required).
-#' @param url (Optional). HTTP url to be opened when button is pressed
+#' @param text Label text on the button.
+#' @param url (Optional). HTTP url to be opened when button is pressed.
 #' @param callback_data (Optional). Data to be sent in a
 #'     \href{https://core.telegram.org/bots/api#callbackquery}{callback query}
-#'     to the bot when button is pressed, 1-64 bytes
+#'     to the bot when button is pressed, 1-64 bytes.
 #' @param switch_inline_query (Optional). If set, pressing the button will prompt the
 #'     user to select one of their chats, open that chat and insert the
 #'     bot's username and the specified inline query in the input field.
@@ -130,18 +136,18 @@ InlineKeyboardButton <- function(
   switch_inline_query_current_chat = NULL)
 {
   ## check if all optional parameters ar null
-  if (all(sapply(list(url,
+  if (all(unlist(lapply(list(url,
                       callback_data,
                       switch_inline_query,
                       switch_inline_query_current_chat),
-                 is.null)))
+                 is.null))))
     callback_data <- text
   ## check that 1 and only 1 optional parameter is not NULL
-  else if (sum(sapply(list(url,
+  else if (sum(unlist(lapply(list(url,
                            callback_data,
                            switch_inline_query,
                            switch_inline_query_current_chat),
-                      function(x) !is.null(x))) != 1)
+                      function(x) !is.null(x)))) != 1L)
     stop("You must use exactly one of the optional fields.")
   ## build object
   InlineKeyboardButton <- list(text = text,
@@ -150,12 +156,18 @@ InlineKeyboardButton <- function(
                                switch_inline_query = switch_inline_query,
                                switch_inline_query_current_chat = switch_inline_query_current_chat)
   InlineKeyboardButton <- InlineKeyboardButton[!unlist(lapply(InlineKeyboardButton, is.null))]
-  class(InlineKeyboardButton) <- "InlineKeyboardButton"
   ## return object
-  return(InlineKeyboardButton)
+  return(structure(InlineKeyboardButton, class = "InlineKeyboardButton"))
 }
 
-#' InlineKeyboardMarkup
+#' @rdname InlineKeyboardButton
+#' @param x Object to be tested.
+#' @export
+is.InlineKeyboardButton <- function(x){
+  inherits(x, "InlineKeyboardButton")
+}
+
+#' Create an inline keyboard markup
 #'
 #' This object represents an \href{https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating}{inline keyboard}
 #' that appears right next to the message it belongs to.
@@ -168,12 +180,12 @@ InlineKeyboardButton <- function(
 #' optional parameters).
 #' 
 #' @param inline_keyboard List of button rows, each represented by a list of
-#'     \code{\link{InlineKeyboardButton}} objects
+#'     \code{\link{InlineKeyboardButton}} objects.
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Create Inline Keyboard
 #' text <- "Could you type their phone number, please?"
@@ -203,18 +215,18 @@ InlineKeyboardMarkup <- function(
 {
   ## check dimensions and class
   if(!all(unlist(lapply(inline_keyboard, is.list))) |
-     !all(unlist(lapply(inline_keyboard, function(x){lapply(x, function(x){inherits(x, "InlineKeyboardButton")})})))) {
-    stop("`inline_keyboard` parameter must be a list of button rows, each represented by a list of KeyboardButton objects.")
+     !all(unlist(lapply(inline_keyboard, function(x){lapply(x, is.InlineKeyboardButton)})))) {
+    stop("`inline_keyboard` must be a list of button rows, each represented ",
+         "by a list of KeyboardButton objects.")
   }
   ## build object
   InlineKeyboardMarkup <- list(inline_keyboard = inline_keyboard)
   InlineKeyboardMarkup <- InlineKeyboardMarkup[!unlist(lapply(InlineKeyboardMarkup, is.null))]
-  class(InlineKeyboardMarkup) <- c("InlineKeyboardMarkup", "ReplyMarkup")
   ## return object
-  return(InlineKeyboardMarkup)
+  return(structure(InlineKeyboardMarkup, class = c("InlineKeyboardMarkup", "ReplyMarkup")))
 }
 
-#' ReplyKeyboardRemove
+#' Remove a keyboard
 #'
 #' Upon receiving a message with this object, Telegram clients will
 #' remove the current custom keyboard and display the default
@@ -233,8 +245,8 @@ InlineKeyboardMarkup <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Create Custom Keyboard
 #' text <- "Don't forget to send me the answer!"
@@ -262,13 +274,12 @@ ReplyKeyboardRemove <- function(
   ReplyKeyboardRemove <- list(remove_keyboard = remove_keyboard,
                               selective = selective)
   ReplyKeyboardRemove <- ReplyKeyboardRemove[!unlist(lapply(ReplyKeyboardRemove, is.null))]
-  class(ReplyKeyboardRemove) <- c("ReplyKeyboardRemove", "ReplyMarkup")
   ## return object
-  return(ReplyKeyboardRemove)
+  return(structure(ReplyKeyboardRemove, class = c("ReplyKeyboardRemove", "ReplyMarkup")))
 }
 
 
-#' ForceReply
+#' Display a reply
 #'
 #' Upon receiving a message with this object, Telegram clients will display
 #' a reply interface to the user (act as if the user has selected the bot's
@@ -281,8 +292,8 @@ ReplyKeyboardRemove <- function(
 #'     
 #' @examples \dontrun{
 #' # Initialize bot
-#' bot <- Bot(token = 'TOKEN')
-#' chat_id <- 'CHAT_ID'
+#' bot <- Bot(token = "TOKEN")
+#' chat_id <- "CHAT_ID"
 #' 
 #' # Set input parameters
 #' text <- "Don't forget to send me the answer!"
@@ -299,7 +310,6 @@ ForceReply <- function(
   ForceReply <- list(force_reply = force_reply,
                      selective = selective)
   ForceReply <- ForceReply[!unlist(lapply(ForceReply, is.null))]
-  class(ForceReply) <- c("ForceReply", "ReplyMarkup")
   ## return object
-  return(ForceReply)
+  return(structure(ForceReply, class = c("ForceReply", "ReplyMarkup")))
 }

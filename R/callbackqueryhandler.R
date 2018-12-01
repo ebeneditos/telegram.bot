@@ -1,7 +1,7 @@
 
 #### CLASS ####
 
-#' CallbackQueryHandler
+#' Handling callback queries
 #'
 #' \code{\link{Handler}} class to handle Telegram callback queries. Optionally based on a regex.
 #'
@@ -44,7 +44,7 @@ CallbackQueryHandlerClass <-
                 # this handler instance.
                 check_update = function(update){
 
-                  if (inherits(update, 'Update') && self$is_allowed_update(update)){
+                  if (is.Update(update) && self$is_allowed_update(update)){
 
                     if(!is.null(self$pattern) && !is.null(update$callback_query$data))
                       return(grepl(self$pattern, update$callback_query$data))

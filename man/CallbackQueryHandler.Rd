@@ -3,7 +3,7 @@
 \docType{class}
 \name{CallbackQueryHandler}
 \alias{CallbackQueryHandler}
-\title{CallbackQueryHandler}
+\title{Handling callback queries}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 CallbackQueryHandler(callback, pattern = NULL)

@@ -24,7 +24,7 @@ In this vignette you will learn how the Telegram Bot API works and how you can c
 
 ### Creating a Telegram Bot
 
-First, you must have or [create a Telegram account](https://web.telegram.org). Second, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [`@BotFather`](https://telegram.me/botfather) and following a [few simple steps](https://core.telegram.org/bots#6-botfather). Telegram bots can receive *messages* or *commands*. The former are simply text that you send as if you were sending a message to another person, while the latter are prefixed with a `/` character. To create a new bot, send the following command to *BotFather* as a chat (exactly as if you were talking to another person on Telegram):
+First, you must have or [create a Telegram account](https://web.telegram.org). Second, you'll need to create a Telegram Bot in order to get an Access Token. You can do so by talking to [*@BotFather*](https://telegram.me/botfather) and following a [few simple steps](https://core.telegram.org/bots#6-botfather). Telegram bots can receive *messages* or *commands*. The former are simply text that you send as if you were sending a message to another person, while the latter are prefixed with a `/` character. To create a new bot, send the following command to *BotFather* as a chat (exactly as if you were talking to another person on Telegram):
 
 ```{bash, eval = F}
 /newbot
@@ -82,9 +82,9 @@ Thereby, the `telegram.bot` package consists of several `R6` classes, and the AP
 
 To get a feeling for the API and how to use it with `telegram.bot`, we will reproduce the URL based example we just saw, done with R with this package.
 
-First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from `@BotFather`:
+First, create an instance of the `Bot` class, where `TOKEN` should be replaced by the API token you received from *@BotFather*:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 # install.packages("telegram.bot")
 library(telegram.bot)
 
@@ -93,7 +93,7 @@ bot <- Bot(token = "TOKEN")
 
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 print(bot$getMe())
 ```
 
@@ -103,25 +103,25 @@ print(bot$getMe())
 
 You can get updates from your bot with the command:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 updates <- bot$getUpdates()
 ```
 
 This will retrieve a `list` generated from the JSON response from the server. In order to send a response, you can do it so with the following command:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
-bot$sendMessage(chat_id = chat_id, text = "Test reply")
+bot$sendMessage(chat_id = chat_id, text = "TestReply")
 ```
 
 #### Other methods
 
 As you see, one of the core instances from the package is `Bot`, which represents a Telegram Bot. You can find a full list of the Telegram API methods implemented in its documentation (`?Bot`), but here there are a few more examples:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 # Send message
 bot$sendMessage(chat_id = chat_id,
-                text = "*foo bold text*",
+                text = "foo *bold* _italic_",
                 parse_mode = "Markdown")
 
 # Send photo
@@ -158,7 +158,11 @@ bot$sendChatAction(chat_id = chat_id,
                    action = "typing")
 
 # Get user profile photos
-bot$getUserProfilePhotos(user_id = chat_id)
+photos <- bot$getUserProfilePhotos(user_id = chat_id)
+
+# Download user profile photo
+file_id <- photos$photos[[1L]][[1L]]$file_id
+bot$getFile(file_id, destfile = "photo.jpg")
 ```
 
 Note that you can also send local files by passing their path instead of an URL. Additionally, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).

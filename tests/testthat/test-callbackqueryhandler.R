@@ -1,8 +1,8 @@
 
-context('CallbackQueryHandler')
+context("CallbackQueryHandler")
 
 dispatcher <- Dispatcher(Bot(token))
-callbackquery_handler <- CallbackQueryHandler(foo_handler, pattern = '.')
+callbackquery_handler <- CallbackQueryHandler(foo_handler, pattern = ".")
 update <- Update(foo_callbackquery)
 
 test_that("Process CallbackQuery", {

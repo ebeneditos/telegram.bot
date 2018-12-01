@@ -2,32 +2,32 @@
 % Please edit documentation in R/bot.R
 \name{answerInlineQuery}
 \alias{answerInlineQuery}
-\title{answerInlineQuery}
+\title{Send answers to an inline query}
 \usage{
-answerInlineQuery(inline_query_id, results, cache_time = 300,
+answerInlineQuery(inline_query_id, results, cache_time = 300L,
   is_personal = NULL, next_offset = NULL, switch_pm_text = NULL,
   switch_pm_parameter = NULL)
 }
 \arguments{
-\item{inline_query_id}{Unique identifier for the answered query}
+\item{inline_query_id}{Unique identifier for the answered query.}
 
-\item{results}{A list of \code{\link{InlineQueryResult}} for the inline query}
+\item{results}{A list of \code{\link{InlineQueryResult}} for the inline query.}
 
 \item{cache_time}{(Optional). The maximum amount of time in seconds that the
-result of the inline query may be cached on the server}
+result of the inline query may be cached on the server.}
 
 \item{is_personal}{(Optional). Pass \code{TRUE}, if results may be cached on the server
 side only for the user that sent the query. By default, results may be returned to
-any user who sends the same query}
+any user who sends the same query.}
 
 \item{next_offset}{(Optional). Pass the offset that a client should send in the
 next query with the same text to receive more results. Pass an empty string if
 there are no more results or if you don't support pagination. Offset length can't
-exceed 64 bytes}
+exceed 64 bytes.}
 
 \item{switch_pm_text}{(Optional). If passed, clients will display a button with
 specified text that switches the user to a private chat with the bot and sends the
-bot a start message with the parameter \code{switch_pm_parameter}}
+bot a start message with the parameter \code{switch_pm_parameter}.}
 
 \item{switch_pm_parameter}{(Optional). Deep-linking parameter for the \code{/start}
 message sent to the bot when user presses the switch button. 1-64 characters,
@@ -48,7 +48,7 @@ allowed.
 \details{
 To enable this option, send the \code{/setinline} command to
 \href{https://t.me/botfather}{@BotFather} and provide the placeholder text that the user
-will see in the input field after typing your bot’s name.
+will see in the input field after typing your bot's name.
 
 You can also use it's snake_case equivalent \code{answer_inline_query}.
 }

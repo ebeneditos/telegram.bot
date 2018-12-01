@@ -2,15 +2,15 @@
 % Please edit documentation in R/bot.R
 \name{deleteMessage}
 \alias{deleteMessage}
-\title{deleteMessage}
+\title{Delete a message}
 \usage{
 deleteMessage(chat_id, message_id)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
-\item{message_id}{Identifier of the message to delete}
+\item{message_id}{Identifier of the message to delete.}
 }
 \description{
 Use this method to delete a message. A message can only be deleted if it was sent less

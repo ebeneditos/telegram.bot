@@ -2,9 +2,9 @@
 % Please edit documentation in R/updater.R
 \name{start_polling}
 \alias{start_polling}
-\title{start_polling}
+\title{Start polling}
 \usage{
-start_polling(timeout = 10, clean = FALSE, allowed_updates = NULL,
+start_polling(timeout = 10L, clean = FALSE, allowed_updates = NULL,
   verbose = FALSE)
 }
 \arguments{
@@ -25,7 +25,13 @@ method.
 \examples{
 \dontrun{
 # Start polling example
-updater <- Updater(token = 'TOKEN')
+start <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = sprintf("Hello \%s!",
+                                 update$message$from$first_name))
+}
+
+updater <- Updater("TOKEN") + CommandHandler("start", start)
 
 updater$start_polling(verbose = TRUE)
 }

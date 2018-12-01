@@ -2,22 +2,22 @@
 % Please edit documentation in R/bot.R
 \name{forwardMessage}
 \alias{forwardMessage}
-\title{forwardMessage}
+\title{Forward messages of any kind}
 \usage{
 forwardMessage(chat_id, from_chat_id, message_id,
   disable_notification = FALSE)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
 \item{from_chat_id}{Unique identifier for the chat where the
-original message was sent}
+original message was sent.}
 
-\item{message_id}{Message identifier in the chat specified in from_chat_id}
+\item{message_id}{Message identifier in the chat specified in from_chat_id.}
 
 \item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound}
+receive a notification with no sound.}
 }
 \description{
 Use this method to forward messages of any kind.

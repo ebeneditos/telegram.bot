@@ -1,44 +1,37 @@
 
 #### METHODS ####
 
-#' effective_user
+#' Get an update's chat ID
 #'
-#' The user that sent this update, no matter what kind of update this
-#' is. Will be \code{NULL} for \code{channel_post}.
-effective_user <- function(){ # nocov start
-
-  if (!is.null(private$effective_user_))
-    return(private$effective_user_)
-
-  user <- NULL
-
-  if (!is.null(self$message))
-    user <- self$message$from_user
-
-  else if (!is.null(self$edited_message))
-    user <- self$edited_message$from_user
-
-  else if (!is.null(self$inline_query))
-    user <- self$inline_query$from_user
-
-  else if (!is.null(self$chosen_inline_result))
-    user <- self$chosen_inline_result$from_user
-
-  else if (!is.null(self$callback_query))
-    user <- self$callback_query$from_user
-
-  else if (!is.null(self$shipping_query))
-    user <- self$shipping_query$from_user
-
-  else if (!is.null(self$pre_checkout_query))
-    user <- self$pre_checkout_query$from_user
-
-  private$effective_user_ <- user
-  return(user)
-} # nocov end
+#' Get the \code{id} from the \code{\link{Update}}'s effective chat.
+from_chat_id <- function(){
+  
+  if (!is.null(private$.from_chat_id))
+    return(private$.from_chat_id)
+  
+  from_chat_id <- self$effective_chat()$id
+  
+  private$.from_chat_id <- from_chat_id
+  return(from_chat_id)
+}
 
 
-#' effective_chat
+#' Get an update's user ID
+#'
+#' Get the \code{id} from the \code{\link{Update}}'s effective user.
+from_user_id <- function(){
+  
+  if (!is.null(private$.from_user_id))
+    return(private$.from_user_id)
+  
+  from_user_id <- self$effective_user()$id
+  
+  private$.from_user_id <- from_user_id
+  return(from_user_id)
+}
+
+
+#' Get the effective chat
 #'
 #' The chat that this update was sent in, no matter what kind of
 #' update this is. Will be \code{None} for \code{inline_query},
@@ -46,8 +39,8 @@ effective_user <- function(){ # nocov start
 #' \code{shipping_query} and \code{pre_checkout_query}.
 effective_chat <- function(){ # nocov start
 
-  if (!is.null(private$effective_chat_))
-    return(private$effective_chat_)
+  if (!is.null(private$.effective_chat))
+    return(private$.effective_chat)
 
   chat <- NULL
 
@@ -66,12 +59,49 @@ effective_chat <- function(){ # nocov start
   else if (!is.null(self$edited_channel_post))
     chat <- self$edited_channel_post$chat
 
-  private$effective_chat_ <- chat
+  private$.effective_chat <- chat
   return(chat)
 } # nocov end
 
 
-#' effective_message
+#' Get the effective user
+#'
+#' The user that sent this update, no matter what kind of update this
+#' is. Will be \code{NULL} for \code{channel_post}.
+effective_user <- function(){ # nocov start
+  
+  if (!is.null(private$.effective_user))
+    return(private$.effective_user)
+  
+  user <- NULL
+  
+  if (!is.null(self$message))
+    user <- self$message$from
+  
+  else if (!is.null(self$edited_message))
+    user <- self$edited_message$from
+  
+  else if (!is.null(self$inline_query))
+    user <- self$inline_query$from
+  
+  else if (!is.null(self$chosen_inline_result))
+    user <- self$chosen_inline_result$from
+  
+  else if (!is.null(self$callback_query))
+    user <- self$callback_query$from
+  
+  else if (!is.null(self$shipping_query))
+    user <- self$shipping_query$from
+  
+  else if (!is.null(self$pre_checkout_query))
+    user <- self$pre_checkout_query$from
+  
+  private$.effective_user <- user
+  return(user)
+} # nocov end
+
+
+#' Get the effective message
 #'
 #' The message included in this update, no matter what kind of
 #' update this is. Will be \code{None} for \code{inline_query},
@@ -79,8 +109,8 @@ effective_chat <- function(){ # nocov start
 #' \code{shipping_query} and \code{pre_checkout_query}.
 effective_message <- function(){ # nocov start
 
-  if (!is.null(private$effective_message_))
-    return(private$effective_message_)
+  if (!is.null(private$.effective_message))
+    return(private$.effective_message)
 
   message <- NULL
 
@@ -99,14 +129,14 @@ effective_message <- function(){ # nocov start
   else if (!is.null(self$edited_channel_post))
     message <- self$edited_channel_post
 
-  private$effective_message_ <- message
+  private$.effective_message <- message
   return(message)
 } # nocov end
 
 
 ### CLASS ####
 
-#' Update
+#' Represent an update
 #'
 #' This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.
 #'
@@ -114,10 +144,14 @@ effective_message <- function(){ # nocov start
 #' @format An \code{\link{R6Class}} object.
 #' @param data Data of the update.
 #' @section Methods: \describe{
-#'     \item{\code{\link{effective_user}}}{To get the user that sent
-#'     this update, no matter what kind of update this is.}
+#'     \item{\code{\link{from_chat_id}}}{To get the \code{id} from the update's
+#'     effective chat.}
+#'     \item{\code{\link{from_user_id}}}{To get the \code{id} from the update's
+#'     effective user.}
 #'     \item{\code{\link{effective_chat}}}{To get the chat that this
 #'     update was sent in, no matter what kind of update this is.}
+#'     \item{\code{\link{effective_user}}}{To get the user that sent
+#'     this update, no matter what kind of update this is.}
 #'     \item{\code{\link{effective_message}}}{To get the message
 #'     included in this update, no matter what kind of  update this is.}}
 #' @export
@@ -159,19 +193,33 @@ UpdateClass <-
                     self$channel_post <- data$channel_post
                     self$edited_channel_post <- data$edited_channel_post
                     # add chat_id to message
-                    if (!is.null(self$message)) self$message$chat_id <- self$message$chat$id
+                    if (!is.null(self$message)){
+                      self$message$chat_id <- self$message$chat$id
+                      self$message$from_user <- self$message$from$id
+                    }
                 },
 
                 ## methods
                 effective_user = effective_user,
                 effective_chat = effective_chat,
-                effective_message = effective_message
+                effective_message = effective_message,
+                from_chat_id = from_chat_id,
+                from_user_id = from_user_id
               ),
               private = list(
 
                 ##args
-                effective_user_ = NULL,
-                effective_chat_ = NULL,
-                effective_message_ = NULL
+                .effective_user = NULL,
+                .effective_chat = NULL,
+                .effective_message = NULL,
+                .from_chat_id = NULL,
+                .from_user_id = NULL
               )
-  )
+)
+
+#' @rdname Update
+#' @param x Object to be tested.
+#' @export
+is.Update <- function(x){
+  inherits(x, "Update")
+}

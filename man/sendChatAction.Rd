@@ -2,13 +2,13 @@
 % Please edit documentation in R/bot.R
 \name{sendChatAction}
 \alias{sendChatAction}
-\title{sendChatAction}
+\title{Send a chat action}
 \usage{
 sendChatAction(chat_id, action)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 
 \item{action}{Type of action to broadcast. Choose one, depending on
 what the user is about to receive:
@@ -35,10 +35,10 @@ You can also use it's snake_case equivalent \code{send_chat_action}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RTelegramBot'))
-chat_id <- user_id('me')
+bot <- Bot(token = bot_token("RTelegramBot"))
+chat_id <- user_id("Me")
 
 bot$sendChatAction(chat_id = chat_id,
-                   action = 'typing')
+                   action = "typing")
 }
 }

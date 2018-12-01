@@ -2,7 +2,7 @@
 % Please edit documentation in R/bot.R
 \name{deleteWebhook}
 \alias{deleteWebhook}
-\title{deleteWebhook}
+\title{Remove webhook integration}
 \usage{
 deleteWebhook()
 }

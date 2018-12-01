@@ -1,5 +1,5 @@
 
-context('MessageHandler')
+context("MessageHandler")
 
 dispatcher <- Dispatcher(Bot(token))
 message_handler <- MessageHandler(foo_handler)
@@ -10,7 +10,7 @@ test_that("Process Message", {
   expect_error(dispatcher$add_handler(handler = message_handler), NA)
   
   # wrong update
-  expect_null(dispatcher$process_update('foo'))
+  expect_null(dispatcher$process_update("foo"))
   
   # no filters
   expect_null(dispatcher$process_update(update))

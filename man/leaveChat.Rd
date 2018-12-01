@@ -2,13 +2,13 @@
 % Please edit documentation in R/bot.R
 \name{leaveChat}
 \alias{leaveChat}
-\title{leaveChat}
+\title{Leave a chat}
 \usage{
 leaveChat(chat_id)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of
-the target channel}
+the target channel.}
 }
 \description{
 Use this method for your bot to leave a group, supergroup or channel.

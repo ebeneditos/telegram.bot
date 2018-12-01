@@ -1,33 +1,41 @@
 
 #### METHODS ####
 
-#' add_handler
+#' Add a handler
 #'
 #' Register a handler. A handler must be an instance of a subclass of \code{\link{Handler}}. All handlers
 #' are organized in groups with a numeric value. The default group is 1. All groups will be
 #' evaluated for handling an update, but only 0 or 1 handler per group will be used.
+#' 
+#' You can use the \code{\link{add}} (\code{+}) operator instead.
 #'
 #' The priority/order of handlers is determined as follows:
 #' \enumerate{
 #'   \item{Priority of the group (lower group number = higher priority)}
-#'   \item{The first handler in a group which should handle an update will be used. Other handlers from the group will not be used.
-#'     The order in which handlers were added to the group defines the priority.
+#'   \item{The first handler in a group which should handle an update will be used.
+#'     Other handlers from the group will not be used.
+#'     The order in which handlers were added to the group defines the priority 
+#'     (the first handler added in a group has the highest priority).
 #'   }
 #' }
 #' @param handler A \code{Handler} instance.
 #' @param group The group identifier, must be higher or equal to 1. Default is 1.
 add_handler <- function(handler,
-                        group = 1)
+                        group = 1L)
 {
 
-  if(!inherits(handler, 'Handler'))
-    stop('handler is not an instance of Handler')
-  if(!inherits(group, 'numeric'))
-    stop('group is not numeric')
+  if (is.ErrorHandler(handler)){
+    self$add_error_handler(handler$callback)
+    return(invisible(NULL))
+  }
+  if (!is.Handler(handler))
+    stop("`handler` is not an instance of 'Handler'.")
+  if (!is.numeric(group))
+    stop("`group` is not numeric.")
   
-  group <- round(group[1])
-  if (group < 1)
-    stop('group must be higher or equal to 1')
+  group <- round(group[1L])
+  if (group < 1L)
+    stop("`group` must be higher or equal to 1.")
 
   if (group > length(private$groups) || is.null(private$handlers[[group]])){
     private$handlers[[group]] <- list()
@@ -39,10 +47,28 @@ add_handler <- function(handler,
 }
 
 
-#' add_error_handler
+#' Add an error handler
 #'
 #' Registers an error handler in the \code{\link{Dispatcher}}.
-#' @param callback A function that takes \code{(Bot, Update)} as arguments.
+#' 
+#' You can also use \code{\link{add_handler}} to register error handlers
+#' if the handler is of type \code{\link{ErrorHandler}}.
+#' @param callback A function that takes \code{(bot, error)} as arguments.
+#' @examples \dontrun{
+#' updater <- Updater(token = "TOKEN")
+#' 
+#' # Create error callback
+#' error_callback <- function(bot, error){
+#'   warning(simpleWarning(conditionMessage(error), call = "Updates polling"))
+#' }
+#' 
+#' # Register it to the updater's dispatcher
+#' updater$dispatcher$add_error_handler(error_callback)
+#' # or
+#' updater$dispatcher$add_handler(ErrorHandler(error_callback))
+#' # or
+#' updater <- updater + ErrorHandler(error_callback)
+#' }
 add_error_handler <- function(callback)
 {
 
@@ -53,12 +79,14 @@ add_error_handler <- function(callback)
 
 #### CLASS ####
 
-#' Dispatcher
+#' The dispatcher of all updates
 #'
 #' This class dispatches all kinds of updates to its registered handlers.
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
+#' @name Dispatcher
+#' @aliases is.Dispatcher
 #' @param bot The bot object that should be passed to the handlers.
 #' @section Methods: \describe{
 #'     \item{\code{\link{add_handler}}}{Registers a handler in the \code{Dispatcher}.}
@@ -72,6 +100,7 @@ Dispatcher <- function(bot){
 
 DispatcherClass <-
   R6::R6Class("Dispatcher",
+              inherit = TelegramObject,
               public = list(
 
                 ## args
@@ -93,10 +122,11 @@ DispatcherClass <-
                 process_update = function(update){
 
                   # An error happened while polling
-                  if(is.null(update)){
-                    res <- try(self$dispatch_error(update))
-                    if(inherits(res, 'try-error'))
-                      warning('An uncaught error was raised while handling the error') # nocov
+                  if(is.error(update)){
+                    res <- tryCatch({self$dispatch_error(update)},
+                                    error = function(e) {
+                                      warning(as.character(e)) # nocov
+                                    })
                     return()
                   }
 
@@ -115,12 +145,12 @@ DispatcherClass <-
                 # Dispatches an error.
                 dispatch_error = function(update){
 
-                  if (length(private$error_handlers) != 0)
+                  if (length(private$error_handlers) != 0L)
                     for (callback in private$error_handlers){
                       callback(self$bot, update)
                     }
 
-                  else warning('No error handlers are registered.')
+                  else warning("No error handlers are registered.")
                 }
               ),
               private = list(
@@ -137,4 +167,11 @@ DispatcherClass <-
                 # A vector of errorHandlers.
                 error_handlers = list()
               )
-  )
+)
+
+#' @rdname Dispatcher
+#' @param x Object to be tested.
+#' @export
+is.Dispatcher <- function(x){
+  inherits(x, "Dispatcher")
+}

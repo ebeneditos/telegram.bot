@@ -2,14 +2,14 @@
 % Please edit documentation in R/replymarkup.R
 \name{ReplyKeyboardMarkup}
 \alias{ReplyKeyboardMarkup}
-\title{ReplyKeyboardMarkup}
+\title{Create a keyboard markup}
 \usage{
 ReplyKeyboardMarkup(keyboard, resize_keyboard = NULL,
   one_time_keyboard = NULL, selective = NULL)
 }
 \arguments{
 \item{keyboard}{List of button rows, each represented by a list of
-\code{\link{KeyboardButton}} objects}
+\code{\link{KeyboardButton}} objects.}
 
 \item{resize_keyboard}{(Optional). Requests clients to resize the keyboard vertically
 for optimal fit. Defaults to \code{FALSE}, in which case the
@@ -20,7 +20,7 @@ keyboard.}
 as it's been used. The keyboard will still be available, but clients
 will automatically display the usual letter-keyboard in the chat -
 the user can press a special button in the input field to see the
-custom keyboard again. Defaults to \code{FALSE}}
+custom keyboard again. Defaults to \code{FALSE}.}
 
 \item{selective}{(Optional). Use this parameter if you want to show the keyboard
 to specific users only.}
@@ -32,8 +32,8 @@ with reply options.
 \examples{
 \dontrun{
 # Initialize bot
-bot <- Bot(token = 'TOKEN')
-chat_id <- 'CHAT_ID'
+bot <- Bot(token = "TOKEN")
+chat_id <- "CHAT_ID"
 
 # Create Custom Keyboard
 text <- "Aren't those custom keyboards cool?"

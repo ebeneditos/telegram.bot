@@ -1,7 +1,7 @@
 
 #### METHODS ####
 
-#' check_update
+#' Check an update
 #'
 #' This method is called to determine if an update should be handled by
 #' this handler instance. It should always be overridden (see \code{\link{Handler}}).
@@ -10,7 +10,7 @@ check_update <- function(update){
   not_implemented()
 }
 
-#' handle_update
+#' Handle an update
 #'
 #' This method is called if it was determined that an update should indeed
 #' be handled by this instance. It should also be overridden (see \code{\link{Handler}}).
@@ -26,12 +26,14 @@ handle_update <- function(update, dispatcher){
 
 #### CLASS ####
 
-#' Handler
+#' The base of all handlers
 #'
 #' The base class for all update handlers. Create custom handlers by inheriting from it.
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
+#' @name Handler
+#' @aliases is.Handler
 #' @section Methods: \describe{
 #'     \item{\code{\link{check_update}}}{Called to determine if an update should be handled by
 #' this handler instance.}
@@ -42,6 +44,7 @@ handle_update <- function(update, dispatcher){
 #'     \item{\code{\link{MessageHandler}}}{To handle Telegram messages.}
 #'     \item{\code{\link{CommandHandler}}}{To handle Telegram commands.}
 #'     \item{\code{\link{CallbackQueryHandler}}}{To handle Telegram callback queries.}
+#'     \item{\code{\link{ErrorHandler}}}{To handle errors while polling for updates.}
 #' }
 #' @param callback The callback function for this handler. Its inputs will be \code{(bot, update)},
 #'   where \code{bot} is a \code{\link{Bot}} instance and \code{update} an \code{\link{Update}} class.
@@ -55,7 +58,7 @@ handle_update <- function(update, dispatcher){
 #' # Example of a Handler
 #' callback_method <- function(bot, update){
 #'   chat_id <- update$effective_chat()$id
-#'   bot$sendMessage(chat_id = chat_id, text = 'Hello')
+#'   bot$sendMessage(chat_id = chat_id, text = "Hello")
 #' }
 #'
 #' hello_handler <- Handler(callback_method)
@@ -80,10 +83,10 @@ Handler <- function(callback, check_update = NULL, handle_update = NULL, handler
   HandlerClassInherit <- R6::R6Class(classname = handlername, inherit = HandlerClass)
   
   if (!missing(check_update))
-    HandlerClassInherit$set('public', 'check_update', check_update, overwrite = T)
+    HandlerClassInherit$set("public", "check_update", check_update, overwrite = TRUE)
   
   if (!missing(handle_update))
-    HandlerClassInherit$set('public', 'handle_update', handle_update, overwrite = T)
+    HandlerClassInherit$set("public", "handle_update", handle_update, overwrite = TRUE)
   
   HandlerClassInherit$new(callback)
 }
@@ -91,6 +94,7 @@ Handler <- function(callback, check_update = NULL, handle_update = NULL, handler
 
 HandlerClass <-
   R6::R6Class("Handler",
+              inherit = TelegramObject,
               public = list(
 
                 ## args
@@ -108,4 +112,11 @@ HandlerClass <-
                 
               )
 )
+
+#' @rdname Handler
+#' @param x Object to be tested.
+#' @export
+is.Handler <- function(x){
+  inherits(x, "Handler")
+}
 

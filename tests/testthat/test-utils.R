@@ -3,14 +3,7 @@ context("Utils")
 
 test_that("Not Implemented", {
 
-  expect_error(not_implemented(), 'Currently not implemented.')
-
-})
-
-test_that("Check Stop", {
-
-  t <- try(stop('test'), silent = T)
-  expect_false(check_stop(t))
+  expect_error(not_implemented(), "Currently not implemented.")
 
 })
 

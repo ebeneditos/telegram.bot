@@ -2,7 +2,7 @@
 % Please edit documentation in R/updater.R
 \name{stop_polling}
 \alias{stop_polling}
-\title{stop_polling}
+\title{Stop polling}
 \usage{
 stop_polling()
 }
@@ -11,9 +11,6 @@ Stops the polling. Requires no parameters.
 }
 \examples{
 \dontrun{
-# Supperassign the updater
-updater <<- Updater(token = 'TOKEN')
-
 # Example of a 'kill' command
 kill <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
@@ -24,8 +21,8 @@ kill <- function(bot, update){
   updater$stop_polling()
 }
 
-updater$dispatcher$add_handler(CommandHandler('kill', kill))
+updater <<- updater + CommandHandler('kill', kill)
 
-updater$start_polling(verbose = T) # Send '/kill' to the bot
+updater$start_polling(verbose = TRUE) # Send '/kill' to the bot
 }
 }

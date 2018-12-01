@@ -3,23 +3,32 @@
 \docType{class}
 \name{Update}
 \alias{Update}
-\title{Update}
+\alias{is.Update}
+\title{Represent an update}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Update(data)
+
+is.Update(x)
 }
 \arguments{
 \item{data}{Data of the update.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.
 }
 \section{Methods}{
  \describe{
-    \item{\code{\link{effective_user}}}{To get the user that sent
-    this update, no matter what kind of update this is.}
+    \item{\code{\link{from_chat_id}}}{To get the \code{id} from the update's
+    effective chat.}
+    \item{\code{\link{from_user_id}}}{To get the \code{id} from the update's
+    effective user.}
     \item{\code{\link{effective_chat}}}{To get the chat that this
     update was sent in, no matter what kind of update this is.}
+    \item{\code{\link{effective_user}}}{To get the user that sent
+    this update, no matter what kind of update this is.}
     \item{\code{\link{effective_message}}}{To get the message
     included in this update, no matter what kind of  update this is.}}
 }

@@ -1,0 +1,95 @@
+---
+title: "The add operator"
+author: "Ernest Benedito"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The add operator}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The *add* operator (`+`, or more formally `+.TelegramObject`) is an S3 method for class `TelegramObject` that enables you to add any kind of `Handler` to an `Updater`'s `Dispatcher`.
+
+### Example
+
+Say you want to build a bot with a simple handler for the `/start` command:
+
+```{r, eval = FALSE}
+start <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = sprintf("Hello %s!",
+                                 update$message$from$first_name))
+}
+
+start_handler <- CommandHandler("start", start)
+```
+
+You can then build your updater with:
+
+```{r, eval = FALSE}
+updater <- Updater("TOKEN") + start_handler
+```
+
+As things start to get more complex, you can chain multiple handlers in a single call:
+
+```{r, eval = FALSE}
+echo <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = update$message$text)
+}
+
+updater <- Updater("TOKEN") + CommandHandler("start", start) + MessageHandler(echo, MessageFilters$text)
+```
+
+And keep adding...
+
+```{r, eval = FALSE}
+caps <- function(bot, update, args){
+  if (length(args > 0L)){
+   	text_caps <- toupper(paste(args, collapse = " "))
+   	bot$sendMessage(chat_id = update$message$chat_id,
+   	                text = text_caps) 
+  }
+}
+
+updater <- updater + CommandHandler("caps", caps, pass_args = TRUE)
+```
+
+Give it a try! Start polling the updater:
+
+```{r, eval = FALSE}
+updater$start_polling()
+```
+
+And send ***/start*** to the bot, ***/caps foo*** or just a simple text.
+
+### How it works
+
+The operator is indeed calling the `add_handler` method from an `Updater`'s `Dispatcher`. Then:
+
+```{r, eval = FALSE}
+updater <- updater + start_handler
+```
+
+Is equivalent to:
+
+```{r, eval = FALSE}
+updater$dispatcher$add_handler(start_handler)
+```
+
+Also, it works with `Dispatcher` objects:
+
+```{r, eval = FALSE}
+dispatcher <- updater$dispatcher
+dispatcher <- dispatcher + start_handler # equivalent to dispatcher$add_handler(start_handler)
+```
+
+So, all in all, the `+.TelegramObject` operator simplifies the construction of an `Updater`. However, if you want to add a handler with advanced settings, let's say by controlling the `group` in which it is placed, you will need to make an `add_handler` call.

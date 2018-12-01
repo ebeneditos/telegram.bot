@@ -4,7 +4,7 @@
 \name{telegram.bot}
 \alias{telegram.bot}
 \alias{telegram.bot-package}
-\title{telegram.bot}
+\title{Develop a Telegram Bot with R}
 \description{
 Provides a pure interface for the \href{http://core.telegram.org/bots/api}{Telegram Bot API}.
 In addition to the pure API implementation, it features a number of
@@ -23,10 +23,37 @@ you can learn how to build a Bot quickly with this package.
         class \code{\link{Bot}} to the programmer, so they can focus on coding the bot.
         Its purpose is to receive the updates from Telegram and to deliver them to said
         dispatcher.}
+    \item{\code{\link{Bot}}}{This object represents a Telegram Bot.}
     \item{\code{\link{Dispatcher}}}{This class dispatches all kinds of updates to its
         registered handlers.}
     \item{\code{\link{Handler}}}{The base class for all update handlers.}
-    \item{\code{\link{Bot}}}{This object represents a Telegram Bot.}
 }
 }
 
+\examples{
+\dontrun{
+library(telegram.bot)
+
+start <- function(bot, update){
+  bot$sendMessage(chat_id = update$message$chat_id,
+                  text = sprintf("Hello \%s!", update$message$from$first_name))
+}
+
+updater <- Updater("TOKEN") + CommandHandler("start", start)
+
+updater$start_polling() # Send '/start' to the bot
+}
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{http://github.com/ebeneditos/telegram.bot}
+  \item Report bugs at \url{http://github.com/ebeneditos/telegram.bot/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Ernest Benedito \email{ebeneditos@gmail.com}
+
+}
+\keyword{internal}

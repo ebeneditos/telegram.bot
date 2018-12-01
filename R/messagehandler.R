@@ -1,7 +1,7 @@
 
 #### CLASS ####
 
-#' MessageHandler
+#' Handling messages
 #'
 #' \code{\link{Handler}} class to handle Telegram messages. They might contain text, media or status updates.
 #'
@@ -53,7 +53,7 @@ MessageHandlerClass <-
                 # this handler instance.
                 check_update = function(update){
 
-                  if (inherits(update, 'Update') && self$is_allowed_update(update)){
+                  if (is.Update(update) && self$is_allowed_update(update)){
 
                     if(is.null(self$filters)){
                       res <- TRUE
@@ -62,7 +62,7 @@ MessageHandlerClass <-
                     else{
                       message <- update$effective_message()
 
-                      if(inherits(self$filters, 'list')){
+                      if(inherits(self$filters, "list")){
                         res <- any(unlist(lapply(self$filters, function(func) func(message))))
                       }
 

@@ -3,11 +3,14 @@
 \docType{class}
 \name{Handler}
 \alias{Handler}
-\title{Handler}
+\alias{is.Handler}
+\title{The base of all handlers}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Handler(callback, check_update = NULL, handle_update = NULL,
   handlername = NULL)
+
+is.Handler(x)
 }
 \arguments{
 \item{callback}{The callback function for this handler. Its inputs will be \code{(bot, update)},
@@ -21,6 +24,8 @@ method. Use it if you want to create your own \code{Handler}.}
 
 \item{handlername}{Name of the customized class, which will inherit from \code{Handler}.
 If \code{NULL} (default) it will create a \code{Handler} class.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 The base class for all update handlers. Create custom handlers by inheriting from it.
@@ -39,6 +44,7 @@ be handled by this instance.}
     \item{\code{\link{MessageHandler}}}{To handle Telegram messages.}
     \item{\code{\link{CommandHandler}}}{To handle Telegram commands.}
     \item{\code{\link{CallbackQueryHandler}}}{To handle Telegram callback queries.}
+    \item{\code{\link{ErrorHandler}}}{To handle errors while polling for updates.}
 }
 }
 
@@ -47,7 +53,7 @@ be handled by this instance.}
 # Example of a Handler
 callback_method <- function(bot, update){
   chat_id <- update$effective_chat()$id
-  bot$sendMessage(chat_id = chat_id, text = 'Hello')
+  bot$sendMessage(chat_id = chat_id, text = "Hello")
 }
 
 hello_handler <- Handler(callback_method)

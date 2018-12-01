@@ -2,22 +2,27 @@
 % Please edit documentation in R/replymarkup.R
 \name{KeyboardButton}
 \alias{KeyboardButton}
-\title{KeyboardButton}
+\alias{is.KeyboardButton}
+\title{Create a keyboard button}
 \usage{
 KeyboardButton(text, request_contact = NULL, request_location = NULL)
+
+is.KeyboardButton(x)
 }
 \arguments{
 \item{text}{Text of the button. If none of the optional
 fields are used, it will be sent as a message when the button
-is pressed}
+is pressed.}
 
 \item{request_contact}{(Optional). If \code{TRUE}, the user's phone number will be
 sent as a contact when the button is pressed. Available in
-private chats only}
+private chats only.}
 
 \item{request_location}{(Optional). If \code{TRUE}, the user's current location
 will be sent when the button is pressed. Available in private
-chats only}
+chats only.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This object represents one button of the reply keyboard. Optional

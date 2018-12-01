@@ -3,14 +3,17 @@
 \docType{class}
 \name{Bot}
 \alias{Bot}
-\title{Bot}
+\alias{is.Bot}
+\title{Creating a Bot}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Bot(token, base_url = NULL, base_file_url = NULL,
   request_config = NULL)
+
+is.Bot(x)
 }
 \arguments{
-\item{token}{Bot's unique authentication.}
+\item{token}{The bot's token given by the \emph{BotFather}.}
 
 \item{base_url}{(Optional). Telegram Bot API service URL.}
 
@@ -23,6 +26,8 @@ parameter from \code{?httr::POST} for further details.
 The \code{request_config} settings are very
 useful for the advanced users who would like to control the
 default timeouts and/or control the proxy used for http communication.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This object represents a Telegram Bot.
@@ -35,7 +40,7 @@ You can also use its methods \code{snake_case} equivalent.
 \section{API Methods}{
  \describe{
     \item{\code{\link{answerCallbackQuery}}}{Send
-    answers to callback queries sent from inline keyboard}
+    answers to callback queries}
     \item{\code{\link{answerInlineQuery}}}{Send answers to an inline query}
     \item{\code{\link{deleteMessage}}}{Delete a message}
     \item{\code{\link{deleteWebhook}}}{Remove webhook integration}
@@ -43,31 +48,25 @@ You can also use its methods \code{snake_case} equivalent.
     markup of a message}
     \item{\code{\link{forwardMessage}}}{Forward messages of any
     kind}
-    \item{\code{\link{getFile}}}{Get info about a file and
-    prepare it for downloading}
-    \item{\code{\link{getMe}}}{Test your bot's auth
-    token}
+    \item{\code{\link{getFile}}}{Prepare a file for downloading}
+    \item{\code{\link{getMe}}}{Check your bot's information}
     \item{\code{\link{getUpdates}}}{Receive incoming
     updates}
-    \item{\code{\link{getUserProfilePhotos}}}{Get a list
-    of profile pictures for a user}
+    \item{\code{\link{getUserProfilePhotos}}}{Get a user's profile photos}
     \item{\code{\link{getWebhookInfo}}}{Get current webhook status}
-    \item{\code{\link{leaveChat}}}{Leave a group, supergroup or channel}
+    \item{\code{\link{leaveChat}}}{Leave a chat}
     \item{\code{\link{sendAnimation}}}{Send animation files}
     \item{\code{\link{sendAudio}}}{Send audio files}
-    \item{\code{\link{sendChatAction}}}{Tell the user that something
-    is happening on the bot's side}
+    \item{\code{\link{sendChatAction}}}{Send a chat action}
     \item{\code{\link{sendDocument}}}{Send general files}
     \item{\code{\link{sendLocation}}}{Send point on the map}
     \item{\code{\link{sendMessage}}}{Send text messages}
     \item{\code{\link{sendPhoto}}}{Send image files}
-    \item{\code{\link{sendSticker}}}{Send \code{.webp} stickers}
-    \item{\code{\link{sendVideo}}}{Send \code{mp4} videos}
-    \item{\code{\link{sendVideoNote}}}{Send videos messages}
-    \item{\code{\link{sendVoice}}}{Send \code{.ogg} files encoded with
-    OPUS}
-    \item{\code{\link{setWebhook}}}{Receive incoming updates via an
-    outgoing webhook}
+    \item{\code{\link{sendSticker}}}{Send a sticker}
+    \item{\code{\link{sendVideo}}}{Send a video}
+    \item{\code{\link{sendVideoNote}}}{Send video messages}
+    \item{\code{\link{sendVoice}}}{Send voice files}
+    \item{\code{\link{setWebhook}}}{Set a webhook}
 }
 }
 
@@ -80,10 +79,10 @@ You can also use its methods \code{snake_case} equivalent.
 
 \examples{
 \dontrun{
-bot <- Bot(token = 'TOKEN')
+bot <- Bot(token = "TOKEN")
 
-# In case you want to set a proxy (see ?httr:use_proxy for setting details)
-bot <- Bot(token = 'TOKEN',
+# In case you want to set a proxy (see ?httr:use_proxy)
+bot <- Bot(token = "TOKEN",
            request_config = httr::use_proxy(...))
 }
 }

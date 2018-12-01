@@ -2,9 +2,9 @@
 % Please edit documentation in R/bot.R
 \name{getUpdates}
 \alias{getUpdates}
-\title{getUpdates}
+\title{Receive incoming updates}
 \usage{
-getUpdates(offset = NULL, limit = 100, timeout = 0,
+getUpdates(offset = NULL, limit = 100L, timeout = 0L,
   allowed_updates = NULL)
 }
 \arguments{
@@ -44,7 +44,7 @@ You can also use it's snake_case equivalent \code{get_updates}.
 }
 \examples{
 \dontrun{
-bot <- Bot(token = bot_token('RTelegramBot'))
+bot <- Bot(token = bot_token("RTelegramBot"))
 
 updates <- bot$getUpdates()
 }

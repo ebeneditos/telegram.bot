@@ -3,13 +3,18 @@
 \docType{class}
 \name{Dispatcher}
 \alias{Dispatcher}
-\title{Dispatcher}
+\alias{is.Dispatcher}
+\title{The dispatcher of all updates}
 \format{An \code{\link{R6Class}} object.}
 \usage{
 Dispatcher(bot)
+
+is.Dispatcher(x)
 }
 \arguments{
 \item{bot}{The bot object that should be passed to the handlers.}
+
+\item{x}{Object to be tested.}
 }
 \description{
 This class dispatches all kinds of updates to its registered handlers.

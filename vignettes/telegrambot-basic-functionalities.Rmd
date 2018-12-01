@@ -28,18 +28,17 @@ In the *Introduction* we saw how to build a Telegram Bot with R. However, it can
 Let's add another handler that listens for regular messages.
 Use the `MessageHandler`, another `Handler` subclass, to echo to all text messages:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 echo <- function(bot, update){
 	bot$sendMessage(chat_id = update$message$chat_id, text = update$message$text)
 }
 
-echo_handler <- MessageHandler(echo, MessageFilters$text)
-dispatcher$add_handler(echo_handler)
+updater <- updater + MessageHandler(echo, MessageFilters$text)
 ```
 
 From now on, your bot should echo all non-command messages it receives.
 
-**Note:** As soon as you add new handlers to `dispatcher`, they are in effect.
+**Note:** As soon as you add new handlers to the `updaters`'s `dispatcher` (done with the `+` operator), they are in effect.
 
 **Note:** The `MessageFilters` object contains a number of functions that filter incoming messages for text, images, status updates and more.
 Any message that returns `TRUE` for at least one of the filters passed to `MessageHandler` will be accepted.
@@ -50,14 +49,16 @@ You can also write your own filters if you want.
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS.
 To make things easy, you can receive the arguments (as a `vector`, split on spaces) that were passed to a command in the callback function:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 caps <- function(bot, update, args){
-	text_caps <- toupper(paste(args, collapse = ' '))
-	bot$sendMessage(chat_id = update$message$chat_id, text = text_caps)
+  if (length(args > 0L)){
+   	text_caps <- toupper(paste(args, collapse = " "))
+   	bot$sendMessage(chat_id = update$message$chat_id,
+   	                text = text_caps) 
+  }
 }
 
-caps_handler <- CommandHandler('caps', caps, pass_args = TRUE)
-dispatcher$add_handler(caps_handler)
+updater <- updater + CommandHandler("caps", caps, pass_args = TRUE)
 ```
 
 **Note:** Take a look at the `pass_args = TRUE` in the `CommandHandler` initiation.
@@ -69,38 +70,31 @@ If you use a new type of handler for the first time, look it up in the docs and 
 
 Not bad! However, some confused users might try to send commands to the bot that it doesn't understand, so you can use a `MessageHandler` with a `command` filter to reply to all commands that were not recognized by the previous handlers.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 unknown <- function(bot, update){
 	bot$sendMessage(chat_id = update$message$chat_id,
                         text = "Sorry, I didn't understand that command.")
 }
 
-unknown_handler <- MessageHandler(unknown, MessageFilters$command)
-dispatcher$add_handler(unknown_handler)
+updater <- updater + MessageHandler(unknown, MessageFilters$command)
 ```
 
 ### Stopping the Bot
 
 If you're done playing around, you can stop the Bot either by using the the `interrupt R` command in the session menu (in *RStudio* you can press the `STOP` button) or by calling the `updater$stop_polling()` method. Below we will define a command that uses this method:
 
-```{r, eval = F}
-# Replace the original line with
-updater <<- Updater(token = 'TOKEN')
-
-...
-
+```{r, eval = FALSE}
 # Example of a 'kill' command
 kill <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
                   text = "Bye!")
   # Clean 'kill' update
-  bot$getUpdates(offset = update$update_id + 1)
+  bot$getUpdates(offset = update$update_id + 1L)
   # Stop the updater polling
   updater$stop_polling()
 }
 
-kill_handler <- CommandHandler('kill', kill)
-dispatcher$add_handler(kill_handler)
+updater <<- updater + CommandHandler("kill", kill)
 ```
 
 Now you can send the command `/kill` from Telegram to stop the Bot. However, in a production environment it wouldn't be recommendable to leave this command as it is now, as anyone could stop the bot. To solve this, you can create a customized filter in order to make this command available only for a certain `user_id`, for instance. This is explained in the next section.

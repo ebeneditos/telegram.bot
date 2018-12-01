@@ -2,7 +2,7 @@
 % Please edit documentation in R/handler.R
 \name{check_update}
 \alias{check_update}
-\title{check_update}
+\title{Check an update}
 \usage{
 check_update(update)
 }
