@@ -26,7 +26,7 @@ add_handler <- function(handler,
 
   if (is.ErrorHandler(handler)){
     self$add_error_handler(handler$callback)
-    return()
+    return(invisible(NULL))
   }
   if (!is.Handler(handler))
     stop("`handler` is not an instance of 'Handler'.")
