@@ -29,9 +29,11 @@
 #'   
 #' # And keep adding...
 #' caps <- function(bot, update, args){
-#'   text_caps <- toupper(paste(args, collapse = " "))
-#'   bot$sendMessage(chat_id = update$message$chat_id,
-#'                   text = text_caps)
+#'   if (length(args > 0L)){
+#'     text_caps <- toupper(paste(args, collapse = " "))
+#'     bot$sendMessage(chat_id = update$message$chat_id,
+#'                     text = text_caps) 
+#'   }
 #' }
 #' 
 #' updater <- updater + CommandHandler("caps", caps, pass_args = T)

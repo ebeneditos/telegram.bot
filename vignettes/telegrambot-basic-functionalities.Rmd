@@ -51,8 +51,11 @@ To make things easy, you can receive the arguments (as a `vector`, split on spac
 
 ```{r, eval = F}
 caps <- function(bot, update, args){
-	text_caps <- toupper(paste(args, collapse = " "))
-	bot$sendMessage(chat_id = update$message$chat_id, text = text_caps)
+  if (length(args > 0L)){
+   	text_caps <- toupper(paste(args, collapse = " "))
+   	bot$sendMessage(chat_id = update$message$chat_id,
+   	                text = text_caps) 
+  }
 }
 
 updater <- updater + CommandHandler("caps", caps, pass_args = TRUE)
@@ -81,11 +84,6 @@ updater <- updater + MessageHandler(unknown, MessageFilters$command)
 If you're done playing around, you can stop the Bot either by using the the `interrupt R` command in the session menu (in *RStudio* you can press the `STOP` button) or by calling the `updater$stop_polling()` method. Below we will define a command that uses this method:
 
 ```{r, eval = F}
-# Replace the original line with
-updater <<- Updater(token = "TOKEN")
-
-...
-
 # Example of a 'kill' command
 kill <- function(bot, update){
   bot$sendMessage(chat_id = update$message$chat_id,
@@ -96,7 +94,7 @@ kill <- function(bot, update){
   updater$stop_polling()
 }
 
-updater <- updater + CommandHandler("kill", kill)
+updater <<- updater + CommandHandler("kill", kill)
 ```
 
 Now you can send the command `/kill` from Telegram to stop the Bot. However, in a production environment it wouldn't be recommendable to leave this command as it is now, as anyone could stop the bot. To solve this, you can create a customized filter in order to make this command available only for a certain `user_id`, for instance. This is explained in the next section.

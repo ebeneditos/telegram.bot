@@ -80,9 +80,6 @@ start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, 
 #'
 #' Stops the polling. Requires no parameters.
 #' @examples \dontrun{
-#' # Supperassign the updater
-#' updater <<- Updater(token = "TOKEN")
-#' 
 #' # Example of a 'kill' command
 #' kill <- function(bot, update){
 #'   bot$sendMessage(chat_id = update$message$chat_id,
@@ -93,7 +90,7 @@ start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, 
 #'   updater$stop_polling()
 #' }
 #' 
-#' updater <- updater + CommandHandler('kill', kill)
+#' updater <<- updater + CommandHandler('kill', kill)
 #' 
 #' updater$start_polling(verbose = T) # Send '/kill' to the bot
 #' }
