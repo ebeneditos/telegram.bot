@@ -105,7 +105,7 @@ chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a
 bot$sendMessage(chat_id = chat_id, text = "TestReply")
 ```
 
-Note that you can also send local files by passing their path instead of an URL. Additionally, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
+Note that all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
 
 ## Develop a Telegram Bot with R
 
