@@ -20,12 +20,14 @@ Use this method to get a list of profile pictures for a user.
 }
 \details{
 You can also use it's snake_case equivalent \code{get_user_profile_photos}.
+
+See \code{\link{getFile}} to know how to download files.
 }
 \examples{
 \dontrun{
 bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 
-bot$getUserProfilePhotos(chat_id = chat_id)
+photos <- bot$getUserProfilePhotos(chat_id = chat_id)
 }
 }

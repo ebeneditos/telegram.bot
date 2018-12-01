@@ -867,6 +867,8 @@ sendChatAction <- function(chat_id,
 #' Use this method to get a list of profile pictures for a user.
 #' 
 #' You can also use it's snake_case equivalent \code{get_user_profile_photos}.
+#' 
+#' See \code{\link{getFile}} to know how to download files.
 #' @param user_id Unique identifier of the target user.
 #' @param offset (Optional). Sequential number of the first photo to be returned.
 #'     By default, all photos are returned.
@@ -876,7 +878,7 @@ sendChatAction <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' 
-#' bot$getUserProfilePhotos(chat_id = chat_id)
+#' photos <- bot$getUserProfilePhotos(chat_id = chat_id)
 #' }
 getUserProfilePhotos <- function(user_id,
                                  offset = NULL,
@@ -902,17 +904,37 @@ getUserProfilePhotos <- function(user_id,
 #' Use this method to get basic info about a file and prepare it for downloading. For the
 #' moment, bots can download files of up to 20MB in size. It is guaranteed that the link will be
 #' valid for at least 1 hour. When the link expires, a new one can be requested by
-#' calling get_file again.
+#' calling \code{getFile} again.
 #' 
 #' You can also use it's snake_case equivalent \code{get_file}.
 #' @param file_id The file identifier.
-getFile <- function(file_id)
+#' @param destfile (Optional). If you want to save the file, pass by a character string
+#'     with the name where the downloaded file is saved. See the \code{destfile}
+#'     parameter from \code{?curl::curl_download} for further details.
+#' @param ... (Optional). Additional parameters to be passed to
+#'     \code{\link[curl]{curl_download}}.
+#' @examples \dontrun{
+#' bot <- Bot(token = bot_token("RTelegramBot"))
+#' chat_id <- user_id("Me")
+#' 
+#' photos <- bot$getUserProfilePhotos(chat_id = chat_id)
+#' 
+#' # Download user profile photo
+#' file_id <- photos$photos[[1]][[1]]$file_id
+#' bot$getFile(file_id, destfile = "photo.jpg")
+#' }
+getFile <- function(file_id, destfile = NULL, ...)
 { # nocov start
   url <- sprintf("%s/getFile", private$base_url)
   
   data <- list(file_id = file_id)
   
   result <- private$request(url, data)
+  
+  if (!is.null(destfile)){
+    file_url <- sprintf("%s/%s", private$base_file_url, result$file_path)
+    curl::curl_download(file_url, destfile, ...)
+  }
   
   return(invisible(result))
 } # nocov end

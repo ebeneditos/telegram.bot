@@ -100,7 +100,11 @@ bot$sendChatAction(chat_id = chat_id,
                    action = "typing")
 
 # Get user profile photos
-bot$getUserProfilePhotos(user_id = chat_id)
+photos <- bot$getUserProfilePhotos(user_id = chat_id)
+
+# Download user profile photo
+file_id <- photos$photos[[1]][[1]]$file_id
+bot$getFile(file_id, destfile = "photo.jpg")
 ```
 
 Note that you can also send local files by passing their path instead of an URL. Additionaly, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).

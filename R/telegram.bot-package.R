@@ -43,4 +43,5 @@
 #' @importFrom httr stop_for_status
 #' @importFrom httr upload_file
 #' @importFrom jsonlite toJSON
+#' @importFrom curl curl_download
 "_PACKAGE"
