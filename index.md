@@ -113,7 +113,7 @@ In order to build a bot that is continuously running and is able to respond to m
 
 The `Updater` class continuously fetches new updates from Telegram and passes them on to the `Dispatcher` class.  If you create an `Updater` object, it will create a `Dispatcher`. You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined. Every handler is an instance of any subclass of the `Handler` class.
 
-Finally you can run the bot with its method `bot$start_polling()`, which runs a loop that has the following structure:
+Finally you can run the bot with its method `start_polling()`, which runs a loop that has the following structure:
 
 1. Get updates through the `getUpdates` method using Long Polling.
 2. Dispatch each update to the appropriate process function.
