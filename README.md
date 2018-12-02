@@ -53,13 +53,16 @@ One of the core instances from the package is `Bot`, which represents a Telegram
 ```r
 # Initialize bot
 bot <- Bot(token = "TOKEN")
-chat_id <- "CHAT_ID" # you can retrieve it from bot$getUpdates() after sending a message to the bot
 
 # Get bot info
 print(bot$getMe())
 
 # Get updates
 updates <- bot$getUpdates()
+
+# Retrieve your chat id
+# Note: you should text the bot before calling 'getUpdates'
+chat_id <- updates[[1L]]$message$chat_id
 
 # Send message
 bot$sendMessage(chat_id = chat_id,
