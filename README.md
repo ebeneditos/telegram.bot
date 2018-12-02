@@ -35,7 +35,7 @@ You can quickly build a chatbot with a few lines:
 library(telegram.bot)
 
 start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
+  bot$sendMessage(chat_id = update$message$chat$id,
                   text = sprintf("Hello %s!", update$message$from$first_name))
 }
 
@@ -62,7 +62,7 @@ updates <- bot$getUpdates()
 
 # Retrieve your chat id
 # Note: you should text the bot before calling 'getUpdates'
-chat_id <- updates[[1L]]$message$chat_id
+chat_id <- updates[[1L]]$from_chat_id()
 
 # Send message
 bot$sendMessage(chat_id = chat_id,
