@@ -2,7 +2,7 @@
 ## v2.3.0
 
 - Update processing optimized.
-- Bug affecting callback query answering fixed (thanks [nstrezhnev](https://github.com/nstrezhnev)).
+- Bug affecting callback query answering fixed. Thanks to Nikita Strezhnev for reporting.
 - Documentation update.
 
 ## v2.2.0
