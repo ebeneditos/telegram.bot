@@ -35,12 +35,12 @@ test_that("Process Update", {
 test_that("Error Handler", {
   
   # not error handlers
-  expect_warning(dispatcher$process_update(foo_error), "No error handlers are registered.")
+  expect_warning(dispatcher$dispatch_error(foo_error), "No error handlers are registered.")
   
   # add error handler
   expect_error(dispatcher$add_handler(ErrorHandler(foo_handler)), NA)
   
   # process error
-  expect_null(dispatcher$process_update(foo_error))
+  expect_null(dispatcher$dispatch_error(foo_error))
   
 })

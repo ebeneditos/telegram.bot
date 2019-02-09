@@ -120,34 +120,26 @@ DispatcherClass <-
 
                 # Processes a single update.
                 process_update = function(update){
-
-                  # An error happened while polling
-                  if(is.error(update)){
-                    res <- tryCatch({self$dispatch_error(update)},
-                                    error = function(e) {
-                                      warning(as.character(e)) # nocov
-                                    })
-                    return()
-                  }
-
+                  
                   for (group in private$groups){
                     
                     for (handler in private$handlers[[group]]){
 
                       if (handler$check_update(update)){
                         handler$handle_update(update, self)
-                        break
+                        return(invisible(NULL))
                       }
                     }
                   }
+                  invisible(NULL)
                 },
 
                 # Dispatches an error.
-                dispatch_error = function(update){
+                dispatch_error = function(error){
 
-                  if (length(private$error_handlers) != 0L)
+                  if (length(private$error_handlers) > 0L)
                     for (callback in private$error_handlers){
-                      callback(self$bot, update)
+                      callback(self$bot, error)
                     }
 
                   else warning("No error handlers are registered.")

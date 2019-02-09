@@ -43,12 +43,14 @@ start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, 
           timeout = timeout,
           allowed_updates = allowed_updates)
     }, error = function(e) {
-      if (e$message == interruptError()){
+      # Session was interrupted
+      if (identical(conditionMessage(e), interruptError())){
         self$stop_polling()
       }
+      # An error happened while polling
       else{
         if (private$verbose) warning(as.character(e))
-        self$dispatcher$process_update(e)
+        self$dispatcher$dispatch_error(e)
       }
       e
     })
@@ -56,8 +58,8 @@ start_polling <- function(timeout = 10L, clean = FALSE, allowed_updates = NULL, 
     if(!is.error(updates)){
 
       if (!private$running){
-        if (!is.null(updates) && length(updates) > 0L)
-          if (private$verbose) cat("Updates ignored and will be pulled again on restart", fill = TRUE)
+        if (private$verbose && !is.null(updates) && length(updates) > 0L)
+          cat("Updates ignored and will be pulled again on restart", fill = TRUE)
         break
       }
       

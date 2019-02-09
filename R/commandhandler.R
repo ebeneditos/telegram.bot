@@ -60,7 +60,7 @@ CommandHandlerClass <-
                     if (is.null(username))
                       self$command <- command
                     else
-                      self$command <- c(command, paste(command, username, sep = "@"))
+                      self$command <- c(command, paste(command, tolower(username), sep = "@"))
                     self$callback <- callback
 
                     if (!missing(filters))

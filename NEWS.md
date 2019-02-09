@@ -1,4 +1,10 @@
 
+## v2.3.0
+
+- Update processing optimized.
+- Bug affecting callback query answering fixed (thanks [nstrezhnev](https://github.com/nstrezhnev)).
+- Documentation update.
+
 ## v2.2.0
 
 - New S3 methods:

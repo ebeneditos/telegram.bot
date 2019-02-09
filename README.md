@@ -2,12 +2,11 @@
 
 > Develop a Telegram Bot with R
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![CRAN](http://www.r-pkg.org/badges/version/telegram.bot)](https://cran.r-project.org/package=telegram.bot)
 [![Downloads](https://cranlogs.r-pkg.org/badges/telegram.bot)](https://www.r-pkg.org/pkg/telegram.bot)
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.bot.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.bot)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.bot?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-bot)
-[![Codecov](https://img.shields.io/codecov/c/github/ebeneditos/telegram.bot.svg)](https://codecov.io/gh/ebeneditos/telegram.bot)
+[![Codecov](https://codecov.io/gh/ebeneditos/telegram.bot/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/gh/ebeneditos/telegram.bot)
 [![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 This package provides a pure R interface for the [Telegram Bot API](http://core.telegram.org/bots/api). In addition to the pure API implementation, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
@@ -71,7 +70,7 @@ bot$sendMessage(chat_id = chat_id,
 
 # Send photo
 bot$sendPhoto(chat_id = chat_id,
-               photo = "https://telegram.org/img/t_logo.png")
+              photo = "https://telegram.org/img/t_logo.png")
 
 # Send audio
 bot$sendAudio(chat_id = chat_id,
@@ -119,7 +118,7 @@ To make it work, you'll need an access `TOKEN` (it should look something like `1
 **Recommendation:** Following [Hadley's API
 guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
-enviroment variables set in `.Renviron` file.
+environment variables set in `.Renviron` file.
 
 So let's say you have named your bot `RTelegramBot`; you can open the `.Renviron` file with the R command:
 

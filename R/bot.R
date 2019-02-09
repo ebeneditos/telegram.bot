@@ -36,7 +36,7 @@
   
   split <- strsplit(token, ":")[[1L]]
   if (length(split) < 2L ||
-      split[2L] == "" ||
+      identical(split[2L], "") ||
       grepl("\\D", split[1L]) ||
       nchar(split[1L]) < 3L)
     stop("Invalid token.")
@@ -964,7 +964,7 @@ answerCallbackQuery <- function(callback_query_id,
                                 url = NULL,
                                 cache_time = NULL)
 { # nocov start
-  url <- sprintf("%s/answerCallbackQuery", private$base_url)
+  url_ <- sprintf("%s/answerCallbackQuery", private$base_url)
   
   data <- list(callback_query_id = callback_query_id)
   
@@ -977,7 +977,7 @@ answerCallbackQuery <- function(callback_query_id,
   if (!missing(cache_time))
     data[["cache_time"]] <- cache_time
   
-  result <- private$request(url, data)
+  result <- private$request(url_, data)
   
   return(invisible(result))
 } # nocov end
