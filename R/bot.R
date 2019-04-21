@@ -1087,7 +1087,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
   if (!missing(inline_message_id))
     data[["inline_message_id"]] <- inline_message_id
   if (!missing(reply_markup))
-    data[["reply_markup"]] <- reply_markup
+    data[["reply_markup"]] <- to_json(reply_markup)
   
   result <- private$request(url, data)
   
