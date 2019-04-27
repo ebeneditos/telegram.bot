@@ -26,7 +26,6 @@ Start reading our code and you'll get the hang of it. We optimize for readabilit
 [`python-telegram-bot`](https://github.com/python-telegram-bot/python-telegram-bot) library, so please take a look on it.
   * Set intuitive variable names.
   * Follow the structure of the already done work.
-  * Put spaces after list items and method parameters (`c(1, 2, 3)`, not `c(1,2,3)`), around operators (`x + 1`, not `x+1`), and when assigning them (`y <- 1` or `y = 1`; not `y<-1` or `y=1`).
-  * This is open source project. Consider the people who will read your code, and make it look nice for them.
+  * For coding style, follow [The tidyverse style guide](https://style.tidyverse.org).
 
 Thanks 🙂
