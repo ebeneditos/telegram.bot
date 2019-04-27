@@ -15,13 +15,14 @@ the target channel.}
 
 \item{longitude}{Longitude of location.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
@@ -39,8 +40,10 @@ You can also use it's snake_case equivalent \code{send_location}.
 bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 
-bot$sendLocation(chat_id = chat_id,
-                 latitude = 51.521727,
-                 longitude = -0.117255)
+bot$sendLocation(
+  chat_id = chat_id,
+  latitude = 51.521727,
+  longitude = -0.117255
+)
 }
 }

@@ -26,7 +26,7 @@ See \code{\link{BaseFilter}} and \code{\link{MessageFilters}} for
     further details.
 }
 \examples{
-not_command <- ! MessageFilters$command
+not_command <- !MessageFilters$command
 text_and_reply <- MessageFilters$text & MessageFilters$reply
 audio_or_video <- MessageFilters$audio | MessageFilters$video
 }

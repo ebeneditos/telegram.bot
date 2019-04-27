@@ -8,13 +8,15 @@
 \method{+}{TelegramObject}(e1, e2)
 }
 \arguments{
-\item{e1}{An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}.}
+\item{e1}{An object of class \code{\link{Updater}} or
+\code{\link{Dispatcher}}.}
 
 \item{e2}{An object of class \code{\link{Handler}}.}
 }
 \description{
 With \code{+} you can add any kind of \code{\link{Handler}} to
-    an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
+    an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a
+    \code{\link{Dispatcher}}).
 }
 \details{
 See \code{\link{add_handler}} for further information.
@@ -22,25 +24,33 @@ See \code{\link{add_handler}} for further information.
 \examples{
 \dontrun{
 # You can chain multiple handlers
-start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = sprintf("Hello \%s!",
-                                 update$message$from$first_name))
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = sprintf(
+      "Hello \%s!",
+      update$message$from$first_name
+    )
+  )
 }
-echo <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = update$message$text)
+echo <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = update$message$text
+  )
 }
 
 updater <- Updater("TOKEN") + CommandHandler("start", start) +
   MessageHandler(echo, MessageFilters$text)
-  
+
 # And keep adding...
-caps <- function(bot, update, args){
-  if (length(args > 0L)){
+caps <- function(bot, update, args) {
+  if (length(args > 0L)) {
     text_caps <- toupper(paste(args, collapse = " "))
-    bot$sendMessage(chat_id = update$message$chat_id,
-                    text = text_caps) 
+    bot$sendMessage(
+      chat_id = update$message$chat_id,
+      text = text_caps
+    )
   }
 }
 

@@ -11,17 +11,19 @@ sendSticker(chat_id, sticker, disable_notification = FALSE,
 \item{chat_id}{Unique identifier for the target chat or username of
 the target channel.}
 
-\item{sticker}{Sticker to send. Pass a file_id as String to send a file that exists on
-the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-get a \code{.webp} file from the Internet, or upload a local one by passing a file path.}
+\item{sticker}{Sticker to send. Pass a file_id as String to send a file that
+exists on the Telegram servers (recommended), pass an HTTP URL as a
+String for Telegram to get a \code{.webp} file from the Internet, or
+upload a local one by passing a file path.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
@@ -40,7 +42,9 @@ bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 sticker_url <- "https://www.gstatic.com/webp/gallery/1.webp"
 
-bot$sendSticker(chat_id = chat_id,
-                sticker = sticker_url)
+bot$sendSticker(
+  chat_id = chat_id,
+  sticker = sticker_url
+)
 }
 }

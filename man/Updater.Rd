@@ -19,30 +19,35 @@ is.Updater(x)
 \item{base_file_url}{(Optional). Telegram Bot API file URL.}
 
 \item{request_config}{(Optional). Additional configuration settings
-to be passed to the bot's POST requests. See the \code{config}
-parameter from \code{?httr::POST} for further details.
+    to be passed to the bot's POST requests. See the \code{config}
+    parameter from \code{?httr::POST} for further details.
 
-The \code{request_config} settings are very
-useful for the advanced users who would like to control the
-default timeouts and/or control the proxy used for http communication.}
+    The \code{request_config} settings are very
+    useful for the advanced users who would like to control the
+    default timeouts and/or control the proxy used for HTTP communication.}
 
 \item{bot}{(Optional). A pre-initialized \code{\link{Bot}} instance.}
 
 \item{x}{Object to be tested.}
 }
 \description{
-This class, which employs the class \code{\link{Dispatcher}}, provides a front-end to
-class \code{\link{Bot}} to the programmer, so you can focus on coding the bot. Its purpose is to
-receive the updates from Telegram and to deliver them to said dispatcher. The
-dispatcher supports \code{\link{Handler}} classes for different kinds of data: Updates from Telegram, basic text
-commands and even arbitrary types. See \code{\link{add}} (\code{+}) to learn more about building your \code{Updater}.
+This class, which employs the class \code{\link{Dispatcher}}, provides a
+front-end to class \code{\link{Bot}} to the programmer, so you can focus on
+coding the bot. Its purpose is to receive the updates from Telegram and to
+deliver them to said dispatcher. The dispatcher supports
+\code{\link{Handler}} classes for different kinds of data: Updates from
+Telegram, basic text commands and even arbitrary types. See
+\code{\link{add}} (\code{+}) to learn more about building your
+\code{Updater}.
 }
 \details{
-\strong{Note:} You \strong{must} supply either a \code{bot} or a \code{token} argument.
+\strong{Note:} You \strong{must} supply either a \code{bot} or a
+\code{token} argument.
 }
 \section{Methods}{
  \describe{
-    \item{\code{\link{start_polling}}}{Starts polling updates from Telegram.}
+    \item{\code{\link{start_polling}}}{Starts polling updates from
+      Telegram.}
     \item{\code{\link{stop_polling}}}{Stops the polling.}
 }
 }
@@ -52,14 +57,20 @@ commands and even arbitrary types. See \code{\link{add}} (\code{+}) to learn mor
 updater <- Updater(token = "TOKEN")
 
 # In case you want to set a proxy (see ?httr:use_proxy)
-updater <- Updater(token = "TOKEN",
-                   request_config = httr::use_proxy(...))
-                   
+updater <- Updater(
+  token = "TOKEN",
+  request_config = httr::use_proxy(...)
+)
+
 # Add a handler
-start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = sprintf("Hello \%s!",
-                                 update$message$from$first_name))
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = sprintf(
+      "Hello \%s!",
+      update$message$from$first_name
+    )
+  )
 }
 updater <- updater + CommandHandler("start", start)
 

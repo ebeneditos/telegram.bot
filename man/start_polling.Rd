@@ -8,27 +8,33 @@ start_polling(timeout = 10L, clean = FALSE, allowed_updates = NULL,
   verbose = FALSE)
 }
 \arguments{
-\item{timeout}{(Optional). Passed to \code{\link{getUpdates}}. Default is 10.}
+\item{timeout}{(Optional). Passed to \code{\link{getUpdates}}.
+Default is 10.}
 
-\item{clean}{(Optional). Whether to clean any pending updates on Telegram servers
-before actually starting to poll. Default is \code{FALSE}.}
+\item{clean}{(Optional). Whether to clean any pending updates on Telegram
+servers before actually starting to poll. Default is \code{FALSE}.}
 
 \item{allowed_updates}{(Optional). Passed to \code{\link{getUpdates}}.}
 
-\item{verbose}{(Optional). If \code{TRUE}, prints status of the polling. Default is \code{FALSE}.}
+\item{verbose}{(Optional). If \code{TRUE}, prints status of the polling.
+Default is \code{FALSE}.}
 }
 \description{
-Starts polling updates from Telegram. You can stop the polling either by using the the
-\code{interrupt R} command in the session menu or with the \code{\link{stop_polling}}
-method.
+Starts polling updates from Telegram. You can stop the polling either by
+using the the \code{interrupt R} command in the session menu or with the
+\code{\link{stop_polling}} method.
 }
 \examples{
 \dontrun{
 # Start polling example
-start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = sprintf("Hello \%s!",
-                                 update$message$from$first_name))
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = sprintf(
+      "Hello \%s!",
+      update$message$from$first_name
+    )
+  )
 }
 
 updater <- Updater("TOKEN") + CommandHandler("start", start)

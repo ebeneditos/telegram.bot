@@ -11,23 +11,24 @@ ReplyKeyboardMarkup(keyboard, resize_keyboard = NULL,
 \item{keyboard}{List of button rows, each represented by a list of
 \code{\link{KeyboardButton}} objects.}
 
-\item{resize_keyboard}{(Optional). Requests clients to resize the keyboard vertically
-for optimal fit. Defaults to \code{FALSE}, in which case the
+\item{resize_keyboard}{(Optional). Requests clients to resize the keyboard
+vertically for optimal fit. Defaults to \code{FALSE}, in which case the
 custom keyboard is always of the same height as the app's standard
 keyboard.}
 
-\item{one_time_keyboard}{(Optional). Requests clients to hide the keyboard as soon
-as it's been used. The keyboard will still be available, but clients
-will automatically display the usual letter-keyboard in the chat -
-the user can press a special button in the input field to see the
+\item{one_time_keyboard}{(Optional). Requests clients to hide the keyboard
+as soon as it's been used. The keyboard will still be available, but
+clients will automatically display the usual letter-keyboard in the
+chat - the user can press a special button in the input field to see the
 custom keyboard again. Defaults to \code{FALSE}.}
 
-\item{selective}{(Optional). Use this parameter if you want to show the keyboard
-to specific users only.}
+\item{selective}{(Optional). Use this parameter if you want to show the
+keyboard to specific users only.}
 }
 \description{
-This object represents a \href{https://core.telegram.org/bots#keyboards}{custom keyboard}
-with reply options.
+This object represents a
+\href{https://core.telegram.org/bots#keyboards}{custom keyboard} with reply
+options.
 }
 \examples{
 \dontrun{
@@ -41,7 +42,8 @@ RKM <- ReplyKeyboardMarkup(
   keyboard = list(
     list(KeyboardButton("Yes, they certainly are!")),
     list(KeyboardButton("I'm not quite sure")),
-    list(KeyboardButton('No...'))),
+    list(KeyboardButton("No..."))
+  ),
   resize_keyboard = FALSE,
   one_time_keyboard = TRUE
 )

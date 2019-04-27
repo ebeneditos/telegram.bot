@@ -13,29 +13,35 @@ Handler(callback, check_update = NULL, handle_update = NULL,
 is.Handler(x)
 }
 \arguments{
-\item{callback}{The callback function for this handler. Its inputs will be \code{(bot, update)},
-where \code{bot} is a \code{\link{Bot}} instance and \code{update} an \code{\link{Update}} class.}
+\item{callback}{The callback function for this handler. Its inputs will be
+\code{(bot, update)},
+where \code{bot} is a \code{\link{Bot}} instance and \code{update} an
+\code{\link{Update}} class.}
 
-\item{check_update}{Function that will override the default \code{\link{check_update}}
-method. Use it if you want to create your own \code{Handler}.}
+\item{check_update}{Function that will override the default
+\code{\link{check_update}} method. Use it if you want to create your own
+\code{Handler}.}
 
-\item{handle_update}{Function that will override the default \code{\link{handle_update}}
-method. Use it if you want to create your own \code{Handler}.}
+\item{handle_update}{Function that will override the default
+\code{\link{handle_update}} method. Use it if you want to create your
+own \code{Handler}.}
 
-\item{handlername}{Name of the customized class, which will inherit from \code{Handler}.
-If \code{NULL} (default) it will create a \code{Handler} class.}
+\item{handlername}{Name of the customized class, which will inherit from
+\code{Handler}. If \code{NULL} (default) it will create a \code{Handler}
+class.}
 
 \item{x}{Object to be tested.}
 }
 \description{
-The base class for all update handlers. Create custom handlers by inheriting from it.
+The base class for all update handlers. Create custom handlers by inheriting
+from it.
 }
 \section{Methods}{
  \describe{
-    \item{\code{\link{check_update}}}{Called to determine if an update should be handled by
-this handler instance.}
-    \item{\code{\link{handle_update}}}{Called if it was determined that an update should indeed
-be handled by this instance.}
+    \item{\code{\link{check_update}}}{Called to determine if an update
+      should be handled by this handler instance.}
+    \item{\code{\link{handle_update}}}{Called if it was determined that an
+      update should indeed be handled by this instance.}
 }
 }
 
@@ -43,15 +49,17 @@ be handled by this instance.}
  \describe{
     \item{\code{\link{MessageHandler}}}{To handle Telegram messages.}
     \item{\code{\link{CommandHandler}}}{To handle Telegram commands.}
-    \item{\code{\link{CallbackQueryHandler}}}{To handle Telegram callback queries.}
-    \item{\code{\link{ErrorHandler}}}{To handle errors while polling for updates.}
+    \item{\code{\link{CallbackQueryHandler}}}{To handle Telegram callback
+      queries.}
+    \item{\code{\link{ErrorHandler}}}{To handle errors while polling for
+      updates.}
 }
 }
 
 \examples{
 \dontrun{
 # Example of a Handler
-callback_method <- function(bot, update){
+callback_method <- function(bot, update) {
   chat_id <- update$effective_chat()$id
   bot$sendMessage(chat_id = chat_id, text = "Hello")
 }
@@ -59,17 +67,18 @@ callback_method <- function(bot, update){
 hello_handler <- Handler(callback_method)
 
 # Customizing Handler
-check_update <- function(update){
+check_update <- function(update) {
   TRUE
 }
 
-handle_update <- function(update, dispatcher){
+handle_update <- function(update, dispatcher) {
   self$callback(dispatcher$bot, update)
 }
 
 foo_handler <- Handler(callback_method,
-                       check_update = check_update,
-                       handle_update = handle_update,
-                       handlername = 'FooHandler')
+  check_update = check_update,
+  handle_update = handle_update,
+  handlername = "FooHandler"
+)
 }
 }

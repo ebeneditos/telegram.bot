@@ -16,6 +16,12 @@ where \code{X} is the bot's name.
 }
 \examples{
 \dontrun{
+# Open the `.Renviron` file
+file.edit(path.expand(file.path("~", ".Renviron")))
+# Add the line (uncomment and replace <bot-token> by your bot TOKEN):
+# R_TELEGRAM_BOT_RTelegramBot=<bot-token>
+# Save and restart R
+
 bot_token("RTelegramBot")
 }
 }

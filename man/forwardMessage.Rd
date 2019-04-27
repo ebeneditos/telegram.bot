@@ -16,8 +16,8 @@ original message was sent.}
 
 \item{message_id}{Message identifier in the chat specified in from_chat_id.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 }
 \description{
 Use this method to forward messages of any kind.

@@ -26,9 +26,9 @@ what the user is about to receive:
 }}
 }
 \description{
-Use this method when you need to tell the user that something is happening on the bot's
-side. The status is set for 5 seconds or less (when a message arrives from your bot,
-Telegram clients clear its typing status).
+Use this method when you need to tell the user that something is happening
+on the bot's side. The status is set for 5 seconds or less (when a message
+arrives from your bot, Telegram clients clear its typing status).
 }
 \details{
 You can also use it's snake_case equivalent \code{send_chat_action}.
@@ -38,7 +38,9 @@ You can also use it's snake_case equivalent \code{send_chat_action}.
 bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 
-bot$sendChatAction(chat_id = chat_id,
-                   action = "typing")
+bot$sendChatAction(
+  chat_id = chat_id,
+  action = "typing"
+)
 }
 }

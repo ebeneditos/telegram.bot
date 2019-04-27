@@ -13,9 +13,10 @@ as.BaseFilter(x, ...)
 is.BaseFilter(x)
 }
 \arguments{
-\item{filter}{If you want to create your own filters you can call this generator passing by
-a \code{filter} function that takes a \code{message} as input and returns a boolean:
-\code{TRUE} if the message should be handled, \code{FALSE} otherwise.}
+\item{filter}{If you want to create your own filters you can call this
+generator passing by a \code{filter} function that takes a
+\code{message} as input and returns a boolean: \code{TRUE} if the
+message should be handled, \code{FALSE} otherwise.}
 
 \item{x}{Object to be coerced or tested.}
 
@@ -25,7 +26,8 @@ a \code{filter} function that takes a \code{message} as input and returns a bool
 Base class for all Message Filters.
 }
 \details{
-See \code{\link{filtersLogic}} to know more about combining filter functions.
+See \code{\link{filtersLogic}} to know more about combining filter
+functions.
 }
 \examples{
 \dontrun{

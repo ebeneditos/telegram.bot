@@ -12,9 +12,10 @@ sendAudio(chat_id, audio, duration = NULL, performer = NULL,
 \item{chat_id}{Unique identifier for the target chat or username of
 the target channel.}
 
-\item{audio}{Audio file to send. Pass a file_id as String to send an audio that exists on
-the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-get an audio from the Internet, or upload a local audio file by passing a file path.}
+\item{audio}{Audio file to send. Pass a file_id as String to send an audio
+that exists on the Telegram servers (recommended), pass an HTTP URL as a
+String for Telegram to get an audio from the Internet, or upload a local
+audio file by passing a file path.}
 
 \item{duration}{(Optional). Duration of sent audio in seconds.}
 
@@ -24,27 +25,29 @@ get an audio from the Internet, or upload a local audio file by passing a file p
 
 \item{caption}{(Optional). Audio caption, 0-1024 characters.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
  \item{\code{\link{ReplyKeyboardRemove}}}
  \item{\code{\link{ForceReply}}}}}
 
-\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message.}
+\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want
+Telegram apps to show bold, italic, fixed-width text or inline URLs in
+your bot's message.}
 }
 \description{
-Use this method to send audio files, if you want Telegram clients to display them in the
-music player. Your audio must be in the .mp3 format. On success, the sent Message is
-returned. Bots can currently send audio files of up to 50 MB in size, this limit may be
-changed in the future.
+Use this method to send audio files, if you want Telegram clients to display
+them in the music player. Your audio must be in the .mp3 format. On success,
+the sent Message is returned. Bots can currently send audio files of up to
+50 MB in size, this limit may be changed in the future.
 For sending voice messages, use the \code{\link{sendVoice}} method instead.
 }
 \details{
@@ -56,7 +59,9 @@ bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 audio_url <- "http://www.largesound.com/ashborytour/sound/brobob.mp3"
 
-bot$sendAudio(chat_id = chat_id,
-              audio = audio_url)
+bot$sendAudio(
+  chat_id = chat_id,
+  audio = audio_url
+)
 }
 }

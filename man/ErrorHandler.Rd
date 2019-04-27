@@ -17,14 +17,15 @@ is.ErrorHandler(x)
 \item{x}{Object to be tested.}
 }
 \description{
-\code{\link{Handler}} class to handle errors in the \code{\link{Dispatcher}}.
+\code{\link{Handler}} class to handle errors in the
+\code{\link{Dispatcher}}.
 }
 \examples{
 \dontrun{
 updater <- Updater(token = "TOKEN")
 
 # Create error callback
-error_callback <- function(bot, error){
+error_callback <- function(bot, error) {
   warning(simpleWarning(conditionMessage(error), call = "Updates polling"))
 }
 

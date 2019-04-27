@@ -16,6 +16,12 @@ where \code{X} is the user's name.
 }
 \examples{
 \dontrun{
+# Open the `.Renviron` file
+file.edit(path.expand(file.path("~", ".Renviron")))
+# Add the line (uncomment and replace <user-id> by your Telegram user ID):
+# R_TELEGRAM_USER_Me=<user-id>
+# Save and restart R
+
 user_id("Me")
 }
 }

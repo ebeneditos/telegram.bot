@@ -14,19 +14,21 @@ the target channel.}
 
 \item{text}{Text of the message to be sent.}
 
-\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message.}
+\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want
+Telegram apps to show bold, italic, fixed-width text or inline URLs in
+your bot's message.}
 
-\item{disable_web_page_preview}{(Optional). Disables link previews for links in
-this message.}
+\item{disable_web_page_preview}{(Optional). Disables link previews for links
+in this message.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
@@ -45,8 +47,10 @@ You can also use it's snake_case equivalent \code{send_message}.
 bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 
-bot$sendMessage(chat_id = chat_id,
-                text = "foo *bold* _italic_",
-                parse_mode = "Markdown")
+bot$sendMessage(
+  chat_id = chat_id,
+  text = "foo *bold* _italic_",
+  parse_mode = "Markdown"
+)
 }
 }

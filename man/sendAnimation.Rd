@@ -13,9 +13,10 @@ sendAnimation(chat_id, animation, duration = NULL, width = NULL,
 \item{chat_id}{Unique identifier for the target chat or username of
 the target channel.}
 
-\item{animation}{Animation to send. Pass a file_id as String to send an animation that exists on
-the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-get an animation from the Internet, or upload a local file by passing a file path.}
+\item{animation}{Animation to send. Pass a file_id as String to send an
+animation that exists on the Telegram servers (recommended), pass an
+HTTP URL as a String for Telegram to get an animation from the Internet,
+or upload a local file by passing a file path.}
 
 \item{duration}{(Optional). Duration of sent audio in seconds.}
 
@@ -25,16 +26,18 @@ get an animation from the Internet, or upload a local file by passing a file pat
 
 \item{caption}{(Optional). Animation caption, 0-1024 characters.}
 
-\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message.}
+\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want
+Telegram apps to show bold, italic, fixed-width text or inline URLs in
+your bot's message.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
@@ -42,7 +45,8 @@ original message.}
  \item{\code{\link{ForceReply}}}}}
 }
 \description{
-Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound).
+Use this method to send animation files (GIF or H.264/MPEG-4 AVC video
+without sound).
 }
 \details{
 You can also use it's snake_case equivalent \code{send_animation}.
@@ -53,7 +57,9 @@ bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 animation_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 
-bot$sendAnimation(chat_id = chat_id,
-                  animation = animation_url)
+bot$sendAnimation(
+  chat_id = chat_id,
+  animation = animation_url
+)
 }
 }

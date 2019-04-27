@@ -21,8 +21,10 @@ This class dispatches all kinds of updates to its registered handlers.
 }
 \section{Methods}{
  \describe{
-    \item{\code{\link{add_handler}}}{Registers a handler in the \code{Dispatcher}.}
-    \item{\code{\link{add_error_handler}}}{Registers an error handler in the \code{Dispatcher}.}
+    \item{\code{\link{add_handler}}}{Registers a handler in the
+      \code{Dispatcher}.}
+    \item{\code{\link{add_error_handler}}}{Registers an error handler in the
+      \code{Dispatcher}.}
 }
 }
 

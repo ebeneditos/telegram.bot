@@ -24,8 +24,8 @@ See \code{\link{Handler}} for information about this function.}
 
 \item{username}{(Optional). Bot's username, you can retrieve it from
 \code{bot$getMe()$username}. If this parameter is passed, then the
-\code{CommandHandler} will also listen to the command \code{/command@username},
-as bot commands are often called this way.}
+\code{CommandHandler} will also listen to the command
+\code{/command@username}, as bot commands are often called this way.}
 }
 \description{
 \code{\link{Handler}} class to handle Telegram commands.
@@ -39,9 +39,11 @@ username <- bot$getMe()$username
 updater <- Updater(bot = bot)
 
 # Add a command
-start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = "Hi, I am a bot!")
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = "Hi, I am a bot!"
+  )
 }
 
 updater <- updater + CommandHandler("start", start, username = username)

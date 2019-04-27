@@ -13,8 +13,8 @@ the keyboard from sight but keep it accessible, use
 \code{one_time_keyboard} in \code{\link{ReplyKeyboardMarkup}}).
 Defaults to \code{TRUE}.}
 
-\item{selective}{(Optional). Use this parameter if you want to show the keyboard
-to specific users only.}
+\item{selective}{(Optional). Use this parameter if you want to show the
+keyboard to specific users only.}
 }
 \description{
 Upon receiving a message with this object, Telegram clients will
@@ -36,7 +36,8 @@ RKM <- ReplyKeyboardMarkup(
   keyboard = list(
     list(KeyboardButton("Yes, they certainly are!")),
     list(KeyboardButton("I'm not quite sure")),
-    list(KeyboardButton('No...'))),
+    list(KeyboardButton("No..."))
+  ),
   resize_keyboard = FALSE,
   one_time_keyboard = FALSE
 )
@@ -45,6 +46,10 @@ RKM <- ReplyKeyboardMarkup(
 bot$sendMessage(chat_id, text, reply_markup = RKM)
 
 # Remove Keyboard
-bot$sendMessage(chat_id, "Okay, thanks!", reply_markup = ReplyKeyboardRemove())
+bot$sendMessage(
+  chat_id,
+  "Okay, thanks!",
+  reply_markup = ReplyKeyboardRemove()
+)
 }
 }

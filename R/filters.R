@@ -1,11 +1,12 @@
 
 #' Filter message updates
 #'
-#' Predefined filters for use as the \code{filter} argument of class \code{\link{MessageHandler}}.
+#' Predefined filters for use as the \code{filter} argument of class
+#' \code{\link{MessageHandler}}.
 #'
 #' See \code{\link{BaseFilter}} and \code{\link{filtersLogic}} for
 #' advanced filters.
-#'     
+#'
 #' @docType data
 #' @format A \code{list} with filtering functions.
 #' @section Functions: \itemize{
@@ -24,18 +25,23 @@
 #'     \item{\code{venue}: Messages that are forwarded.}
 #'     \item{\code{game}: Messages that contain game.}
 #' }
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' # Use to filter all video messages
 #' video_handler <- MessageHandler(callback_method, MessageFilters$video)
-#'
+#' 
 #' # To filter all contacts, etc.
 #' contact_handler <- MessageHandler(callback_method, MessageFilters$contact)
 #' }
 #' @export
 MessageFilters <- list(
   "all" = BaseFilter(function(message) TRUE),
-  "text" = BaseFilter(function(message) !is.null(message$text) && !startsWith(message$text, "/")),
-  "command" = BaseFilter(function(message) !is.null(message$text) && startsWith(message$text, "/")),
+  "text" = BaseFilter(function(message) {
+    !is.null(message$text) && !startsWith(message$text, "/")
+  }),
+  "command" = BaseFilter(function(message) {
+    !is.null(message$text) && startsWith(message$text, "/")
+  }),
   "reply" = BaseFilter(function(message) !is.null(message$reply_to_message)),
   "audio" = BaseFilter(function(message) !is.null(message$audio)),
   "document" = BaseFilter(function(message) !is.null(message$document)),
@@ -49,5 +55,7 @@ MessageFilters <- list(
   "forwarded" = BaseFilter(function(message) !is.null(message$forward_date)),
   "game" = BaseFilter(function(message) !is.null(message$game)),
   "invoice" = BaseFilter(function(message) !is.null(message$invoice)),
-  "successful_payment" = BaseFilter(function(message) !is.null(message$successful_payment))
+  "successful_payment" = BaseFilter(function(message) {
+    !is.null(message$successful_payment)
+  })
 )

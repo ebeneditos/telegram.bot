@@ -89,7 +89,7 @@ Also, it works with `Dispatcher` objects:
 
 ```{r, eval = FALSE}
 dispatcher <- updater$dispatcher
-dispatcher <- dispatcher + start_handler # equivalent to dispatcher$add_handler(start_handler)
+dispatcher <- dispatcher + start_handler
 ```
 
 So, all in all, the `+.TelegramObject` operator simplifies the construction of an `Updater`. However, if you want to add a handler with advanced settings, let's say by controlling the `group` in which it is placed, you will need to make an `add_handler` call.

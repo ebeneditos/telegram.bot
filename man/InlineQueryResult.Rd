@@ -18,7 +18,8 @@ for a list of supported types.}
 
 \item{...}{Additional parameters for the selected type. See the
 \href{https://core.telegram.org/bots/api#inlinequeryresult}{documentation}
-for the description of the parameters depending on the \code{InlineQueryResult} type.}
+for the description of the
+parameters depending on the \code{InlineQueryResult} type.}
 
 \item{x}{Object to be tested.}
 }
@@ -27,13 +28,17 @@ Baseclass for the InlineQueryResult* classes.
 }
 \examples{
 \dontrun{
-document_url <- "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
+document_url <- paste0(
+  "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/",
+  "telegram.bot.pdf"
+)
 
 result <- InlineQueryResult(
-            type = "document",
-            id = 1,
-            title = "Documentation",
-            document_url = document_url,
-            mime_type = "application/pdf")
+  type = "document",
+  id = 1,
+  title = "Documentation",
+  document_url = document_url,
+  mime_type = "application/pdf"
+)
 }
 }

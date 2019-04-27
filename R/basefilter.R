@@ -1,6 +1,6 @@
 
 #' @name filtersLogic
-#' 
+#'
 #' @aliases !
 #' @aliases &
 #' @aliases |
@@ -18,9 +18,9 @@ NULL
 
 #' @rdname filtersLogic
 #' @examples
-#' not_command <- ! MessageFilters$command
+#' not_command <- !MessageFilters$command
 #' @export
-"!.BaseFilter" <- function(f) BaseFilter(function(...) ! f(...))
+"!.BaseFilter" <- function(f) BaseFilter(function(...) !f(...))
 
 #' @rdname filtersLogic
 #' @examples
@@ -37,15 +37,18 @@ NULL
 #' The base of all filters
 #'
 #' Base class for all Message Filters.
-#' 
-#' See \code{\link{filtersLogic}} to know more about combining filter functions.
+#'
+#' See \code{\link{filtersLogic}} to know more about combining filter
+#' functions.
 #' @name BaseFilter
 #' @aliases as.BaseFilter
 #' @aliases is.BaseFilter
-#' @param filter If you want to create your own filters you can call this generator passing by
-#'     a \code{filter} function that takes a \code{message} as input and returns a boolean:
-#'     \code{TRUE} if the message should be handled, \code{FALSE} otherwise.
-#' @examples \dontrun{
+#' @param filter If you want to create your own filters you can call this
+#'     generator passing by a \code{filter} function that takes a
+#'     \code{message} as input and returns a boolean: \code{TRUE} if the
+#'     message should be handled, \code{FALSE} otherwise.
+#' @examples
+#' \dontrun{
 #' # Create a filter function
 #' text_or_command <- function(message) !is.null(message$text)
 #' 
@@ -56,7 +59,7 @@ NULL
 #' text_or_command <- as.BaseFilter(function(message) !is.null(message$text))
 #' }
 #' @export
-BaseFilter <- function(filter){
+BaseFilter <- function(filter) {
   filter <- match.fun(filter)
   structure(filter, class = "BaseFilter")
 }
@@ -65,12 +68,12 @@ BaseFilter <- function(filter){
 #' @param x Object to be coerced or tested.
 #' @param ... Further arguments passed to or from other methods.
 #' @export
-as.BaseFilter <- function(x, ...){
+as.BaseFilter <- function(x, ...) {
   BaseFilter(x)
 }
 
 #' @rdname BaseFilter
 #' @export
-is.BaseFilter <- function(x){
+is.BaseFilter <- function(x) {
   inherits(x, "BaseFilter")
 }

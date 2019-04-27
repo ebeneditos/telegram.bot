@@ -11,22 +11,25 @@ getUpdates(offset = NULL, limit = 100L, timeout = 0L,
 \item{offset}{(Optional). Identifier of the first update to be returned
 returned.}
 
-\item{limit}{(Optional). Limits the number of updates to be retrieved. Values
-between 1-100 are accepted. Defaults to 100.}
+\item{limit}{(Optional). Limits the number of updates to be retrieved.
+Values between 1-100 are accepted. Defaults to 100.}
 
-\item{timeout}{(Optional). Timeout in seconds for long polling. Defaults to 0,
-i.e. usual short polling. Should be positive, short polling should
+\item{timeout}{(Optional). Timeout in seconds for long polling. Defaults to
+0, i.e. usual short polling. Should be positive, short polling should
 be used for testing purposes only.}
 
-\item{allowed_updates}{(Optional). String or vector of strings with the types of
-updates you want your bot to receive. For example, specify \code{c("message",
-"edited_channel_post", "callback_query")} to only receive updates of these types. See
-\href{https://core.telegram.org/bots/api#update}{Update}
-for a complete list of available update types. Specify an empty string to receive all
-updates regardless of type (default). If not specified, the previous setting will be used.
+\item{allowed_updates}{(Optional). String or vector of strings with the
+    types of updates you want your bot to receive. For example, specify
+    \code{c("message", "edited_channel_post", "callback_query")} to only
+    receive updates of these types. See
+    \href{https://core.telegram.org/bots/api#update}{Update}
+    for a complete list of available update types. Specify an empty string
+    to receive all updates regardless of type (default). If not specified,
+    the previous setting will be used.
 
-Please note that this parameter doesn't affect updates created before the call
-to the getUpdates, so unwanted updates may be received for a short period of time.}
+    Please note that this parameter doesn't affect updates created before
+    the call to the getUpdates, so unwanted updates may be received for a
+    short period of time.}
 }
 \description{
 Use this method to receive incoming updates. It returns a
@@ -35,10 +38,11 @@ list of \code{\link{Update}} objects.
 \details{
 1. This method will not work if an outgoing webhook is set up.
 
-2. In order to avoid getting duplicate updates, recalculate offset after each
-server response or use \code{Bot} method \code{\link{clean_updates}}.
+2. In order to avoid getting duplicate updates, recalculate offset after
+each server response or use \code{Bot} method \code{\link{clean_updates}}.
 
-3. To take full advantage of this library take a look at \code{\link{Updater}}.
+3. To take full advantage of this library take a look at
+\code{\link{Updater}}.
 
 You can also use it's snake_case equivalent \code{get_updates}.
 }

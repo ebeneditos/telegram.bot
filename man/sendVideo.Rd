@@ -13,21 +13,23 @@ sendVideo(chat_id, video, duration = NULL, caption = NULL,
 \item{chat_id}{Unique identifier for the target chat or username of
 the target channel.}
 
-\item{video}{Video file to send. Pass a file_id as String to send a video that exists on
-the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to
-get a video from the Internet, or upload a local video file by passing a file path.}
+\item{video}{Video file to send. Pass a file_id as String to send a video
+that exists on the Telegram servers (recommended), pass an HTTP URL as a
+String for Telegram to get a video from the Internet, or upload a local
+video file by passing a file path.}
 
 \item{duration}{(Optional). Duration of sent audio in seconds.}
 
 \item{caption}{(Optional). Video caption, 0-1024 characters.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
@@ -38,11 +40,12 @@ original message.}
 
 \item{height}{(Optional). Video height.}
 
-\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message.}
+\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want
+Telegram apps to show bold, italic, fixed-width text or inline URLs in
+your bot's message.}
 
-\item{supports_streaming}{(Optional). Pass \code{TRUE}, if the uploaded video is
-suitable for streaming.}
+\item{supports_streaming}{(Optional). Pass \code{TRUE}, if the uploaded
+video is suitable for streaming.}
 }
 \description{
 Use this method to send video files, Telegram clients support mp4 videos
@@ -57,7 +60,9 @@ bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 video_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 
-bot$sendVideo(chat_id = chat_id,
-              video = video_url)
+bot$sendVideo(
+  chat_id = chat_id,
+  video = video_url
+)
 }
 }

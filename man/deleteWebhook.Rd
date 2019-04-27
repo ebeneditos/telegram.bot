@@ -7,8 +7,8 @@
 deleteWebhook()
 }
 \description{
-Use this method to remove webhook integration if you decide to switch back to
-\code{getUpdates}. Requires no parameters.
+Use this method to remove webhook integration if you decide to switch back
+to \code{getUpdates}. Requires no parameters.
 }
 \details{
 You can also use it's snake_case equivalent \code{delete_webhook}.

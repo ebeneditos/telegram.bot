@@ -17,7 +17,8 @@ is.Update(x)
 \item{x}{Object to be tested.}
 }
 \description{
-This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.
+This object represents an incoming
+\href{https://core.telegram.org/bots/api#update}{Update}.
 }
 \section{Methods}{
  \describe{

@@ -10,7 +10,8 @@ getWebhookInfo()
 Use this method to get current webhook status. Requires no parameters.
 }
 \details{
-If the bot is using \code{getUpdates}, will return an object with the url field empty.
+If the bot is using \code{getUpdates}, will return an object with the url
+field empty.
 
 You can also use it's snake_case equivalent \code{get_webhook_info}.
 }

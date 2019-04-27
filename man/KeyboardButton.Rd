@@ -14,12 +14,12 @@ is.KeyboardButton(x)
 fields are used, it will be sent as a message when the button
 is pressed.}
 
-\item{request_contact}{(Optional). If \code{TRUE}, the user's phone number will be
-sent as a contact when the button is pressed. Available in
+\item{request_contact}{(Optional). If \code{TRUE}, the user's phone number
+will be sent as a contact when the button is pressed. Available in
 private chats only.}
 
-\item{request_location}{(Optional). If \code{TRUE}, the user's current location
-will be sent when the button is pressed. Available in private
+\item{request_location}{(Optional). If \code{TRUE}, the user's current
+location will be sent when the button is pressed. Available in private
 chats only.}
 
 \item{x}{Object to be tested.}

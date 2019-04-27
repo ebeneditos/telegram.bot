@@ -9,18 +9,20 @@ getFile(file_id, destfile = NULL, ...)
 \arguments{
 \item{file_id}{The file identifier.}
 
-\item{destfile}{(Optional). If you want to save the file, pass by a character string
-with the name where the downloaded file is saved. See the \code{destfile}
-parameter from \code{?curl::curl_download} for further details.}
+\item{destfile}{(Optional). If you want to save the file, pass by a
+character string with the name where the downloaded file is saved.
+See the \code{destfile} parameter from \code{?curl::curl_download} for
+further details.}
 
 \item{...}{(Optional). Additional parameters to be passed to
-\code{\link[curl]{curl_download}}. It is not used if \code{destfile} is \code{NULL}.}
+\code{\link[curl]{curl_download}}. It is not used if \code{destfile} is
+\code{NULL}.}
 }
 \description{
-Use this method to get basic info about a file and prepare it for downloading. For the
-moment, bots can download files of up to 20MB in size. It is guaranteed that the link will be
-valid for at least 1 hour. When the link expires, a new one can be requested by
-calling \code{getFile} again.
+Use this method to get basic info about a file and prepare it for
+downloading. For the moment, bots can download files of up to 20MB in size.
+It is guaranteed that the link will be valid for at least 1 hour. When the
+link expires, a new one can be requested by calling \code{getFile} again.
 }
 \details{
 You can also use it's snake_case equivalent \code{get_file}.

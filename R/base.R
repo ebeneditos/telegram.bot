@@ -2,37 +2,48 @@
 #' @name +.TelegramObject
 #' @rdname TelegramObject-add
 #' @aliases add
-#' 
+#'
 #' @title Constructing an Updater
 #'
 #' @description With \code{+} you can add any kind of \code{\link{Handler}} to
-#'     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a \code{\link{Dispatcher}}).
-#'     
+#'     an \code{\link{Updater}}'s \code{Dispatcher} (or directly to a
+#'     \code{\link{Dispatcher}}).
+#'
 #' @details See \code{\link{add_handler}} for further information.
 #'
-#' @param e1 An object of class \code{\link{Updater}} or  \code{\link{Dispatcher}}.
+#' @param e1 An object of class \code{\link{Updater}} or
+#'     \code{\link{Dispatcher}}.
 #' @param e2 An object of class \code{\link{Handler}}.
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' # You can chain multiple handlers
-#' start <- function(bot, update){
-#'   bot$sendMessage(chat_id = update$message$chat_id,
-#'                   text = sprintf("Hello %s!",
-#'                                  update$message$from$first_name))
+#' start <- function(bot, update) {
+#'   bot$sendMessage(
+#'     chat_id = update$message$chat_id,
+#'     text = sprintf(
+#'       "Hello %s!",
+#'       update$message$from$first_name
+#'     )
+#'   )
 #' }
-#' echo <- function(bot, update){
-#'   bot$sendMessage(chat_id = update$message$chat_id,
-#'                   text = update$message$text)
+#' echo <- function(bot, update) {
+#'   bot$sendMessage(
+#'     chat_id = update$message$chat_id,
+#'     text = update$message$text
+#'   )
 #' }
 #' 
 #' updater <- Updater("TOKEN") + CommandHandler("start", start) +
 #'   MessageHandler(echo, MessageFilters$text)
-#'   
+#' 
 #' # And keep adding...
-#' caps <- function(bot, update, args){
-#'   if (length(args > 0L)){
+#' caps <- function(bot, update, args) {
+#'   if (length(args > 0L)) {
 #'     text_caps <- toupper(paste(args, collapse = " "))
-#'     bot$sendMessage(chat_id = update$message$chat_id,
-#'                     text = text_caps) 
+#'     bot$sendMessage(
+#'       chat_id = update$message$chat_id,
+#'       text = text_caps
+#'     )
 #'   }
 #' }
 #' 
@@ -45,26 +56,36 @@
 #' @export
 "+.TelegramObject" <- function(e1, e2) { # nocov start
   if (missing(e2)) {
-    stop("Cannot use `+.TelegramBot()` with a single argument. ", # nocov
-         "Did you accidentally put + on a new line?",
-         call. = FALSE)
-  }else if(!is.Handler(e2)){
-    stop("The second argument from `+.TelegramBot()` ",
-         "must be an instance of 'Handler'.",
-         call. = FALSE)
+    stop( # nocov
+      "Cannot use `+.TelegramBot()` with a single argument. ",
+      "Did you accidentally put + on a new line?",
+      call. = FALSE
+    )
+  } else if (!is.Handler(e2)) {
+    stop(
+      "The second argument from `+.TelegramBot()` ",
+      "must be an instance of `Handler`.",
+      call. = FALSE
+    )
   }
-  
-  if      (is.Updater(e1))  e1$dispatcher$add_handler(e2)
-  else if (is.Dispatcher(e1)) e1$add_handler(e2)
-  else if (is.Handler(e1)) {
-    stop("Cannot add 'Handler' objects together.",
-         call. = FALSE)
-  }else{
-    stop(sprintf("Cannot add '%s' and '%s' objects together.",
-                 class(e1), class(e2)),
-         call. = FALSE)
+
+  if (is.Updater(e1)) {
+    e1$dispatcher$add_handler(e2)
+  } else if (is.Dispatcher(e1)) {
+    e1$add_handler(e2)
+  } else if (is.Handler(e1)) {
+    stop("Cannot add `Handler` objects together.",
+      call. = FALSE
+    )
+  } else {
+    stop(sprintf(
+      "Cannot add `%s` and `%s` objects together.",
+      class(e1), class(e2)
+    ),
+    call. = FALSE
+    )
   }
-  
+
   e1
 } # nocov end
 
@@ -82,6 +103,6 @@ TelegramObject <- R6::R6Class("TelegramObject")
 #' @rdname TelegramObject
 #' @param x Object to be tested.
 #' @export
-is.TelegramObject <- function(x){
+is.TelegramObject <- function(x) {
   inherits(x, "TelegramObject")
 }

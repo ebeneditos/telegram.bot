@@ -12,18 +12,19 @@ MessageHandler(callback, filters = NULL)
 \item{callback}{The callback function for this handler.
 See \code{\link{Handler}} for information about this function.}
 
-\item{filters}{(Optional). Only allow updates with these filters. Use \code{NULL}
-(default) or \code{MessageFilters$all} for no filtering. See \code{\link{MessageFilters}} for a
-full list of all available filters.}
+\item{filters}{(Optional). Only allow updates with these filters. Use
+\code{NULL} (default) or \code{MessageFilters$all} for no filtering. See
+\code{\link{MessageFilters}} for a full list of all available filters.}
 }
 \description{
-\code{\link{Handler}} class to handle Telegram messages. They might contain text, media or status updates.
+\code{\link{Handler}} class to handle Telegram messages. They might contain
+text, media or status updates.
 }
 \examples{
 \dontrun{
-callback_method <- function(bot, update){
+callback_method <- function(bot, update) {
   chat_id <- update$message$chat_id
-  bot$sendMessage(chat_id = chat_id, text = 'Hello')
+  bot$sendMessage(chat_id = chat_id, text = "Hello")
 }
 
 # No filtering

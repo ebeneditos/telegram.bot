@@ -9,8 +9,8 @@ getUserProfilePhotos(user_id, offset = NULL, limit = 100L)
 \arguments{
 \item{user_id}{Unique identifier of the target user.}
 
-\item{offset}{(Optional). Sequential number of the first photo to be returned.
-By default, all photos are returned.}
+\item{offset}{(Optional). Sequential number of the first photo to be
+returned. By default, all photos are returned.}
 
 \item{limit}{(Optional). Limits the number of photos to be retrieved. Values
 between 1-100 are accepted. Defaults to 100.}

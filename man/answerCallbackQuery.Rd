@@ -10,24 +10,23 @@ answerCallbackQuery(callback_query_id, text = NULL, show_alert = FALSE,
 \arguments{
 \item{callback_query_id}{Unique identifier for the query to be answered.}
 
-\item{text}{(Optional). Text of the notification. If not specified, nothing will be
-shown to the user, 0-200 characters.}
+\item{text}{(Optional). Text of the notification. If not specified, nothing
+will be shown to the user, 0-200 characters.}
 
-\item{show_alert}{(Optional). If \code{TRUE}, an alert will be shown by the client instead
-of a notification at the top of the chat screen. Defaults to \code{FALSE}.}
+\item{show_alert}{(Optional). If \code{TRUE}, an alert will be shown by the
+client instead of a notification at the top of the chat screen. Defaults
+to \code{FALSE}.}
 
 \item{url}{(Optional). URL that will be opened by the user's client.}
 
-\item{cache_time}{(Optional). The maximum amount of time in seconds that the result of the
-callback query may be cached client-side. Telegram apps will support caching
-starting in version 3.14. Defaults to 0.}
+\item{cache_time}{(Optional). The maximum amount of time in seconds that the
+result of the callback query may be cached client-side. Telegram apps
+will support caching starting in version 3.14. Defaults to 0.}
 }
 \description{
-Use this method to send answers to callback queries sent from 
-\href{https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating}{inline keyboard}
-The answer will be displayed to the user as a notification at
-the top of the chat screen or as an alert. On success, \code{TRUE}
-is returned.
+Use this method to send answers to callback queries sent from inline
+keyboards. The answer will be displayed to the user as a notification at the
+top of the chat screen or as an alert. On success, \code{TRUE} is returned.
 }
 \details{
 You can also use it's snake_case equivalent \code{answer_callback_query}.

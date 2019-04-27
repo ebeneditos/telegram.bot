@@ -20,12 +20,12 @@ is.Bot(x)
 \item{base_file_url}{(Optional). Telegram Bot API file URL.}
 
 \item{request_config}{(Optional). Additional configuration settings
-to be passed to the bot's POST requests. See the \code{config}
-parameter from \code{?httr::POST} for further details.
+    to be passed to the bot's POST requests. See the \code{config}
+    parameter from \code{?httr::POST} for further details.
 
-The \code{request_config} settings are very
-useful for the advanced users who would like to control the
-default timeouts and/or control the proxy used for http communication.}
+    The \code{request_config} settings are very
+    useful for the advanced users who would like to control the
+    default timeouts and/or control the proxy used for HTTP communication.}
 
 \item{x}{Object to be tested.}
 }
@@ -82,7 +82,9 @@ You can also use its methods \code{snake_case} equivalent.
 bot <- Bot(token = "TOKEN")
 
 # In case you want to set a proxy (see ?httr:use_proxy)
-bot <- Bot(token = "TOKEN",
-           request_config = httr::use_proxy(...))
+bot <- Bot(
+  token = "TOKEN",
+  request_config = httr::use_proxy(...)
+)
 }
 }

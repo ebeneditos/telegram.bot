@@ -13,34 +13,37 @@ sendVoice(chat_id, voice, duration = NULL, caption = NULL,
 the target channel.}
 
 \item{voice}{Voice file to send. Pass a file_id as String to send a voice
-file that exists on the Telegram servers (recommended), pass an HTTP URL as a String
-for Telegram to get a voice file from the Internet, or upload a local voice file
-file by passing a file path.}
+file that exists on the Telegram servers (recommended), pass an HTTP URL
+as a String for Telegram to get a voice file from the Internet, or
+upload a local voice file file by passing a file path.}
 
 \item{duration}{(Optional). Duration of sent audio in seconds.}
 
 \item{caption}{(Optional). Voice message caption, 0-1024 characters.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
  \item{\code{\link{ReplyKeyboardRemove}}}
  \item{\code{\link{ForceReply}}}}}
 
-\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want Telegram apps to show bold,
-italic, fixed-width text or inline URLs in your bot's message.}
+\item{parse_mode}{(Optional). Send 'Markdown' or 'HTML', if you want
+Telegram apps to show bold, italic, fixed-width text or inline URLs in
+your bot's message.}
 }
 \description{
-Use this method to send audio files, if you want Telegram clients to display the file
-as a playable voice message. For this to work, your audio must be in an \code{.ogg} file
-encoded with OPUS (other formats may be sent with \code{\link{sendAudio}} or \code{\link{sendDocument}}).
+Use this method to send audio files, if you want Telegram clients to display
+the file as a playable voice message. For this to work, your audio must be
+in an \code{.ogg} file encoded with OPUS (other formats may be sent with
+\code{\link{sendAudio}} or \code{\link{sendDocument}}).
 }
 \details{
 You can also use it's snake_case equivalent \code{send_voice}.
@@ -49,9 +52,11 @@ You can also use it's snake_case equivalent \code{send_voice}.
 \dontrun{
 bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
-voice_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
+ogg_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
 
-bot$sendVoice(chat_id = chat_id,
-              voice = voice_url)
+bot$sendVoice(
+  chat_id = chat_id,
+  voice = ogg_url
+)
 }
 }

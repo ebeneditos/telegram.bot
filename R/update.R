@@ -4,30 +4,32 @@
 #' Get an update's chat ID
 #'
 #' Get the \code{id} from the \code{\link{Update}}'s effective chat.
-from_chat_id <- function(){
-  
-  if (!is.null(private$.from_chat_id))
+from_chat_id <- function() {
+  if (!is.null(private$.from_chat_id)) {
     return(private$.from_chat_id)
-  
+  }
+
   from_chat_id <- self$effective_chat()$id
-  
+
   private$.from_chat_id <- from_chat_id
-  return(from_chat_id)
+
+  from_chat_id
 }
 
 
 #' Get an update's user ID
 #'
 #' Get the \code{id} from the \code{\link{Update}}'s effective user.
-from_user_id <- function(){
-  
-  if (!is.null(private$.from_user_id))
+from_user_id <- function() {
+  if (!is.null(private$.from_user_id)) {
     return(private$.from_user_id)
-  
+  }
+
   from_user_id <- self$effective_user()$id
-  
+
   private$.from_user_id <- from_user_id
-  return(from_user_id)
+
+  from_user_id
 }
 
 
@@ -37,30 +39,30 @@ from_user_id <- function(){
 #' update this is. Will be \code{None} for \code{inline_query},
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
-effective_chat <- function(){ # nocov start
+effective_chat <- function() { # nocov start
 
-  if (!is.null(private$.effective_chat))
+  if (!is.null(private$.effective_chat)) {
     return(private$.effective_chat)
+  }
 
   chat <- NULL
 
-  if (!is.null(self$message))
+  if (!is.null(self$message)) {
     chat <- self$message$chat
-
-  else if (!is.null(self$edited_message))
+  } else if (!is.null(self$edited_message)) {
     chat <- self$edited_message$chat
-
-  else if (!is.null(self$callback_query) && !is.null(self$callback_query$message))
+  } else if (!is.null(self$callback_query) &&
+    !is.null(self$callback_query$message)) {
     chat <- self$callback_query$message$chat
-
-  else if (!is.null(self$channel_post))
+  } else if (!is.null(self$channel_post)) {
     chat <- self$channel_post$chat
-
-  else if (!is.null(self$edited_channel_post))
+  } else if (!is.null(self$edited_channel_post)) {
     chat <- self$edited_channel_post$chat
+  }
 
   private$.effective_chat <- chat
-  return(chat)
+
+  chat
 } # nocov end
 
 
@@ -68,36 +70,33 @@ effective_chat <- function(){ # nocov start
 #'
 #' The user that sent this update, no matter what kind of update this
 #' is. Will be \code{NULL} for \code{channel_post}.
-effective_user <- function(){ # nocov start
-  
-  if (!is.null(private$.effective_user))
+effective_user <- function() { # nocov start
+
+  if (!is.null(private$.effective_user)) {
     return(private$.effective_user)
-  
+  }
+
   user <- NULL
-  
-  if (!is.null(self$message))
+
+  if (!is.null(self$message)) {
     user <- self$message$from
-  
-  else if (!is.null(self$edited_message))
+  } else if (!is.null(self$edited_message)) {
     user <- self$edited_message$from
-  
-  else if (!is.null(self$inline_query))
+  } else if (!is.null(self$inline_query)) {
     user <- self$inline_query$from
-  
-  else if (!is.null(self$chosen_inline_result))
+  } else if (!is.null(self$chosen_inline_result)) {
     user <- self$chosen_inline_result$from
-  
-  else if (!is.null(self$callback_query))
+  } else if (!is.null(self$callback_query)) {
     user <- self$callback_query$from
-  
-  else if (!is.null(self$shipping_query))
+  } else if (!is.null(self$shipping_query)) {
     user <- self$shipping_query$from
-  
-  else if (!is.null(self$pre_checkout_query))
+  } else if (!is.null(self$pre_checkout_query)) {
     user <- self$pre_checkout_query$from
-  
+  }
+
   private$.effective_user <- user
-  return(user)
+
+  user
 } # nocov end
 
 
@@ -107,30 +106,29 @@ effective_user <- function(){ # nocov start
 #' update this is. Will be \code{None} for \code{inline_query},
 #' \code{chosen_inline_result}, \code{callback_query} from inline messages,
 #' \code{shipping_query} and \code{pre_checkout_query}.
-effective_message <- function(){ # nocov start
+effective_message <- function() { # nocov start
 
-  if (!is.null(private$.effective_message))
+  if (!is.null(private$.effective_message)) {
     return(private$.effective_message)
+  }
 
   message <- NULL
 
-  if (!is.null(self$message))
+  if (!is.null(self$message)) {
     message <- self$message
-
-  else if (!is.null(self$edited_message))
+  } else if (!is.null(self$edited_message)) {
     message <- self$edited_message
-
-  else if (!is.null(self$callback_query))
+  } else if (!is.null(self$callback_query)) {
     message <- self$callback_query$message
-
-  else if (!is.null(self$channel_post))
+  } else if (!is.null(self$channel_post)) {
     message <- self$channel_post
-
-  else if (!is.null(self$edited_channel_post))
+  } else if (!is.null(self$edited_channel_post)) {
     message <- self$edited_channel_post
+  }
 
   private$.effective_message <- message
-  return(message)
+
+  message
 } # nocov end
 
 
@@ -138,7 +136,8 @@ effective_message <- function(){ # nocov start
 
 #' Represent an update
 #'
-#' This object represents an incoming \href{https://core.telegram.org/bots/api#update}{Update}.
+#' This object represents an incoming
+#' \href{https://core.telegram.org/bots/api#update}{Update}.
 #'
 #' @docType class
 #' @format An \code{\link{R6Class}} object.
@@ -155,71 +154,61 @@ effective_message <- function(){ # nocov start
 #'     \item{\code{\link{effective_message}}}{To get the message
 #'     included in this update, no matter what kind of  update this is.}}
 #' @export
-Update <- function(data){
+Update <- function(data) {
   UpdateClass$new(data)
 }
 
 
-UpdateClass <-
-  R6::R6Class("Update",
-              public = list(
+UpdateClass <- R6::R6Class("Update",
+  public = list(
+    initialize = function(data) {
+      self$update_id <- as.numeric(data$update_id)
+      self$message <- data$message
+      self$edited_message <- data$edited_message
+      self$inline_query <- data$inline_query
+      self$chosen_inline_result <- data$chosen_inline_result
+      self$callback_query <- data$callback_query
+      self$shipping_query <- data$shipping_query
+      self$pre_checkout_query <- data$pre_checkout_query
+      self$channel_post <- data$channel_post
+      self$edited_channel_post <- data$edited_channel_post
+      if (!is.null(self$message)) {
+        self$message$chat_id <- self$message$chat$id
+        self$message$from_user <- self$message$from$id
+      }
+    },
 
-                ## args
-                update_id = NULL,
-                message = NULL,
-                edited_message = NULL,
-                inline_query = NULL,
-                chosen_inline_result = NULL,
-                callback_query = NULL,
-                shipping_query = NULL,
-                pre_checkout_query = NULL,
-                channel_post = NULL,
-                edited_channel_post = NULL,
+    # Methods
+    effective_user = effective_user,
+    effective_chat = effective_chat,
+    effective_message = effective_message,
+    from_chat_id = from_chat_id,
+    from_user_id = from_user_id,
 
-                ## initialize
-                initialize =
-                  function(data){
-
-                    # Required
-                    self$update_id <- as.numeric(data$update_id)
-                    # Optionals
-                    self$message <- data$message
-                    self$edited_message <- data$edited_message
-                    self$inline_query <- data$inline_query
-                    self$chosen_inline_result <- data$chosen_inline_result
-                    self$callback_query <- data$callback_query
-                    self$shipping_query <- data$shipping_query
-                    self$pre_checkout_query <- data$pre_checkout_query
-                    self$channel_post <- data$channel_post
-                    self$edited_channel_post <- data$edited_channel_post
-                    # add chat_id to message
-                    if (!is.null(self$message)){
-                      self$message$chat_id <- self$message$chat$id
-                      self$message$from_user <- self$message$from$id
-                    }
-                },
-
-                ## methods
-                effective_user = effective_user,
-                effective_chat = effective_chat,
-                effective_message = effective_message,
-                from_chat_id = from_chat_id,
-                from_user_id = from_user_id
-              ),
-              private = list(
-
-                ##args
-                .effective_user = NULL,
-                .effective_chat = NULL,
-                .effective_message = NULL,
-                .from_chat_id = NULL,
-                .from_user_id = NULL
-              )
+    # Params
+    update_id = NULL,
+    message = NULL,
+    edited_message = NULL,
+    inline_query = NULL,
+    chosen_inline_result = NULL,
+    callback_query = NULL,
+    shipping_query = NULL,
+    pre_checkout_query = NULL,
+    channel_post = NULL,
+    edited_channel_post = NULL
+  ),
+  private = list(
+    .effective_user = NULL,
+    .effective_chat = NULL,
+    .effective_message = NULL,
+    .from_chat_id = NULL,
+    .from_user_id = NULL
+  )
 )
 
 #' @rdname Update
 #' @param x Object to be tested.
 #' @export
-is.Update <- function(x){
+is.Update <- function(x) {
   inherits(x, "Update")
 }

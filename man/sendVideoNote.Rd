@@ -12,22 +12,23 @@ sendVideoNote(chat_id, video_note, duration = NULL, length = NULL,
 \item{chat_id}{Unique identifier for the target chat or username of
 the target channel.}
 
-\item{video_note}{Video note file to send. Pass a file_id as String to send a video
-note that exists on the Telegram servers (recommended), pass an HTTP URL as a String
-for Telegram to get a video note from the Internet, or upload a local video note
-file by passing a file path.}
+\item{video_note}{Video note file to send. Pass a file_id as String to send
+a video note that exists on the Telegram servers (recommended), pass an
+HTTP URL as a String for Telegram to get a video note from the Internet,
+or upload a local video note file by passing a file path.}
 
 \item{duration}{(Optional). Duration of sent audio in seconds.}
 
 \item{length}{(Optional). Video width and height.}
 
-\item{disable_notification}{(Optional). Sends the message silently. Users will
-receive a notification with no sound.}
+\item{disable_notification}{(Optional). Sends the message silently. Users
+will receive a notification with no sound.}
 
 \item{reply_to_message_id}{(Optional). If the message is a reply, ID of the
 original message.}
 
-\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be either:
+\item{reply_markup}{(Optional). A Reply Markup parameter object, it can be
+either:
 \itemize{
  \item{\code{\link{ReplyKeyboardMarkup}}}
  \item{\code{\link{InlineKeyboardMarkup}}}
@@ -46,7 +47,9 @@ bot <- Bot(token = bot_token("RTelegramBot"))
 chat_id <- user_id("Me")
 video_note_url <- "http://techslides.com/demos/sample-videos/small.mp4"
 
-bot$sendVideoNote(chat_id = chat_id,
-                  video_note = video_note_url)
+bot$sendVideoNote(
+  chat_id = chat_id,
+  video_note = video_note_url
+)
 }
 }

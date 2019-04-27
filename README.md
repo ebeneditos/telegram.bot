@@ -33,14 +33,16 @@ You can quickly build a chatbot with a few lines:
 ```r
 library(telegram.bot)
 
-start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat$id,
-                  text = sprintf("Hello %s!", update$message$from$first_name))
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat$id,
+    text = sprintf("Hello %s!", update$message$from$first_name)
+  )
 }
 
 updater <- Updater("TOKEN") + CommandHandler("start", start)
 
-updater$start_polling() # Send '/start' to the bot
+updater$start_polling() # Send "/start" to the bot
 ```
 
 If you don't have a `TOKEN`, you can follow the steps explained [below](#generating-an-access-token) to generate one.
@@ -60,46 +62,55 @@ print(bot$getMe())
 updates <- bot$getUpdates()
 
 # Retrieve your chat id
-# Note: you should text the bot before calling 'getUpdates'
+# Note: you should text the bot before calling `getUpdates`
 chat_id <- updates[[1L]]$from_chat_id()
 
 # Send message
-bot$sendMessage(chat_id = chat_id,
-                text = "foo *bold* _italic_",
-                parse_mode = "Markdown")
+bot$sendMessage(chat_id,
+  text = "foo *bold* _italic_",
+  parse_mode = "Markdown"
+)
 
 # Send photo
-bot$sendPhoto(chat_id = chat_id,
-              photo = "https://telegram.org/img/t_logo.png")
+bot$sendPhoto(chat_id,
+  photo = "https://telegram.org/img/t_logo.png"
+)
 
 # Send audio
-bot$sendAudio(chat_id = chat_id,
-              audio = "http://www.largesound.com/ashborytour/sound/brobob.mp3")
+bot$sendAudio(chat_id,
+  audio = "http://www.largesound.com/ashborytour/sound/brobob.mp3"
+)
 
 # Send document
-bot$sendDocument(chat_id = chat_id,
-                 document = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf")
+bot$sendDocument(chat_id,
+  document = "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/telegram.bot.pdf"
+)
 
 # Send sticker
-bot$sendSticker(chat_id = chat_id,
-                sticker = "https://www.gstatic.com/webp/gallery/1.webp")
+bot$sendSticker(chat_id,
+  sticker = "https://www.gstatic.com/webp/gallery/1.webp"
+)
 
 # Send video
-bot$sendVideo(chat_id = chat_id,
-              video = "http://techslides.com/demos/sample-videos/small.mp4")
+bot$sendVideo(chat_id,
+  video = "http://techslides.com/demos/sample-videos/small.mp4"
+)
 
 # Send gif
-bot$sendAnimation(chat_id = chat_id,
-                  animation = "https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif")
+bot$sendAnimation(chat_id,
+  animation = "https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif"
+)
 
 # Send location
-bot$sendLocation(chat_id = chat_id,
-                 latitude = 51.521727,
-                 longitude = -0.117255)
+bot$sendLocation(chat_id,
+  latitude = 51.521727,
+  longitude = -0.117255
+)
 
 # Send chat action
-bot$sendChatAction(chat_id = chat_id,
-                   action = "typing")
+bot$sendChatAction(chat_id,
+  action = "typing"
+)
 
 # Get user profile photos
 photos <- bot$getUserProfilePhotos(user_id = chat_id)
@@ -109,7 +120,7 @@ file_id <- photos$photos[[1L]][[1L]]$file_id
 bot$getFile(file_id, destfile = "photo.jpg")
 ```
 
-Note that you can also send local files by passing their path instead of an URL. Additionaly, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
+Note that you can also send local files by passing their path instead of an URL. Additionally, all methods accept their equivalent `snake_case` syntax (e.g. `bot$get_me()` is equivalent to `bot$getMe()`).
 
 ## Generating an Access Token
 

@@ -10,8 +10,8 @@ ForceReply(force_reply = TRUE, selective = NULL)
 \item{force_reply}{Shows reply interface to the user, as if they manually
 selected the bot's message and tapped 'Reply'. Defaults to \code{TRUE}.}
 
-\item{selective}{(Optional). Use this parameter if you want to show the keyboard
-to specific users only.}
+\item{selective}{(Optional). Use this parameter if you want to show the
+keyboard to specific users only.}
 }
 \description{
 Upon receiving a message with this object, Telegram clients will display

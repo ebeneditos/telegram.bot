@@ -21,7 +21,7 @@ if the handler is of type \code{\link{ErrorHandler}}.
 updater <- Updater(token = "TOKEN")
 
 # Create error callback
-error_callback <- function(bot, error){
+error_callback <- function(bot, error) {
   warning(simpleWarning(conditionMessage(error), call = "Updates polling"))
 }
 

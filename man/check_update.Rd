@@ -11,5 +11,6 @@ check_update(update)
 }
 \description{
 This method is called to determine if an update should be handled by
-this handler instance. It should always be overridden (see \code{\link{Handler}}).
+this handler instance. It should always be overridden (see
+\code{\link{Handler}}).
 }

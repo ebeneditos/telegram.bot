@@ -15,5 +15,6 @@ See \code{\link{Handler}} for information about this function.}
 \item{pattern}{(Optional). Regex pattern to test.}
 }
 \description{
-\code{\link{Handler}} class to handle Telegram callback queries. Optionally based on a regex.
+\code{\link{Handler}} class to handle Telegram callback queries. Optionally
+based on a regex.
 }

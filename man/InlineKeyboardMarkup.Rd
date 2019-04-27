@@ -11,7 +11,8 @@ InlineKeyboardMarkup(inline_keyboard)
 \code{\link{InlineKeyboardButton}} objects.}
 }
 \description{
-This object represents an \href{https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating}{inline keyboard}
+This object represents an
+\href{https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating}{inline keyboard}
 that appears right next to the message it belongs to.
 }
 \details{
@@ -32,20 +33,28 @@ chat_id <- "CHAT_ID"
 text <- "Could you type their phone number, please?"
 IKM <- InlineKeyboardMarkup(
   inline_keyboard = list(
-    list(InlineKeyboardButton(1),
-         InlineKeyboardButton(2),
-         InlineKeyboardButton(3)),
-    list(InlineKeyboardButton(4),
-         InlineKeyboardButton(5),
-         InlineKeyboardButton(6)),
-    list(InlineKeyboardButton(7),
-         InlineKeyboardButton(8),
-         InlineKeyboardButton(9)),
-    list(InlineKeyboardButton("*"),
-         InlineKeyboardButton(0),
-         InlineKeyboardButton("#"))
+    list(
+      InlineKeyboardButton(1),
+      InlineKeyboardButton(2),
+      InlineKeyboardButton(3)
+    ),
+    list(
+      InlineKeyboardButton(4),
+      InlineKeyboardButton(5),
+      InlineKeyboardButton(6)
+    ),
+    list(
+      InlineKeyboardButton(7),
+      InlineKeyboardButton(8),
+      InlineKeyboardButton(9)
+    ),
+    list(
+      InlineKeyboardButton("*"),
+      InlineKeyboardButton(0),
+      InlineKeyboardButton("#")
     )
   )
+)
 
 # Send Inline Keyboard
 bot$sendMessage(chat_id, text, reply_markup = IKM)
