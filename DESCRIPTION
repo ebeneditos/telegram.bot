@@ -1,7 +1,7 @@
 Package: telegram.bot
 Type: Package
 Title: Develop a 'Telegram Bot' with R
-Version: 2.3.0
+Version: 2.3.1
 Authors@R: person("Ernest", "Benedito", role = c("aut", "cre"), email = "ebeneditos@gmail.com")
 Description: Provides a pure interface for the 'Telegram Bot API' <http://core.telegram.org/bots/api>. In addition to the pure API implementation, it features a number of tools to make the development of 'Telegram' bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
 URL: http://github.com/ebeneditos/telegram.bot
