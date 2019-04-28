@@ -1,7 +1,7 @@
 
 ## telegram.bot 2.3.1
 
-- Bug affecting `reply_markup` parameter from `editMessageReplyMarkup()` fixed ([#9](https://github.com/ebeneditos/telegram.bot/issues/9)). Thanks to [Diogo Tayt-son](hhttps://github.com/dtaytson) for reporting.
+- Bug affecting `reply_markup` parameter from `editMessageReplyMarkup()` fixed ([#9](https://github.com/ebeneditos/telegram.bot/issues/9)). Thanks to [Diogo Tayt-son](https://github.com/dtaytson) for reporting.
 
 ## telegram.bot 2.3.0
 
