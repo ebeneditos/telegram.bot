@@ -8,8 +8,7 @@ getUpdates(offset = NULL, limit = 100L, timeout = 0L,
   allowed_updates = NULL)
 }
 \arguments{
-\item{offset}{(Optional). Identifier of the first update to be returned
-returned.}
+\item{offset}{(Optional). Identifier of the first update to be returned.}
 
 \item{limit}{(Optional). Limits the number of updates to be retrieved.
 Values between 1-100 are accepted. Defaults to 100.}

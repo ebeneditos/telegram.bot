@@ -44,6 +44,8 @@ You can also use its methods \code{snake_case} equivalent.
     \item{\code{\link{answerInlineQuery}}}{Send answers to an inline query}
     \item{\code{\link{deleteMessage}}}{Delete a message}
     \item{\code{\link{deleteWebhook}}}{Remove webhook integration}
+    \item{\code{\link{editMessageText}}}{Edit a text message}
+    \item{\code{\link{editMessageCaption}}}{Edit a caption}
     \item{\code{\link{editMessageReplyMarkup}}}{Edit the reply
     markup of a message}
     \item{\code{\link{forwardMessage}}}{Forward messages of any
