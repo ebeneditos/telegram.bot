@@ -1190,6 +1190,143 @@ answerInlineQuery <- function(inline_query_id,
 } # nocov end
 
 
+#' Edit a text message
+#'
+#' Use this method to edit text messages.
+#'
+#' You can also use it's snake_case equivalent
+#' \code{edit_message_text}.
+#' @param chat_id (Optional). Unique identifier for the target chat or username
+#'     of the target channel.
+#' @param message_id (Optional). Required if inline_message_id is not
+#'     specified. Identifier of the sent message.
+#' @param inline_message_id (Optional). Required if chat_id and message_id are
+#'     not specified. Identifier of the inline message.
+#' @param text New text of the message.
+#' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want
+#'     Telegram apps to show bold, italic, fixed-width text or inline URLs in
+#'     your bot's message.
+#' @param disable_web_page_preview (Optional). Disables link previews for links
+#'     in this message.
+#' @param reply_markup (Optional). A Reply Markup parameter object, it can be
+#'     either:
+#'     \itemize{
+#'      \item{\code{\link{ReplyKeyboardMarkup}}}
+#'      \item{\code{\link{InlineKeyboardMarkup}}}
+#'      \item{\code{\link{ReplyKeyboardRemove}}}
+#'      \item{\code{\link{ForceReply}}}
+#'    }
+editMessageText <- function(chat_id = NULL,
+                            message_id = NULL,
+                            inline_message_id = NULL,
+                            text,
+                            parse_mode = NULL,
+                            disable_web_page_preview = NULL,
+                            reply_markup = NULL) { # nocov start
+  if (is.null(inline_message_id) & (is.null(chat_id) | is.null(message_id))) {
+    stop(
+      "Both `chat_id` and `message_id` are required ",
+      "when `inline_message_id` is not specified."
+    )
+  }
+  
+  url <- sprintf("%s/editMessageText", private$base_url)
+  
+  data <- list(
+    text = text
+  )
+  
+  if (!missing(chat_id)) {
+    data[["chat_id"]] <- chat_id
+  }
+  if (!missing(message_id)) {
+    data[["message_id"]] <- message_id
+  }
+  if (!missing(inline_message_id)) {
+    data[["inline_message_id"]] <- inline_message_id
+  }
+  if (!missing(parse_mode)) {
+    data[["parse_mode"]] <- parse_mode
+  }
+  if (!missing(disable_web_page_preview)) {
+    data[["disable_web_page_preview"]] <- disable_web_page_preview
+  }
+  if (!missing(reply_markup)) {
+    data[["reply_markup"]] <- to_json(reply_markup)
+  }
+  
+  result <- private$request(url, data)
+  
+  invisible(result)
+} # nocov end
+
+
+#' Edit a caption
+#'
+#' Use this method to edit captions of messages.
+#'
+#' You can also use it's snake_case equivalent
+#' \code{edit_message_caption}.
+#' @param chat_id (Optional). Unique identifier for the target chat or username
+#'     of the target channel.
+#' @param message_id (Optional). Required if inline_message_id is not
+#'     specified. Identifier of the sent message.
+#' @param inline_message_id (Optional). Required if chat_id and message_id are
+#'     not specified. Identifier of the inline message.
+#' @param caption (Optional). New caption of the message.
+#' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want
+#'     Telegram apps to show bold, italic, fixed-width text or inline URLs in
+#'     your bot's message.
+#' @param reply_markup (Optional). A Reply Markup parameter object, it can be
+#'     either:
+#'     \itemize{
+#'      \item{\code{\link{ReplyKeyboardMarkup}}}
+#'      \item{\code{\link{InlineKeyboardMarkup}}}
+#'      \item{\code{\link{ReplyKeyboardRemove}}}
+#'      \item{\code{\link{ForceReply}}}
+#'    }
+editMessageCaption <- function(chat_id = NULL,
+                               message_id = NULL,
+                               inline_message_id = NULL,
+                               caption = NULL,
+                               parse_mode = NULL,
+                               reply_markup = NULL) { # nocov start
+  if (is.null(inline_message_id) & (is.null(chat_id) | is.null(message_id))) {
+    stop(
+      "Both `chat_id` and `message_id` are required ",
+      "when `inline_message_id` is not specified."
+    )
+  }
+  
+  url <- sprintf("%s/editMessageCaption", private$base_url)
+  
+  data <- list()
+  
+  if (!missing(chat_id)) {
+    data[["chat_id"]] <- chat_id
+  }
+  if (!missing(message_id)) {
+    data[["message_id"]] <- message_id
+  }
+  if (!missing(inline_message_id)) {
+    data[["inline_message_id"]] <- inline_message_id
+  }
+  if (!missing(caption)) {
+    data[["caption"]] <- caption
+  }
+  if (!missing(parse_mode)) {
+    data[["parse_mode"]] <- parse_mode
+  }
+  if (!missing(reply_markup)) {
+    data[["reply_markup"]] <- to_json(reply_markup)
+  }
+  
+  result <- private$request(url, data)
+  
+  invisible(result)
+} # nocov end
+
+
 #' Edit a reply markup
 #'
 #' Use this method to edit only the reply markup of messages sent by the bot or
@@ -1258,8 +1395,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
 #' \code{\link{Updater}}.
 #'
 #' You can also use it's snake_case equivalent \code{get_updates}.
-#' @param offset (Optional). Identifier of the first update to be returned
-#'     returned.
+#' @param offset (Optional). Identifier of the first update to be returned.
 #' @param limit (Optional). Limits the number of updates to be retrieved.
 #'     Values between 1-100 are accepted. Defaults to 100.
 #' @param timeout (Optional). Timeout in seconds for long polling. Defaults to
@@ -1470,6 +1606,8 @@ set_token <- function(token) {
 #'     \item{\code{\link{answerInlineQuery}}}{Send answers to an inline query}
 #'     \item{\code{\link{deleteMessage}}}{Delete a message}
 #'     \item{\code{\link{deleteWebhook}}}{Remove webhook integration}
+#'     \item{\code{\link{editMessageText}}}{Edit a text message}
+#'     \item{\code{\link{editMessageCaption}}}{Edit a caption}
 #'     \item{\code{\link{editMessageReplyMarkup}}}{Edit the reply
 #'     markup of a message}
 #'     \item{\code{\link{forwardMessage}}}{Forward messages of any
@@ -1592,6 +1730,10 @@ BotClass <- R6::R6Class("Bot",
     answer_callback_query = answerCallbackQuery,
     answerInlineQuery = answerInlineQuery,
     answer_inline_query = answerInlineQuery,
+    editMessageText = editMessageText,
+    edit_message_text = editMessageText,
+    editMessageCaption = editMessageCaption,
+    edit_message_caption = editMessageCaption,
     editMessageReplyMarkup = editMessageReplyMarkup,
     edit_message_reply_markup = editMessageReplyMarkup,
     getUpdates = getUpdates,
