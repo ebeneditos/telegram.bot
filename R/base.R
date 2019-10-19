@@ -32,10 +32,10 @@
 #'     text = update$message$text
 #'   )
 #' }
-#' 
+#'
 #' updater <- Updater("TOKEN") + CommandHandler("start", start) +
 #'   MessageHandler(echo, MessageFilters$text)
-#' 
+#'
 #' # And keep adding...
 #' caps <- function(bot, update, args) {
 #'   if (length(args > 0L)) {
@@ -46,9 +46,9 @@
 #'     )
 #'   }
 #' }
-#' 
+#'
 #' updater <- updater + CommandHandler("caps", caps, pass_args = TRUE)
-#' 
+#'
 #' # Give it a try!
 #' updater$start_polling()
 #' # Send '/start' to the bot, '/caps foo' or just a simple text

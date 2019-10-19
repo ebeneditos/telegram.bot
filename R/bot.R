@@ -125,7 +125,7 @@ getMe <- function() {
 #' \dontrun{
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
-#' 
+#'
 #' bot$sendMessage(
 #'   chat_id = chat_id,
 #'   text = "foo *bold* _italic_",
@@ -264,7 +264,7 @@ forwardMessage <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' photo_url <- "https://telegram.org/img/t_logo.png"
-#' 
+#'
 #' bot$sendPhoto(
 #'   chat_id = chat_id,
 #'   photo = photo_url,
@@ -346,7 +346,7 @@ sendPhoto <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' audio_url <- "http://www.largesound.com/ashborytour/sound/brobob.mp3"
-#' 
+#'
 #' bot$sendAudio(
 #'   chat_id = chat_id,
 #'   audio = audio_url
@@ -436,7 +436,7 @@ sendAudio <- function(chat_id,
 #'   "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/",
 #'   "telegram.bot.pdf"
 #' )
-#' 
+#'
 #' bot$sendDocument(
 #'   chat_id = chat_id,
 #'   document = document_url
@@ -510,7 +510,7 @@ sendDocument <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' sticker_url <- "https://www.gstatic.com/webp/gallery/1.webp"
-#' 
+#'
 #' bot$sendSticker(
 #'   chat_id = chat_id,
 #'   sticker = sticker_url
@@ -582,7 +582,7 @@ sendSticker <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' video_url <- "http://techslides.com/demos/sample-videos/small.mp4"
-#' 
+#'
 #' bot$sendVideo(
 #'   chat_id = chat_id,
 #'   video = video_url
@@ -670,7 +670,7 @@ sendVideo <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' video_note_url <- "http://techslides.com/demos/sample-videos/small.mp4"
-#' 
+#'
 #' bot$sendVideoNote(
 #'   chat_id = chat_id,
 #'   video_note = video_note_url
@@ -748,7 +748,7 @@ sendVideoNote <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' animation_url <- "http://techslides.com/demos/sample-videos/small.mp4"
-#' 
+#'
 #' bot$sendAnimation(
 #'   chat_id = chat_id,
 #'   animation = animation_url
@@ -838,7 +838,7 @@ sendAnimation <- function(chat_id,
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
 #' ogg_url <- "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
-#' 
+#'
 #' bot$sendVoice(
 #'   chat_id = chat_id,
 #'   voice = ogg_url
@@ -909,7 +909,7 @@ sendVoice <- function(chat_id,
 #' \dontrun{
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
-#' 
+#'
 #' bot$sendLocation(
 #'   chat_id = chat_id,
 #'   latitude = 51.521727,
@@ -969,7 +969,7 @@ sendLocation <- function(chat_id,
 #' \dontrun{
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
-#' 
+#'
 #' bot$sendChatAction(
 #'   chat_id = chat_id,
 #'   action = "typing"
@@ -1003,7 +1003,7 @@ sendChatAction <- function(chat_id,
 #' \dontrun{
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
-#' 
+#'
 #' photos <- bot$getUserProfilePhotos(chat_id = chat_id)
 #' }
 getUserProfilePhotos <- function(user_id,
@@ -1046,9 +1046,9 @@ getUserProfilePhotos <- function(user_id,
 #' \dontrun{
 #' bot <- Bot(token = bot_token("RTelegramBot"))
 #' chat_id <- user_id("Me")
-#' 
+#'
 #' photos <- bot$getUserProfilePhotos(chat_id = chat_id)
-#' 
+#'
 #' # Download user profile photo
 #' file_id <- photos$photos[[1L]][[1L]]$file_id
 #' bot$getFile(file_id, destfile = "photo.jpg")
@@ -1229,13 +1229,13 @@ editMessageText <- function(chat_id = NULL,
       "when `inline_message_id` is not specified."
     )
   }
-  
+
   url <- sprintf("%s/editMessageText", private$base_url)
-  
+
   data <- list(
     text = text
   )
-  
+
   if (!missing(chat_id)) {
     data[["chat_id"]] <- chat_id
   }
@@ -1254,9 +1254,9 @@ editMessageText <- function(chat_id = NULL,
   if (!missing(reply_markup)) {
     data[["reply_markup"]] <- to_json(reply_markup)
   }
-  
+
   result <- private$request(url, data)
-  
+
   invisible(result)
 } # nocov end
 
@@ -1297,11 +1297,11 @@ editMessageCaption <- function(chat_id = NULL,
       "when `inline_message_id` is not specified."
     )
   }
-  
+
   url <- sprintf("%s/editMessageCaption", private$base_url)
-  
+
   data <- list()
-  
+
   if (!missing(chat_id)) {
     data[["chat_id"]] <- chat_id
   }
@@ -1320,9 +1320,9 @@ editMessageCaption <- function(chat_id = NULL,
   if (!missing(reply_markup)) {
     data[["reply_markup"]] <- to_json(reply_markup)
   }
-  
+
   result <- private$request(url, data)
-  
+
   invisible(result)
 } # nocov end
 
@@ -1416,7 +1416,7 @@ editMessageReplyMarkup <- function(chat_id = NULL,
 #' @examples
 #' \dontrun{
 #' bot <- Bot(token = bot_token("RTelegramBot"))
-#' 
+#'
 #' updates <- bot$getUpdates()
 #' }
 getUpdates <- function(offset = NULL,
@@ -1651,7 +1651,7 @@ set_token <- function(token) {
 #' @examples
 #' \dontrun{
 #' bot <- Bot(token = "TOKEN")
-#' 
+#'
 #' # In case you want to set a proxy (see ?httr:use_proxy)
 #' bot <- Bot(
 #'   token = "TOKEN",

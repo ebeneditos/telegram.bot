@@ -63,7 +63,7 @@ is.KeyboardButton <- function(x) {
 #' # Initialize bot
 #' bot <- Bot(token = "TOKEN")
 #' chat_id <- "CHAT_ID"
-#' 
+#'
 #' # Create Custom Keyboard
 #' text <- "Aren't those custom keyboards cool?"
 #' RKM <- ReplyKeyboardMarkup(
@@ -75,7 +75,7 @@ is.KeyboardButton <- function(x) {
 #'   resize_keyboard = FALSE,
 #'   one_time_keyboard = TRUE
 #' )
-#' 
+#'
 #' # Send Custom Keyboard
 #' bot$sendMessage(chat_id, text, reply_markup = RKM)
 #' }
@@ -206,7 +206,7 @@ is.InlineKeyboardButton <- function(x) {
 #' # Initialize bot
 #' bot <- Bot(token = "TOKEN")
 #' chat_id <- "CHAT_ID"
-#' 
+#'
 #' # Create Inline Keyboard
 #' text <- "Could you type their phone number, please?"
 #' IKM <- InlineKeyboardMarkup(
@@ -233,7 +233,7 @@ is.InlineKeyboardButton <- function(x) {
 #'     )
 #'   )
 #' )
-#' 
+#'
 #' # Send Inline Keyboard
 #' bot$sendMessage(chat_id, text, reply_markup = IKM)
 #' }
@@ -281,7 +281,7 @@ InlineKeyboardMarkup <- function(inline_keyboard) {
 #' # Initialize bot
 #' bot <- Bot(token = "TOKEN")
 #' chat_id <- "CHAT_ID"
-#' 
+#'
 #' # Create Custom Keyboard
 #' text <- "Don't forget to send me the answer!"
 #' RKM <- ReplyKeyboardMarkup(
@@ -293,10 +293,10 @@ InlineKeyboardMarkup <- function(inline_keyboard) {
 #'   resize_keyboard = FALSE,
 #'   one_time_keyboard = FALSE
 #' )
-#' 
+#'
 #' # Send Custom Keyboard
 #' bot$sendMessage(chat_id, text, reply_markup = RKM)
-#' 
+#'
 #' # Remove Keyboard
 #' bot$sendMessage(
 #'   chat_id,
@@ -337,10 +337,10 @@ ReplyKeyboardRemove <- function(remove_keyboard = TRUE,
 #' # Initialize bot
 #' bot <- Bot(token = "TOKEN")
 #' chat_id <- "CHAT_ID"
-#' 
+#'
 #' # Set input parameters
 #' text <- "Don't forget to send me the answer!"
-#' 
+#'
 #' # Send reply message
 #' bot$sendMessage(chat_id, text, reply_markup = ForceReply())
 #' }

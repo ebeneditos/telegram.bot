@@ -17,7 +17,7 @@
 #'   "https://github.com/ebeneditos/telegram.bot/raw/gh-pages/docs/",
 #'   "telegram.bot.pdf"
 #' )
-#' 
+#'
 #' result <- InlineQueryResult(
 #'   type = "document",
 #'   id = 1,

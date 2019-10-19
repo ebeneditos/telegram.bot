@@ -20,7 +20,7 @@ not_implemented <- function() stop("Currently not implemented.")
 #' # Add the line (uncomment and replace <bot-token> by your bot TOKEN):
 #' # R_TELEGRAM_BOT_RTelegramBot=<bot-token>
 #' # Save and restart R
-#' 
+#'
 #' bot_token("RTelegramBot")
 #' }
 #' @export
@@ -42,7 +42,7 @@ bot_token <- function(bot_name) {
 #' # Add the line (uncomment and replace <user-id> by your Telegram user ID):
 #' # R_TELEGRAM_USER_Me=<user-id>
 #' # Save and restart R
-#' 
+#'
 #' user_id("Me")
 #' }
 #' @export

@@ -21,12 +21,12 @@
 #'   \code{/command@username}, as bot commands are often called this way.
 #' @examples
 #' \dontrun{
-#' 
+#'
 #' # Initialize bot
 #' bot <- Bot("TOKEN")
 #' username <- bot$getMe()$username
 #' updater <- Updater(bot = bot)
-#' 
+#'
 #' # Add a command
 #' start <- function(bot, update) {
 #'   bot$sendMessage(
@@ -34,7 +34,7 @@
 #'     text = "Hi, I am a bot!"
 #'   )
 #' }
-#' 
+#'
 #' updater <- updater + CommandHandler("start", start, username = username)
 #' }
 #' @export

@@ -25,9 +25,9 @@
 #'     )
 #'   )
 #' }
-#' 
+#'
 #' updater <- Updater("TOKEN") + CommandHandler("start", start)
-#' 
+#'
 #' updater$start_polling(verbose = TRUE)
 #' }
 start_polling <- function(timeout = 10L,
@@ -47,21 +47,24 @@ start_polling <- function(timeout = 10L,
   }
 
   while (private$running) {
-    updates <- tryCatch({
-      self$bot$get_updates(
-        offset = private$last_update_id,
-        timeout = timeout,
-        allowed_updates = allowed_updates
-      )
-    }, error = function(e) {
-      if (identical(conditionMessage(e), interruptError())) {
-        self$stop_polling()
-      } else {
-        if (private$verbose) warning(as.character(e))
-        self$dispatcher$dispatch_error(e)
+    updates <- tryCatch(
+      {
+        self$bot$get_updates(
+          offset = private$last_update_id,
+          timeout = timeout,
+          allowed_updates = allowed_updates
+        )
+      },
+      error = function(e) {
+        if (identical(conditionMessage(e), interruptError())) {
+          self$stop_polling()
+        } else {
+          if (private$verbose) warning(as.character(e))
+          self$dispatcher$dispatch_error(e)
+        }
+        e
       }
-      e
-    })
+    )
 
     if (!is.error(updates)) {
       if (!private$running) {
@@ -105,9 +108,9 @@ start_polling <- function(timeout = 10L,
 #'   # Stop the updater polling
 #'   updater$stop_polling()
 #' }
-#' 
+#'
 #' updater <<- updater + CommandHandler("kill", kill)
-#' 
+#'
 #' updater$start_polling(verbose = TRUE) # Send '/kill' to the bot
 #' }
 stop_polling <- function() {
@@ -156,13 +159,13 @@ stop_polling <- function() {
 #' @examples
 #' \dontrun{
 #' updater <- Updater(token = "TOKEN")
-#' 
+#'
 #' # In case you want to set a proxy (see ?httr:use_proxy)
 #' updater <- Updater(
 #'   token = "TOKEN",
 #'   request_config = httr::use_proxy(...)
 #' )
-#' 
+#'
 #' # Add a handler
 #' start <- function(bot, update) {
 #'   bot$sendMessage(
@@ -174,7 +177,7 @@ stop_polling <- function() {
 #'   )
 #' }
 #' updater <- updater + CommandHandler("start", start)
-#' 
+#'
 #' # Start polling
 #' updater$start_polling(verbose = TRUE) # Send '/start' to the bot
 #' }
@@ -192,9 +195,9 @@ UpdaterClass <- R6::R6Class("Updater",
   inherit = TelegramObject,
   public = list(
     initialize = function(token,
-                              base_url,
-                              base_file_url,
-                              request_config, bot) {
+                          base_url,
+                          base_file_url,
+                          request_config, bot) {
       if (is.null(token) & is.null(bot)) {
         stop("`token` or `bot` must be passed.")
       }

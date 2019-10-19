@@ -19,7 +19,7 @@
 #'   chat_id <- update$message$chat_id
 #'   bot$sendMessage(chat_id = chat_id, text = "Hello")
 #' }
-#' 
+#'
 #' # No filtering
 #' message_handler <- MessageHandler(callback_method, MessageFilters$all)
 #' }

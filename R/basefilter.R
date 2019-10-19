@@ -51,10 +51,10 @@ NULL
 #' \dontrun{
 #' # Create a filter function
 #' text_or_command <- function(message) !is.null(message$text)
-#' 
+#'
 #' # Make it an instance of BaseFilter with its generator:
 #' text_or_command <- BaseFilter(filter = text_or_command)
-#' 
+#'
 #' # Or by coercing it with as.BaseFilter:
 #' text_or_command <- as.BaseFilter(function(message) !is.null(message$text))
 #' }

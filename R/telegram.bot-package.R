@@ -25,16 +25,16 @@
 #' @examples
 #' \dontrun{
 #' library(telegram.bot)
-#' 
+#'
 #' start <- function(bot, update) {
 #'   bot$sendMessage(
 #'     chat_id = update$message$chat_id,
 #'     text = sprintf("Hello %s!", update$message$from$first_name)
 #'   )
 #' }
-#' 
+#'
 #' updater <- Updater("TOKEN") + CommandHandler("start", start)
-#' 
+#'
 #' updater$start_polling() # Send '/start' to the bot
 #' }
 #' @name telegram.bot

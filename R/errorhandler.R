@@ -12,12 +12,12 @@
 #' @examples
 #' \dontrun{
 #' updater <- Updater(token = "TOKEN")
-#' 
+#'
 #' # Create error callback
 #' error_callback <- function(bot, error) {
 #'   warning(simpleWarning(conditionMessage(error), call = "Updates polling"))
 #' }
-#' 
+#'
 #' # Register it to the updater's dispatcher
 #' updater$dispatcher$add_handler(ErrorHandler(error_callback))
 #' # or

@@ -29,7 +29,7 @@
 #' \dontrun{
 #' # Use to filter all video messages
 #' video_handler <- MessageHandler(callback_method, MessageFilters$video)
-#' 
+#'
 #' # To filter all contacts, etc.
 #' contact_handler <- MessageHandler(callback_method, MessageFilters$contact)
 #' }

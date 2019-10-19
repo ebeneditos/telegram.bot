@@ -72,18 +72,18 @@ handle_update <- function(update,
 #'   chat_id <- update$effective_chat()$id
 #'   bot$sendMessage(chat_id = chat_id, text = "Hello")
 #' }
-#' 
+#'
 #' hello_handler <- Handler(callback_method)
-#' 
+#'
 #' # Customizing Handler
 #' check_update <- function(update) {
 #'   TRUE
 #' }
-#' 
+#'
 #' handle_update <- function(update, dispatcher) {
 #'   self$callback(dispatcher$bot, update)
 #' }
-#' 
+#'
 #' foo_handler <- Handler(callback_method,
 #'   check_update = check_update,
 #'   handle_update = handle_update,
