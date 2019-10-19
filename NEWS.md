@@ -1,4 +1,10 @@
 
+## telegram.bot 2.4.0
+
+- New methods have been added to `Bot` class:
+    - `editMessageText()`
+    - `editMessageCaption()`
+
 ## telegram.bot 2.3.1
 
 - Bug affecting `reply_markup` parameter from `editMessageReplyMarkup()` fixed ([#9](https://github.com/ebeneditos/telegram.bot/issues/9)). Thanks to [Diogo Tayt-son](https://github.com/dtaytson) for reporting.
