@@ -1,7 +1,7 @@
 Package: telegram.bot
 Type: Package
 Title: Develop a 'Telegram Bot' with R
-Version: 2.4.0
+Version: 2.4.1
 Authors@R: person("Ernest", "Benedito", email = "ebeneditos@gmail.com",
     role = c("aut", "cre"))
 Description: Provides a pure interface for the 'Telegram Bot API'

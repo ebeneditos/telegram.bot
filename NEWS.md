@@ -1,4 +1,8 @@
 
+## telegram.bot 2.4.1
+
+- Included `forwardMessage` in `Bot` class methods
+    
 ## telegram.bot 2.4.0
 
 - New methods have been added to `Bot` class:
