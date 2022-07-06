@@ -8,3 +8,4 @@
 ^LICENSE$
 ^appveyor\.yml$
 ^docs$
+^CRAN-SUBMISSION$
