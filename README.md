@@ -4,9 +4,10 @@
 
 [![CRAN](http://www.r-pkg.org/badges/version/telegram.bot)](https://cran.r-project.org/package=telegram.bot)
 [![Downloads](https://cranlogs.r-pkg.org/badges/telegram.bot)](https://www.r-pkg.org/pkg/telegram.bot)
+[![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/telegram.bot)](https://www.r-pkg.org/pkg/telegram.bot)
 [![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.bot.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.bot)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.bot?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-bot)
-[![Codecov](https://codecov.io/gh/ebeneditos/telegram.bot/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/gh/ebeneditos/telegram.bot)
+[![Codecov](https://codecov.io/gh/ebeneditos/telegram.bot/branch/master/graphs/badge.svg?branch=master)](https://app.codecov.io/gh/ebeneditos/telegram.bot)
 [![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 This package provides a pure R interface for the [Telegram Bot API](http://core.telegram.org/bots/api). In addition to the pure API implementation, it features a number of tools to make the development of Telegram bots with R easy and straightforward, providing an easy-to-use interface that takes some work off the programmer.
@@ -127,7 +128,7 @@ Note that you can also send local files by passing their path instead of an URL.
 To make it work, you'll need an access `TOKEN` (it should look something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`). If you don't have it, you have to talk to [*@BotFather*](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 
 **Recommendation:** Following [Hadley's API
-guidelines](http://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
+guidelines](https://github.com/r-lib/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
 environment variables set in `.Renviron` file.
 

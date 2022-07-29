@@ -9,8 +9,8 @@ Description: Provides a pure interface for the 'Telegram Bot API'
     implementation, it features a number of tools to make the development of
     'Telegram' bots with R easy and straightforward, providing an easy-to-use
     interface that takes some work off the programmer.
-URL: http://github.com/ebeneditos/telegram.bot
-BugReports: http://github.com/ebeneditos/telegram.bot/issues
+URL: https://github.com/ebeneditos/telegram.bot
+BugReports: https://github.com/ebeneditos/telegram.bot/issues
 Depends:
     R (>= 3.1.0)
 Imports:
