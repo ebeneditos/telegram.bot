@@ -153,9 +153,9 @@ stop_polling <- function() {
 #'       Telegram.}
 #'     \item{\code{\link{stop_polling}}}{Stops the polling.}
 #' }
-#' @references \href{http://core.telegram.org/bots}{Bots: An
+#' @references \href{https://core.telegram.org/bots}{Bots: An
 #'     introduction for developers} and
-#'     \href{http://core.telegram.org/bots/api}{Telegram Bot API}
+#'     \href{httsp://core.telegram.org/bots/api}{Telegram Bot API}
 #' @examples
 #' \dontrun{
 #' updater <- Updater(token = "TOKEN")

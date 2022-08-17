@@ -2,7 +2,7 @@
 #' Develop a Telegram Bot with R
 #'
 #' Provides a pure interface for the
-#' \href{http://core.telegram.org/bots/api}{Telegram Bot API}. In addition to
+#' \href{https://core.telegram.org/bots/api}{Telegram Bot API}. In addition to
 #' the pure API implementation, it features a number of tools to make the
 #' development of Telegram bots with R easy and straightforward, providing an
 #' easy-to-use interface that takes some work off the programmer.
