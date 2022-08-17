@@ -4,10 +4,19 @@
 \alias{sendVideo}
 \title{Send a video}
 \usage{
-sendVideo(chat_id, video, duration = NULL, caption = NULL,
-  disable_notification = FALSE, reply_to_message_id = NULL,
-  reply_markup = NULL, width = NULL, height = NULL,
-  parse_mode = NULL, supports_streaming = NULL)
+sendVideo(
+  chat_id,
+  video,
+  duration = NULL,
+  caption = NULL,
+  disable_notification = FALSE,
+  reply_to_message_id = NULL,
+  reply_markup = NULL,
+  width = NULL,
+  height = NULL,
+  parse_mode = NULL,
+  supports_streaming = NULL
+)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of

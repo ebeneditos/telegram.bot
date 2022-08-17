@@ -4,7 +4,9 @@
 \name{MessageFilters}
 \alias{MessageFilters}
 \title{Filter message updates}
-\format{A \code{list} with filtering functions.}
+\format{
+A \code{list} with filtering functions.
+}
 \usage{
 MessageFilters
 }

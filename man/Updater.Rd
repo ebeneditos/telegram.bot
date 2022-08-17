@@ -4,10 +4,17 @@
 \alias{Updater}
 \alias{is.Updater}
 \title{Building a Telegram Bot}
-\format{An \code{\link{R6Class}} object.}
+\format{
+An \code{\link{R6Class}} object.
+}
 \usage{
-Updater(token = NULL, base_url = NULL, base_file_url = NULL,
-  request_config = NULL, bot = NULL)
+Updater(
+  token = NULL,
+  base_url = NULL,
+  base_file_url = NULL,
+  request_config = NULL,
+  bot = NULL
+)
 
 is.Updater(x)
 }
@@ -79,7 +86,7 @@ updater$start_polling(verbose = TRUE) # Send '/start' to the bot
 }
 }
 \references{
-\href{http://core.telegram.org/bots}{Bots: An
+\href{https://core.telegram.org/bots}{Bots: An
     introduction for developers} and
-    \href{http://core.telegram.org/bots/api}{Telegram Bot API}
+    \href{https://core.telegram.org/bots/api}{Telegram Bot API}
 }

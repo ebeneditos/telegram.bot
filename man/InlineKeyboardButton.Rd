@@ -5,8 +5,13 @@
 \alias{is.InlineKeyboardButton}
 \title{Create an inline keyboard button}
 \usage{
-InlineKeyboardButton(text, url = NULL, callback_data = NULL,
-  switch_inline_query = NULL, switch_inline_query_current_chat = NULL)
+InlineKeyboardButton(
+  text,
+  url = NULL,
+  callback_data = NULL,
+  switch_inline_query = NULL,
+  switch_inline_query_current_chat = NULL
+)
 
 is.InlineKeyboardButton(x)
 }

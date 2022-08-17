@@ -4,8 +4,14 @@
 \alias{sendLocation}
 \title{Send point on the map}
 \usage{
-sendLocation(chat_id, latitude, longitude, disable_notification = FALSE,
-  reply_to_message_id = NULL, reply_markup = NULL)
+sendLocation(
+  chat_id,
+  latitude,
+  longitude,
+  disable_notification = FALSE,
+  reply_to_message_id = NULL,
+  reply_markup = NULL
+)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of

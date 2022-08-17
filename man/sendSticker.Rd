@@ -4,8 +4,13 @@
 \alias{sendSticker}
 \title{Send a sticker}
 \usage{
-sendSticker(chat_id, sticker, disable_notification = FALSE,
-  reply_to_message_id = NULL, reply_markup = NULL)
+sendSticker(
+  chat_id,
+  sticker,
+  disable_notification = FALSE,
+  reply_to_message_id = NULL,
+  reply_markup = NULL
+)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of

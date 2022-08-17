@@ -4,8 +4,7 @@
 \alias{forwardMessage}
 \title{Forward messages of any kind}
 \usage{
-forwardMessage(chat_id, from_chat_id, message_id,
-  disable_notification = FALSE)
+forwardMessage(chat_id, from_chat_id, message_id, disable_notification = FALSE)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of

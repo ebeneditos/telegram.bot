@@ -4,9 +4,14 @@
 \alias{editMessageCaption}
 \title{Edit a caption}
 \usage{
-editMessageCaption(chat_id = NULL, message_id = NULL,
-  inline_message_id = NULL, caption = NULL, parse_mode = NULL,
-  reply_markup = NULL)
+editMessageCaption(
+  chat_id = NULL,
+  message_id = NULL,
+  inline_message_id = NULL,
+  caption = NULL,
+  parse_mode = NULL,
+  reply_markup = NULL
+)
 }
 \arguments{
 \item{chat_id}{(Optional). Unique identifier for the target chat or username

@@ -4,8 +4,13 @@
 \alias{answerCallbackQuery}
 \title{Send answers to callback queries}
 \usage{
-answerCallbackQuery(callback_query_id, text = NULL, show_alert = FALSE,
-  url = NULL, cache_time = NULL)
+answerCallbackQuery(
+  callback_query_id,
+  text = NULL,
+  show_alert = FALSE,
+  url = NULL,
+  cache_time = NULL
+)
 }
 \arguments{
 \item{callback_query_id}{Unique identifier for the query to be answered.}

@@ -5,7 +5,9 @@
 \alias{ErrorHandler}
 \alias{is.ErrorHandler}
 \title{Handling errors}
-\format{An \code{\link{R6Class}} object.}
+\format{
+An \code{\link{R6Class}} object.
+}
 \usage{
 ErrorHandler(callback)
 

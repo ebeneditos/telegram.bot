@@ -4,9 +4,16 @@
 \alias{sendDocument}
 \title{Send general files}
 \usage{
-sendDocument(chat_id, document, filename = NULL, caption = NULL,
-  disable_notification = FALSE, reply_to_message_id = NULL,
-  reply_markup = NULL, parse_mode = NULL)
+sendDocument(
+  chat_id,
+  document,
+  filename = NULL,
+  caption = NULL,
+  disable_notification = FALSE,
+  reply_to_message_id = NULL,
+  reply_markup = NULL,
+  parse_mode = NULL
+)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of

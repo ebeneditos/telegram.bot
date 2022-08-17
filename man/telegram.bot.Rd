@@ -7,7 +7,7 @@
 \title{Develop a Telegram Bot with R}
 \description{
 Provides a pure interface for the
-\href{http://core.telegram.org/bots/api}{Telegram Bot API}. In addition to
+\href{https://core.telegram.org/bots/api}{Telegram Bot API}. In addition to
 the pure API implementation, it features a number of tools to make the
 development of Telegram bots with R easy and straightforward, providing an
 easy-to-use interface that takes some work off the programmer.
@@ -49,8 +49,8 @@ updater$start_polling() # Send '/start' to the bot
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://github.com/ebeneditos/telegram.bot}
-  \item Report bugs at \url{http://github.com/ebeneditos/telegram.bot/issues}
+  \item \url{https://github.com/ebeneditos/telegram.bot}
+  \item Report bugs at \url{https://github.com/ebeneditos/telegram.bot/issues}
 }
 
 }

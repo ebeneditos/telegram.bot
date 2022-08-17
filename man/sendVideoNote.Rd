@@ -4,9 +4,15 @@
 \alias{sendVideoNote}
 \title{Send video messages}
 \usage{
-sendVideoNote(chat_id, video_note, duration = NULL, length = NULL,
-  disable_notification = FALSE, reply_to_message_id = NULL,
-  reply_markup = NULL)
+sendVideoNote(
+  chat_id,
+  video_note,
+  duration = NULL,
+  length = NULL,
+  disable_notification = FALSE,
+  reply_to_message_id = NULL,
+  reply_markup = NULL
+)
 }
 \arguments{
 \item{chat_id}{Unique identifier for the target chat or username of

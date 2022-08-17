@@ -45,7 +45,7 @@ updater <- Updater(token = "TOKEN")
 ```
 
 **Recommendation:** Following [Hadley's API
-guidelines](https://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
+guidelines](https://github.com/r-lib/httr/blob/master/vignettes/api-packages.Rmd#appendix-api-key-best-practices)
 it's unsafe to type the `TOKEN` just in the R script. It's better to use
 environment variables set in `.Renviron` file.
 

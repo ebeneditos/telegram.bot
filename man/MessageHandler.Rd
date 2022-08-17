@@ -4,7 +4,9 @@
 \name{MessageHandler}
 \alias{MessageHandler}
 \title{Handling messages}
-\format{An \code{\link{R6Class}} object.}
+\format{
+An \code{\link{R6Class}} object.
+}
 \usage{
 MessageHandler(callback, filters = NULL)
 }

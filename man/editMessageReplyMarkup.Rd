@@ -4,8 +4,12 @@
 \alias{editMessageReplyMarkup}
 \title{Edit a reply markup}
 \usage{
-editMessageReplyMarkup(chat_id = NULL, message_id = NULL,
-  inline_message_id = NULL, reply_markup = NULL)
+editMessageReplyMarkup(
+  chat_id = NULL,
+  message_id = NULL,
+  inline_message_id = NULL,
+  reply_markup = NULL
+)
 }
 \arguments{
 \item{chat_id}{(Optional). Unique identifier for the target chat or username

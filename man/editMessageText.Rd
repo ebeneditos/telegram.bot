@@ -4,9 +4,15 @@
 \alias{editMessageText}
 \title{Edit a text message}
 \usage{
-editMessageText(chat_id = NULL, message_id = NULL,
-  inline_message_id = NULL, text, parse_mode = NULL,
-  disable_web_page_preview = NULL, reply_markup = NULL)
+editMessageText(
+  chat_id = NULL,
+  message_id = NULL,
+  inline_message_id = NULL,
+  text,
+  parse_mode = NULL,
+  disable_web_page_preview = NULL,
+  reply_markup = NULL
+)
 }
 \arguments{
 \item{chat_id}{(Optional). Unique identifier for the target chat or username

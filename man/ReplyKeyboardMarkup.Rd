@@ -4,8 +4,12 @@
 \alias{ReplyKeyboardMarkup}
 \title{Create a keyboard markup}
 \usage{
-ReplyKeyboardMarkup(keyboard, resize_keyboard = NULL,
-  one_time_keyboard = NULL, selective = NULL)
+ReplyKeyboardMarkup(
+  keyboard,
+  resize_keyboard = NULL,
+  one_time_keyboard = NULL,
+  selective = NULL
+)
 }
 \arguments{
 \item{keyboard}{List of button rows, each represented by a list of

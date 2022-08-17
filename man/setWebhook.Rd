@@ -4,8 +4,12 @@
 \alias{setWebhook}
 \title{Set a webhook}
 \usage{
-setWebhook(url = NULL, certificate = NULL, max_connections = 40L,
-  allowed_updates = NULL)
+setWebhook(
+  url = NULL,
+  certificate = NULL,
+  max_connections = 40L,
+  allowed_updates = NULL
+)
 }
 \arguments{
 \item{url}{HTTPS url to send updates to. Use an empty string to remove

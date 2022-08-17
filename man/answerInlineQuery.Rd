@@ -4,9 +4,15 @@
 \alias{answerInlineQuery}
 \title{Send answers to an inline query}
 \usage{
-answerInlineQuery(inline_query_id, results, cache_time = 300L,
-  is_personal = NULL, next_offset = NULL, switch_pm_text = NULL,
-  switch_pm_parameter = NULL)
+answerInlineQuery(
+  inline_query_id,
+  results,
+  cache_time = 300L,
+  is_personal = NULL,
+  next_offset = NULL,
+  switch_pm_text = NULL,
+  switch_pm_parameter = NULL
+)
 }
 \arguments{
 \item{inline_query_id}{Unique identifier for the answered query.}

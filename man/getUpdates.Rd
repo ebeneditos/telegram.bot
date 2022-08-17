@@ -4,8 +4,7 @@
 \alias{getUpdates}
 \title{Receive incoming updates}
 \usage{
-getUpdates(offset = NULL, limit = 100L, timeout = 0L,
-  allowed_updates = NULL)
+getUpdates(offset = NULL, limit = 100L, timeout = 0L, allowed_updates = NULL)
 }
 \arguments{
 \item{offset}{(Optional). Identifier of the first update to be returned.}

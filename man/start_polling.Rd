@@ -4,8 +4,12 @@
 \alias{start_polling}
 \title{Start polling}
 \usage{
-start_polling(timeout = 10L, clean = FALSE, allowed_updates = NULL,
-  verbose = FALSE)
+start_polling(
+  timeout = 10L,
+  clean = FALSE,
+  allowed_updates = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{timeout}{(Optional). Passed to \code{\link{getUpdates}}.

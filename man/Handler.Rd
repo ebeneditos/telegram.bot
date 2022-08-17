@@ -5,10 +5,16 @@
 \alias{Handler}
 \alias{is.Handler}
 \title{The base of all handlers}
-\format{An \code{\link{R6Class}} object.}
+\format{
+An \code{\link{R6Class}} object.
+}
 \usage{
-Handler(callback, check_update = NULL, handle_update = NULL,
-  handlername = NULL)
+Handler(
+  callback,
+  check_update = NULL,
+  handle_update = NULL,
+  handlername = NULL
+)
 
 is.Handler(x)
 }

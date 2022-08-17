@@ -4,10 +4,17 @@
 \name{CommandHandler}
 \alias{CommandHandler}
 \title{Handling commands}
-\format{An \code{\link{R6Class}} object.}
+\format{
+An \code{\link{R6Class}} object.
+}
 \usage{
-CommandHandler(command, callback, filters = NULL, pass_args = FALSE,
-  username = NULL)
+CommandHandler(
+  command,
+  callback,
+  filters = NULL,
+  pass_args = FALSE,
+  username = NULL
+)
 }
 \arguments{
 \item{command}{The command or vector of commands this handler

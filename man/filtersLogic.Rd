@@ -3,6 +3,8 @@
 \name{filtersLogic}
 \alias{filtersLogic}
 \alias{!}
+\alias{&}
+\alias{|}
 \alias{!.BaseFilter}
 \alias{&.BaseFilter}
 \alias{|.BaseFilter}
