@@ -54,14 +54,11 @@
     config = private$request_config,
     encode = "multipart"
   )
-  httr::stop_for_status(result)
 
-  if (result$status_code >= 200L && result$status_code < 300L) {
-    # 200-299 range are HTTP success statuses
-    return(private$parse(result))
-  } else {
-    stop("HTTPError") # nocov
-  }
+  # trap HTTP status > 299
+  httr::stop_for_status(result, tryCatch({ httr::content(result, as = "text", encoding = "UTF-8") }))
+
+  return(private$parse(result))
 }
 
 # Parse result
