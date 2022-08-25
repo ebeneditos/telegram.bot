@@ -8,7 +8,10 @@ setWebhook(
   url = NULL,
   certificate = NULL,
   max_connections = 40L,
-  allowed_updates = NULL
+  allowed_updates = NULL,
+  ip_address = NULL,
+  drop_pending_updates = FALSE,
+  secret_token = NULL
 )
 }
 \arguments{
@@ -37,6 +40,16 @@ values to increase your bot's throughput.}
     Please note that this parameter doesn't affect updates created before
     the call to the get_updates, so unwanted updates may be received for a
     short period of time.}
+
+\item{ip_address}{(Optional). The fixed IP address which will be used to
+send webhook requests instead of the IP address resolved through DNS.}
+
+\item{drop_pending_updates}{(Optional). Pass True to drop all pending updates.}
+
+\item{secret_token}{(Optional). A secret token to be sent in a header
+\code{X-Telegram-Bot-Api-Secret-Token} in every webhook request, 1-256
+characters. Only characters A-Z, a-z, 0-9, _ and - are allowed. The
+header is useful to ensure that the request comes from a webhook set by you.}
 }
 \description{
 Use this method to specify a url and receive incoming updates via an
