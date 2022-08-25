@@ -1,0 +1,21 @@
+{
+    "message": {
+        "chat": {
+            "first_name": "Chris",
+            "id": 5615616407,
+            "last_name": "Stefano",
+            "type": "private"
+        },
+        "date": 1661327942,
+        "from": {
+            "first_name": "Chris",
+            "id": 5615616407,
+            "is_bot": false,
+            "language_code": "en",
+            "last_name": "Stefano"
+        },
+        "message_id": 138,
+        "text": "👋 Hello World"
+    },
+    "update_id": 778307533
+}
