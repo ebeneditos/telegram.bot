@@ -29,7 +29,17 @@ devtools::install_github("ebeneditos/telegram.bot")
 
 ## Usage
 
-You can quickly build a chatbot with a few lines:
+You can quickly build a chatbot with a few lines!
+
+If you don't have an access token (`TOKEN`), please follow the steps explained 
+[below](#generating-an-access-token) to generate one.
+
+### Updater
+
+`Updater` polls for new messages using the Telegram `getUpdates` API method and invokes 
+your handlers when new messages are found.
+
+Replace `TOKEN` with the access token you generated.
 
 ```r
 library(telegram.bot)
@@ -46,7 +56,33 @@ updater <- Updater("TOKEN") + CommandHandler("start", start)
 updater$start_polling() # Send "/start" to the bot
 ```
 
-If you don't have a `TOKEN`, you can follow the steps explained [below](#generating-an-access-token) to generate one.
+### Webhook
+
+`Webhook` listens for messages POST'd to a webhook end-point URL, configured using the 
+Telegram `setWebhook` API method, and invokes your handlers when new messages are received.
+
+Note that this method requires a publicly accessible end-point which Telegram is able to access.
+
+Replace `TOKEN` with the access token you generated and `https://example.com/webhook` with
+your end-point's publicly accessible URL.
+
+**Security Consideration**: It is recommended that you run the `Webhook` server behind a reverse 
+proxy since it needs to be publicly accessible on the internet and thus needs to be secured.
+
+```r
+library(telegram.bot)
+
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat$id,
+    text = sprintf("Hello %s!", update$message$from$first_name)
+  )
+}
+
+webhook <- Webhook("https://example.com/webhook", "TOKEN") + CommandHandler("start", start)
+
+webhook$start_server() # Send "/start" to the bot
+```
 
 ## Telegram API Methods
 
