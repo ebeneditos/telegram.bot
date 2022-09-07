@@ -41,7 +41,6 @@ test_that("Initialize", {
 })
 
 test_that("Starts, Dispatches Messages and Stops", {
-
   port <- httpuv::randomPort()
   server_url <- sprintf("http://127.0.0.1:%d/webhook", port)
 

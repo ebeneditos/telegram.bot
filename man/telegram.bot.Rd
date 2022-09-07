@@ -57,5 +57,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Ernest Benedito \email{ebeneditos@gmail.com}
 
+Other contributors:
+\itemize{
+  \item Chris Stefano \email{virtualstaticvoid@gmail.com} [contributor]
+}
+
 }
 \keyword{internal}

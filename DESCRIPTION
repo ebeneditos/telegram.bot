@@ -1,9 +1,17 @@
 Package: telegram.bot
 Type: Package
 Title: Develop a 'Telegram Bot' with R
-Version: 2.4.3
-Authors@R: person("Ernest", "Benedito", email = "ebeneditos@gmail.com",
-    role = c("aut", "cre"))
+Version: 3.0.0
+Authors@R: c(
+    person(
+      "Ernest", "Benedito",
+      email = "ebeneditos@gmail.com",
+      role = c("aut", "cre")),
+    person(
+      "Chris", "Stefano",
+      email = "virtualstaticvoid@gmail.com",
+      role = c("ctb"))
+    )
 Description: Provides a pure interface for the 'Telegram Bot API'
     <http://core.telegram.org/bots/api>. In addition to the pure API
     implementation, it features a number of tools to make the development of
@@ -19,12 +27,12 @@ Imports:
     httr,
     jsonlite,
     openssl,
-    promises,
     R6
 Suggests:
     covr,
     devtools,
     knitr,
+    promises,
     rmarkdown,
     testthat
 License: GPL-3

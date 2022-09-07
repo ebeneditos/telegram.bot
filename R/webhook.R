@@ -77,23 +77,25 @@ start_server <- function(host = "127.0.0.1",
       return(list(status = 401L, body = "Unauthorized"))
     }
 
-    bodyRaw = req$rook.input$read()
+    bodyRaw <- req$rook.input$read()
     if (is.null(bodyRaw)) {
       return(list(status = 400L, body = "Bad request"))
     }
 
     bodyText <- rawToChar(bodyRaw)
     if (length(bodyText) != 0) {
-      json <- tryCatch({
-        jsonlite::parse_json(bodyText, simplifyVector = TRUE)
-      },
-      error = function(e) {
-        if (self$verbose) {
-          warning(as.character(e))
+      json <- tryCatch(
+        {
+          jsonlite::parse_json(bodyText, simplifyVector = TRUE)
+        },
+        error = function(e) {
+          if (self$verbose) {
+            warning(as.character(e))
+          }
+          self$dispatcher$dispatch_error(e)
+          return(NULL)
         }
-        self$dispatcher$dispatch_error(e)
-        return(NULL)
-      })
+      )
       if (length(json) != 0) {
         update <- Update(json)
         if (self$verbose) {
@@ -108,45 +110,47 @@ start_server <- function(host = "127.0.0.1",
     return(list(status = 200L, body = "OK"))
   }
 
-  result <- tryCatch({
-    # start the server
-    if (self$verbose) {
-      cat(sprintf("Listening on '%s:%d'...", host, port), fill = TRUE)
-    }
-    private$server <-
-      httpuv::startServer(host, port, list(call = handler))
-
-    if (self$verbose) {
-      cat(sprintf("Configuring webhook '%s'...", self$webhook_url), fill = TRUE)
-    }
-    self$bot$set_webhook(
-      url = self$webhook_url,
-      certificate = self$certificate,
-      max_connections = self$max_connections,
-      allowed_updates = self$allowed_updates,
-      ip_address = self$ip_address,
-      drop_pending_updates = self$drop_pending_updates,
-      secret_token = self$secret_token
-    )
-
-    if (blocking) {
+  result <- tryCatch(
+    {
+      # start the server
       if (self$verbose) {
-        cat("Waiting for requests...", fill = TRUE)
+        cat(sprintf("Listening on '%s:%d'...", host, port), fill = TRUE)
       }
-      httpuv::service(0)
+      private$server <-
+        httpuv::startServer(host, port, list(call = handler))
 
-      self$stop_server()
-    }
+      if (self$verbose) {
+        cat(sprintf("Configuring webhook '%s'...", self$webhook_url), fill = TRUE)
+      }
+      self$bot$set_webhook(
+        url = self$webhook_url,
+        certificate = self$certificate,
+        max_connections = self$max_connections,
+        allowed_updates = self$allowed_updates,
+        ip_address = self$ip_address,
+        drop_pending_updates = self$drop_pending_updates,
+        secret_token = self$secret_token
+      )
 
-    return(TRUE)
-  },
-  error = function(e) {
-    if (self$verbose) {
-      warning(as.character(e))
+      if (blocking) {
+        if (self$verbose) {
+          cat("Waiting for requests...", fill = TRUE)
+        }
+        httpuv::service(0)
+
+        self$stop_server()
+      }
+
+      return(TRUE)
+    },
+    error = function(e) {
+      if (self$verbose) {
+        warning(as.character(e))
+      }
+      self$dispatcher$dispatch_error(e)
+      return(e)
     }
-    self$dispatcher$dispatch_error(e)
-    return(e)
-  })
+  )
 
   return(!is.error(result))
 }
@@ -179,27 +183,29 @@ stop_server <- function() {
     return(FALSE)
   }
 
-  result <- tryCatch({
-    if (self$verbose) {
-      cat("Removing webhook configuration...", fill = TRUE)
-    }
-    self$bot$delete_webhook()
+  result <- tryCatch(
+    {
+      if (self$verbose) {
+        cat("Removing webhook configuration...", fill = TRUE)
+      }
+      self$bot$delete_webhook()
 
-    if (self$verbose) {
-      cat("Stopping webhook server...", fill = TRUE)
-    }
-    private$server$stop()
-    private$server <- NULL
+      if (self$verbose) {
+        cat("Stopping webhook server...", fill = TRUE)
+      }
+      private$server$stop()
+      private$server <- NULL
 
-    return(TRUE)
-  },
-  error = function(e) {
-    if (self$verbose) {
-      warning(as.character(e))
+      return(TRUE)
+    },
+    error = function(e) {
+      if (self$verbose) {
+        warning(as.character(e))
+      }
+      self$dispatcher$dispatch_error(e)
+      e
     }
-    self$dispatcher$dispatch_error(e)
-    e
-  })
+  )
 
   return(!is.error(result))
 }

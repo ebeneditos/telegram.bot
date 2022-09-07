@@ -95,7 +95,7 @@ webhook_post_update <- function(url, data, secret_token) {
     "X-Telegram-Bot-Api-Secret-Token" = secret_token
   )
 
-  pool = curl::new_pool()
+  pool <- curl::new_pool()
 
   p <- promises::promise(function(resolve, reject) {
     curl::curl_fetch_multi(url, handle = handle, pool = pool, done = resolve, fail = reject)

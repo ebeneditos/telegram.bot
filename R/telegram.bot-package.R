@@ -40,11 +40,15 @@
 #' @name telegram.bot
 #' @docType package
 #' @keywords internal
-#' @importFrom R6 R6Class
+#' @importFrom curl curl_download
+#' @importFrom httpuv service
+#' @importFrom httpuv startServer
 #' @importFrom httr POST
 #' @importFrom httr content
 #' @importFrom httr stop_for_status
 #' @importFrom httr upload_file
+#' @importFrom jsonlite parse_json
 #' @importFrom jsonlite toJSON
-#' @importFrom curl curl_download
+#' @importFrom openssl rand_bytes
+#' @importFrom R6 R6Class
 "_PACKAGE"

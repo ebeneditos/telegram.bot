@@ -56,7 +56,9 @@
   )
 
   # trap HTTP status > 299
-  httr::stop_for_status(result, tryCatch({ httr::content(result, as = "text", encoding = "UTF-8") }))
+  httr::stop_for_status(result, tryCatch({
+    httr::content(result, as = "text", encoding = "UTF-8")
+  }))
 
   return(private$parse(result))
 }
