@@ -1,7 +1,7 @@
 Package: telegram.bot
 Type: Package
 Title: Develop a 'Telegram Bot' with R
-Version: 2.4.1
+Version: 2.4.3
 Authors@R: person("Ernest", "Benedito", email = "ebeneditos@gmail.com",
     role = c("aut", "cre"))
 Description: Provides a pure interface for the 'Telegram Bot API'
@@ -15,16 +15,20 @@ Depends:
     R (>= 3.1.0)
 Imports:
     curl,
+    httpuv,
     httr,
     jsonlite,
+    openssl,
+    promises,
     R6
 Suggests:
     covr,
+    devtools,
     knitr,
     rmarkdown,
     testthat
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr

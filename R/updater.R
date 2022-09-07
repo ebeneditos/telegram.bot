@@ -121,7 +121,7 @@ stop_polling <- function() {
 
 #### CLASS ####
 
-#' Building a Telegram Bot
+#' Building a Telegram Bot with Update Polling
 #'
 #' This class, which employs the class \code{\link{Dispatcher}}, provides a
 #' front-end to class \code{\link{Bot}} to the programmer, so you can focus on

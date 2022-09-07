@@ -1,4 +1,13 @@
 
+## telegram.bot 2.4.3
+
+- Extended `Bot$set_webhook` method to include `ip_address`, `drop_pending_updates` and `secret_token` arguments
+- Introduced `Webhook` class
+
+## telegram.bot 2.4.2
+
+- Documentation updates
+
 ## telegram.bot 2.4.1
 
 - Included `forwardMessage` in `Bot` class methods

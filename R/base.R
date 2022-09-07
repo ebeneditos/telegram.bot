@@ -69,7 +69,7 @@
     )
   }
 
-  if (is.Updater(e1)) {
+  if (is.Updater(e1) || is.Webhook(e1)) {
     e1$dispatcher$add_handler(e2)
   } else if (is.Dispatcher(e1)) {
     e1$add_handler(e2)

@@ -54,14 +54,11 @@
     config = private$request_config,
     encode = "multipart"
   )
-  httr::stop_for_status(result)
 
-  if (result$status_code >= 200L && result$status_code < 300L) {
-    # 200-299 range are HTTP success statuses
-    return(private$parse(result))
-  } else {
-    stop("HTTPError") # nocov
-  }
+  # trap HTTP status > 299
+  httr::stop_for_status(result, tryCatch({ httr::content(result, as = "text", encoding = "UTF-8") }))
+
+  return(private$parse(result))
 }
 
 # Parse result
@@ -1477,10 +1474,20 @@ getUpdates <- function(offset = NULL,
 #'     Please note that this parameter doesn't affect updates created before
 #'     the call to the get_updates, so unwanted updates may be received for a
 #'     short period of time.
+#' @param ip_address (Optional). The fixed IP address which will be used to
+#'     send webhook requests instead of the IP address resolved through DNS.
+#' @param drop_pending_updates (Optional). Pass True to drop all pending updates.
+#' @param secret_token (Optional). A secret token to be sent in a header
+#'     \code{X-Telegram-Bot-Api-Secret-Token} in every webhook request, 1-256
+#'     characters. Only characters A-Z, a-z, 0-9, _ and - are allowed. The
+#'     header is useful to ensure that the request comes from a webhook set by you.
 setWebhook <- function(url = NULL,
                        certificate = NULL,
                        max_connections = 40L,
-                       allowed_updates = NULL) {
+                       allowed_updates = NULL,
+                       ip_address = NULL,
+                       drop_pending_updates = FALSE,
+                       secret_token = NULL) {
   url_ <- sprintf("%s/setWebhook", private$base_url)
 
   data <- list()
@@ -1488,7 +1495,7 @@ setWebhook <- function(url = NULL,
   if (!missing(url)) {
     data[["url"]] <- url
   }
-  if (!missing(certificate)) {
+  if (!missing(certificate) && !is.null(certificate)) {
     if (file.exists(certificate)) { # nocov
       data[["certificate"]] <- httr::upload_file(certificate) # nocov
     } else {
@@ -1500,6 +1507,15 @@ setWebhook <- function(url = NULL,
   }
   if (!missing(allowed_updates) && !is.null(allowed_updates)) {
     data[["allowed_updates"]] <- I(allowed_updates)
+  }
+  if (!missing(ip_address)) {
+    data[["ip_address"]] <- ip_address
+  }
+  if (!missing(drop_pending_updates)) {
+    data[["drop_pending_updates"]] <- drop_pending_updates
+  }
+  if (!missing(secret_token)) {
+    data[["secret_token"]] <- secret_token
   }
 
   result <- private$request(url_, data)
