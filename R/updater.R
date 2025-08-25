@@ -47,6 +47,7 @@ start_polling <- function(timeout = 10L,
   }
 
   while (private$running) {
+    later::run_now()
     updates <- tryCatch(
       {
         self$bot$get_updates(
