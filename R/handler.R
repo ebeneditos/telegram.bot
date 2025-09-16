@@ -35,7 +35,7 @@ handle_update <- function(update,
 #' from it.
 #'
 #' @docType class
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @name Handler
 #' @aliases is.Handler
 #' @section Methods: \describe{

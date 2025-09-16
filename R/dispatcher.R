@@ -87,7 +87,7 @@ add_error_handler <- function(callback) {
 #' This class dispatches all kinds of updates to its registered handlers.
 #'
 #' @docType class
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @name Dispatcher
 #' @aliases is.Dispatcher
 #' @param bot The bot object that should be passed to the handlers.

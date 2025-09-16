@@ -96,7 +96,7 @@
 #' @docType class
 #' @name TelegramObject
 #' @aliases is.TelegramObject
-#' @format An \code{\link{R6Class}} generator object.
+#' @format An \code{\link[R6]{R6Class}} generator object.
 #' @export
 TelegramObject <- R6::R6Class("TelegramObject")
 

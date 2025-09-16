@@ -7,7 +7,7 @@
 #' based on a regex.
 #'
 #' @docType class
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @param callback The callback function for this handler.
 #'   See \code{\link{Handler}} for information about this function.
 #' @param pattern (Optional). Regex pattern to test.

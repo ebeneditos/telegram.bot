@@ -7,7 +7,7 @@
 #' \code{\link{Dispatcher}}.
 #'
 #' @docType class
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @param callback A function that takes \code{(bot, error)} as arguments.
 #' @examples
 #' \dontrun{
