@@ -5,7 +5,6 @@
 [![CRAN](http://www.r-pkg.org/badges/version/telegram.bot)](https://cran.r-project.org/package=telegram.bot)
 [![Monthly downloads](https://cranlogs.r-pkg.org/badges/telegram.bot)](https://www.r-pkg.org/pkg/telegram.bot)
 [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/telegram.bot)](https://www.r-pkg.org/pkg/telegram.bot)
-[![Travis CI Status](https://travis-ci.org/ebeneditos/telegram.bot.svg?branch=master)](https://travis-ci.org/ebeneditos/telegram.bot)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ebeneditos/telegram.bot?svg=true)](https://ci.appveyor.com/project/ebeneditos/telegram-bot)
 [![Codecov](https://codecov.io/gh/ebeneditos/telegram.bot/branch/master/graphs/badge.svg?branch=master)](https://app.codecov.io/gh/ebeneditos/telegram.bot)
 [![License](https://img.shields.io/cran/l/telegram.bot.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
