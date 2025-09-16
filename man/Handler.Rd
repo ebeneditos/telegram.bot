@@ -6,7 +6,7 @@
 \alias{is.Handler}
 \title{The base of all handlers}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 Handler(

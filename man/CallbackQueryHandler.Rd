@@ -5,7 +5,7 @@
 \alias{CallbackQueryHandler}
 \title{Handling callback queries}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 CallbackQueryHandler(callback, pattern = NULL)

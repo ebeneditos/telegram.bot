@@ -12,7 +12,7 @@ the target channel.}
 
 \item{action}{Type of action to broadcast. Choose one, depending on
 what the user is about to receive:
-\itemize{
+\describe{
  \item{\code{typing}}{ for text messages}
  \item{\code{upload_photo}}{ for photos}
  \item{\code{upload_video}}{ for videos}

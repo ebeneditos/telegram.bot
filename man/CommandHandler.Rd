@@ -5,7 +5,7 @@
 \alias{CommandHandler}
 \title{Handling commands}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 CommandHandler(

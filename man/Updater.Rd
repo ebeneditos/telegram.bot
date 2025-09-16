@@ -5,7 +5,7 @@
 \alias{is.Updater}
 \title{Building a Telegram Bot with Update Polling}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 Updater(

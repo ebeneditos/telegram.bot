@@ -6,7 +6,7 @@
 \alias{is.Update}
 \title{Represent an update}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 Update(data)

@@ -6,7 +6,7 @@
 \alias{is.Dispatcher}
 \title{The dispatcher of all updates}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 Dispatcher(bot)

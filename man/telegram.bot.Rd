@@ -2,8 +2,8 @@
 % Please edit documentation in R/telegram.bot-package.R
 \docType{package}
 \name{telegram.bot}
-\alias{telegram.bot}
 \alias{telegram.bot-package}
+\alias{telegram.bot}
 \title{Develop a Telegram Bot with R}
 \description{
 Provides a pure interface for the
