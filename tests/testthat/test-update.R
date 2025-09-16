@@ -1,4 +1,3 @@
-
 context("Update")
 
 update <- Update(foo_update)

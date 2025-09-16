@@ -1,4 +1,3 @@
-
 context("InlineQueryResult")
 
 test_that("InlineQueryResult", {

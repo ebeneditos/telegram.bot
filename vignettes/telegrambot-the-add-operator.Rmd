@@ -23,10 +23,14 @@ The *add* operator (`+`, or more formally `+.TelegramObject`) is an S3 method fo
 Say you want to build a bot with a simple handler for the `/start` command:
 
 ```{r, eval = FALSE}
-start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = sprintf("Hello %s!",
-                                 update$message$from$first_name))
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = sprintf(
+      "Hello %s!",
+      update$message$from$first_name
+    )
+  )
 }
 
 start_handler <- CommandHandler("start", start)
@@ -41,9 +45,11 @@ updater <- Updater("TOKEN") + start_handler
 As things start to get more complex, you can chain multiple handlers in a single call:
 
 ```{r, eval = FALSE}
-echo <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = update$message$text)
+echo <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = update$message$text
+  )
 }
 
 updater <- Updater("TOKEN") + CommandHandler("start", start) + MessageHandler(echo, MessageFilters$text)
@@ -52,11 +58,13 @@ updater <- Updater("TOKEN") + CommandHandler("start", start) + MessageHandler(ec
 And keep adding...
 
 ```{r, eval = FALSE}
-caps <- function(bot, update, args){
-  if (length(args > 0L)){
-   	text_caps <- toupper(paste(args, collapse = " "))
-   	bot$sendMessage(chat_id = update$message$chat_id,
-   	                text = text_caps) 
+caps <- function(bot, update, args) {
+  if (length(args > 0L)) {
+    text_caps <- toupper(paste(args, collapse = " "))
+    bot$sendMessage(
+      chat_id = update$message$chat_id,
+      text = text_caps
+    )
   }
 }
 

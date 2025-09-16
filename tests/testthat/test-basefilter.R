@@ -1,4 +1,3 @@
-
 context("BaseFilter")
 
 test_that("Base Filter", {

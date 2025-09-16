@@ -1,4 +1,3 @@
-
 context("Webhook")
 
 webhook <- Webhook(

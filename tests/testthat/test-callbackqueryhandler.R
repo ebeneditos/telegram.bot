@@ -1,4 +1,3 @@
-
 context("CallbackQueryHandler")
 
 dispatcher <- Dispatcher(Bot(token))

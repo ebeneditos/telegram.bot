@@ -78,9 +78,11 @@ updater <- Updater(token = bot_token("RTelegramBot"))
 Now, you can define a function that should process a specific type of update:
 
 ```{r, eval = FALSE}
-start <- function(bot, update){
-  bot$sendMessage(chat_id = update$message$chat_id,
-                  text = sprintf("Hello %s!", update$message$from$first_name))
+start <- function(bot, update) {
+  bot$sendMessage(
+    chat_id = update$message$chat_id,
+    text = sprintf("Hello %s!", update$message$from$first_name)
+  )
 }
 ```
 

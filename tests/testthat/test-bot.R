@@ -1,10 +1,8 @@
-
 context("Bot")
 
 bot <- Bot(token = token)
 
 test_that("Initialize", {
-
   # invalid token 1
   expect_error(Bot(token = " "), "Invalid `token`.")
 

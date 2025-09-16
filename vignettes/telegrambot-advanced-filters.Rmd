@@ -27,7 +27,8 @@ When using `MessageHandler` it is sometimes useful to have more than one filter.
 #### Message is either video, photo, or document (generic file)
 
 ```{r, eval = FALSE}
-handler <- MessageHandler(callback, 
+handler <- MessageHandler(
+  callback,
   MessageFilters$video | MessageFilters$photo | MessageFilters$document
 )
 ```
@@ -35,7 +36,8 @@ handler <- MessageHandler(callback,
 #### Message is a forwarded photo
 
 ```{r, eval = FALSE}
-handler <- MessageHandler(callback,
+handler <- MessageHandler(
+  callback,
   MessageFilters$forwarded & MessageFilters$photo
 )
 ```
@@ -43,7 +45,8 @@ handler <- MessageHandler(callback,
 #### Message is a photo and it's not forwarded
 
 ```{r, eval = FALSE}
-handler <- MessageHandler(callback,
+handler <- MessageHandler(
+  callback,
   MessageFilters$photo & (!MessageFilters$forwarded)
 )
 ```
@@ -59,7 +62,7 @@ It is also possible to write your own filters used with `MessageHandler` and `Co
 Say that for the `kill` example we saw in the [previous page](https://github.com/ebeneditos/telegram.bot/wiki/Basic-Functionalities#stopping-the-bot), we would like to filter that command so to make it accessible only for a specific `USER_ID`. Thereby, you could add a filter:
 
 ```{r, eval = FALSE}
-filter_user <- function(message) message$from_user  == "USER_ID"
+filter_user <- function(message) message$from_user == "USER_ID"
 ```
 
 You can make the function an instance of `BaseFilter` either with its generator:
@@ -71,7 +74,7 @@ filter_user <- BaseFilter(filter = filter_user)
 Or by coercing it with `as.BaseFilter`:
 
 ```{r, eval = FALSE}
-filter_user <- as.BaseFilter(function(message) message$from_user  == "USER_ID")
+filter_user <- as.BaseFilter(function(message) message$from_user == "USER_ID")
 ```
 
 Remember that to make it work, your filter must be a `function` that takes a `message` as input and returns a boolean: `TRUE` if the message should be handled, `FALSE` otherwise.
@@ -88,8 +91,8 @@ Filters can also be added to the `MessageFilters` object. Within it, we can see 
 
 ```{r, eval = FALSE}
 MessageFilters$text_or_command <- BaseFilter(function(message) {
-  !is.null(message$text))
-}
+  !is.null(message$text)
+})
 ```
 
 The class can of cause be named however you want, the only important things are:

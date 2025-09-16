@@ -1,10 +1,8 @@
-
 context("Updater")
 
 updater <- Updater(token = token)
 
 test_that("Initialize", {
-
   # No inputs
   expect_error(Updater(), "`token` or `bot` must be passed.")
 
