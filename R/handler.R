@@ -1,4 +1,3 @@
-
 #### METHODS ####
 
 #' Check an update

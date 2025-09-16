@@ -1,4 +1,3 @@
-
 #### METHODS ####
 
 #' Start polling

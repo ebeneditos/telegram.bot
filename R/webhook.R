@@ -1,5 +1,3 @@
-
-
 #### METHODS ####
 
 #' Start the webhook server.

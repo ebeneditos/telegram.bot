@@ -1,4 +1,3 @@
-
 #' Develop a Telegram Bot with R
 #'
 #' Provides a pure interface for the

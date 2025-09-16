@@ -1,4 +1,3 @@
-
 #### CLASS ####
 
 #' Handling callback queries

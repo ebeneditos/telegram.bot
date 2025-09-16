@@ -1,4 +1,3 @@
-
 #### METHODS ####
 
 #' Get an update's chat ID

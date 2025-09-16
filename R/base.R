@@ -1,4 +1,3 @@
-
 #' @name +.TelegramObject
 #' @rdname TelegramObject-add
 #' @aliases add
@@ -78,11 +77,12 @@
       call. = FALSE
     )
   } else {
-    stop(sprintf(
-      "Cannot add `%s` and `%s` objects together.",
-      class(e1), class(e2)
-    ),
-    call. = FALSE
+    stop(
+      sprintf(
+        "Cannot add `%s` and `%s` objects together.",
+        class(e1), class(e2)
+      ),
+      call. = FALSE
     )
   }
 

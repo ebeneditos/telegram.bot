@@ -1,4 +1,3 @@
-
 #### METHODS ####
 
 #' Add a handler

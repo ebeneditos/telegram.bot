@@ -1,4 +1,3 @@
-
 #### CLASS ####
 
 #' Handling messages
