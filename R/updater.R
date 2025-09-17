@@ -47,7 +47,15 @@ start_polling <- function(timeout = 10L,
   }
 
   while (private$running) {
-    later::run_now()
+    tryCatch(
+      {
+        later::run_now()
+      },
+      error = function(e) {
+        warning("Error in scheduled task: ", e$message)
+      }
+    )
+
     updates <- tryCatch(
       {
         self$bot$get_updates(
