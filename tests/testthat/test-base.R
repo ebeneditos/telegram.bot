@@ -1,4 +1,3 @@
-
 context("Base")
 
 test_that("Telegram Object", {

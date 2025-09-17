@@ -1,4 +1,3 @@
-
 #' Create a keyboard button
 #'
 #' This object represents one button of the reply keyboard. Optional

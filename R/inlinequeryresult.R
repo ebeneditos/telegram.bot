@@ -1,4 +1,3 @@
-
 #' The base of inline query results
 #'
 #' Baseclass for the InlineQueryResult* classes.

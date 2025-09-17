@@ -1,4 +1,3 @@
-
 #### CLASS ####
 
 #' Handling messages
@@ -7,7 +6,7 @@
 #' text, media or status updates.
 #'
 #' @docType class
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @param callback The callback function for this handler.
 #'     See \code{\link{Handler}} for information about this function.
 #' @param filters (Optional). Only allow updates with these filters. Use

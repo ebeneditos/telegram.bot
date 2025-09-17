@@ -5,7 +5,7 @@
 \alias{is.Webhook}
 \title{Building a Telegram Bot with a Webhook}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 Webhook(

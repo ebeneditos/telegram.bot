@@ -1,4 +1,3 @@
-
 #### INTERNAL METHODS ####
 
 # Print function
@@ -952,7 +951,7 @@ sendLocation <- function(chat_id,
 #'     the target channel.
 #' @param action Type of action to broadcast. Choose one, depending on
 #' what the user is about to receive:
-#' \itemize{
+#' \describe{
 #'  \item{\code{typing}}{ for text messages}
 #'  \item{\code{upload_photo}}{ for photos}
 #'  \item{\code{upload_video}}{ for videos}
@@ -1655,7 +1654,7 @@ set_token <- function(token) {
 #'     \item{\code{\link{set_token}}}{Change your bot's auth token}
 #' }
 #' @docType class
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @param token The bot's token given by the \emph{BotFather}.
 #' @param base_url (Optional). Telegram Bot API service URL.
 #' @param base_file_url (Optional). Telegram Bot API file URL.

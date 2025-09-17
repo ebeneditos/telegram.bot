@@ -1,4 +1,3 @@
-
 # You must define a valid TOKEN in Travis Environment Variables Settings
 # NOTE: https://docs.travis-ci.com/user/environment-variables/#Defining-
 #       Variables-in-Repository-Settings

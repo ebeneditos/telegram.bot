@@ -1,4 +1,3 @@
-
 #' Filter message updates
 #'
 #' Predefined filters for use as the \code{filter} argument of class

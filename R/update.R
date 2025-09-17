@@ -1,4 +1,3 @@
-
 #### METHODS ####
 
 #' Get an update's chat ID
@@ -140,7 +139,7 @@ effective_message <- function() { # nocov start
 #' \href{https://core.telegram.org/bots/api#update}{Update}.
 #'
 #' @docType class
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @param data Data of the update.
 #' @section Methods: \describe{
 #'     \item{\code{\link{from_chat_id}}}{To get the \code{id} from the update's

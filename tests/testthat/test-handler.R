@@ -1,4 +1,3 @@
-
 context("Handler")
 
 dispatcher <- Dispatcher(Bot(token))

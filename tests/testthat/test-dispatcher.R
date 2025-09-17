@@ -1,4 +1,3 @@
-
 context("Dispatcher")
 
 dispatcher <- Dispatcher(Bot(token))
@@ -6,7 +5,6 @@ handler <- Handler(foo_handler)
 update <- Update(foo_update)
 
 test_that("Add Handler", {
-
   # check is.Dispatcher
   expect_true(is.Dispatcher(dispatcher))
 
@@ -37,7 +35,6 @@ test_that("Process Update", {
 })
 
 test_that("Error Handler", {
-
   # not error handlers
   expect_warning(
     dispatcher$dispatch_error(foo_error),

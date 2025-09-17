@@ -6,7 +6,7 @@
 \alias{is.Bot}
 \title{Creating a Bot}
 \format{
-An \code{\link{R6Class}} object.
+An \code{\link[R6]{R6Class}} object.
 }
 \usage{
 Bot(token, base_url = NULL, base_file_url = NULL, request_config = NULL)

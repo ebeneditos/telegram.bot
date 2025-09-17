@@ -1,4 +1,3 @@
-
 context("CommandHandler")
 
 dispatcher <- Dispatcher(Bot(token))

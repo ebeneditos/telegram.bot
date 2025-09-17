@@ -1,4 +1,8 @@
 
+## telegram.bot 3.0.1
+
+- Updated Rd files following target package anchors guidelines
+
 ## telegram.bot 3.0.0
 
 - Added Webhook functionality introducing `Webhook` class

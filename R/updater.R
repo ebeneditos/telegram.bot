@@ -1,4 +1,3 @@
-
 #### METHODS ####
 
 #' Start polling
@@ -143,7 +142,7 @@ stop_polling <- function() {
 #'
 #' \strong{Note:} You \strong{must} supply either a \code{bot} or a
 #' \code{token} argument.
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @name Updater
 #' @aliases is.Updater
 #' @param token (Optional). The bot's token given by the \emph{BotFather}.

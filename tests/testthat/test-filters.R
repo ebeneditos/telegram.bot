@@ -1,4 +1,3 @@
-
 context("MessageFilters")
 
 message <- Update(foo_update)$message

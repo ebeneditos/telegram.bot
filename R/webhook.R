@@ -1,5 +1,3 @@
-
-
 #### METHODS ####
 
 #' Start the webhook server.
@@ -240,7 +238,7 @@ running <- function() {
 #' \strong{Security Note}: \code{Webhook} encapsulates generating a \code{secret_token} which
 #' is used to validate that the request comes from a webhook set by you.
 #'
-#' @format An \code{\link{R6Class}} object.
+#' @format An \code{\link[R6]{R6Class}} object.
 #' @name Webhook
 #' @param webhook_url Webhook HTTPS url to send updates to. The url is conventionally
 #'     suffixed with the \code{/webhook} path.

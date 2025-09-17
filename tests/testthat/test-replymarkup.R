@@ -1,4 +1,3 @@
-
 context("ReplyMarkup")
 
 test_that("Reply Markup", {
