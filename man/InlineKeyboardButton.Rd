@@ -10,7 +10,8 @@ InlineKeyboardButton(
   url = NULL,
   callback_data = NULL,
   switch_inline_query = NULL,
-  switch_inline_query_current_chat = NULL
+  switch_inline_query_current_chat = NULL,
+  web_app = NULL
 )
 
 is.InlineKeyboardButton(x)
@@ -33,6 +34,10 @@ Can be empty, in which case just the bot's username will be inserted.}
 button will insert the bot's username and the specified inline query in
 the current chat's input field. Can be empty, in which case only the
 bot's username will be inserted.}
+
+\item{web_app}{(Optional). URL string or list describing a Web App to be
+launched when the button is pressed. If a string is provided, it will
+be wrapped as \code{list(url = <string>)}.}
 
 \item{x}{Object to be tested.}
 }

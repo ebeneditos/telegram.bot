@@ -1,7 +1,7 @@
 Package: telegram.bot
 Type: Package
 Title: Develop a 'Telegram Bot' with R
-Version: 3.0.1
+Version: 3.0.2
 Authors@R: c(
     person(
       "Ernest", "Benedito",
