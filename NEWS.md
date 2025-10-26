@@ -1,7 +1,7 @@
 # telegram.bot 3.0.2
 
-- Added `web_app` argument to `InlineKeyboardButton`, `KeyboardButton` and related markup functions.
-- Allows passing URL or object to open a Telegram Mini App directly from inline or reply keyboard buttons.
+- Added `web_app` argument to `InlineKeyboardButton`, `KeyboardButton` and related markup functions
+- Allows passing URL or object to open a Telegram Mini App directly from inline or reply keyboard buttons. Thanks to Alexey Seleznev for updating
 
 ## telegram.bot 3.0.1
 

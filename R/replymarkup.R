@@ -31,7 +31,9 @@ KeyboardButton <- function(text,
     request_location = request_location,
     web_app = if (!is.null(web_app)) {
       if (is.character(web_app)) list(url = web_app) else web_app
-    } else NULL
+    } else {
+      NULL
+    }
   )
   KeyboardButton <- KeyboardButton[!unlist(lapply(KeyboardButton, is.null))]
 
@@ -177,7 +179,6 @@ InlineKeyboardButton <- function(text,
     stop("You must use exactly one of the optional fields.")
   }
 
-  # если web_app — строка, то обернуть в список
   if (!is.null(web_app) && is.character(web_app)) {
     web_app <- list(url = web_app)
   }
