@@ -16,14 +16,22 @@
 #' @param request_location (Optional). If \code{TRUE}, the user's current
 #'     location will be sent when the button is pressed. Available in private
 #'     chats only.
+#' @param web_app (Optional). URL string or list describing a Web App to be
+#'     launched when the button is pressed. If a string is provided, it will
+#'     be wrapped as \code{list(url = <string>)}. Available only in private
+#'     chats between a user and the bot.
 #' @export
 KeyboardButton <- function(text,
                            request_contact = NULL,
-                           request_location = NULL) {
+                           request_location = NULL,
+                           web_app = NULL) {
   KeyboardButton <- list(
     text = text,
     request_contact = request_contact,
-    request_location = request_location
+    request_location = request_location,
+    web_app = if (!is.null(web_app)) {
+      if (is.character(web_app)) list(url = web_app) else web_app
+    } else NULL
   )
   KeyboardButton <- KeyboardButton[!unlist(lapply(KeyboardButton, is.null))]
 
@@ -135,18 +143,23 @@ ReplyKeyboardMarkup <- function(keyboard,
 #'     button will insert the bot's username and the specified inline query in
 #'     the current chat's input field. Can be empty, in which case only the
 #'     bot's username will be inserted.
+#' @param web_app (Optional). URL string or list describing a Web App to be
+#'     launched when the button is pressed. If a string is provided, it will
+#'     be wrapped as \code{list(url = <string>)}.
 #' @export
 InlineKeyboardButton <- function(text,
                                  url = NULL,
                                  callback_data = NULL,
                                  switch_inline_query = NULL,
-                                 switch_inline_query_current_chat = NULL) {
+                                 switch_inline_query_current_chat = NULL,
+                                 web_app = NULL) {
   if (all(unlist(lapply(
     list(
       url,
       callback_data,
       switch_inline_query,
-      switch_inline_query_current_chat
+      switch_inline_query_current_chat,
+      web_app
     ),
     is.null
   )))) {
@@ -156,11 +169,17 @@ InlineKeyboardButton <- function(text,
       url,
       callback_data,
       switch_inline_query,
-      switch_inline_query_current_chat
+      switch_inline_query_current_chat,
+      web_app
     ),
     function(x) !is.null(x)
   ))) != 1L) {
     stop("You must use exactly one of the optional fields.")
+  }
+
+  # если web_app — строка, то обернуть в список
+  if (!is.null(web_app) && is.character(web_app)) {
+    web_app <- list(url = web_app)
   }
 
   InlineKeyboardButton <- list(
@@ -168,7 +187,8 @@ InlineKeyboardButton <- function(text,
     url = url,
     callback_data = callback_data,
     switch_inline_query = switch_inline_query,
-    switch_inline_query_current_chat = switch_inline_query_current_chat
+    switch_inline_query_current_chat = switch_inline_query_current_chat,
+    web_app = web_app
   )
   InlineKeyboardButton <- InlineKeyboardButton[!unlist(lapply(
     InlineKeyboardButton, is.null
@@ -176,6 +196,7 @@ InlineKeyboardButton <- function(text,
 
   structure(InlineKeyboardButton, class = "InlineKeyboardButton")
 }
+
 
 #' @rdname InlineKeyboardButton
 #' @param x Object to be tested.
