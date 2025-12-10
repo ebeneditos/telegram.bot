@@ -5,7 +5,12 @@
 \alias{is.KeyboardButton}
 \title{Create a keyboard button}
 \usage{
-KeyboardButton(text, request_contact = NULL, request_location = NULL)
+KeyboardButton(
+  text,
+  request_contact = NULL,
+  request_location = NULL,
+  web_app = NULL
+)
 
 is.KeyboardButton(x)
 }
@@ -21,6 +26,11 @@ private chats only.}
 \item{request_location}{(Optional). If \code{TRUE}, the user's current
 location will be sent when the button is pressed. Available in private
 chats only.}
+
+\item{web_app}{(Optional). URL string or list describing a Web App to be
+launched when the button is pressed. If a string is provided, it will
+be wrapped as \code{list(url = <string>)}. Available only in private
+chats between a user and the bot.}
 
 \item{x}{Object to be tested.}
 }
