@@ -985,6 +985,174 @@ sendChatAction <- function(chat_id,
 }
 
 
+#' Send a rich message
+#'
+#' Use this method to send rich messages. If the message contains a block with
+#' a media element, then the bot must have the right to send the media to the
+#' chat. On success, the sent Message is returned.
+#'
+#' You can also use it's snake_case equivalent \code{send_rich_message}.
+#' @param chat_id Unique identifier for the target chat or username of the
+#'     target bot, supergroup, or channel in the format \code{@username};
+#'     required unless the message is sent as an ephemeral reply to a callback
+#'     query
+#' @param message_thread_id (Optional). Unique identifier for the target message
+#'     thread (topic) of a forum; for forum supergroups and private chats of
+#'     bots with forum topic mode enabled only
+#' @param direct_messages_topic_id (Optional). Identifier of the direct messages
+#'     topic to which the message will be sent; required if the message is sent
+#'     to a direct messages chat
+#' @param ephemeral_message_parameters (Optional). A JSON-serialized object
+#'     containing the parameters of the ephemeral message to send
+#' @param rich_message (Required). An \code{\link{InputRichMessage}} object
+#'     describing the rich message to be sent
+#' @param disable_notification (Optional). Sends the message silently. Users
+#'     will receive a notification with no sound.
+#' @param protect_content (Optional). Protects the contents of the sent message
+#'     from forwarding and saving
+#' @param allow_paid_broadcast (Optional). Pass \code{TRUE} to allow up to 1000
+#'     messages per second, ignoring broadcasting limits for a fee of 0.1
+#'     Telegram Stars per message
+#' @param message_effect_id (Optional). Unique identifier of the message effect
+#'     to be added to the message; for private chats only
+#' @param suggested_post_parameters (Optional). A JSON-serialized object
+#'     containing the parameters of the suggested post to send; for direct
+#'     messages chats only
+#' @param reply_parameters (Optional). Description of the message to reply to
+#' @param reply_markup (Optional). A Reply Markup parameter object, it can be
+#'     either:
+#'     \itemize{
+#'      \item{\code{\link{InlineKeyboardMarkup}}}
+#'      \item{\code{\link{ReplyKeyboardMarkup}}}
+#'      \item{\code{\link{ReplyKeyboardRemove}}}
+#'      \item{\code{\link{ForceReply}}}}
+#' @export
+sendRichMessage <- function(chat_id = NULL,
+                            message_thread_id = NULL,
+                            direct_messages_topic_id = NULL,
+                            ephemeral_message_parameters = NULL,
+                            rich_message = NULL,
+                            disable_notification = NULL,
+                            protect_content = NULL,
+                            allow_paid_broadcast = NULL,
+                            message_effect_id = NULL,
+                            suggested_post_parameters = NULL,
+                            reply_parameters = NULL,
+                            reply_markup = NULL) {
+  if (is.null(rich_message)) {
+    stop("`rich_message` is required.")
+  }
+
+  url <- sprintf("%s/sendRichMessage", private$base_url)
+
+  data <- list()
+
+  if (!missing(chat_id) && !is.null(chat_id)) {
+    data[["chat_id"]] <- chat_id
+  }
+  if (!missing(message_thread_id) && !is.null(message_thread_id)) {
+    data[["message_thread_id"]] <- message_thread_id
+  }
+  if (!missing(direct_messages_topic_id) && !is.null(direct_messages_topic_id)) {
+    data[["direct_messages_topic_id"]] <- direct_messages_topic_id
+  }
+  if (!missing(ephemeral_message_parameters) &&
+    !is.null(ephemeral_message_parameters)) {
+    data[["ephemeral_message_parameters"]] <- to_json(
+      ephemeral_message_parameters
+    )
+  }
+  if (!missing(rich_message)) {
+    data[["rich_message"]] <- to_json(rich_message)
+  }
+  if (!missing(disable_notification)) {
+    data[["disable_notification"]] <- disable_notification
+  }
+  if (!missing(protect_content)) {
+    data[["protect_content"]] <- protect_content
+  }
+  if (!missing(allow_paid_broadcast)) {
+    data[["allow_paid_broadcast"]] <- allow_paid_broadcast
+  }
+  if (!missing(message_effect_id)) {
+    data[["message_effect_id"]] <- message_effect_id
+  }
+  if (!missing(suggested_post_parameters) &&
+    !is.null(suggested_post_parameters)) {
+    data[["suggested_post_parameters"]] <- to_json(suggested_post_parameters)
+  }
+  if (!missing(reply_parameters)) {
+    data[["reply_parameters"]] <- to_json(reply_parameters)
+  }
+  if (!missing(reply_markup)) {
+    data[["reply_markup"]] <- to_json(reply_markup)
+  }
+
+  result <- private$request(url, data)
+
+  invisible(result)
+}
+
+#' Send a rich message draft
+#'
+#' Use this method to stream a partial rich message to a user while the message
+#' is being generated. Note that the streamed draft is ephemeral and acts as a
+#' temporary 30-second preview - once the output is finalized, you **must** call
+#' \code{\link{sendRichMessage}} with the complete message to persist it in the
+#' user's chat. Returns \code{TRUE} on success.
+#'
+#' You can also use it's snake_case equivalent \code{send_rich_message_draft}.
+#' @param chat_id Unique identifier for the target private chat
+#' @param message_thread_id (Optional). Unique identifier for the target message
+#'     thread
+#' @param draft_id Unique identifier of the message draft; must be non-zero.
+#'     Changes to drafts with the same identifier are animated. Otherwise, the
+#'     draft is replaced without animation.
+#' @param rich_message (Required). An \code{\link{InputRichMessage}} object
+#'     describing the partial message to be streamed
+#' @param can_stop (Optional). Pass \code{TRUE} to show the user a button to
+#'     stop further drafts. The bot will receive an update "stopped_message_generation"
+#'     if the user presses the button
+#' @param keep_on_stop (Optional). Pass \code{TRUE} to keep the draft in the chat
+#'     when the button is pressed. The draft will still disappear after a short
+#'     time or if the bot sends a message
+#' @export
+sendRichMessageDraft <- function(chat_id,
+                                 message_thread_id = NULL,
+                                 draft_id,
+                                 rich_message = NULL,
+                                 can_stop = NULL,
+                                 keep_on_stop = NULL) {
+  if (is.null(rich_message)) {
+    stop("`rich_message` is required.")
+  }
+
+  url <- sprintf("%s/sendRichMessageDraft", private$base_url)
+
+  data <- list(
+    chat_id = chat_id,
+    draft_id = draft_id
+  )
+
+  if (!missing(message_thread_id) && !is.null(message_thread_id)) {
+    data[["message_thread_id"]] <- message_thread_id
+  }
+  if (!missing(rich_message)) {
+    data[["rich_message"]] <- to_json(rich_message)
+  }
+  if (!missing(can_stop)) {
+    data[["can_stop"]] <- can_stop
+  }
+  if (!missing(keep_on_stop)) {
+    data[["keep_on_stop"]] <- keep_on_stop
+  }
+
+  result <- private$request(url, data)
+
+  invisible(result)
+}
+
+
 #' Get a user's profile photos
 #'
 #' Use this method to get a list of profile pictures for a user.
@@ -1741,6 +1909,10 @@ BotClass <- R6::R6Class("Bot",
     send_location = sendLocation,
     sendChatAction = sendChatAction,
     send_chat_action = sendChatAction,
+    sendRichMessage = sendRichMessage,
+    send_rich_message = sendRichMessage,
+    sendRichMessageDraft = sendRichMessageDraft,
+    send_rich_message_draft = sendRichMessageDraft,
     getUserProfilePhotos = getUserProfilePhotos,
     get_user_profile_photos = getUserProfilePhotos,
     getFile = getFile,
