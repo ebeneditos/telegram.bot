@@ -2,6 +2,7 @@
 
 - Added `web_app` argument to `InlineKeyboardButton`, `KeyboardButton` and related markup functions
 - Allows passing URL or object to open a Telegram Mini App directly from inline or reply keyboard buttons. Thanks to Alexey Seleznev for updating
+- Added support for Rich Messages (Bot API 10.1+): new constructors `RichText*`, `RichBlock*`, `RichMessage`, `RichMessageButton`, `InputRichMessage`, `InputRichMessageMedia`, `InputRichBlock*` for sending structured rich formatted messages via `sendRichMessage` and streaming drafts via `sendRichMessageDraft`
 
 ## telegram.bot 3.0.1
 
