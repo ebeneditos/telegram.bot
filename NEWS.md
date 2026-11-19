@@ -1,23 +1,15 @@
 # telegram.bot 3.0.2
 
-- Added `web_app` argument to `InlineKeyboardButton`, `KeyboardButton` and related markup functions
-- Allows passing URL or object to open a Telegram Mini App directly from inline or reply keyboard buttons. Thanks to Alexey Seleznev for updating
+- Added `web_app` argument to `InlineKeyboardButton`, `KeyboardButton` and related markup functions.
+- Allows passing URL or object to open a Telegram Mini App directly from inline or reply keyboard buttons.
 - Added support for Rich Messages (Bot API 10.1+):
-    - New constructors for rich formatted text:
-        - `RichText` base class and 26 subclasses: `RichTextBold`, `RichTextItalic`, `RichTextUnderline`, `RichTextStrikethrough`, `RichTextSpoiler`, `RichTextDateTime`, `RichTextTextMention`, `RichTextSubscript`, `RichTextSuperscript`, `RichTextMarked`, `RichTextCode`, `RichTextCustomEmoji`, `RichTextMathematicalExpression`, `RichTextUrl`, `RichTextEmailAddress`, `RichTextPhoneNumber`, `RichTextBankCardNumber`, `RichTextTonAddress`, `RichTextMention`, `RichTextHashtag`, `RichTextCashtag`, `RichTextBotCommand`, `RichTextAnchor`, `RichTextAnchorLink`, `RichTextReference`, `RichTextReferenceLink`
-        - `RichMessageButton` with support for URL, callback data, login, web apps, inline queries and other types
-    - New constructors for rich blocks:
-        - `RichBlock` base and 25 block types: `RichBlockParagraph`, `RichBlockSectionHeading`, `RichBlockPreformatted`, `RichBlockFooter`, `RichBlockDivider`, `RichBlockMathematicalExpression`, `RichBlockAnchor`, `RichBlockList`, `RichBlockListItem`, `RichBlockBlockQuotation`, `RichBlockExpandableBlockQuotation`, `RichBlockPullQuotation`, `RichBlockCollage`, `RichBlockSlideshow`, `RichBlockTable`, `RichBlockTableCell`, `RichBlockDetails`, `RichBlockMap`, `RichBlockButtons`, `RichBlockAnimation`, `RichBlockAudio`, `RichBlockDocument`, `RichBlockPhoto`, `RichBlockVideo`, `RichBlockVoiceNote`, `RichBlockThinking`
-        - `RichMessage` combining blocks with `is_rtl` support
-    - New input constructors for sending:
-        - `InputRichMessage` with blocks/html/markdown/media/is_rtl/skip_entity_detection
-        - `InputRichMessageMedia`
-        - `InputRichBlock*` types mirroring output blocks
-    - New `Bot` methods:
-        - `sendRichMessage()` with `rich_message` parameter, support for chat threads, ephemeral messages, and rich formatting
-        - `sendRichMessageDraft()` for streaming partial rich messages
-        - Both methods have snake_case equivalents (`send_rich_message()`, `send_rich_message_draft()`)
-    - Fixed test helper validation of empty TOKEN (now correctly checks for invalid token, not message content)
+    - New constructors for rich formatted text: `RichText` and subclasses (`RichTextBold`, `RichTextItalic`, `RichTextUnderline`, `RichTextStrikethrough`, `RichTextSpoiler`, `RichTextDateTime`, `RichTextTextMention`, `RichTextSubscript`, `RichTextSuperscript`, `RichTextMarked`, `RichTextCode`, `RichTextCustomEmoji`, `RichTextMathematicalExpression`, `RichTextUrl`, `RichTextEmailAddress`, `RichTextPhoneNumber`, `RichTextBankCardNumber`, `RichTextTonAddress`, `RichTextMention`, `RichTextHashtag`, `RichTextCashtag`, `RichTextBotCommand`, `RichTextAnchor`, `RichTextAnchorLink`, `RichTextReference`, `RichTextReferenceLink`)
+    - `RichMessageButton` with URL, callback data, login, web app support
+    - New constructors for rich blocks: `RichBlock` and 25 block types
+    - New constructors: `RichMessage`, `RichMessageButton`
+    - New input constructors: `InputRichMessage`, `InputRichMessageMedia`, `InputRichBlock*`
+    - New Bot methods: `sendRichMessage()` and `sendRichMessageDraft()` (and snake_case equivalents)
+    - Fixed test helper validation of empty TOKEN (now correctly checks for invalid token)
     - Added comprehensive test coverage for all rich message types
 
 ## telegram.bot 3.0.1
