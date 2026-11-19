@@ -8,7 +8,7 @@ InputRichBlockParagraph <- function(text) {
   structure(list(
     type = "paragraph",
     text = text
-  ), class = "InputRichBlockParagraph")
+  ), class = c("InputRichBlock", "InputRichBlockParagraph"))
 }
 
 #' @rdname InputRichBlockParagraph
@@ -32,7 +32,7 @@ InputRichBlockSectionHeading <- function(text, size = 1L) {
     type = "heading",
     text = text,
     size = size
-  ), class = "InputRichBlockSectionHeading")
+  ), class = c("InputRichBlock", "InputRichBlockSectionHeading"))
 }
 
 #' @rdname InputRichBlockSectionHeading
@@ -58,7 +58,9 @@ InputRichBlockPreformatted <- function(text, language = NULL) {
     InputRichBlockPreformatted, is.null
   ))]
 
-  structure(InputRichBlockPreformatted, class = "InputRichBlockPreformatted")
+  structure(InputRichBlockPreformatted,
+    class = c("InputRichBlock", "InputRichBlockPreformatted")
+  )
 }
 
 #' @rdname InputRichBlockPreformatted
@@ -77,7 +79,7 @@ InputRichBlockFooter <- function(text) {
   structure(list(
     type = "footer",
     text = text
-  ), class = "InputRichBlockFooter")
+  ), class = c("InputRichBlock", "InputRichBlockFooter"))
 }
 
 #' @rdname InputRichBlockFooter
@@ -94,7 +96,7 @@ is.InputRichBlockFooter <- function(x) inherits(x, "InputRichBlockFooter")
 InputRichBlockDivider <- function() {
   structure(list(
     type = "divider"
-  ), class = "InputRichBlockDivider")
+  ), class = c("InputRichBlock", "InputRichBlockDivider"))
 }
 
 #' @rdname InputRichBlockDivider
@@ -113,7 +115,7 @@ InputRichBlockMathematicalExpression <- function(expression) {
   structure(list(
     type = "mathematical_expression",
     expression = expression
-  ), class = "InputRichBlockMathematicalExpression")
+  ), class = c("InputRichBlock", "InputRichBlockMathematicalExpression"))
 }
 
 #' @rdname InputRichBlockMathematicalExpression
@@ -132,7 +134,7 @@ InputRichBlockAnchor <- function(name) {
   structure(list(
     type = "anchor",
     name = name
-  ), class = "InputRichBlockAnchor")
+  ), class = c("InputRichBlock", "InputRichBlockAnchor"))
 }
 
 #' @rdname InputRichBlockAnchor
@@ -155,7 +157,7 @@ InputRichBlockList <- function(items) {
   structure(list(
     type = "list",
     items = items
-  ), class = "InputRichBlockList")
+  ), class = c("InputRichBlock", "InputRichBlockList"))
 }
 
 #' @rdname InputRichBlockList
@@ -232,7 +234,9 @@ InputRichBlockBlockQuotation <- function(blocks, credit = NULL) {
     InputRichBlockBlockQuotation, is.null
   ))]
 
-  structure(InputRichBlockBlockQuotation, class = "InputRichBlockBlockQuotation")
+  structure(InputRichBlockBlockQuotation,
+    class = c("InputRichBlock", "InputRichBlockBlockQuotation")
+  )
 }
 
 #' @rdname InputRichBlockBlockQuotation
@@ -258,7 +262,9 @@ InputRichBlockExpandableBlockQuotation <- function(text, credit = NULL) {
     InputRichBlockExpandableBlockQuotation, is.null
   ))]
 
-  structure(InputRichBlockExpandableBlockQuotation, class = "InputRichBlockExpandableBlockQuotation")
+  structure(InputRichBlockExpandableBlockQuotation,
+    class = c("InputRichBlock", "InputRichBlockExpandableBlockQuotation")
+  )
 }
 
 #' @rdname InputRichBlockExpandableBlockQuotation
@@ -284,7 +290,9 @@ InputRichBlockPullQuotation <- function(text, credit = NULL) {
     InputRichBlockPullQuotation, is.null
   ))]
 
-  structure(InputRichBlockPullQuotation, class = "InputRichBlockPullQuotation")
+  structure(InputRichBlockPullQuotation,
+    class = c("InputRichBlock", "InputRichBlockPullQuotation")
+  )
 }
 
 #' @rdname InputRichBlockPullQuotation
@@ -314,7 +322,7 @@ InputRichBlockCollage <- function(blocks, caption = NULL) {
     InputRichBlockCollage, is.null
   ))]
 
-  structure(InputRichBlockCollage, class = "InputRichBlockCollage")
+  structure(InputRichBlockCollage, class = c("InputRichBlock", "InputRichBlockCollage"))
 }
 
 #' @rdname InputRichBlockCollage
@@ -344,7 +352,7 @@ InputRichBlockSlideshow <- function(blocks, caption = NULL) {
     InputRichBlockSlideshow, is.null
   ))]
 
-  structure(InputRichBlockSlideshow, class = "InputRichBlockSlideshow")
+  structure(InputRichBlockSlideshow, class = c("InputRichBlock", "InputRichBlockSlideshow"))
 }
 
 #' @rdname InputRichBlockSlideshow
@@ -389,7 +397,7 @@ InputRichBlockTable <- function(cells,
     InputRichBlockTable, is.null
   ))]
 
-  structure(InputRichBlockTable, class = "InputRichBlockTable")
+  structure(InputRichBlockTable, class = c("InputRichBlock", "InputRichBlockTable"))
 }
 
 #' @rdname InputRichBlockTable
@@ -421,7 +429,7 @@ InputRichBlockDetails <- function(summary, blocks, is_open = NULL) {
     InputRichBlockDetails, is.null
   ))]
 
-  structure(InputRichBlockDetails, class = "InputRichBlockDetails")
+  structure(InputRichBlockDetails, class = c("InputRichBlock", "InputRichBlockDetails"))
 }
 
 #' @rdname InputRichBlockDetails
@@ -461,7 +469,7 @@ InputRichBlockMap <- function(location,
     InputRichBlockMap, is.null
   ))]
 
-  structure(InputRichBlockMap, class = "InputRichBlockMap")
+  structure(InputRichBlockMap, class = c("InputRichBlock", "InputRichBlockMap"))
 }
 
 #' @rdname InputRichBlockMap
@@ -495,7 +503,7 @@ InputRichBlockButtons <- function(buttons, align = NULL) {
     InputRichBlockButtons, is.null
   ))]
 
-  structure(InputRichBlockButtons, class = "InputRichBlockButtons")
+  structure(InputRichBlockButtons, class = c("InputRichBlock", "InputRichBlockButtons"))
 }
 
 #' @rdname InputRichBlockButtons
@@ -529,7 +537,7 @@ InputRichBlockAnimation <- function(animation,
     InputRichBlockAnimation, is.null
   ))]
 
-  structure(InputRichBlockAnimation, class = "InputRichBlockAnimation")
+  structure(InputRichBlockAnimation, class = c("InputRichBlock", "InputRichBlockAnimation"))
 }
 
 #' @rdname InputRichBlockAnimation
@@ -559,7 +567,7 @@ InputRichBlockAudio <- function(audio, caption = NULL) {
     InputRichBlockAudio, is.null
   ))]
 
-  structure(InputRichBlockAudio, class = "InputRichBlockAudio")
+  structure(InputRichBlockAudio, class = c("InputRichBlock", "InputRichBlockAudio"))
 }
 
 #' @rdname InputRichBlockAudio
@@ -589,7 +597,7 @@ InputRichBlockDocument <- function(document, caption = NULL) {
     InputRichBlockDocument, is.null
   ))]
 
-  structure(InputRichBlockDocument, class = "InputRichBlockDocument")
+  structure(InputRichBlockDocument, class = c("InputRichBlock", "InputRichBlockDocument"))
 }
 
 #' @rdname InputRichBlockDocument
@@ -623,7 +631,7 @@ InputRichBlockPhoto <- function(photo,
     InputRichBlockPhoto, is.null
   ))]
 
-  structure(InputRichBlockPhoto, class = "InputRichBlockPhoto")
+  structure(InputRichBlockPhoto, class = c("InputRichBlock", "InputRichBlockPhoto"))
 }
 
 #' @rdname InputRichBlockPhoto
@@ -657,7 +665,7 @@ InputRichBlockVideo <- function(video,
     InputRichBlockVideo, is.null
   ))]
 
-  structure(InputRichBlockVideo, class = "InputRichBlockVideo")
+  structure(InputRichBlockVideo, class = c("InputRichBlock", "InputRichBlockVideo"))
 }
 
 #' @rdname InputRichBlockVideo
@@ -687,7 +695,7 @@ InputRichBlockVoiceNote <- function(voice_note, caption = NULL) {
     InputRichBlockVoiceNote, is.null
   ))]
 
-  structure(InputRichBlockVoiceNote, class = "InputRichBlockVoiceNote")
+  structure(InputRichBlockVoiceNote, class = c("InputRichBlock", "InputRichBlockVoiceNote"))
 }
 
 #' @rdname InputRichBlockVoiceNote
@@ -707,7 +715,7 @@ InputRichBlockThinking <- function(text) {
   structure(list(
     type = "thinking",
     text = text
-  ), class = "InputRichBlockThinking")
+  ), class = c("InputRichBlock", "InputRichBlockThinking"))
 }
 
 #' @rdname InputRichBlockThinking
@@ -751,7 +759,7 @@ InputRichBlock <- function(block) {
     stop("`block` must be an InputRichBlock object.")
   }
 
-  structure(block, class = c("InputRichBlock", class(block)))
+  structure(block, class = unique(class(block)))
 }
 
 #' @rdname InputRichBlock

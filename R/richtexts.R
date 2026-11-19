@@ -6,7 +6,7 @@ RichTextBold <- function(text) {
   structure(list(
     type = "bold",
     text = text
-  ), class = "RichTextBold")
+  ), class = c("RichText", "RichTextBold"))
 }
 
 #' @rdname RichTextBold
@@ -23,7 +23,7 @@ RichTextItalic <- function(text) {
   structure(list(
     type = "italic",
     text = text
-  ), class = "RichTextItalic")
+  ), class = c("RichText", "RichTextItalic"))
 }
 
 #' @rdname RichTextItalic
@@ -40,7 +40,7 @@ RichTextUnderline <- function(text) {
   structure(list(
     type = "underline",
     text = text
-  ), class = "RichTextUnderline")
+  ), class = c("RichText", "RichTextUnderline"))
 }
 
 #' @rdname RichTextUnderline
@@ -57,7 +57,7 @@ RichTextStrikethrough <- function(text) {
   structure(list(
     type = "strikethrough",
     text = text
-  ), class = "RichTextStrikethrough")
+  ), class = c("RichText", "RichTextStrikethrough"))
 }
 
 #' @rdname RichTextStrikethrough
@@ -74,7 +74,7 @@ RichTextSpoiler <- function(text) {
   structure(list(
     type = "spoiler",
     text = text
-  ), class = "RichTextSpoiler")
+  ), class = c("RichText", "RichTextSpoiler"))
 }
 
 #' @rdname RichTextSpoiler
@@ -95,7 +95,7 @@ RichTextDateTime <- function(text, unix_time, date_time_format) {
     text = text,
     unix_time = unix_time,
     date_time_format = date_time_format
-  ), class = "RichTextDateTime")
+  ), class = c("RichText", "RichTextDateTime"))
 }
 
 #' @rdname RichTextDateTime
@@ -114,7 +114,7 @@ RichTextTextMention <- function(text, user) {
     type = "text_mention",
     text = text,
     user = user
-  ), class = "RichTextTextMention")
+  ), class = c("RichText", "RichTextTextMention"))
 }
 
 #' @rdname RichTextTextMention
@@ -131,7 +131,7 @@ RichTextSubscript <- function(text) {
   structure(list(
     type = "subscript",
     text = text
-  ), class = "RichTextSubscript")
+  ), class = c("RichText", "RichTextSubscript"))
 }
 
 #' @rdname RichTextSubscript
@@ -148,7 +148,7 @@ RichTextSuperscript <- function(text) {
   structure(list(
     type = "superscript",
     text = text
-  ), class = "RichTextSuperscript")
+  ), class = c("RichText", "RichTextSuperscript"))
 }
 
 #' @rdname RichTextSuperscript
@@ -165,7 +165,7 @@ RichTextMarked <- function(text) {
   structure(list(
     type = "marked",
     text = text
-  ), class = "RichTextMarked")
+  ), class = c("RichText", "RichTextMarked"))
 }
 
 #' @rdname RichTextMarked
@@ -182,7 +182,7 @@ RichTextCode <- function(text) {
   structure(list(
     type = "code",
     text = text
-  ), class = "RichTextCode")
+  ), class = c("RichText", "RichTextCode"))
 }
 
 #' @rdname RichTextCode
@@ -201,7 +201,7 @@ RichTextCustomEmoji <- function(custom_emoji_id, alternative_text = NULL) {
     type = "custom_emoji",
     custom_emoji_id = custom_emoji_id,
     alternative_text = alternative_text
-  ), class = "RichTextCustomEmoji")
+  ), class = c("RichText", "RichTextCustomEmoji"))
 }
 
 #' @rdname RichTextCustomEmoji
@@ -218,7 +218,7 @@ RichTextMathematicalExpression <- function(text) {
   structure(list(
     type = "mathematical_expression",
     text = text
-  ), class = "RichTextMathematicalExpression")
+  ), class = c("RichText", "RichTextMathematicalExpression"))
 }
 
 #' @rdname RichTextMathematicalExpression
@@ -237,7 +237,7 @@ RichTextUrl <- function(text, url) {
     type = "url",
     text = text,
     url = url
-  ), class = "RichTextUrl")
+  ), class = c("RichText", "RichTextUrl"))
 }
 
 #' @rdname RichTextUrl
@@ -256,7 +256,7 @@ RichTextEmailAddress <- function(text, email_address) {
     type = "email_address",
     text = text,
     email_address = email_address
-  ), class = "RichTextEmailAddress")
+  ), class = c("RichText", "RichTextEmailAddress"))
 }
 
 #' @rdname RichTextEmailAddress
@@ -275,7 +275,7 @@ RichTextPhoneNumber <- function(text, phone_number) {
     type = "phone_number",
     text = text,
     phone_number = phone_number
-  ), class = "RichTextPhoneNumber")
+  ), class = c("RichText", "RichTextPhoneNumber"))
 }
 
 #' @rdname RichTextPhoneNumber
@@ -294,7 +294,7 @@ RichTextBankCardNumber <- function(text, bank_card_number) {
     type = "bank_card_number",
     text = text,
     bank_card_number = bank_card_number
-  ), class = "RichTextBankCardNumber")
+  ), class = c("RichText", "RichTextBankCardNumber"))
 }
 
 #' @rdname RichTextBankCardNumber
@@ -313,7 +313,7 @@ RichTextTonAddress <- function(text, address) {
     type = "ton_address",
     text = text,
     address = address
-  ), class = "RichTextTonAddress")
+  ), class = c("RichText", "RichTextTonAddress"))
 }
 
 #' @rdname RichTextTonAddress
@@ -332,7 +332,7 @@ RichTextMention <- function(text, username) {
     type = "mention",
     text = text,
     username = username
-  ), class = "RichTextMention")
+  ), class = c("RichText", "RichTextMention"))
 }
 
 #' @rdname RichTextMention
@@ -349,7 +349,7 @@ RichTextHashtag <- function(text) {
   structure(list(
     type = "hashtag",
     text = text
-  ), class = "RichTextHashtag")
+  ), class = c("RichText", "RichTextHashtag"))
 }
 
 #' @rdname RichTextHashtag
@@ -366,7 +366,7 @@ RichTextCashtag <- function(text) {
   structure(list(
     type = "cashtag",
     text = text
-  ), class = "RichTextCashtag")
+  ), class = c("RichText", "RichTextCashtag"))
 }
 
 #' @rdname RichTextCashtag
@@ -383,7 +383,7 @@ RichTextBotCommand <- function(text) {
   structure(list(
     type = "bot_command",
     text = text
-  ), class = "RichTextBotCommand")
+  ), class = c("RichText", "RichTextBotCommand"))
 }
 
 #' @rdname RichTextBotCommand
@@ -400,7 +400,7 @@ RichTextAnchor <- function(name) {
   structure(list(
     type = "anchor",
     name = name
-  ), class = "RichTextAnchor")
+  ), class = c("RichText", "RichTextAnchor"))
 }
 
 #' @rdname RichTextAnchor
@@ -419,7 +419,7 @@ RichTextAnchorLink <- function(text, name) {
     type = "anchor_link",
     text = text,
     name = name
-  ), class = "RichTextAnchorLink")
+  ), class = c("RichText", "RichTextAnchorLink"))
 }
 
 #' @rdname RichTextAnchorLink
@@ -438,7 +438,7 @@ RichTextReference <- function(text, name) {
     type = "reference",
     text = text,
     name = name
-  ), class = "RichTextReference")
+  ), class = c("RichText", "RichTextReference"))
 }
 
 #' @rdname RichTextReference
@@ -458,7 +458,7 @@ RichTextButton <- function(button) {
   structure(list(
     type = "button",
     button = button
-  ), class = "RichTextButton")
+  ), class = c("RichText", "RichTextButton"))
 }
 
 #' @rdname RichTextButton
@@ -477,7 +477,7 @@ RichTextReferenceLink <- function(text, name) {
     type = "reference_link",
     text = text,
     name = name
-  ), class = "RichTextReferenceLink")
+  ), class = c("RichText", "RichTextReferenceLink"))
 }
 
 #' @rdname RichTextReferenceLink

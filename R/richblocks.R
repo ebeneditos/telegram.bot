@@ -8,7 +8,7 @@ RichBlockParagraph <- function(text) {
   structure(list(
     type = "paragraph",
     text = text
-  ), class = "RichBlockParagraph")
+  ), class = c("RichBlock", "RichBlockParagraph"))
 }
 
 #' @rdname RichBlockParagraph
@@ -32,7 +32,7 @@ RichBlockSectionHeading <- function(text, size = 1L) {
     type = "heading",
     text = text,
     size = size
-  ), class = "RichBlockSectionHeading")
+  ), class = c("RichBlock", "RichBlockSectionHeading"))
 }
 
 #' @rdname RichBlockSectionHeading
@@ -58,7 +58,9 @@ RichBlockPreformatted <- function(text, language = NULL) {
     RichBlockPreformatted, is.null
   ))]
 
-  structure(RichBlockPreformatted, class = "RichBlockPreformatted")
+  structure(RichBlockPreformatted,
+    class = c("RichBlock", "RichBlockPreformatted")
+  )
 }
 
 #' @rdname RichBlockPreformatted
@@ -77,7 +79,7 @@ RichBlockFooter <- function(text) {
   structure(list(
     type = "footer",
     text = text
-  ), class = "RichBlockFooter")
+  ), class = c("RichBlock", "RichBlockFooter"))
 }
 
 #' @rdname RichBlockFooter
@@ -94,7 +96,7 @@ is.RichBlockFooter <- function(x) inherits(x, "RichBlockFooter")
 RichBlockDivider <- function() {
   structure(list(
     type = "divider"
-  ), class = "RichBlockDivider")
+  ), class = c("RichBlock", "RichBlockDivider"))
 }
 
 #' @rdname RichBlockDivider
@@ -113,7 +115,7 @@ RichBlockMathematicalExpression <- function(expression) {
   structure(list(
     type = "mathematical_expression",
     expression = expression
-  ), class = "RichBlockMathematicalExpression")
+  ), class = c("RichBlock", "RichBlockMathematicalExpression"))
 }
 
 #' @rdname RichBlockMathematicalExpression
@@ -132,7 +134,7 @@ RichBlockAnchor <- function(name) {
   structure(list(
     type = "anchor",
     name = name
-  ), class = "RichBlockAnchor")
+  ), class = c("RichBlock", "RichBlockAnchor"))
 }
 
 #' @rdname RichBlockAnchor
@@ -155,7 +157,7 @@ RichBlockList <- function(items) {
   structure(list(
     type = "list",
     items = items
-  ), class = "RichBlockList")
+  ), class = c("RichBlock", "RichBlockList"))
 }
 
 #' @rdname RichBlockList
@@ -232,7 +234,9 @@ RichBlockBlockQuotation <- function(blocks, credit = NULL) {
     RichBlockBlockQuotation, is.null
   ))]
 
-  structure(RichBlockBlockQuotation, class = "RichBlockBlockQuotation")
+  structure(RichBlockBlockQuotation,
+    class = c("RichBlock", "RichBlockBlockQuotation")
+  )
 }
 
 #' @rdname RichBlockBlockQuotation
@@ -258,7 +262,9 @@ RichBlockExpandableBlockQuotation <- function(text, credit = NULL) {
     RichBlockExpandableBlockQuotation, is.null
   ))]
 
-  structure(RichBlockExpandableBlockQuotation, class = "RichBlockExpandableBlockQuotation")
+  structure(RichBlockExpandableBlockQuotation,
+    class = c("RichBlock", "RichBlockExpandableBlockQuotation")
+  )
 }
 
 #' @rdname RichBlockExpandableBlockQuotation
@@ -284,7 +290,9 @@ RichBlockPullQuotation <- function(text, credit = NULL) {
     RichBlockPullQuotation, is.null
   ))]
 
-  structure(RichBlockPullQuotation, class = "RichBlockPullQuotation")
+  structure(RichBlockPullQuotation,
+    class = c("RichBlock", "RichBlockPullQuotation")
+  )
 }
 
 #' @rdname RichBlockPullQuotation
@@ -314,7 +322,7 @@ RichBlockCollage <- function(blocks, caption = NULL) {
     RichBlockCollage, is.null
   ))]
 
-  structure(RichBlockCollage, class = "RichBlockCollage")
+  structure(RichBlockCollage, class = c("RichBlock", "RichBlockCollage"))
 }
 
 #' @rdname RichBlockCollage
@@ -344,7 +352,7 @@ RichBlockSlideshow <- function(blocks, caption = NULL) {
     RichBlockSlideshow, is.null
   ))]
 
-  structure(RichBlockSlideshow, class = "RichBlockSlideshow")
+  structure(RichBlockSlideshow, class = c("RichBlock", "RichBlockSlideshow"))
 }
 
 #' @rdname RichBlockSlideshow
@@ -389,7 +397,7 @@ RichBlockTable <- function(cells,
     RichBlockTable, is.null
   ))]
 
-  structure(RichBlockTable, class = "RichBlockTable")
+  structure(RichBlockTable, class = c("RichBlock", "RichBlockTable"))
 }
 
 #' @rdname RichBlockTable
@@ -492,7 +500,7 @@ RichBlockDetails <- function(summary, blocks, is_open = NULL) {
     RichBlockDetails, is.null
   ))]
 
-  structure(RichBlockDetails, class = "RichBlockDetails")
+  structure(RichBlockDetails, class = c("RichBlock", "RichBlockDetails"))
 }
 
 #' @rdname RichBlockDetails
@@ -532,7 +540,7 @@ RichBlockMap <- function(location,
     RichBlockMap, is.null
   ))]
 
-  structure(RichBlockMap, class = "RichBlockMap")
+  structure(RichBlockMap, class = c("RichBlock", "RichBlockMap"))
 }
 
 #' @rdname RichBlockMap
@@ -566,7 +574,7 @@ RichBlockButtons <- function(buttons, align = NULL) {
     RichBlockButtons, is.null
   ))]
 
-  structure(RichBlockButtons, class = "RichBlockButtons")
+  structure(RichBlockButtons, class = c("RichBlock", "RichBlockButtons"))
 }
 
 #' @rdname RichBlockButtons
@@ -600,7 +608,7 @@ RichBlockAnimation <- function(animation,
     RichBlockAnimation, is.null
   ))]
 
-  structure(RichBlockAnimation, class = "RichBlockAnimation")
+  structure(RichBlockAnimation, class = c("RichBlock", "RichBlockAnimation"))
 }
 
 #' @rdname RichBlockAnimation
@@ -630,7 +638,7 @@ RichBlockAudio <- function(audio, caption = NULL) {
     RichBlockAudio, is.null
   ))]
 
-  structure(RichBlockAudio, class = "RichBlockAudio")
+  structure(RichBlockAudio, class = c("RichBlock", "RichBlockAudio"))
 }
 
 #' @rdname RichBlockAudio
@@ -660,7 +668,7 @@ RichBlockDocument <- function(document, caption = NULL) {
     RichBlockDocument, is.null
   ))]
 
-  structure(RichBlockDocument, class = "RichBlockDocument")
+  structure(RichBlockDocument, class = c("RichBlock", "RichBlockDocument"))
 }
 
 #' @rdname RichBlockDocument
@@ -694,7 +702,7 @@ RichBlockPhoto <- function(photo,
     RichBlockPhoto, is.null
   ))]
 
-  structure(RichBlockPhoto, class = "RichBlockPhoto")
+  structure(RichBlockPhoto, class = c("RichBlock", "RichBlockPhoto"))
 }
 
 #' @rdname RichBlockPhoto
@@ -728,7 +736,7 @@ RichBlockVideo <- function(video,
     RichBlockVideo, is.null
   ))]
 
-  structure(RichBlockVideo, class = "RichBlockVideo")
+  structure(RichBlockVideo, class = c("RichBlock", "RichBlockVideo"))
 }
 
 #' @rdname RichBlockVideo
@@ -758,7 +766,7 @@ RichBlockVoiceNote <- function(voice_note, caption = NULL) {
     RichBlockVoiceNote, is.null
   ))]
 
-  structure(RichBlockVoiceNote, class = "RichBlockVoiceNote")
+  structure(RichBlockVoiceNote, class = c("RichBlock", "RichBlockVoiceNote"))
 }
 
 #' @rdname RichBlockVoiceNote
@@ -778,7 +786,7 @@ RichBlockThinking <- function(text) {
   structure(list(
     type = "thinking",
     text = text
-  ), class = "RichBlockThinking")
+  ), class = c("RichBlock", "RichBlockThinking"))
 }
 
 #' @rdname RichBlockThinking
@@ -822,7 +830,7 @@ RichBlock <- function(block) {
     stop("`block` must be a RichBlock object.")
   }
 
-  structure(block, class = c("RichBlock", class(block)))
+  structure(block, class = unique(class(block)))
 }
 
 #' @rdname RichBlock
