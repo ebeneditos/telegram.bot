@@ -1,7 +1,5 @@
 # telegram.bot 3.1.0
 
-- Added `web_app` argument to `InlineKeyboardButton`, `KeyboardButton` and related markup functions.
-- Allows passing URL or object to open a Telegram Mini App directly from inline or reply keyboard buttons.
 - Added support for Rich Messages (Bot API 10.1+):
     - New constructors for rich formatted text: `RichText` and subclasses (`RichTextBold`, `RichTextItalic`, `RichTextUnderline`, `RichTextStrikethrough`, `RichTextSpoiler`, `RichTextDateTime`, `RichTextTextMention`, `RichTextSubscript`, `RichTextSuperscript`, `RichTextMarked`, `RichTextCode`, `RichTextCustomEmoji`, `RichTextMathematicalExpression`, `RichTextUrl`, `RichTextEmailAddress`, `RichTextPhoneNumber`, `RichTextBankCardNumber`, `RichTextTonAddress`, `RichTextMention`, `RichTextHashtag`, `RichTextCashtag`, `RichTextBotCommand`, `RichTextAnchor`, `RichTextAnchorLink`, `RichTextReference`, `RichTextReferenceLink`)
     - `RichMessageButton` with URL, callback data, login, web app support
@@ -11,6 +9,11 @@
     - New Bot methods: `sendRichMessage()` and `sendRichMessageDraft()` (and snake_case equivalents)
     - Fixed test helper validation of empty TOKEN (now correctly checks for invalid token)
     - Added comprehensive test coverage for all rich message types
+
+## telegram.bot 3.0.2
+
+- Added `web_app` argument to `InlineKeyboardButton`, `KeyboardButton` and related markup functions
+- Allows passing URL or object to open a Telegram Mini App directly from inline or reply keyboard buttons. Thanks to Alexey Seleznev for updating
 
 ## telegram.bot 3.0.1
 
