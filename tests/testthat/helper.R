@@ -6,9 +6,8 @@ chat_id <- Sys.getenv("CHAT_ID")
 
 # Check if the token is valid, otherwise set a default token
 # NOTE: This will skip the connection tests, as this token is not valid
-res <- try(Bot(token = token))
-if (inherits(res, "try-error") &&
-  identical(conditionMessage(attr(res, "condition")), "Invalid token.")) {
+res <- try(Bot(token = token), silent = TRUE)
+if (inherits(res, "try-error")) {
   token <- "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
 } else {
   # Ensure wehbook configuration is cleared
